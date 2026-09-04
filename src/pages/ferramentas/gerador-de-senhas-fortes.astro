@@ -1,0 +1,193 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PasswordGeneratorTool from '../../components/tools/PasswordGeneratorTool';
+---
+
+<Layout
+  title="Gerador de Senhas Fortes com Web Crypto | CofreUtil"
+  description="Gere senhas fortes e aleatórias 100% no seu navegador com Web Crypto API (getRandomValues). Meça a entropia em bits e o tempo estimado de quebra. Sem envio a servidores."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Web Crypto API]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Gerador de Senhas Fortes
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Aleatoriedade criptográfica de verdade, direto do seu navegador.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Senhas criadas com o gerador de números aleatórios seguro do sistema
+        (window.crypto.getRandomValues), e não com funções previsíveis como
+        Math.random(). Nada do que você gera é enviado para servidores, então
+        sua senha existe apenas na sua tela — e nunca sai dela.
+      </p>
+    </div>
+
+    <PasswordGeneratorTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que usar Web Crypto API em vez de Math.random()?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Math.random() não foi projetada para segurança: seus resultados podem ser
+          previsíveis e até rastreados, comprometendo qualquer senha gerada. Já a Web
+          Crypto API usa uma fonte de entropia do próprio sistema operacional
+          (CSPRNG). O CofreUtil emprega getRandomValues com técnica de rejeição de
+          amostra para eliminar qualquer viés estatístico na escolha de caracteres.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          O que significam entropia e "tempo estimado de quebra"?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Entropia mede a imprevisibilidade da senha em bits: quanto maior, mais
+          combinações um atacante precisa testar. Com base nesse valor estimamos o
+          tempo para quebrar a senha por força bruta offline assumindo cerca de 10
+          bilhões de tentativas por segundo — um cenário pessimista que cobre clusters
+          de GPU na nuvem.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Sua senha gerada sai do seu computador?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Não. Todo o sorteio de caracteres acontece localmente, em conformidade total
+          com a LGPD. A ferramenta funciona até mesmo offline após o carregamento da
+          página e não mantém registro das senhas criadas — feche a aba e ela desaparece.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre o Gerador de Senhas Fortes
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Minha senha gerada é enviada para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A geração usa exclusivamente a Web Crypto API do seu navegador. A senha
+            existe apenas na memória da sua máquina e é apagada ao fechar a página.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Qual a diferença entre entropia e força da senha?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Entropia é a medida matemática de imprevisibilidade (em bits). Ela depende do
+            comprimento e da variedade de caracteres usados. A força é a interpretação
+            dessa entropia em rótulos como Fraca, Média, Forte ou Muito Forte.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Por que devo evitar caracteres ambíguos?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Caracteres como 0 (zero) e O (letra), ou 1, l e I, são fáceis de confundir
+            ao digitar a senha em outro aparelho. Marcá-los como ambíguos remove essas
+            opções do conjunto para evitar erros de digitação.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Preciso pagar ou me cadastrar para usar?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A ferramenta é gratuita, sem cadastro e sem limite de gerações. Após
+            várias utilizações, uma mensagem amigável sugere um apoio voluntário via Pix.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Gerador de Senhas Fortes — CofreUtil',
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Gere senhas fortes e aleatórias 100% no navegador com Web Crypto API (getRandomValues), com medição de entropia em bits e tempo estimado de quebra. Sem envio a servidores.',
+            url: 'https://cofreutil.com.br/ferramentas/gerador-de-senhas-fortes',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Minha senha gerada é enviada para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A geração usa exclusivamente a Web Crypto API do seu navegador, sem envio a servidores.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Qual a diferença entre entropia e força da senha?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Entropia é a medida matemática de imprevisibilidade em bits; a força interpreta essa entropia em rótulos como Fraca, Média, Forte ou Muito Forte.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Por que devo evitar caracteres ambíguos?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Caracteres como 0/O ou 1/l/I são fáceis de confundir ao digitar a senha; removê-los evita erros de digitação.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Preciso pagar ou me cadastrar para usar?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A ferramenta é gratuita, sem cadastro e sem limite de gerações.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>

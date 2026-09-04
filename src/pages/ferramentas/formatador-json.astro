@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import JsonFormatterTool from '../../components/tools/JsonFormatterTool';
+---
+
+<Layout
+  title="Formatador e Validador JSON Online | CofreUtil"
+  description="Formate, minifique e valide JSON 100% no seu navegador. Relatório de erros com linha e coluna aproximadas, destaque numérico e privacidade total (LGPD)."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Dev Tools]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Formatador e Validador JSON
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Organize, compacte e valide seus dados JSON sem sair do navegador.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Um utilitário para quem trabalha com APIs e arquivos de configuração.
+        Formate com indentação de 2 ou 4 espaços, minifique para economizar
+        banda e valide a sintaxe com relatório detalhado de erros indicando a
+        linha e a coluna aproximadas do problema. Todo o processamento é local.
+      </p>
+    </div>
+
+    <JsonFormatterTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          O que o validador JSON detecta?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          O validador percorre a gramática JSON campo a campo e aponta com
+          precisão onde a sintaxe quebrou: vírgulas finais (trailing comma),
+          chaves de objeto sem aspas, aspas simples no lugar de duplas, números
+          com zeros à esquerda, escapes inválidos, strings sem fechamento e
+          conteúdo sobrando após o fim do documento. Para cada erro, você vê a
+          mensagem do parser com a linha e a coluna aproximadas.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Qual a diferença entre formatar, minificar e validar?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Formatar reescreve o JSON com indentação legível (2 ou 4 espaços),
+          ideal para inspecionar a estrutura. Minificar remove espaços e quebras
+          de linha, gerando um arquivo compacto perfeito para reduzir o payload
+          de APIs. Validar apenas confere se a sintaxe está correta, sem alterar
+          o conteúdo — essencial para depurar respostas de serviços web.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Seu JSON é seguro para colar aqui?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Sim. O CofreUtil processa o JSON inteiramente no seu navegador
+          (arquitetura Zero-Server): nenhum caractere é enviado para servidores,
+          então tokens de acesso e dados sensíveis que porventura estejam no
+          documento nunca deixam a sua máquina — em conformidade total com a LGPD.
+          A ferramenta funciona até mesmo offline após o carregamento da página.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre o Formatador e Validador JSON
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Meus dados JSON são enviados para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A formatação, a minificação e a validação acontecem 100% no seu
+            navegador. Nada do que você cola sai da sua máquina, garantindo
+            privacidade total e adequação à LGPD.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O validador aceita JSON com comentários ou vírgulas finais?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. Seguimos a especificação JSON estrita (RFC 8259): comentários e
+            vírgulas finais são apontados como erro. Para esses recursos, você
+            precisa de um parser JSON5 ou JSONC.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Esta ferramenta funciona offline?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Após o carregamento da página, todo o processamento é feito
+            localmente e a ferramenta continua funcionando sem conexão com a
+            internet.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Preciso pagar ou me cadastrar para usar?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A ferramenta é gratuita e sem cadastro. Após várias utilizações,
+            uma mensagem amigável sugere um apoio voluntário via Pix.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Formatador e Validador JSON — CofreUtil',
+            applicationCategory: 'DeveloperApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Formate, minifique e valide JSON 100% no navegador, com relatório de erros indicando linha e coluna aproximadas e destaque numérico. Privacidade total e LGPD.',
+            url: 'https://cofreutil.com.br/ferramentas/formatador-json',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Meus dados JSON são enviados para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A formatação, a minificação e a validação acontecem 100% no seu navegador, sem envio a servidores.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'O validador aceita JSON com comentários ou vírgulas finais?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. Seguimos a especificação JSON estrita (RFC 8259): comentários e vírgulas finais são apontados como erro.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Esta ferramenta funciona offline?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. Após o carregamento da página, todo o processamento é local e a ferramenta funciona sem conexão.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Preciso pagar ou me cadastrar para usar?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A ferramenta é gratuita e sem cadastro.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>
