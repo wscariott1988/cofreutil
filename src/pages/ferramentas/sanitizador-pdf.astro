@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PdfSanitizerTool from '../../components/tools/PdfSanitizerTool';
+---
+
+<Layout
+  title="Removedor de Metadados de PDF Online | Limpar Autor e Software | CofreUtil"
+  description="Remova metadados de PDF (autor, software como Microsoft Word, datas e palavras-chave) 100% no navegador. Ideal para escritórios jurídicos e conformidade LGPD. Preserva as páginas e nunca envia o documento a servidores."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [PDF]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [METADADOS]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [OFFICE]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [JURÍDICO]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Sanitizador e Removedor de Metadados de PDF
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Apague o histórico oculto de autor e software do PDF antes de compartilhar.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Todo PDF gerado por editores guarda um "DNA digital": autor, nome do
+        software (ex.: Microsoft Word), datas de criação/modificação e palavras-chave
+        em dois blocos ocultos (Info e XMP). Este sanitizador reescreve e remove
+        essas propriedades usando pdf-lib, preservando as páginas intactas — tudo
+        100% no seu navegador, sem enviar o documento a nenhum servidor.
+      </p>
+    </div>
+
+    <PdfSanitizerTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que escritórios de advocacia devem limpar metadados antes de enviar PDFs?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Contratos, petições e pareceres costumam carregar o nome do autor, do
+          escritório e do software — além de datas que revelam a linha do tempo de
+          revisão do documento. Em processos sigilosos ou sob a LGPD, vazar "quem
+          criou e quando editou" pode comprometer estratégia e gerar risco jurídico.
+          Sanitizar o PDF antes do envio elimina esses rastros por design.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          O que exatamente é removido do meu arquivo PDF?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          As oito propriedades padrão do documento — Author, Creator, Producer,
+          Title, Subject, Keywords, CreationDate e ModificationDate — são removidas
+          do dicionário Info, e o bloco XMP que as duplica é apagado do catálogo. No
+          leitor de PDF, "Document Properties" passa a exibir tudo como não definido.
+          O conteúdo visual das páginas não é alterado.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          É seguro sanitizar contratos e documentos confidenciais neste site?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Sim. O arquivo é carregado na memória do navegador, processado pela
+          biblioteca pdf-lib e descartado ao final. Não há upload, armazenamento ou
+          logs — a ferramenta é automaticamente aderente à LGPD, pois nenhum dado
+          pessoal transita por terceiros. Depois de baixar o PDF limpo, a cópia
+          original permanece apenas onde você a salvou.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre Remoção de Metadados de PDF
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Quais metadados são removidos do PDF?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Autor, título, assunto, palavras-chave, criador, produtor (software),
+            data de criação e data de modificação — além do bloco XMP que duplica
+            essas informações.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Funciona com PDFs criados no Microsoft Word, Adobe ou Google Docs?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. O sanitizador atua sobre a estrutura padrão do PDF, independente do
+            programa que o gerou. Na pré-visualização você confere os dados detectados
+            (ex.: "Autor: Microsoft Word") antes de sanitizar.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            As páginas, assinaturas e formulários são preservados?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. A limpeza é feita em memória sobre os blocos de metadados (Info e
+            XMP) sem reconstruir as páginas — o conteúdo visual permanece exatamente
+            igual ao original.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Meu documento é enviado para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. O processamento acontece 100% no navegador via pdf-lib. O PDF nunca
+            sai da sua máquina e nada é armazenado em nuvem.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O que acontece se o PDF for protegido por senha?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Por segurança, o sanitizador exige que o arquivo esteja sem proteção de
+            senha/criptografia. Remova a senha no seu leitor de PDF antes de sanitizar.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Sanitizador e Removedor de Metadados de PDF — CofreUtil',
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Remova metadados de PDF (autor, software como Microsoft Word, datas e palavras-chave) 100% no navegador, preservando as páginas intactas. Ideal para escritórios jurídicos e conformidade LGPD, sem enviar o documento a servidores.',
+            url: 'https://cofreutil.com.br/ferramentas/sanitizador-pdf',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Quais metadados são removidos do PDF?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Autor, título, assunto, palavras-chave, criador, produtor (software), data de criação, data de modificação e o bloco XMP que os duplica.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Funciona com PDFs criados no Microsoft Word, Adobe ou Google Docs?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. A sanitização atua sobre a estrutura padrão do PDF, independente do programa que o gerou.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'As páginas, assinaturas e formulários são preservados?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. A limpeza remove apenas os blocos de metadados Info e XMP, sem reconstruir as páginas.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Meu documento é enviado para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. O processamento acontece 100% no navegador e o PDF nunca sai da sua máquina.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>
