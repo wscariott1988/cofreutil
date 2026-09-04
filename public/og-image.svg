@@ -21,9 +21,8 @@
     font-weight="700"
     text-anchor="middle"
   >
-    <tspan fill="#FFFFFF">[C] </tspan>
-    <tspan fill="#FFFFFF">Cofre</tspan>
-    <tspan fill="#A1A1AA">Util</tspan>
+    <tspan fill="#A1A1AA">[C] </tspan>
+    <tspan fill="#FFFFFF">CofreUtil</tspan>
   </text>
 
   <!-- Meio: tagline -->
