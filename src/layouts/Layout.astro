@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import BaseHead from '../components/BaseHead.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -8,20 +9,13 @@ interface Props {
   description?: string;
 }
 
-const {
-  title = 'CofreUtil — Microutilitários Locais',
-  description = 'Utilitários web 100% locais. Seus arquivos nunca saem da sua máquina.',
-} = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <meta name="theme-color" content="#000000" />
-    <title>{title}</title>
+    <BaseHead title={title} description={description} />
   </head>
   <body class="min-h-screen bg-black text-white">
     <Header />

@@ -1,0 +1,49 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+}
+
+const SITE_URL = 'https://cofreutil.com.br';
+
+const {
+  title = 'CofreUtil | Ferramentas Web Locais e Seguras (Zero Nuvem)',
+  description = 'Utilitários de alta performance 100% no seu navegador. Comprima PDFs, converta arquivos e processe dados com privacidade absoluta e zero upload para servidores.',
+  image = `${SITE_URL}/og-image.png`,
+  type = 'website',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+---
+
+<!-- Configurações Fundamentais -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#000000" />
+
+<!-- SEO Primário -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<!-- Ícones de Aba (Favicon) -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonical} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
