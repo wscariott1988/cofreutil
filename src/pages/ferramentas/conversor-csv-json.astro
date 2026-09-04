@@ -1,0 +1,201 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CsvJsonTool from '../../components/tools/CsvJsonTool';
+---
+
+<Layout
+  title="Conversor de CSV para JSON Online | CofreUtil"
+  description="Converta CSV para JSON e JSON para CSV 100% no navegador, com suporte a vírgula, ponto e vírgula e tab. Tratamento de aspas (RFC 4180), download do arquivo e privacidade total (LGPD)."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Dev Tools]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [CSV]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [JSON]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Conversor de CSV para JSON
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Converta planilhas e dados tabulares sem sair do navegador.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Um utilitário bidirecional para quem trabalha com bancos de dados,
+        planilhas e APIs: converta CSV em JSON (a primeira linha vira cabeçalho)
+        ou gere CSV a partir de JSON. Suporta vírgula, ponto e vírgula, tabulação
+        ou detecção automática, com tratamento correto de aspas e quebras de
+        linha (RFC 4180). Tudo processado localmente, com zero upload.
+      </p>
+    </div>
+
+    <CsvJsonTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Como converter um arquivo CSV exportado de uma planilha em JSON?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Exporte sua planilha (Google Sheets, Excel ou Numbers) como CSV e cole o
+          conteúdo aqui. O conversor usa a primeira linha como cabeçalho das
+          colunas e transforma cada linha seguinte em um objeto JSON. O resultado
+          pode ser copiado ou baixado como um arquivo .json pronto para APIs,
+          scripts e bancos de dados NoSQL.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que usar o conversor CSV e JSON online do CofreUtil?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Além de funcionar nos dois sentidos, a ferramenta respeita campos entre
+          aspas que contenham vírgulas, ponto e vírgula, tabulações e até quebras
+          de linha — um ponto onde conversores simples costumam quebrar os dados.
+          E como tudo roda no navegador, você pode converter bases de clientes e
+          relatórios sensíveis sem enviá-los a servidores de terceiros.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Seus dados são seguros para colar neste conversor?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Sim. O CofreUtil tem arquitetura zero-server: nenhum caractere dos seus
+          dados é enviado pela internet. O processamento acontece inteiramente no
+          navegador, garantindo conformidade nativa com a LGPD — sem coleta, sem
+          logs e sem armazenamento por terceiros.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre o Conversor CSV para JSON
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Quais delimitadores de CSV são suportados?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Vírgula (,), ponto e vírgula (;) e tabulação. No modo Auto, a
+            ferramenta detecta o delimitador pela primeira linha do arquivo.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O que acontece se um campo do CSV contiver vírgula ou aspas?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Seguimos a RFC 4180: campos entre aspas duplas podem conter
+            delimitadores e quebras de linha, e aspas internas são escapadas como
+            duas aspas (""). Tudo isso é preservado na conversão.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Posso converter um JSON com objetos aninhados para CSV?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Objetos e arrays aninhados são serializados como JSON dentro da célula,
+            mantendo os dados. Para um CSV totalmente plano, o JSON de origem deve
+            conter apenas objetos com valores simples.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Meus dados são enviados para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A conversão acontece 100% no seu navegador. Seus dados nunca
+            saem da sua máquina.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Conversor de CSV para JSON — CofreUtil',
+            applicationCategory: 'DeveloperApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Converta CSV para JSON e JSON para CSV 100% no navegador, com suporte a vírgula, ponto e vírgula e tab, tratamento de aspas RFC 4180, download do arquivo e privacidade total (LGPD).',
+            url: 'https://cofreutil.com.br/ferramentas/conversor-csv-json',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Quais delimitadores de CSV são suportados?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Vírgula, ponto e vírgula e tabulação. No modo Auto, a ferramenta detecta o delimitador pela primeira linha.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'O que acontece se um campo do CSV contiver vírgula ou aspas?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Seguimos a RFC 4180: campos entre aspas duplas podem conter delimitadores e quebras de linha, com aspas internas escapadas.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Posso converter um JSON com objetos aninhados para CSV?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Objetos e arrays aninhados são serializados como JSON dentro da célula, mantendo os dados.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Meus dados são enviados para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A conversão acontece 100% no seu navegador; seus dados nunca saem da sua máquina.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>

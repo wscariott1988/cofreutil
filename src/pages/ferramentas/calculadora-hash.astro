@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HashCalculatorTool from '../../components/tools/HashCalculatorTool';
+---
+
+<Layout
+  title="Calculadora de Hash de Arquivos Online | MD5, SHA-1, SHA-256, SHA-512 | CofreUtil"
+  description="Calcule o hash MD5, SHA-1, SHA-256 e SHA-512 de qualquer arquivo 100% no navegador. Verifique integridade de downloads sem enviar o arquivo a servidores. Privacidade total e LGPD."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Hash]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [MD5]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [SHA-1]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [SHA-256]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [SHA-512]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Calculadora de Hash de Arquivos
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        MD5, SHA-1, SHA-256 e SHA-512 direto na sua máquina.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Verifique a integridade de ISOs, instaladores e backups comparando o hash
+        com o valor publicado pela origem. Os algoritmos SHA usam o
+        crypto.subtle nativo do navegador com leitura em chunks (arquivos grandes
+        não travam a página); o MD5 roda em JS puro. Nenhum arquivo é enviado a
+        servidores.
+      </p>
+    </div>
+
+    <HashCalculatorTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que conferir o hash de um arquivo antes de instalar?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          O hash é uma impressão digital única do conteúdo: qualquer byte
+          alterado produz um valor completamente diferente. Ao comparar o hash do
+          arquivo baixado com o hash oficial publicado pelo autor, você garante
+          que o download não foi corrompido na transferência nem adulterado por
+          terceiros — proteção essencial contra downloads interceptados ou
+          distribuídos em sites não oficiais.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Qual a diferença entre MD5, SHA-1, SHA-256 e SHA-512?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          MD5 e SHA-1 são rápidos, porém considerados frágeis contra ataques
+          intencionais — ainda são úteis para verificar corrupção acidental de
+          arquivos legados. SHA-256 é o padrão atual de segurança, e SHA-512
+          oferece ainda mais margem, sendo comum em assinaturas e ambientes que
+          exigem chaves maiores. Para conferir um download, o SHA-256 já é mais
+          que suficiente.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Seus arquivos são seguros para calcular hash aqui?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Sim. O cálculo acontece 100% no seu navegador, em arquitetura
+          zero-server: o arquivo é lido localmente em chunks e nenhum byte sai da
+          sua máquina. Isso torna a ferramenta automaticamente aderente à LGPD —
+          sem coleta, sem armazenamento e sem tratamento de dados por terceiros.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre a Calculadora de Hash
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Consigo calcular o hash de arquivos muito grandes?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. O arquivo é lido em blocos de 4 MiB via FileReader, mantendo a
+            página responsiva e mostrando o progresso. Para o SHA a digestão usa
+            o crypto.subtle nativo do navegador sobre o buffer completo.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O MD5 e o SHA-1 ainda servem para alguma coisa?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Servem para detectar corrupção acidental de arquivos legados, mas não
+            oferecem resistência a colisões intencionais. Para verificar a
+            integridade e autenticidade de downloads, prefira SHA-256 ou SHA-512.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Meus arquivos são enviados para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. Todo o processamento acontece dentro do seu navegador. Os
+            arquivos nunca saem do seu computador e nada é armazenado na nuvem.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            A calculadora de hash funciona offline?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Após o carregamento da página, o cálculo é 100% local e continua
+            funcionando sem conexão com a internet.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Calculadora de Hash de Arquivos — CofreUtil',
+            applicationCategory: 'DeveloperApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Calcule o hash MD5, SHA-1, SHA-256 e SHA-512 de qualquer arquivo 100% no navegador, sem enviar o arquivo a servidores. Privacidade total e LGPD.',
+            url: 'https://cofreutil.com.br/ferramentas/calculadora-hash',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Consigo calcular o hash de arquivos muito grandes?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. O arquivo é lido em blocos de 4 MiB via FileReader, mantendo a página responsiva e mostrando o progresso.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'O MD5 e o SHA-1 ainda servem para alguma coisa?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Servem para detectar corrupção acidental de arquivos legados, mas para verificar autenticidade prefira SHA-256 ou SHA-512.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Meus arquivos são enviados para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. Todo o processamento acontece dentro do seu navegador; os arquivos nunca saem do seu computador.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'A calculadora de hash funciona offline?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. Após o carregamento da página, o cálculo é 100% local e funciona sem conexão.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>

@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import QrReaderTool from '../../components/tools/QrReaderTool';
+---
+
+<Layout
+  title="Leitor de QR Code de Imagem Online | CofreUtil"
+  description="Leia e decodifique QR Codes de imagens PNG, JPG e WEBP 100% no navegador, sem enviar a imagem a servidores. Copie o texto ou URL detectado com aviso de link seguro. Privacidade total e LGPD."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [QR Code]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [PNG]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [JPG]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [WEBP]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Leitor de QR Code de Imagem
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Decodifique QR Codes a partir de prints e fotos salvas.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Recebeu um QR Code por e-mail, WhatsApp ou num print e não consegue
+        escanear com a câmera? Envie a imagem aqui. O código é lido 100% no seu
+        navegador via Canvas API + jsQR (carregado sob demanda) e o conteúdo —
+        texto ou link — aparece na hora, com cópia em um clique e aviso de link
+        seguro para proteger você de phishing.
+      </p>
+    </div>
+
+    <QrReaderTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Como ler um QR Code de uma imagem salva no computador ou celular?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Basta arrastar a imagem (ou clicar para selecionar um PNG, JPG ou WEBP)
+          contendo o QR Code. O leitor desenha a imagem em um canvas e percorre
+          os pixels em busca dos três quadrados de localização do padrão QR,
+          decodificando os módulos em texto. Não é preciso instalar nada e nenhuma
+          imagem é enviada para um servidor.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que o leitor avisa quando o QR Code contém um link?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          QR Codes são um vetor comum de phishing: um código aparentemente
+          inofensivo pode apontar para uma página falsa de banco ou de login. Por
+          isso, quando o conteúdo decodificado é uma URL, o CofreUtil exibe um
+          alerta destacando o domínio de destino e recomenda conferir a origem do
+          código antes de abrir qualquer link.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          A leitura do QR Code é segura para imagens confidenciais?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Sim. O processamento é 100% local (arquitetura zero-server): a imagem é
+          lida na memória do navegador e descartada ao final da sessão. Nenhum
+          pixel, QR Code ou conteúdo decodificado sai da sua máquina — conformidade
+          nativa com a LGPD, sem coleta ou armazenamento por terceiros.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre o Leitor de QR Code
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Quais formatos de imagem o leitor aceita?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            PNG, JPG e WEBP — os formatos mais comuns de prints, fotos e capturas
+            de tela contendo QR Codes.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Por que o QR Code da minha imagem não foi detectado?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            A detecção falha quando o código está pequeno demais, fora de foco,
+            com baixo contraste ou muito inclinado. Tente uma imagem maior, com o
+            código bem iluminado e o mais próximo possível do enquadramento.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O leitor abre o link contido no QR Code automaticamente?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. Por segurança, o CofreUtil apenas exibe e copia o conteúdo. Se
+            for um link, você vê o domínio de destino e decide com consciência se
+            deseja abri-lo no seu navegador.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Minha imagem é enviada para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A leitura acontece 100% no seu navegador via Canvas API e jsQR.
+            A imagem e o conteúdo decodificado nunca saem da sua máquina.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Leitor de QR Code de Imagem — CofreUtil',
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Leia e decodifique QR Codes de imagens PNG, JPG e WEBP 100% no navegador, sem enviar a imagem a servidores, com cópia em um clique e aviso de link seguro. Privacidade total e LGPD.',
+            url: 'https://cofreutil.com.br/ferramentas/leitor-qr-code',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Quais formatos de imagem o leitor aceita?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'PNG, JPG e WEBP — os formatos mais comuns de prints, fotos e capturas de tela contendo QR Codes.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Por que o QR Code da minha imagem não foi detectado?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'A detecção falha quando o código está pequeno demais, fora de foco, com baixo contraste ou muito inclinado.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'O leitor abre o link contido no QR Code automaticamente?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. Por segurança, o leitor apenas exibe e copia o conteúdo, mostrando o domínio de destino antes de você decidir abrir.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Minha imagem é enviada para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A leitura acontece 100% no seu navegador; a imagem e o conteúdo nunca saem da sua máquina.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>
