@@ -97,7 +97,9 @@ export default function PdfCompressTool() {
 
   const handleDownload = useCallback(() => {
     if (!result) return;
-    const objectUrl = URL.createObjectURL(new Blob([result.bytes], { type: 'application/pdf' }));
+    const objectUrl = URL.createObjectURL(
+      new Blob([result.bytes.buffer as ArrayBuffer], { type: 'application/pdf' }),
+    );
     const link = document.createElement('a');
     link.href = objectUrl;
     link.download = pdf ? `comprimido_${pdf.name}` : 'comprimido.pdf';

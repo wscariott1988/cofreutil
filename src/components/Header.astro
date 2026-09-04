@@ -1,28 +1,300 @@
 ---
-const links = [
-  { label: 'Ferramentas', href: '#ferramentas' },
-  { label: 'Sobre', href: '#sobre' },
+const pathname = Astro.url.pathname;
+
+const categories = [
+  {
+    id: 'pdf',
+    label: '[PDF]',
+    items: [
+      { label: 'Juntar PDF', href: '/ferramentas/juntar-pdf' },
+      { label: 'Comprimir PDF', href: '/ferramentas/comprimir-pdf' },
+      { label: 'Dividir PDF', href: '/ferramentas/dividir-pdf' },
+      { label: 'Imagem para PDF', href: '/ferramentas/imagem-para-pdf' },
+    ],
+  },
+  {
+    id: 'dados-dev',
+    label: '[DADOS & DEV]',
+    items: [
+      { label: 'Gerador de CPF / CNPJ', href: '/ferramentas/gerador-de-cpf' },
+      { label: 'Gerador de QR Code Pix', href: '/ferramentas/gerador-qr-code-pix' },
+      { label: 'Gerador de Senhas Fortes', href: '/ferramentas/gerador-de-senhas-fortes' },
+      { label: 'Formatador e Validador JSON', href: '/ferramentas/formatador-json' },
+    ],
+  },
+  {
+    id: 'midia-privacidade',
+    label: '[MÍDIA & PRIVACIDADE]',
+    items: [
+      { label: 'Limpador de Metadados EXIF', href: '/ferramentas/limpador-de-metadados-exif' },
+    ],
+  },
 ];
+
+const count = (n: number) => (n === 1 ? '1 ITEM' : `${n} ITENS`);
+const activeItem = (href: string) => href === pathname;
+const activeCategory = (items: { href: string }[]) => items.some((i) => i.href === pathname);
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-[#09090B] border-b border-[#27272A]">
-  <nav class="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+<header class="fixed inset-x-0 top-0 z-50 border-b border-[#27272A] bg-[#09090B]">
+  <nav
+    class="relative mx-auto flex h-14 max-w-6xl items-center justify-between px-6"
+    aria-label="Navegação principal"
+  >
     <a href="/" class="flex items-center gap-2 font-mono text-sm tracking-tight">
       <span class="text-white">[C]</span>
       <span class="text-white">Cofre<span class="text-[#A1A1AA]">Util</span></span>
     </a>
 
-    <ul class="flex items-center gap-6">
-      {links.map((link) => (
-        <li>
-          <a
-            href={link.href}
-            class="text-sm text-[#A1A1AA] transition-colors hover:text-white"
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
+    <!-- Navegação desktop: dropdowns por categoria (hover + clique) -->
+    <ul class="hidden items-center gap-1 lg:flex">
+      {categories.map((cat) => {
+        const catActive = activeCategory(cat.items);
+        return (
+          <li class="js-dd relative" data-cat={cat.id}>
+            <button
+              type="button"
+              class:list={[
+                'js-dd-btn flex items-center gap-1.5 px-3 py-2 font-mono text-[13px] transition-colors',
+                catActive ? 'text-white' : 'text-[#A1A1AA] hover:text-white',
+              ]}
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls={`dd-panel-${cat.id}`}
+            >
+              <span>{cat.label}</span>
+              <svg
+                class="chev h-3 w-3 text-current transition-transform"
+                viewBox="0 0 12 12"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            </button>
+
+            <div
+              id={`dd-panel-${cat.id}`}
+              class="dd-panel absolute right-0 top-full z-50 min-w-72 border border-[#27272A] bg-[#09090B]"
+            >
+              <div class="flex items-center justify-between border-b border-[#27272A] px-4 py-2">
+                <span class="font-mono text-[10px] tracking-widest text-[#52525B]">
+                  // FERRAMENTAS
+                </span>
+                <span class="font-mono text-[10px] tracking-widest text-[#52525B]">
+                  {count(cat.items.length)}
+                </span>
+              </div>
+              <ul class="py-1">
+                {cat.items.map((item) => {
+                  const isActive = activeItem(item.href);
+                  return (
+                    <li>
+                      <a
+                        href={item.href}
+                        class:list={[
+                          'flex items-center justify-between gap-4 px-4 py-2.5 font-mono text-[13px] transition-colors',
+                          isActive
+                            ? 'bg-[#18181B] text-white'
+                            : 'text-[#A1A1AA] hover:bg-[#18181B] hover:text-white',
+                        ]}
+                      >
+                        <span>{item.label}</span>
+                        <span
+                          class:list={[
+                            'text-xs transition-colors',
+                            isActive ? 'text-white' : 'text-[#52525B] group-hover:text-[#A1A1AA]',
+                          ]}
+                        >
+                          →
+                        </span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </li>
+        );
+      })}
     </ul>
+
+    <!-- Botão hambúrguer (mobile) -->
+    <div class="lg:hidden">
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="flex h-9 w-9 items-center justify-center border border-[#27272A] text-[#A1A1AA] transition-colors hover:border-[#3F3F46] hover:text-white"
+        aria-label="Abrir menu"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="icon-open" class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+        <svg id="icon-close" class="hidden h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+      </button>
+    </div>
   </nav>
 </header>
+
+<!-- Drawer mobile com accordion por categoria -->
+<div
+  id="mobile-menu"
+  class="mobile-panel fixed inset-x-0 bottom-0 top-14 z-40 overflow-y-auto border-b border-[#27272A] bg-[#09090B] lg:hidden"
+  aria-hidden="true"
+  aria-label="Menu móvel"
+>
+  <nav class="flex flex-col">
+    {categories.map((cat) => {
+      const catActive = activeCategory(cat.items);
+      return (
+        <div class:list={['js-acc border-b border-[#27272A]', catActive && 'bg-[#0E0E11]']}>
+          <button
+            type="button"
+            class="js-acc-btn flex w-full items-center justify-between px-6 py-4 font-mono text-sm transition-colors"
+            aria-expanded="false"
+            aria-controls={`mob-panel-${cat.id}`}
+          >
+            <span class:list={[catActive ? 'text-white' : 'text-[#A1A1AA]']}>{cat.label}</span>
+            <svg
+              class="chev h-3.5 w-3.5 text-[#52525B] transition-transform"
+              viewBox="0 0 12 12"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </button>
+
+          <div id={`mob-panel-${cat.id}`} class="acc-panel">
+            <ul class="flex flex-col gap-1 px-6 pb-5">
+              {cat.items.map((item) => {
+                const isActive = activeItem(item.href);
+                return (
+                  <li>
+                    <a
+                      href={item.href}
+                      class:list={[
+                        'block border-l-2 py-2.5 pl-4 font-mono text-[13px] transition-colors',
+                        isActive
+                          ? 'border-white text-white'
+                          : 'border-[#27272A] text-[#A1A1AA] hover:border-white hover:text-white',
+                      ]}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      );
+    })}
+  </nav>
+</div>
+
+<style>
+  /* Dropdown desktop: abre em hover, foco por teclado ou clique (.is-open) */
+  .dd-panel {
+    display: none;
+  }
+  .js-dd:hover .dd-panel,
+  .js-dd:focus-within .dd-panel,
+  .js-dd.is-open .dd-panel {
+    display: block;
+  }
+  .js-dd.is-open .chev {
+    transform: rotate(180deg);
+  }
+
+  /* Drawer mobile */
+  .mobile-panel {
+    display: none;
+  }
+  .mobile-panel.is-open {
+    display: block;
+  }
+
+  /* Accordion mobile */
+  .acc-panel {
+    display: none;
+  }
+  .js-acc.is-open .acc-panel {
+    display: block;
+  }
+  .js-acc.is-open .chev {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  (() => {
+    const dds = Array.from(document.querySelectorAll('.js-dd'));
+    const closeDd = (dd) => dd.classList.remove('is-open');
+    const closeAllDd = () => dds.forEach(closeDd);
+
+    dds.forEach((dd) => {
+      const btn = dd.querySelector<HTMLButtonElement>('.js-dd-btn');
+
+      btn?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const willOpen = !dd.classList.contains('is-open');
+        closeAllDd();
+        dd.classList.toggle('is-open', willOpen);
+        btn.setAttribute('aria-expanded', String(willOpen));
+      });
+
+      dd.addEventListener('pointerenter', () => {
+        dds.forEach((other) => {
+          if (other !== dd) other.classList.remove('is-open');
+        });
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element) || !event.target.closest('.js-dd')) closeAllDd();
+    });
+
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    const closeMobile = () => setMobile(false);
+
+    function setMobile(open: boolean) {
+      if (!mobileMenu) return;
+      mobileMenu.classList.toggle('is-open', open);
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      mobileBtn?.setAttribute('aria-expanded', String(open));
+      mobileBtn?.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      iconOpen?.classList.toggle('hidden', open);
+      iconClose?.classList.toggle('hidden', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    mobileBtn?.addEventListener('click', () => {
+      setMobile(!mobileMenu?.classList.contains('is-open'));
+    });
+
+    mobileMenu?.addEventListener('click', (event) => {
+      if (event.target instanceof Element && event.target.closest('a')) setMobile(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeAllDd();
+        closeMobile();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) closeMobile();
+    });
+  })();
+</script>

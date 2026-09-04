@@ -155,7 +155,7 @@ export default function PdfSplitTool() {
   const handleDownloadSingle = useCallback(() => {
     if (!result || result.type !== 'single') return;
     const objectUrl = URL.createObjectURL(
-      new Blob([result.bytes], { type: 'application/pdf' }),
+      new Blob([result.bytes.buffer as ArrayBuffer], { type: 'application/pdf' }),
     );
     const link = document.createElement('a');
     link.href = objectUrl;
@@ -171,7 +171,7 @@ export default function PdfSplitTool() {
       if (!result || result.type !== 'multi') return;
       const file = result.files[index];
       const objectUrl = URL.createObjectURL(
-        new Blob([file.bytes], { type: 'application/pdf' }),
+        new Blob([file.bytes.buffer as ArrayBuffer], { type: 'application/pdf' }),
       );
       const link = document.createElement('a');
       link.href = objectUrl;

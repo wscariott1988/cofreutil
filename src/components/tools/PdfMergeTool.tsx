@@ -96,7 +96,7 @@ export default function PdfMergeTool() {
     setIsMerging(true);
     try {
       const result = await mergePDFBuffers(pdfs.map((p) => p.file));
-      const blob = new Blob([result], { type: 'application/pdf' });
+      const blob = new Blob([result.buffer as ArrayBuffer], { type: 'application/pdf' });
       setResultBlob({ blob, name: 'juntado.pdf', size: blob.size });
     } finally {
       setIsMerging(false);

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Fundo absoluto -->
+  <rect width="1200" height="630" fill="#000000"/>
+
+  <!-- Borda interna dupla (1px, traços nítidos) -->
+  <rect x="28" y="28" width="1144" height="1" fill="#27272A"/>
+  <rect x="28" y="601" width="1144" height="1" fill="#27272A"/>
+  <rect x="28" y="28" width="1" height="574" fill="#27272A"/>
+  <rect x="1171" y="28" width="1" height="574" fill="#27272A"/>
+  <rect x="34" y="34" width="1132" height="1" fill="#27272A"/>
+  <rect x="34" y="595" width="1132" height="1" fill="#27272A"/>
+  <rect x="34" y="34" width="1" height="562" fill="#27272A"/>
+  <rect x="1165" y="34" width="1" height="562" fill="#27272A"/>
+
+  <!-- Topo/Centro: logo [C] CofreUtil -->
+  <text
+    x="600"
+    y="224"
+    font-family="'JetBrains Mono','Consolas','DejaVu Sans Mono',monospace"
+    font-size="76"
+    font-weight="700"
+    text-anchor="middle"
+  >
+    <tspan fill="#FFFFFF">[C] </tspan>
+    <tspan fill="#FFFFFF">Cofre</tspan>
+    <tspan fill="#A1A1AA">Util</tspan>
+  </text>
+
+  <!-- Meio: tagline -->
+  <text
+    x="600"
+    y="326"
+    font-family="'JetBrains Mono','Consolas','DejaVu Sans Mono',monospace"
+    font-size="30"
+    font-weight="400"
+    fill="#A1A1AA"
+    text-anchor="middle"
+  >PROCESSAMENTO LOCAL // PRIVACIDADE DE COFRE</text>
+
+  <!-- Base: badges em linha, bem distribuídas (caixas de largura proporcional ao texto) -->
+  <!-- [ZERO NUVEM] -->
+  <rect x="224" y="412" width="240" height="60" fill="#09090B"/>
+  <rect x="224" y="412" width="240" height="1" fill="#27272A"/>
+  <rect x="224" y="471" width="240" height="1" fill="#27272A"/>
+  <rect x="224" y="412" width="1" height="60" fill="#27272A"/>
+  <rect x="463" y="412" width="1" height="60" fill="#27272A"/>
+
+  <!-- [100% LOCAL] -->
+  <rect x="520" y="412" width="240" height="60" fill="#09090B"/>
+  <rect x="520" y="412" width="240" height="1" fill="#27272A"/>
+  <rect x="520" y="471" width="240" height="1" fill="#27272A"/>
+  <rect x="520" y="412" width="1" height="60" fill="#27272A"/>
+  <rect x="759" y="412" width="1" height="60" fill="#27272A"/>
+
+  <!-- [LGPD] -->
+  <rect x="816" y="412" width="161" height="60" fill="#09090B"/>
+  <rect x="816" y="412" width="161" height="1" fill="#27272A"/>
+  <rect x="816" y="471" width="161" height="1" fill="#27272A"/>
+  <rect x="816" y="412" width="1" height="60" fill="#27272A"/>
+  <rect x="976" y="412" width="1" height="60" fill="#27272A"/>
+
+  <g
+    font-family="'JetBrains Mono','Consolas','DejaVu Sans Mono',monospace"
+    font-size="24"
+    font-weight="700"
+    fill="#FFFFFF"
+    text-anchor="middle"
+  >
+    <text x="344" y="450">[ZERO NUVEM]</text>
+    <text x="640" y="450">[100% LOCAL]</text>
+    <text x="896" y="450">[LGPD]</text>
+  </g>
+</svg>

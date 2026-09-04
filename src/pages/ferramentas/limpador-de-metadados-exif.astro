@@ -1,0 +1,227 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ExifCleanerTool from '../../components/tools/ExifCleanerTool';
+---
+
+<Layout
+  title="Limpador de Metadados EXIF Online | Remover GPS de Fotos Grátis | CofreUtil"
+  description="Remova metadados EXIF, coordenadas GPS e dados da câmera de fotos JPG, PNG e WEBP 100% no navegador. Sem enviar imagens a servidores. Privacidade total e LGPD."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [GPS-REMOVER]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [JPG]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [PNG]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [WEBP]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Limpador de Metadados EXIF
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Remova GPS, dados da câmera e informações ocultas das suas fotos.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Toda foto tirada por celular carrega metadados EXIF: coordenadas GPS do
+        local exato, modelo do aparelho, data/hora e, às vezes, até o nome do
+        autor. Nosso limpador re-renderiza a imagem via Canvas API diretamente
+        no seu navegador e descarta esse cabeçalho para sempre — zero upload,
+        zero armazenamento em nuvem.
+      </p>
+    </div>
+
+    <ExifCleanerTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que remover metadados EXIF antes de compartilhar uma foto?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Ao publicar ou enviar uma imagem original, você pode estar entregando,
+          sem perceber, a localização precisa (latitude e longitude) de onde a
+          foto foi tirada, além do modelo do celular e do horário exato. Isso
+          expõe a sua casa, o escritório ou a rotina para desconhecidos. Limpar
+          o EXIF elimina esses rastros digitais antes de qualquer
+          compartilhamento em redes sociais, e-mails ou sites.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Como o CofreUtil remove GPS e dados da câmera sem enviar suas fotos?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          O processamento acontece 100% local: a imagem é decodificada e
+          redesenhada pixel a pixel em um elemento canvas dentro do seu
+          navegador. O resultado é re-exportado como um arquivo novo, sem o
+          cabeçalho EXIF original. Nenhuma foto sai da sua máquina, o que torna
+          a ferramenta automaticamente aderente à LGPD — não há coleta, não há
+          armazenamento, não há tratamento de dados pessoais por terceiros.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          O que exatamente é apagado dos meus arquivos de imagem?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Todos os metadados embutidos são descartados: geolocalização (GPS),
+          marca e modelo da câmera, fabricante, autor e copyright, data e hora
+          da captura, configurações de exposição, lente, orientação e demais
+          blocos EXIF/IPTC/XMP. Apenas os pixels da imagem são preservados e
+          re-encodificados em JPG, PNG ou WEBP.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre Limpeza de Metadados EXIF
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O que são metadados EXIF e por que preciso removê-los?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            EXIF é um bloco de informações embutido na foto com coordenadas GPS,
+            modelo do celular, data, hora e autor. Removê-lo impede que terceiros
+            descubram onde você esteve ou com qual aparelho capturou a imagem.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Esta ferramenta remove a localização GPS das minhas fotos?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. A imagem é re-renderizada e re-exportada sem o cabeçalho
+            original, o que apaga latitude, longitude e todos os demais dados de
+            geolocalização armazenados no arquivo.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            As minhas fotos perdem qualidade ao limpar o EXIF?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            A aparência é preservada: mantemos a resolução original e uma
+            qualidade de re-encode de 92%. Apenas os metadados invisíveis são
+            descartados.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Posso limpar várias fotos de uma vez?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. O plano gratuito processa até 3 imagens por lote no navegador,
+            com download individual ou em conjunto. Depois, é só iniciar um novo
+            lote.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Minhas fotos são enviadas para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. Todo o processamento acontece dentro do seu navegador via
+            Canvas API. Suas imagens nunca saem do seu computador e nada é
+            armazenado na nuvem.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Limpador de Metadados EXIF — CofreUtil',
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Remova metadados EXIF, coordenadas GPS e dados da câmera de fotos JPG, PNG e WEBP 100% no navegador, sem enviar imagens a servidores. Privacidade total e LGPD.',
+            url: 'https://cofreutil.com.br/ferramentas/limpador-de-metadados-exif',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'O que são metadados EXIF e por que preciso removê-los?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'EXIF é um bloco de informações embutido na foto com coordenadas GPS, modelo do celular, data, hora e autor. Removê-lo impede que terceiros descubram onde você esteve ou com qual aparelho capturou a imagem.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Esta ferramenta remove a localização GPS das minhas fotos?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. A imagem é re-renderizada e re-exportada sem o cabeçalho original, o que apaga latitude, longitude e todos os demais dados de geolocalização.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'As minhas fotos perdem qualidade ao limpar o EXIF?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'A aparência é preservada: mantemos a resolução original e uma qualidade de re-encode de 92%. Apenas os metadados invisíveis são descartados.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Posso limpar várias fotos de uma vez?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. O plano gratuito processa até 3 imagens por lote no navegador, com download individual ou em conjunto.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Minhas fotos são enviadas para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. Todo o processamento acontece dentro do seu navegador via Canvas API. Suas imagens nunca saem do seu computador.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>
