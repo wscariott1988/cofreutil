@@ -1,0 +1,195 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PixQrCodeTool from '../../components/tools/PixQrCodeTool';
+---
+
+<Layout
+  title="Gerador de QR Code Pix | CofreUtil"
+  description="Gere QR Code Pix no padrão BR Code do Banco Central 100% no seu navegador. Sua chave nunca sai do seu computador. Privacidade total e LGPD."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [EMVCo / BR Code]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Gerador de QR Code Pix
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Por que gerar seu QR Code Pix localmente é mais seguro?
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Não informe sua chave Pix em sites desconhecidos. Nosso gerador monta o código
+        do Banco Central (BR Code) apenas no seu visor, garantindo que o dinheiro vá para
+        a pessoa certa. Todo o algoritmo EMVCo é executado localmente, sem enviar nenhum
+        dado para servidores.
+      </p>
+    </div>
+
+    <PixQrCodeTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Como funciona o padrão EMVCo / BR Code?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          O Pix usa um código padronizado pelo Banco Central, conhecido como BR Code,
+          que segue a especificação internacional EMVCo. Cada informação — chave Pix,
+          nome do beneficiário, cidade, valor e identificador da transação — é organizada
+          em campos numerados e protegida por um CRC16-CCITT de integridade. O CofreUtil
+          monta essa estrutura inteira no seu navegador, gerando um QR Code compatível
+          com todos os bancos brasileiros.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Privacidade real: sua chave Pix nunca sai do seu computador
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Ao contrário de geradores hospedados em servidores, o CofreUtil não faz upload
+          da sua chave, do seu nome ou do valor da transação. Tudo é calculado via
+          JavaScript e Web Crypto local, em conformidade total com a LGPD. Após o
+          carregamento da página, a ferramenta funciona até mesmo offline.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Quais tipos de chave são suportados?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          CPF, CNPJ, E-mail, Telefone e Chave Aleatória (EVP). Cada chave é validada
+          matematicamente antes da geração, evitando QR Codes inválidos que levariam
+          o pagamento para o destino errado. Você ainda pode definir um valor fixo e um
+          identificador de transação (TxID) para conciliação.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre o Gerador de QR Code Pix
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            É seguro gerar meu QR Code Pix neste site?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. O código BR Code é montado 100% no seu navegador, sem envio da sua chave
+            ou dos seus dados para qualquer servidor. Isso elimina o risco de vazamento e
+            garante adequação automática à LGPD.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O QR Code funciona em todos os bancos?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Utilizamos o padrão EMVCo / BR Code oficial do Banco Central, com cálculo
+            de CRC16-CCITT. O QR Code gerado é compatível com todos os aplicativos de
+            bancos e carteiras digitais brasileiras.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Posso gerar um Pix com valor fixo?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Basta preencher o campo de valor (em R$). O valor é embutido no payload e
+            o pagador apenas confirma o pagamento, sem precisar digitar o montante manualmente.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Preciso pagar ou me cadastrar para usar?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A ferramenta é gratuita e sem cadastro. Após algumas utilizações, uma
+            mensagem amigável sugere um apoio voluntário via Pix — você pode continuar
+            usando normalmente sempre que quiser.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Gerador de QR Code Pix — CofreUtil',
+            applicationCategory: 'FinanceApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Gere QR Code Pix no padrão EMVCo / BR Code do Banco Central 100% no seu navegador, sem enviar sua chave para servidores. Privacidade total e LGPD.',
+            url: 'https://cofreutil.com.br/ferramentas/gerador-qr-code-pix',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'É seguro gerar meu QR Code Pix neste site?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. O código BR Code é montado 100% no seu navegador, sem envio da sua chave ou dos seus dados para qualquer servidor.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'O QR Code funciona em todos os bancos?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. Utilizamos o padrão EMVCo / BR Code oficial do Banco Central, com cálculo de CRC16-CCITT.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Posso gerar um Pix com valor fixo?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. Basta preencher o campo de valor (em R$), que é embutido no payload.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Preciso pagar ou me cadastrar para usar?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A ferramenta é gratuita e sem cadastro, com sugestão de apoio voluntário via Pix.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>

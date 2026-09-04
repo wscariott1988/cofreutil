@@ -1,0 +1,27 @@
+# REGRAS DE EXECUÇÃO E CODIFICAÇÃO — AGENTE ANTIGRAVITY / OPENCODE
+
+## 1. MENTOR DE ARQUITETURA (STRICT PRIVACY & ZERO-SERVER)
+- NUNCA crie endpoints de API backend que recebam payloads de arquivos, documentos ou dados sensíveis do usuário.
+- Todo processamento de arquivo (compressão, conversão, OCR, geração de hashes e validação) DEVE ser feito 100% Client-Side no navegador usando WebAssembly (WASM), Canvas API, Web Crypto API ou Web Workers.
+- Sempre consulte o arquivo /docs/architecture.md e o arquivo de especificação técnica da ferramenta em /docs/tools/[nome-da-ferramenta].md antes de implementar qualquer código.
+
+## 2. REGRAS ESTREITAS DE DESIGN (SWISS BRUTALISM / COFREUTIL)
+- PROIBIDO o uso de cantos arredondados. Todas as caixas, botões, modais, inputs e cards DEVEM utilizar 'border-radius: 0' (classe Tailwind: 'rounded-none').
+- A paleta de cores é estritamente monocromática de alto contraste:
+  - Background Absoluto: #000000
+  - Superfícies de Cards/Caixas: #09090B
+  - Bordas Finas de Divisão: 1px solid #27272A
+  - Texto Principal: #FFFFFF
+  - Texto Secundário / Labels Muted: #A1A1AA
+- Usar tipografia Geist Mono ou JetBrains Mono para elementos técnicos, contadores, atalhos, badges e a logo.
+- Usar Geist Sans ou Inter para blocos de leitura e títulos principais.
+
+## 3. REGRA DE MONETIZAÇÃO E LOTE LOCAL (BATCH LIMITER)
+- Todas as ferramentas que aceitam múltiplos arquivos ou operações em lote devem validar o uso através do utilitário 'BatchLimiter' (baseado em localStorage).
+- O limite gratuito por lote é fixado em no máximo 5 arquivos/operações.
+- Ao atingir o limite, a interface exibe um modal amigável de Apoio Voluntário via Pix, sugerindo apoio voluntário com botão 'Copiar Pix' e botão 'Continuar usando', sem bloqueio rígido e sem exigir chave de acesso.
+
+## 4. OTIMIZAÇÃO DE PERFORMANCE E SEGURANÇA
+- Tarefas pesadas (FFmpeg, Tesseract, PDF Lib) devem rodar obrigatoriamente dentro de Web Workers para não travar a Thread principal da UI.
+- Sempre revogue URLs de objeto (URL.revokeObjectURL) imediatamente após a liberação do download do arquivo para evitar vazamento de memória RAM no navegador.
+- Configure Headers de Content Security Policy (CSP) na exportação estática bloqueando requisições POST para servidores desconhecidos.

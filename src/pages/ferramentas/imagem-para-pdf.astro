@@ -1,0 +1,194 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ImageToPdfTool from '../../components/tools/ImageToPdfTool';
+---
+
+<Layout
+  title="Converter Imagem em PDF Grátis e Seguro | JPG/PNG para PDF | CofreUtil"
+  description="Converta imagens (JPG, PNG, WEBP) para PDF 100% no navegador, sem enviar arquivos a servidores. Privacidade total e compatível com a LGPD."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [JPG]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [PNG]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [WEBP]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Converter Imagem para PDF (JPG, PNG)
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Transforme fotos e escaneados em PDF diretamente na sua máquina.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Converta imagens JPG, PNG e WEBP para um único PDF em segundos. Todo o
+        processamento acontece 100% no seu navegador via Canvas API e pdf-lib:
+        zero upload, zero armazenamento em nuvem e privacidade total.
+      </p>
+    </div>
+
+    <ImageToPdfTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Como transformar fotos em PDF sem enviar imagens para servidores?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          As suas imagens são lidas diretamente na memória do navegador e montadas
+          em um documento PDF usando a biblioteca pdf-lib. Imagens com transparência
+          (PNG/WEBP) são re-renderizadas via Canvas para manter a compatibilidade.
+          Nenhum arquivo deixa o seu computador.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Combine escaneados de documentos confidenciais com segurança total
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Ideal para digitalizar contratos, certificados e fichas de forma
+          ordenada. Monte o PDF na ordem correta, inverta páginas com as setas e
+          baixe o arquivo final sem que dados sensíveis passem por servidores de
+          terceiros — alinhado aos princípios de minimização e segurança da LGPD.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Escolha o formato da página: retrato, paisagem ou ajuste automático
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Use páginas A4 na vertical para documentos, A4 na horizontal para slides
+          ou larguras, ou deixe a ferramenta redimensionar cada imagem para caber
+          perfeitamente na página. Tudo configurável antes da conversão.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre Converter Imagem em PDF
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Quais formatos de imagem são suportados?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            JPG, PNG e WEBP. Imagens com transparência são convertidas para um
+            fundo branco automaticamente.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Posso converter várias imagens de uma vez?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Selecione ou arraste várias imagens, reorganize a ordem com as
+            setas e gere um único PDF com todas elas.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Minhas imagens são enviadas para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A conversão acontece inteiramente no seu navegador. Suas imagens
+            nunca saem do seu computador e nada é armazenado em nuvem.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Esta ferramenta funciona offline?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Após o carregamento da página, a conversão roda 100% localmente,
+            sem necessidade de conexão com a internet.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Converter Imagem para PDF — CofreUtil',
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Converta imagens JPG, PNG e WEBP para PDF 100% no navegador, sem enviar arquivos a servidores. Privacidade total e compatível com a LGPD.',
+            url: 'https://cofreutil.com.br/ferramentas/imagem-para-pdf',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Quais formatos de imagem são suportados?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'JPG, PNG e WEBP. Imagens com transparência são convertidas para um fundo branco automaticamente.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Posso converter várias imagens de uma vez?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. Selecione ou arraste várias imagens, reorganize a ordem com as setas e gere um único PDF com todas elas.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Minhas imagens são enviadas para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A conversão acontece inteiramente no seu navegador. Suas imagens nunca saem do seu computador.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Esta ferramenta funciona offline?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. Após o carregamento da página, a conversão roda 100% localmente, sem necessidade de conexão com a internet.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>

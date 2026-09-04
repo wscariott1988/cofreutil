@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="flex flex-col gap-8">
+      <h1 class="font-mono text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+        Processamento local.<br />
+        <span class="text-[#A1A1AA]">Privacidade de cofre.</span>
+      </h1>
+
+      <p class="max-w-2xl text-base leading-relaxed text-[#A1A1AA] md:text-lg">
+        Utilitários web de alta performance que rodam 100% no seu navegador.
+        Nenhum arquivo é enviado para servidores externos — compressão, conversão,
+        OCR e validação acontecem inteiramente na sua máquina, em conformidade
+        total com a LGPD.
+      </p>
+
+      <div class="mt-4 flex items-center gap-4">
+        <a
+          href="#ferramentas"
+          class="border border-[#27272A] bg-[#09090B] px-5 py-2.5 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+        >
+          Ver ferramentas
+        </a>
+        <a
+          href="#sobre"
+          class="text-sm text-[#A1A1AA] transition-colors hover:text-white"
+        >
+          Como funciona
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ferramentas" class="mx-auto max-w-6xl px-6 pb-24">
+    <h2 class="mb-6 font-mono text-sm text-[#A1A1AA]">// ferramentas</h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a
+        href="/ferramentas/gerador-de-cpf"
+        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+      >
+        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
+          [DADOS & DEV]
+        </span>
+        <h3 class="font-mono text-sm font-medium text-white">Gerador de CPF/CNPJ</h3>
+        <p class="text-xs leading-relaxed text-[#A1A1AA]">
+          Gere e valide CPFs e CNPJs com algoritmo matemático local. Sem API externa.
+        </p>
+        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
+          /ferramentas/gerador-de-cpf →
+        </span>
+      </a>
+
+      <a
+        href="/ferramentas/gerador-qr-code-pix"
+        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+      >
+        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
+          [DADOS & DEV]
+        </span>
+        <h3 class="font-mono text-sm font-medium text-white">Gerador de QR Code Pix</h3>
+        <p class="text-xs leading-relaxed text-[#A1A1AA]">
+          Gere QR Code Pix (BR Code) 100% local, sem enviar sua chave a servidores.
+        </p>
+        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
+          /ferramentas/gerador-qr-code-pix →
+        </span>
+      </a>
+
+      <a
+        href="/ferramentas/juntar-pdf"
+        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+      >
+        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
+          [PDF]
+        </span>
+        <h3 class="font-mono text-sm font-medium text-white">Juntar PDF</h3>
+        <p class="text-xs leading-relaxed text-[#A1A1AA]">
+          Mescle PDFs 100% no navegador, sem enviar documentos a servidores.
+        </p>
+        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
+          /ferramentas/juntar-pdf →
+        </span>
+      </a>
+
+      <a
+        href="/ferramentas/comprimir-pdf"
+        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+      >
+        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
+          [PDF]
+        </span>
+        <h3 class="font-mono text-sm font-medium text-white">Comprimir PDF</h3>
+        <p class="text-xs leading-relaxed text-[#A1A1AA]">
+          Reduza o tamanho de PDFs pesados 100% no navegador, sem enviar arquivos a servidores.
+        </p>
+        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
+          /ferramentas/comprimir-pdf →
+        </span>
+      </a>
+
+      <a
+        href="/ferramentas/imagem-para-pdf"
+        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+      >
+        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
+          [PDF]
+        </span>
+        <h3 class="font-mono text-sm font-medium text-white">Imagem para PDF</h3>
+        <p class="text-xs leading-relaxed text-[#A1A1AA]">
+          Converta JPG, PNG e WEBP em um único PDF, 100% no navegador, sem upload.
+        </p>
+        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
+          /ferramentas/imagem-para-pdf →
+        </span>
+      </a>
+
+      <a
+        href="/ferramentas/dividir-pdf"
+        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+      >
+        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
+          [PDF]
+        </span>
+        <h3 class="font-mono text-sm font-medium text-white">Dividir PDF</h3>
+        <p class="text-xs leading-relaxed text-[#A1A1AA]">
+          Extraia páginas específicas ou divida cada página como PDF individual, 100% local.
+        </p>
+        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
+          /ferramentas/dividir-pdf →
+        </span>
+      </a>
+    </div>
+  </section>
+</Layout>

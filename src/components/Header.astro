@@ -1,0 +1,28 @@
+---
+const links = [
+  { label: 'Ferramentas', href: '#ferramentas' },
+  { label: 'Sobre', href: '#sobre' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#09090B] border-b border-[#27272A]">
+  <nav class="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+    <a href="/" class="flex items-center gap-2 font-mono text-sm tracking-tight">
+      <span class="text-white">[C]</span>
+      <span class="text-white">Cofre<span class="text-[#A1A1AA]">Util</span></span>
+    </a>
+
+    <ul class="flex items-center gap-6">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-sm text-[#A1A1AA] transition-colors hover:text-white"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,182 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PdfSplitTool from '../../components/tools/PdfSplitTool';
+---
+
+<Layout
+  title="Dividir PDF Grátis e Seguro | Extrair Páginas de PDF Offline | CofreUtil"
+  description="Divida PDFs e extraia páginas específicas 100% no navegador, sem enviar arquivos a servidores. Selecione intervalos ou baixe cada página separadamente com privacidade total."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [PDF]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Dividir PDF (Extrair Páginas)
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Separe páginas específicas ou baixe cada página como um PDF individual.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Selecione um PDF e escolha intervalos personalizados ou extraia todas
+        as páginas separadamente. A divisão acontece 100% na memória do seu
+        navegador via pdf-lib: zero upload, zero armazenamento em nuvem e
+        privacidade absoluta.
+      </p>
+    </div>
+
+    <PdfSplitTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Como extrair páginas de um PDF sem enviar o arquivo para servidores?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          A ferramenta lê o PDF diretamente na memória do navegador, carrega
+          o documento via pdf-lib e cria um novo arquivo contendo apenas as
+          páginas selecionadas. Nenhuma cópia do documento original é
+          enviada a serviços externos.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Extraia páginas confidenciais de contratos e laudos com segurança
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Ideal para advogados, médicos e profissionais que precisam compartilhar
+          apenas seções específicas de documentos longos. A divisão ocorre
+          inteiramente localmente, garantindo que dados sensíveis nunca
+          transitem por servidores de terceiros.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Baixe cada página como um PDF separado em um clique
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          No modo "Todas as Páginas Separadas", cada página vira um PDF
+          independente de 1 página. Perfeito para distribuir anexos, certificados
+          ou fichas individualmente. Use as setas [←] [→] para reordenar antes
+          da conversão.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre Dividir PDF
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            É possível selecionar múltiplas páginas de uma vez?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Use o modo Intervalo Personalizado e digite sequências como
+            "1-3, 5, 8-10" para extrair páginas agrupadas e isoladas.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Os PDFs originais são modificados?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. O arquivo original permanece intacto no seu computador.
+            A ferramenta cria novos PDFs apenas com as páginas selecionadas.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Posso dividir PDFs com senha ou criptografia?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            PDFs criptografados podem ser processados se a senha for conhecida
+            antes da divisão. Caso contrário, o documento será rejeitado.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Esta ferramenta funciona offline?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Após o carregamento inicial, a divisão acontece 100% no
+            seu navegador, sem necessidade de conexão com a internet.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Dividir PDF — CofreUtil',
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Divida PDFs e extraia páginas específicas 100% no navegador, sem enviar arquivos a servidores. Selecione intervalos ou baixe cada página separadamente com privacidade total.',
+            url: 'https://cofreutil.com.br/ferramentas/dividir-pdf',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'É possível selecionar múltiplas páginas de uma vez?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. Use o modo Intervalo Personalizado e digite sequências como "1-3, 5, 8-10".',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Os PDFs originais são modificados?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. O arquivo original permanece intacto. Apenas novos PDFs com as páginas selecionadas são criados.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Esta ferramenta funciona offline?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. Após o carregamento inicial, a divisão acontece 100% localmente, sem conexão com a internet.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>
