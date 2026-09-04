@@ -25,7 +25,7 @@ import Layout from '../layouts/Layout.astro';
           Ver ferramentas
         </a>
         <a
-          href="#sobre"
+          href="#como-funciona"
           class="text-sm text-[#A1A1AA] transition-colors hover:text-white"
         >
           Como funciona
@@ -34,7 +34,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <section id="ferramentas" class="mx-auto max-w-6xl px-6 pb-24">
+  <section id="ferramentas" class="mx-auto max-w-6xl scroll-mt-14 px-6 pb-24">
     <h2 class="mb-6 font-mono text-sm text-[#A1A1AA]">// ferramentas</h2>
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <a
@@ -180,6 +180,83 @@ import Layout from '../layouts/Layout.astro';
           /ferramentas/limpador-de-metadados-exif →
         </span>
       </a>
+
+      <a
+        href="/ferramentas/conversor-de-imagem"
+        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+      >
+        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
+          [MÍDIA & PRIVACIDADE]
+        </span>
+        <h3 class="font-mono text-sm font-medium text-white">Conversor de Imagens</h3>
+        <p class="text-xs leading-relaxed text-[#A1A1AA]">
+          Converta JPG, PNG, WEBP, GIF e BMP em lote para PNG, JPG ou WEBP, 100%
+          no navegador, sem upload.
+        </p>
+        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
+          /ferramentas/conversor-de-imagem →
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="mx-auto max-w-6xl scroll-mt-14 px-6 pb-24">
+    <div class="flex flex-col gap-8 border border-[#27272A] bg-[#09090B] p-6 md:p-10">
+      <div class="flex flex-col gap-3">
+        <span class="font-mono text-xs text-[#A1A1AA]">// como funciona</span>
+        <h2 class="font-mono text-2xl font-bold leading-tight tracking-tight text-white md:text-3xl">
+          Como a Tecnologia Zero-Server Protege Seus Dados
+        </h2>
+        <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+          Nenhuma ferramenta do CofreUtil depende de um servidor central. Tudo o
+          que você processa roda dentro do seu próprio navegador — o que elimina
+          por design qualquer coleta, trânsito ou armazenamento dos seus dados.
+        </p>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="flex flex-col gap-3 border border-[#27272A] bg-black p-6">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[11px] text-[#52525B]">01</span>
+            <span class="font-mono text-[11px] text-[#52525B]">// zero-server</span>
+          </div>
+          <h3 class="font-mono text-sm font-medium text-white">
+            [Navegador como Servidor]
+          </h3>
+          <p class="text-xs leading-relaxed text-[#A1A1AA]">
+            Todo o processamento ocorre via WebAssembly, Web Workers e Canvas API
+            locais — diretamente na sua máquina.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 border border-[#27272A] bg-black p-6">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[11px] text-[#52525B]">02</span>
+            <span class="font-mono text-[11px] text-[#52525B]">// zero-upload</span>
+          </div>
+          <h3 class="font-mono text-sm font-medium text-white">
+            [Zero Upload & Zero Log]
+          </h3>
+          <p class="text-xs leading-relaxed text-[#A1A1AA]">
+            Seus arquivos nunca transitam pela internet nem ficam salvos em
+            bancos de dados.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 border border-[#27272A] bg-black p-6">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[11px] text-[#52525B]">03</span>
+            <span class="font-mono text-[11px] text-[#52525B]">// lgpd</span>
+          </div>
+          <h3 class="font-mono text-sm font-medium text-white">
+            [Conformidade LGPD Nativa]
+          </h3>
+          <p class="text-xs leading-relaxed text-[#A1A1AA]">
+            Garantia matemática de privacidade sem depender de políticas de
+            privacidade de terceiros.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>

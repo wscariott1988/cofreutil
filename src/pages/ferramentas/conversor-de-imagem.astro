@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ImageConverterTool from '../../components/tools/ImageConverterTool';
+---
+
+<Layout
+  title="Conversor de Imagens Online Grátis | PNG, JPG e WEBP | CofreUtil"
+  description="Converta imagens JPG, PNG, WEBP, GIF e BMP para PNG, JPG ou WEBP em lote, 100% no navegador e sem enviar arquivos a servidores. Controle de qualidade, privacidade total e LGPD."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Conversor]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [PNG]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [JPG]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [WEBP]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Conversor de Imagens (PNG, JPG, WEBP)
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Converta fotos e imagens em lote diretamente na sua máquina.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Transforme JPG, PNG, WEBP, GIF e BMP para o formato que você precisar
+        (PNG, JPG ou WEBP) com controle fino de qualidade. Toda a conversão
+        acontece 100% no seu navegador via Canvas API nativa: zero upload, zero
+        armazenamento em nuvem e privacidade total.
+      </p>
+    </div>
+
+    <ImageConverterTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Como converter imagens para PNG, JPG ou WEBP sem enviar arquivos a
+          servidores?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Diferente de conversores online tradicionais, o CofreUtil não envia a
+          sua imagem para lugar nenhum. O arquivo é lido na memória do navegador,
+          decodificado e redesenhado em um elemento canvas, e então re-exportado
+          no formato escolhido usando a codificação nativa do navegador. Isso
+          torna a conversão praticamente instantânea e elimina riscos de vazamento
+          de documentos sensíveis, fotos pessoais ou materiais sob NDA.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Qual a diferença entre PNG, JPG e WEBP na conversão de imagens?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          PNG é lossless (sem perdas) e suporta transparência — ideal para logos,
+          capturas de tela e interfaces. JPG comprime com perdas e é o formato mais
+          compatível para fotos compartilhadas por e-mail ou WhatsApp. WEBP entrega
+          a melhor relação entre qualidade e tamanho, sendo o recomendado para
+          sites, com suporte nativo a transparência e compressão com perdas
+          controlável pela barra de qualidade.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          É seguro converter imagens confidenciais neste site?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Sim. A arquitetura é 100% zero-server: não existe servidor recebendo os
+          seus arquivos, não existem logs e não existe banco de dados. A conversão
+          roda localmente na sua máquina, o que confere conformidade nativa com a
+          LGPD — sem coleta, sem tratamento e sem repasse de dados pessoais a
+          terceiros.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre Conversão de Imagens
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Quais formatos de imagem eu posso converter?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Você pode enviar JPG, PNG, WEBP, GIF e BMP e converter para PNG, JPG
+            ou WEBP. No caso de GIFs animados, apenas o primeiro quadro é
+            convertido.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Posso converter várias imagens de uma vez?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. O plano gratuito converte até 3 imagens por lote, mantendo o nome
+            original de cada arquivo e trocando apenas a extensão. Depois, é só
+            iniciar um novo lote.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O que a barra de qualidade faz na conversão?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Para JPG e WEBP, a qualidade (de 10% a 100%) controla o nível de
+            compressão: valores menores geram arquivos menores com mais perdas
+            visíveis. PNG ignora a barra, pois é sempre codificado sem perdas.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Minhas imagens são enviadas para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. Todo o processamento acontece dentro do seu navegador via Canvas
+            API. Suas imagens nunca saem do seu computador e nada é armazenado na
+            nuvem.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Conversor de Imagens — CofreUtil',
+            applicationCategory: 'MultimediaApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Converta imagens JPG, PNG, WEBP, GIF e BMP para PNG, JPG ou WEBP em lote, 100% no navegador e sem enviar arquivos a servidores. Privacidade total e LGPD.',
+            url: 'https://cofreutil.com.br/ferramentas/conversor-de-imagem',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Quais formatos de imagem eu posso converter?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Você pode enviar JPG, PNG, WEBP, GIF e BMP e converter para PNG, JPG ou WEBP. GIFs animados têm apenas o primeiro quadro convertido.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Posso converter várias imagens de uma vez?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. O plano gratuito converte até 3 imagens por lote, mantendo o nome original de cada arquivo e trocando apenas a extensão.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'O que a barra de qualidade faz na conversão?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Para JPG e WEBP, a qualidade (de 10% a 100%) controla o nível de compressão. PNG ignora a barra, pois é sempre codificado sem perdas.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Minhas imagens são enviadas para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. Todo o processamento acontece dentro do seu navegador via Canvas API. Suas imagens nunca saem do seu computador.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>
