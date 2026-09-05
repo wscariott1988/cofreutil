@@ -19,6 +19,9 @@ const placeholderMessage = 'Digite sua mensagem personalizada e veja o balão at
 const inputClass =
   'w-full rounded-none border border-[#27272A] bg-black px-4 py-3 font-mono text-sm text-white placeholder-[#52525B] outline-none focus:border-[#3F3F46]';
 
+const ddiClass =
+  'flex shrink-0 items-center rounded-none border border-[#27272A] border-r-0 bg-[#09090B] px-3 py-3 font-mono text-sm text-white select-none';
+
 const buttonClass =
   'rounded-none border border-[#27272A] bg-[#09090B] px-4 py-3 font-mono text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]';
 
@@ -34,14 +37,15 @@ function normalizeBraDial(phone: string): string {
 function maskBraPhone(phone: string): string {
   const d = normalizeBraDial(phone);
   if (d.length === 0) return '';
-  if (d.length <= 2) return `+55 (${d}`;
-  if (d.length <= 7) return `+55 (${d.slice(0, 2)}) ${d.slice(2)}`;
-  return `+55 (${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+  if (d.length <= 2) return `(${d}`;
+  if (d.length <= 7) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
 }
 
 function buildWaLink(digits: string, message: string): string {
+  const clean = normalizeBraDial(digits);
   const text = message.trim() ? `?text=${encodeURIComponent(message.trim())}` : '';
-  return `https://wa.me/55${digits}${text}`;
+  return `https://wa.me/55${clean}${text}`;
 }
 
 function buildHtmlSnippet(link: string): string {
@@ -109,7 +113,7 @@ export default function WhatsappGeneratorTool() {
   const digits = normalizeBraDial(phone);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPhone(maskBraPhone(e.target.value));
+    setPhone(e.target.value.replace(/\D+/g, '').slice(0, 11));
     setFormError(null);
     clearResult();
   };
@@ -263,14 +267,18 @@ export default function WhatsappGeneratorTool() {
               </label>
               <span className="font-mono text-xs text-[#52525B]">BR · DDD</span>
             </div>
-            <input
-              type="tel"
-              inputMode="tel"
-              value={phone}
-              onChange={handlePhoneChange}
-              placeholder="+55 (11) 99999-9999"
-              className={inputClass}
-            />
+            <div className="flex w-full">
+              <span className={ddiClass}>+55</span>
+              <input
+                type="tel"
+                inputMode="tel"
+                value={maskBraPhone(phone)}
+                onChange={handlePhoneChange}
+                placeholder="(11) 99999-9999"
+                maxLength={15}
+                className={`${inputClass} border-l-0 px-3`}
+              />
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">
