@@ -8,15 +8,25 @@ interface Props {
   title?: string;
   description?: string;
   keywords?: string;
+  image?: string;
+  type?: string;
+  jsonLd?: object | object[];
 }
 
-const { title, description, keywords } = Astro.props;
+const { title, description, keywords, image, type, jsonLd } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="pt-BR" class="scroll-smooth">
   <head>
-    <BaseHead title={title} description={description} keywords={keywords} />
+    <BaseHead
+      title={title}
+      description={description}
+      keywords={keywords}
+      image={image}
+      type={type}
+      jsonLd={jsonLd}
+    />
   </head>
   <body class="min-h-screen bg-black text-white">
     <Header />

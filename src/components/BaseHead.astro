@@ -5,6 +5,7 @@ interface Props {
   keywords?: string;
   image?: string;
   type?: string;
+  jsonLd?: object | object[];
 }
 
 const SITE_URL = 'https://cofreutil.com.br';
@@ -15,9 +16,16 @@ const {
   keywords,
   image = `${SITE_URL}/og-image.png`,
   type = 'website',
+  jsonLd,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+const normalizedPath = (() => {
+  const path = Astro.url.pathname;
+  if (path === '' || path === '/') return '/';
+  return path.endsWith('/') ? path.slice(0, -1) : path;
+})();
+
+const canonical = new URL(normalizedPath, SITE_URL).href;
 ---
 
 <!-- Configurações Fundamentais -->
@@ -31,6 +39,21 @@ const canonical = new URL(Astro.url.pathname, SITE_URL).href;
 <meta name="description" content={description} />
 {keywords && <meta name="keywords" content={keywords} />}
 <link rel="canonical" href={canonical} />
+
+<!-- Geo-Targeting & Localização (Brasil) -->
+<meta http-equiv="content-language" content="pt-BR" />
+<meta name="geo.region" content="BR" />
+<meta name="geo.position" content="-14.235004;-51.92528" />
+<meta name="ICBM" content="-14.235004, -51.92528" />
+<meta property="og:locale" content="pt_BR" />
+
+<!-- Dados Estruturados (JSON-LD) -->
+{jsonLd && (
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(jsonLd)}
+  />
+)}
 
 <!-- Ícones de Aba (Favicon) -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
