@@ -1,0 +1,280 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import WhatsappGeneratorTool from '../../components/tools/WhatsappGeneratorTool';
+
+const toolUrl = 'https://cofreutil.com.br/ferramentas/gerador-link-whatsapp';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: 'Gerador de Link para WhatsApp e QR Code — CofreUtil',
+      url: toolUrl,
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Any',
+      browserRequirements: 'Requires JavaScript',
+      inLanguage: 'pt-BR',
+      isAccessibleForFree: true,
+      featureList: [
+        'Criar link de WhatsApp grátis sem login',
+        'Link curto wa.me com mensagem personalizada',
+        'QR Code gerado 100% no navegador',
+        'Simulador de balão de mensagem ao vivo',
+        'Exportação de botão HTML brutalista',
+        'Histórico local dos últimos 5 links',
+      ],
+      description:
+        'Crie link de WhatsApp grátis, sem login, com mensagem personalizada e QR Code 100% offline no navegador. Privacidade total: seu número nunca sai da sua máquina (LGPD).',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'BRL',
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Willian Scariott',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'CofreUtil',
+        url: 'https://cofreutil.com.br',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cofreutil.com.br' },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Ferramentas',
+          item: 'https://cofreutil.com.br/#ferramentas',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Gerador de Link para WhatsApp',
+          item: toolUrl,
+        },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Como criar um link de WhatsApp grátis com mensagem personalizada?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Preencha o celular com DDD e a mensagem desejada. O CofreUtil monta o link curto wa.me com o texto codificado, além de um QR Code para imprimir ou compartilhar.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'O gerador de link de WhatsApp exige login ou cadastro?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Não. O gerador funciona sem login, sem cadastro e sem instalar nada — tudo acontece no próprio navegador, mesmo offline após o carregamento da página.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Meu número e minha mensagem são enviados para algum servidor?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Não. O link, a mensagem e o QR Code são gerados 100% no seu navegador (arquitetura zero-server). Nenhum dado sai da sua máquina e não guardamos registros — conformidade total com a LGPD.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'O QR Code funciona no celular das pessoas?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sim. O QR Code aponta para o link wa.me com o número e a mensagem pré-preenchida. Qualquer WhatsApp (Android, iPhone ou Web) abre a conversa já pronta para envio.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Por que usar o domínio wa.me em vez de um link longo?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'O wa.me é o encurtador oficial de links do WhatsApp: gera endereços curtos e confiáveis que abrem a conversa diretamente no aplicativo, sem registros de redirecionamento por terceiros.',
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<Layout
+  title="Gerador de Link para WhatsApp e QR Code Offline | Sem Login | CofreUtil"
+  description="Criar link de WhatsApp grátis, gerador de link de zap sem login, encurtar link de WhatsApp com mensagem personalizada e QR Code 100% offline no navegador. Privacidade total e LGPD."
+  keywords="criar link de whatsapp gratis, gerador link de zap sem login, encurtar link whatsapp com mensagem personalizada, gerador link whatsapp com mensagem, qr code whatsapp, wa.me"
+  jsonLd={jsonLd}
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Sem Login]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [wa.me]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [QR Code]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Gerador de Link para WhatsApp e QR Code Offline
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Crie link de WhatsApp grátis, sem login, com mensagem personalizada.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Digite o número (máscara padrão +55 (XX) X XXXX-XXXX), escreva a mensagem e
+        obtenha em segundos um link curto wa.me com o texto já pré-preenchido — além de
+        um QR Code em alta resolução para imprimir ou divulgar. Tudo acontece no seu
+        navegador: nem o número nem a mensagem saem da sua máquina. Sem cadastro, sem
+        instalar nada, 100% offline após o carregamento.
+      </p>
+    </div>
+
+    <WhatsappGeneratorTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Criar link de WhatsApp grátis com mensagem personalizada
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Basta informar o celular de destino (com DDD) e escrever o texto que deseja.
+          O CofreUtil monta automaticamente o link no domínio oficial wa.me do WhatsApp,
+          com a mensagem codificada na URL. Ao abrir, a conversa já inicia com o seu
+          texto pronto para envio — ideal para atendimento, vendas, cobranças,
+          convites para eventos ou follow-up automático.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Gerador de link de zap sem login e sem cadastro
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Ao contrário de serviços que exigem conta, painéis e coleta de dados, este
+          gerador roda inteiramente no seu navegador: não existe servidor recebendo o
+          seu número, não existe armazenamento do contato e não existe necessidade de
+          login. Você pode até desconectar a internet depois que a página carregar — o
+          link e o QR Code continuam funcionando.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Encurtar link WhatsApp com mensagem personalizada em segundos
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          O domínio wa.me é o encurtador oficial do WhatsApp: gera endereços curtos e
+          confiáveis (como <span class="text-white">https://wa.me/5511999999999?text=Oi</span>)
+          que abrem a conversa direto no aplicativo, sem redirecionamento por empresas
+          terceiras. Combine isso com o simulador ao vivo — você vê o balão exatamente
+          como o cliente enxergará — e exporte o botão HTML pronto para colar no seu
+          site ou blog.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que o QR Code é gerado localmente (e não em um servidor)?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Geradores online de QR Code precisam receber o link para desenhá-lo — e, com
+          isso, também recebem o seu número de telefone. Aqui, a biblioteca qrcode é
+          carregada sob demanda e renderiza o código pixel a pixel na sua máquina (via
+          Canvas/SVG). O resultado é um PNG de 1024px pronto para impressão em banners,
+          cartões e cardápios, sem nenhuma cópia de dados em servidores externos.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre o Gerador de Link para WhatsApp
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Como criar um link de WhatsApp grátis com mensagem?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Digite o celular com DDD (11 dígitos) e a mensagem desejada. A ferramenta
+            monta o link wa.me com o texto já pré-preenchido e gera o QR Code em alta
+            resolução para compartilhar ou imprimir.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Preciso criar conta ou login para usar?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. Geração de link, simulação de chat e QR Code funcionam sem login, sem
+            cadastro e sem instalação — apenas no seu navegador, com privacidade total.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Meu número ou mensagem é enviado para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. Todo o processamento é 100% local (zero-server). Nenhum número,
+            mensagem ou link sai da sua máquina, e não guardamos registros de contato —
+            conformidade nativa com a LGPD.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O link funciona no WhatsApp de qualquer pessoa?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. O domínio wa.me é oficial e abre a conversa diretamente no WhatsApp do
+            celular (Android/iPhone) ou no WhatsApp Web — com a mensagem personalizada
+            já pronta para ser enviada.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Como adiciono o botão de WhatsApp no meu site?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Após gerar o link, copie o snippet HTML da seção "Exportar Botão HTML" e
+            cole no corpo da sua página ou post. O botão é autossuficiente, em estilo
+            preto/brutalista, sem depender de CSS externo ou bibliotecas.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O histórico fica salvo onde?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Apenas no localStorage do seu navegador, com no máximo 5 links recentes.
+            Eles são removidos automaticamente quando você limpa os dados de navegação
+            — nada é sincronizado, enviado ou armazenado em servidores.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+</Layout>
