@@ -105,7 +105,7 @@ export default function DiffCheckerTool() {
   }, []);
 
   const bothEmpty = original.trim() === '' && modified.trim() === '';
-  const canCompare = !locked && !bothEmpty;
+  const canCompare = !bothEmpty;
 
   const bump = useCallback(() => {
     BatchLimiter.incrementUsage(1);
@@ -113,19 +113,18 @@ export default function DiffCheckerTool() {
     setRemaining(left);
     if (BatchLimiter.isLimitReached()) {
       setLocked(true);
-      setShowSupport(true);
     }
   }, []);
 
   const handleCompare = useCallback(() => {
     setError(null);
-    if (locked) {
-      setShowSupport(true);
-      return;
-    }
     if (bothEmpty) return;
-    setResult(computeDiff(original, modified, level));
+    const diffResult = computeDiff(original, modified, level);
+    setResult(diffResult);
     bump();
+    if (locked || BatchLimiter.isLimitReached()) {
+      setShowSupport(true);
+    }
   }, [original, modified, level, locked, bothEmpty, bump]);
 
   const handleSwap = useCallback(() => {
@@ -333,8 +332,10 @@ export default function DiffCheckerTool() {
             [Limpar]
           </button>
           {locked && (
-            <span className="font-mono text-xs text-[#A1A1AA]">
-              Limite gratuito atingido — botão bloqueado.
+            <span className="font-mono text-xs text-[#52525B]">
+              {remaining > 0
+                ? `${remaining} ${remaining === 1 ? 'comparação' : 'comparações'} restante(s)`
+                : 'Apoio voluntário solicitado — obrigado!'}
             </span>
           )}
         </div>
@@ -365,12 +366,11 @@ export default function DiffCheckerTool() {
                   <button
                     key={l.id}
                     onClick={() => setLevel(l.id)}
-                    disabled={locked}
                     className={`flex flex-col items-start gap-1 rounded-none border p-3 text-left transition-colors ${
                       active
                         ? 'border-[#3F3F46] bg-[#18181B]'
                         : 'border-[#27272A] hover:border-[#3F3F46]'
-                    } disabled:cursor-not-allowed disabled:opacity-40`}
+                    }`}
                   >
                     <span className="font-mono text-sm text-white">{l.label}</span>
                     <span className="font-mono text-[11px] leading-tight text-[#52525B]">
@@ -389,12 +389,11 @@ export default function DiffCheckerTool() {
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => setViewMode('side')}
-                disabled={locked}
                 className={`flex items-center gap-2 rounded-none border p-3 text-left transition-colors ${
                   viewMode === 'side'
                     ? 'border-[#3F3F46] bg-[#18181B]'
                     : 'border-[#27272A] hover:border-[#3F3F46]'
-                } disabled:cursor-not-allowed disabled:opacity-40`}
+                }`}
               >
                 <span
                   className={`flex h-4 w-4 shrink-0 items-center justify-center border border-[#27272A] font-mono text-[10px] ${
@@ -411,12 +410,11 @@ export default function DiffCheckerTool() {
               </button>
               <button
                 onClick={() => setViewMode('unified')}
-                disabled={locked}
                 className={`flex items-center gap-2 rounded-none border p-3 text-left transition-colors ${
                   viewMode === 'unified'
                     ? 'border-[#3F3F46] bg-[#18181B]'
                     : 'border-[#27272A] hover:border-[#3F3F46]'
-                } disabled:cursor-not-allowed disabled:opacity-40`}
+                }`}
               >
                 <span
                   className={`flex h-4 w-4 shrink-0 items-center justify-center border border-[#27272A] font-mono text-[10px] ${
@@ -515,6 +513,13 @@ export default function DiffCheckerTool() {
             : 'Obrigado pelo seu apoio!'}
       </p>
 
+      {/* Badge Zero Cookies */}
+      <div className="mt-6 rounded-none border border-[#27272A] bg-[#09090B] p-4 font-mono text-xs text-[#52525B]">
+        <span className="font-bold text-white">[ZERO COOKIES & 100% LOCAL]</span>{' '}
+        Este comparador nao utiliza cookies de rastreamento e nao coleta seus dados pessoais.
+        Todo o processamento de textos acontece estritamente dentro da memoria RAM do seu navegador.
+      </div>
+
       {/* Support Modal */}
       {showSupport && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
@@ -545,7 +550,7 @@ export default function DiffCheckerTool() {
               onClick={() => setShowSupport(false)}
               className="self-center text-xs text-[#52525B] transition-colors hover:text-white"
             >
-              {locked ? 'Continuar — limite de comparações atingido' : 'Continuar sem apoiar →'}
+              Continuar Usando Gratis
             </button>
           </div>
         </div>
