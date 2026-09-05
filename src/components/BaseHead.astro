@@ -2,6 +2,7 @@
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
   image?: string;
   type?: string;
 }
@@ -11,6 +12,7 @@ const SITE_URL = 'https://cofreutil.com.br';
 const {
   title = 'CofreUtil | Ferramentas Web Locais e Seguras (Zero Nuvem)',
   description = 'Utilitários de alta performance 100% no seu navegador. Comprima PDFs, converta arquivos e processe dados com privacidade absoluta e zero upload para servidores.',
+  keywords,
   image = `${SITE_URL}/og-image.png`,
   type = 'website',
 } = Astro.props;
@@ -27,6 +29,7 @@ const canonical = new URL(Astro.url.pathname, SITE_URL).href;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
 <link rel="canonical" href={canonical} />
 
 <!-- Ícones de Aba (Favicon) -->

@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import OcrTool from '../../components/tools/OcrTool';
+---
+
+<Layout
+  title="Extrator de Texto de Imagem (OCR Offline Seguro) | Grátis | CofreUtil"
+  description="Converta imagem para texto grátis com leitor OCR offline. Extraia texto de print, fotos e documentos 100% no navegador, sem enviar arquivos a servidores. Português e Inglês."
+  keywords="converter imagem para texto gratis, leitor ocr offline, extrair texto de print, ocr online privado, extrair texto de imagem local"
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">[Zero-Server]</span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">[OCR]</span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">[Offline]</span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">[Local-WASM]</span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">[PT/EN]</span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">[LGPD]</span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Extrator de Texto de Imagem (OCR Offline Seguro)
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Converta imagem para texto grátis no navegador — sem enviar suas fotos para nenhum servidor.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Arraste uma imagem de print, foto de documento, tabela ou anúncio e o reconhecimento
+        óptico de caracteres (OCR) roda em um Web Worker com WebAssembly no seu próprio
+        dispositivo. Escolha entre Português e Inglês, acompanhe o progresso em tempo real e
+        copie o texto extraído com um clique. Nenhuma imagem sai da sua máquina — privacidade
+        de cofre, em conformidade nativa com a LGPD.
+      </p>
+    </div>
+
+    <OcrTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Como converter imagem para texto grátis sem depender de servidores?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          O CofreUtil embute o motor Tesseract.js em formato WebAssembly (WASM) servido pela
+          própria página — incluindo o worker, o núcleo de OCR com suporte a SIMD e os modelos
+          de idioma (português e inglês). O arquivo é pré-processado em um canvas
+          local (contraste, tons de cinza e redimensionamento) e entregue ao worker, que roda
+          o reconhecimento na memória RAM do navegador. Não há upload, não há fila e não há
+          limite de arquivos por conta — a conversão é realmente grátis.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que usar um leitor OCR offline em vez de sites na nuvem?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Serviços online recebem o seu print ou documento e o armazenam em bancos de dados
+          de terceiros — um risco direto para dados pessoais, contratos e informações
+          corporativas. Com o OCR local do CofreUtil, a imagem é lida na memória do seu
+          navegador e descartada ao fechar a página. Ideal para prints de conversas, boletos,
+          notas fiscais, extratos e qualquer captura de tela que não pode sair da sua máquina.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Preciso extrair texto de print de qualquer imagem?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Sim. Aceitamos PNG, JPG, WEBP e BMP. Arraste a imagem, o progresso da leitura aparece
+          em tempo real (carregamento do modelo, inicialização e reconhecimento) e o resultado
+          sai pronto em uma área de texto com botão "Copiar Texto". Se a imagem estiver borrada,
+          com baixo contraste ou pequena, o pré-processamento local amplia e realça a legibilidade
+          para maximizar a precisão do reconhecimento.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre o Extrator de Texto de Imagem
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">A imagem que eu envio é enviada para algum servidor?</summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. O OCR roda em um Web Worker com WebAssembly dentro do seu navegador. A imagem é
+            processada e descartada na memória — nunca viaja para a internet (LGPD por
+            arquitetura).
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">Quais idiomas são suportados para converter imagem para texto?</summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Português e Inglês. Escolha o idioma do documento no seletor antes de processar —
+            o modelo de OCR correspondente é carregado localmente e entra em cache no navegador.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">Como melhorar a precisão ao extrair texto de print?</summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Use capturas de tela nítidas, com boa iluminação e sem cortes nas letras. O CofreUtil
+            amplia e aumenta o contraste automaticamente, mas imagens de baixa resolução ou muito
+            distorcidas reduzem a taxa de acerto. Print limpo = texto praticamente perfeito.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">Preciso instalar algo ou criar uma conta para usar o OCR offline?</summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. Não há download, cadastro ou limite por conta. Na primeira leitura o site carrega
+            o motor WASM e o modelo de idioma a partir do próprio domínio; depois, eles ficam em
+            cache no seu dispositivo.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">O CofreUtil lê imagens em lote de uma vez?</summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Esta ferramenta processa uma imagem por vez com máxima atenção à privacidade. Para
+            operações que precisam de várias etapas, você pode repetir a leitura quantas vezes
+            quiser — sempre local e sem custo.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Extrator de Texto de Imagem (OCR Offline Seguro) — CofreUtil',
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Converter imagem para texto grátis com leitor OCR offline. Extrai texto de print, fotos e documentos 100% no navegador, sem enviar arquivos a servidores. Suporta português e inglês (Tesseract.js + WASM local).',
+            url: 'https://cofreutil.com.br/ferramentas/extrair-texto-imagem',
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+            author: { '@type': 'Person', name: 'Willian Scariott' },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'A imagem que eu envio é enviada para algum servidor?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Não. O OCR roda em Web Worker com WebAssembly dentro do navegador. A imagem é processada e descartada na memória, sem trafegar pela internet.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'Quais idiomas o OCR offline suporta?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Português e Inglês, selecionáveis antes do processamento. O modelo de idioma é carregado localmente e fica em cache no dispositivo.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'Como converter imagem para texto grátis sem instalar nada?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Arraste o arquivo PNG, JPG, WEBP ou BMP, escolha o idioma e copie o texto extraído. Tudo roda 100% no navegador, sem cadastro.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'O leitor OCR offline precisa de conexão com a internet?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Apenas para carregar a página e, na primeira leitura, o motor WASM e o modelo de idioma a partir do próprio domínio. Depois disso ficam em cache local.' },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>
