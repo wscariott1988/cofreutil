@@ -19,7 +19,7 @@ Código TypeScript responsável pelo controle de limite local via `localStorage`
 ```typescript
 export class BatchLimiter {
   private static STORAGE_KEY = 'cofreutil_usage_count';
-  private static MAX_FREE_BATCH = 5;
+  private static MAX_FREE_BATCH = 3;
 
   static getUsageCount(): number {
     if (typeof window === 'undefined') return 0;

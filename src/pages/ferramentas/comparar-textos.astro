@@ -1,0 +1,201 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DiffCheckerTool from '../../components/tools/DiffCheckerTool';
+---
+
+<Layout
+  title="Comparar Textos Online | Diff Checker Offline Grátis | CofreUtil"
+  description="Compare dois textos online com segurança e privacidade total (LGPD). Diff checker offline grátis para verificar alterações em contratos de forma privada — 100% no seu navegador, nada sai da sua máquina."
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [DADOS & DEV]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Comparar Dois Textos Online
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Diff checker offline grátis: descubra exatamente o que mudou entre duas
+        versões de um texto ou contrato — sem sair do navegador.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Cole o texto original e a versão modificada e veja as diferenças em três
+        granularidades (linhas, palavras ou caracteres), em visão lado a lado ou
+        unificada. A comparação usa o algoritmo de Myers (1986) e roda 100%
+        localmente: nenhum caractere do seu documento é enviado a servidores.
+      </p>
+    </div>
+
+    <DiffCheckerTool client:only="react" />
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que comparar dois textos online com privacidade?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Contratos, atas, minutas e cópias de documentos contêm cláusulas que
+          mudam silenciosamente de uma versão para outra. Colar esse conteúdo em
+          um serviço na nuvem expõe dados sensíveis — por isso este comparador é
+          um diff checker offline grátis: todo o processamento acontece no seu
+          navegador e nada é transmitido. Você vê, caractere por caractere, onde
+          a versão antiga e a nova divergem.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Linhas, palavras ou caracteres: qual granularidade usar?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Em <strong class="text-white">Linhas</strong>, o comparador destaca
+          só as linhas alteradas — ideal para percorrer contratos longos.
+          Em <strong class="text-white">Palavras</strong> e
+          <strong class="text-white">Caracteres</strong>, o diff é refinado dentro
+          dos pares de linhas alteradas, sublinhando exatamente as palavras ou
+          letras que mudaram. Quanto maior a precisão, mais fácil conferir uma
+          alteração antes de assinar.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          É seguro comparar um contrato aqui e verificar alterações sem envio?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Sim. Este comparador é 100% offline (arquitetura Zero-Server): o texto
+          digitado permanece na sua máquina, o algoritmo de diff roda localmente
+          e nenhum dado é registrado. Com isso, você pode verificar alterações em
+          contratos de forma privada e em conformidade total com a LGPD — a
+          ferramenta funciona até mesmo sem internet após o carregamento da página.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre Comparar Textos Online
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Meu texto ou contrato é enviado para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A comparação acontece 100% no seu navegador, com o algoritmo de
+            diff executado localmente. Nenhum caractere sai da sua máquina —
+            garante privacidade total e atendimento à LGPD.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Qual a diferença entre ver as mudanças em linhas, palavras e caracteres?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            A granularidade em linhas mostra apenas quais linhas mudaram.
+            Palavras e caracteres refinam o destaque dentro das linhas alteradas,
+            sublinhando exatamente o trecho — a palavra ou letra — que difere,
+            facilitando a revisão de cláusulas em contratos.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Esta ferramenta funciona offline?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Após o carregamento da página, todo o processamento é local e a
+            comparação continua funcionando sem conexão com a internet.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Preciso pagar ou me cadastrar para comparar textos?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A ferramenta é gratuita e sem cadastro. Após várias utilizações,
+            uma mensagem amigável sugere um apoio voluntário via Pix para manter o
+            CofreUtil no ar.
+          </p>
+        </details>
+      </div>
+    </div>
+
+    <!-- SCHEMA.ORG -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'SoftwareApplication',
+            name: 'Comparar Textos Online — CofreUtil',
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Web Browser',
+            description: 'Diff checker offline grátis para comparar dois textos online com privacidade total (LGPD). Veja alterações em contratos de forma privada em linhas, palavras ou caracteres, 100% no navegador.',
+            url: 'https://cofreutil.com.br/ferramentas/comparar-textos',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'BRL',
+            },
+            author: {
+              '@type': 'Person',
+              name: 'Willian Scariott',
+            },
+          },
+          {
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Meu texto ou contrato é enviado para algum servidor?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A comparação acontece 100% no seu navegador, sem envio a servidores, garantindo privacidade total e atendimento à LGPD.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Qual a diferença entre comparar em linhas, palavras e caracteres?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Linhas mostra apenas quais linhas mudaram. Palavras e caracteres refinam o destaque dentro das linhas alteradas, sublinhando exatamente o trecho que difere.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Esta ferramenta funciona offline?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Sim. Após o carregamento da página, todo o processamento é local e a comparação funciona sem conexão.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Preciso pagar ou me cadastrar para comparar textos?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Não. A ferramenta é gratuita e sem cadastro.',
+                },
+              },
+            ],
+          },
+        ],
+      })}
+    />
+  </section>
+</Layout>

@@ -18,8 +18,9 @@
 
 ## 3. REGRA DE MONETIZAÇÃO E LOTE LOCAL (BATCH LIMITER)
 - Todas as ferramentas que aceitam múltiplos arquivos ou operações em lote devem validar o uso através do utilitário 'BatchLimiter' (baseado em localStorage).
-- O limite gratuito por lote é fixado em no máximo 5 arquivos/operações.
+- O limite gratuito por lote é fixado em no máximo 3 arquivos/operações.
 - Ao atingir o limite, a interface exibe um modal amigável de Apoio Voluntário via Pix, sugerindo apoio voluntário com botão 'Copiar Pix' e botão 'Continuar usando', sem bloqueio rígido e sem exigir chave de acesso.
+- Exceção: a ferramenta 'Comparar Textos' deve bloquear o botão de ação e abrir o modal automaticamente ao atingir o limite (comportamento bloqueante).
 
 ## 4. OTIMIZAÇÃO DE PERFORMANCE E SEGURANÇA
 - Tarefas pesadas (FFmpeg, Tesseract, PDF Lib) devem rodar obrigatoriamente dentro de Web Workers para não travar a Thread principal da UI.

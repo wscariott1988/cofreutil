@@ -1,5 +1,5 @@
 const STORAGE_KEY = 'cofreutil_usage_count';
-const MAX_FREE_BATCH = 5;
+const MAX_FREE_BATCH = 3;
 
 export class BatchLimiter {
   static getUsageCount(): number {
