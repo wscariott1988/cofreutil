@@ -2,7 +2,7 @@
 title: "Como Dividir PDF Online Grátis em Várias Páginas de Forma Segura"
 description: "Aprenda a fatiar, desmembrar e extrair páginas específicas de documentos PDF de forma local e segura sem expor dados confidenciais."
 publishDate: "2026-09-05"
-category: "pdf"
+category: "PDF"
 keywords: ["dividir pdf", "separar paginas pdf online", "extrair paginas pdf gratis", "fatiar pdf seguro"]
 ---
 

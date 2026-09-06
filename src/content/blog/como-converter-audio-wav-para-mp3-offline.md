@@ -2,7 +2,7 @@
 title: "Como Converter Áudio WAV para MP3 sem Enviar o Arquivo para Servidores"
 description: "Aprenda a comprimir e transcodificar seus arquivos de áudio de forma privada usando o motor FFmpeg compilado diretamente no seu navegador."
 publishDate: "2026-09-05"
-category: "midia"
+category: "Mídia"
 keywords: ["converter audio", "converter mp3", "converter wav para mp3", "conversor de audio offline"]
 ---
 

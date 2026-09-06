@@ -2,7 +2,7 @@
 title: "Como Mesclar Vários PDFs em um Só Arquivo sem Sair do Navegador"
 description: "Aprenda a unificar e organizar seus documentos em um único arquivo PDF sem limite de arquivos e com total privacidade de dados."
 publishDate: "2026-09-05"
-category: "pdf"
+category: "PDF"
 keywords: ["mesclar pdf", "juntar pdf", "agrupar pdf online gratis", "unir arquivos pdf seguro"]
 ---
 

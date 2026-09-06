@@ -2,7 +2,7 @@
 title: "Como Diminuir o Tamanho de um PDF Sem Perder Qualidade"
 description: "Aprenda a comprimir e diminuir o tamanho físico de arquivos PDF volumosos de forma estéril, mantendo a leitura nítida das letras e tabelas para envio por e-mail."
 publishDate: "2026-09-05"
-category: "Documentos"
+category: "PDF"
 keywords: ["comprimir pdf", "diminuir tamanho pdf", "diminuir tamanho pdf sem perder qualidade"]
 ---
 

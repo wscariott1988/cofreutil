@@ -2,7 +2,7 @@
 title: "Como Limpar Metadados e Remover a Localização de Fotos Online"
 description: "Saiba como o EXIF revela onde e quando suas fotos foram tiradas e como remover esses dados de forma 100% local antes de postar na internet."
 publishDate: "2026-09-05"
-category: "privacidade"
+category: "Mídia"
 keywords: ["limpar metadados de foto", "remover dados exif", "remover localizacao de foto", "metadados imagem"]
 ---
 

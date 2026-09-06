@@ -2,7 +2,7 @@
 title: "Como Formatar e Validar JSON Online sem Riscar Vazamento de Logs"
 description: "Aprenda a formatar e validar arquivos JSON contendo payloads ou tokens confidenciais com total segurança e processamento estritamente local."
 publishDate: "2026-09-05"
-category: "dev"
+category: "Dados & Dev"
 keywords: ["formatar json", "validar json", "formatador json offline", "formatar json seguro"]
 ---
 

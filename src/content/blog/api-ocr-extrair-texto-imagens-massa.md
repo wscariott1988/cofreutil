@@ -2,7 +2,7 @@
 title: "API de OCR Geral: Como Extrair Texto de Milhares de Imagens em Massa"
 description: "Como integrar inteligência de OCR e extração de texto em massa de faturas, recibos e prints diretamente na sua infraestrutura de software."
 publishDate: "2026-09-05"
-category: "B2B & API"
+category: "B2B / APIs"
 keywords: ["api ocr gratis", "extrair texto imagem em massa", "ocr desenvolvedor", "api extrair texto imagem"]
 ---
 

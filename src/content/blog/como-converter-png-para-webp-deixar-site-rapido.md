@@ -2,7 +2,7 @@
 title: "Como Converter Imagem PNG para WEBP para Deixar seu Site Mais Rápido"
 description: "Descubra como o formato de imagem WEBP reduz o tamanho das imagens do seu site sem perder qualidade e como fazer a conversão localmente."
 publishDate: "2026-09-05"
-category: "dev"
+category: "Mídia"
 keywords: ["converter png para webp", "otimizar imagem site rapido", "converter jpg para webp", "webp offline"]
 ---
 

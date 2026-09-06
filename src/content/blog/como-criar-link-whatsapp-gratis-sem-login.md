@@ -2,7 +2,7 @@
 title: "Como Criar Link de WhatsApp Grátis e Sem Login (Rápido)"
 description: "Veja o passo a passo definitivo de como criar um link personalizado de WhatsApp sem precisar de cadastro, sem informar dados e de forma 100% gratuita."
 publishDate: "2026-09-05"
-category: "Comunicação"
+category: "Dados & Dev"
 keywords: ["criar link de whatsapp gratis", "gerador link de zap sem login", "encurtar link whatsapp"]
 ---
 

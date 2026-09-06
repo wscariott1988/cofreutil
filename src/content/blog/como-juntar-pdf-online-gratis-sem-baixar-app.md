@@ -2,7 +2,7 @@
 title: "Como Juntar PDF Online Grátis e Sem Baixar Aplicativos"
 description: "Una vários arquivos PDF em um único documento PDF em poucos segundos, sem precisar instalar aplicativos pesados no computador ou celular de forma 100% gratuita."
 publishDate: "2026-09-05"
-category: "Documentos"
+category: "PDF"
 keywords: ["juntar pdf", "mesclar pdf", "juntar pdf sem baixar app"]
 ---
 

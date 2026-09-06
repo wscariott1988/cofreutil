@@ -2,7 +2,7 @@
 title: "Como Enviar Mensagem no WhatsApp Sem Salvar o Contato (Rápido)"
 description: "Descubra o método mais prático de abrir conversas no WhatsApp com números que não estão salvos na agenda do seu smartphone, preservando sua privacidade."
 publishDate: "2026-09-05"
-category: "Dicas Rápidas"
+category: "Dados & Dev"
 keywords: ["enviar mensagem de whatsapp sem salvar numero", "abrir conversa zap sem contato", "wa.me sem salvar telefone"]
 ---
 

@@ -2,7 +2,7 @@
 title: "O perigo dos Conversores de Arquivo Online que exigem Cadastro e Login"
 description: "Por que plataformas gratuitas de conversão de arquivos exigem login e como elas ganham dinheiro com seus dados e arquivos sensíveis."
 publishDate: "2026-09-05"
-category: "Privacidade & Dados"
+category: "Segurança"
 keywords: ["converter arquivos sem cadastro", "privacidade de arquivos", "conversores pdf perigo", "vazamento de dados pdf"]
 ---
 

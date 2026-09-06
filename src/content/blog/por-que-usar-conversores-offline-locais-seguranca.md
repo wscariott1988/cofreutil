@@ -2,7 +2,7 @@
 title: "Por que Usar Conversores de Arquivos Offline e Locais (Segurança)?"
 description: "Entenda as vantagens regulatórias, de performance e de privacidade ao optar por ferramentas local-first baseadas em WebAssembly e JavaScript."
 publishDate: "2026-09-05"
-category: "Tecnologia"
+category: "Segurança"
 keywords: ["ferramentas offline seguras", "processamento local de dados", "local-first web app"]
 ---
 

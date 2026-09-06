@@ -2,7 +2,7 @@
 title: "Como Automatizar a Compressão de PDFs em Lote na sua Empresa"
 description: "Saiba como automatizar o processamento e a compressão de grandes volumes de documentos PDF de forma segura, mantendo a conformidade com a LGPD."
 publishDate: "2026-09-05"
-category: "B2B & API"
+category: "B2B / APIs"
 keywords: ["comprimir pdf em lote", "api de compressao de pdf", "automatizar processamento pdf", "comprimir pdf desenvolvedor"]
 ---
 

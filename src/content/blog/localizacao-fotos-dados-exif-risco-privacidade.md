@@ -2,7 +2,7 @@
 title: "Por que a Localização Físicas de Fotos e Dados Exif são um Risco à sua Privacidade?"
 description: "Descubra o perigo oculto dos metadados de imagens tiradas por smartphones e aprenda a remover dados de localização geográfica antes de postar online."
 publishDate: "2026-09-05"
-category: "Privacidade & Dados"
+category: "Segurança"
 keywords: ["limpar metadados de foto", "remover dados exif", "remover localizacao de foto", "metadados imagem perigo"]
 ---
 

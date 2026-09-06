@@ -2,7 +2,7 @@
 title: "Entenda por que o Formato de Vídeo WebM e Áudio Ogg são o Padrão do Futuro"
 description: "Saiba como as compressões WebM e Ogg ajudam desenvolvedores de softwares e criadores de conteúdo a manter sites rápidos e modernos."
 publishDate: "2026-09-05"
-category: "Tecnologia & IA"
+category: "Mídia"
 keywords: ["converter audio ogg", "ogg vs mp3", "webm vs mp4", "processamento de midia online"]
 ---
 

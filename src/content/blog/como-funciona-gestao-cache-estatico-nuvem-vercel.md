@@ -2,7 +2,7 @@
 title: "Como Funciona a Gestão de Cache Estático na Nuvem da Vercel para Micro-Utilitários"
 description: "Entenda como a infraestrutura de borda (Edge) e cache de longa duração da Vercel aceleram e blindam seu site contra picos de tráfego."
 publishDate: "2026-09-05"
-category: "Segurança & Dev"
+category: "Dados & Dev"
 keywords: ["cache estatico vercel", "edge network performance", "micro utilitarios rapidos", "infraestrutura ssg astro"]
 ---
 

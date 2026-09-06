@@ -2,7 +2,7 @@
 title: "OCR Offline Seguro: Leitura de Textos Confidenciais Corporativos"
 description: "Mantenha a segurança técnica de nível corporativo e o sigilo de dados do seu escritório rodando OCRs 100% locais sem envio de fotos à nuvem."
 publishDate: "2026-09-05"
-category: "Segurança Corporativa"
+category: "B2B / APIs"
 keywords: ["ocr offline seguro", "leitor ocr local", "ocr privado corporativo"]
 ---
 

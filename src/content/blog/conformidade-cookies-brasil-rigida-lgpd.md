@@ -2,7 +2,7 @@
 title: "Por que a Conformidade de Cookies no Brasil é Mais Rígida sob a LGPD?"
 description: "Compreenda como a legislação brasileira trata os cookies de publicidade de terceiros e por que o design Zero Cookies é a melhor solução."
 publishDate: "2026-09-05"
-category: "Privacidade & Dados"
+category: "Segurança"
 keywords: ["lei geral de protecao de dados cookies", "cookies lgpd brasil", "conformidade de cookies empresas", "rastreamento de dados pessoais"]
 ---
 

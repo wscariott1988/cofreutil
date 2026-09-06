@@ -2,7 +2,7 @@
 title: "Como Dividir e Fatiar PDFs Grandes sem Vazamento de Dados Corporativos"
 description: "Saiba como extrair páginas ou fatiar relatórios em PDF corporativos mantendo total conformidade regulatória e sem upload de arquivos."
 publishDate: "2026-09-05"
-category: "Finanças & Negócios"
+category: "PDF"
 keywords: ["dividir pdf grande offline", "extrair paginas de pdf seguro", "fatiar pdf gratis", "divisor de pdf local"]
 ---
 

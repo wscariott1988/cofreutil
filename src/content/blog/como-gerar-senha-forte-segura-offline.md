@@ -2,7 +2,7 @@
 title: "Como Gerar uma Senha Forte e Segura sem Enviar para a Internet"
 description: "Aprenda a criar senhas altamente seguras e imunes a vazamentos de dados usando nossa ferramenta de geração 100% offline no navegador."
 publishDate: "2026-09-05"
-category: "seguranca"
+category: "Segurança"
 keywords: ["gerar senha forte", "gerador de senhas", "criar senha segura online", "senha forte offline"]
 ---
 

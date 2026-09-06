@@ -2,7 +2,7 @@
 title: "Disparar WhatsApp em Lote com Mensagens Customizadas: Melhores Práticas"
 description: "Descubra as melhores práticas de privacidade e eficiência ao criar e gerenciar links personalizados do WhatsApp em massa para marketing digital."
 publishDate: "2026-09-05"
-category: "Marketing & Vendas"
+category: "B2B / APIs"
 keywords: ["criar link whatsapp em lote", "disparador de whatsapp gratis", "lista de transmissao whatsapp seguro", "link zap personalizado"]
 ---
 

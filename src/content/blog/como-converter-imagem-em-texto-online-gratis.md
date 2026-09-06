@@ -2,7 +2,7 @@
 title: "Como Converter Imagem em Texto Online e Grátis (Sem App)"
 description: "Extraia textos, letras e caracteres legíveis de qualquer imagem de foto ou captura de tela de forma online e gratuita sem instalar softwares."
 publishDate: "2026-09-05"
-category: "Documentos"
+category: "Mídia"
 keywords: ["converter imagem para texto gratis", "extrair texto de imagem", "ocr online"]
 ---
 

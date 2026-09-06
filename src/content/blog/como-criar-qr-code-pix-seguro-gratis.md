@@ -2,7 +2,7 @@
 title: "Como Criar um QR Code Pix Copia e Cola Seguro de Graça"
 description: "Gere códigos Pix e QR Codes para cobranças rápidas de forma gratuita, livre de taxas, sem cadastro e 100% privada no navegador."
 publishDate: "2026-09-05"
-category: "financas"
+category: "Dados & Dev"
 keywords: ["gerador de qr code pix", "qr code pix seguro", "criar pix copia e cola gratis", "pix offline"]
 ---
 

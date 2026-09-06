@@ -2,7 +2,7 @@
 title: "Como Gerar CPF Válido para Testes de Software de Forma Segura"
 description: "Gere registros de CPF válidos matematicamente para rotinas de testes de desenvolvimento de forma instantânea e totalmente offline."
 publishDate: "2026-09-05"
-category: "dev"
+category: "Dados & Dev"
 keywords: ["gerador de cpf", "gerar cpf online", "gerador de cpf valido para testes", "criar cpf offline"]
 ---
 

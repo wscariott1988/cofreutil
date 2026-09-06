@@ -2,7 +2,7 @@
 title: "Como Validar CNPJ de Forma Rápida, Grátis e Local"
 description: "Valide registros de CNPJ instantaneamente com nosso algoritmo local livre de cookies e ideal para rotinas de testes de desenvolvimento."
 publishDate: "2026-09-05"
-category: "dev"
+category: "Dados & Dev"
 keywords: ["validador de cnpj", "validar cnpj online", "checar cnpj offline", "validacao de cnpj gratis"]
 ---
 

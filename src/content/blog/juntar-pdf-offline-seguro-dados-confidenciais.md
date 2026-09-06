@@ -2,7 +2,7 @@
 title: "Juntar PDFs com Dados Confidenciais de Forma Segura (Offline)"
 description: "Saiba como escritórios de advocacia, contabilidade e consultórios médicos evitam o vazamento de segredos comerciais ao juntar PDFs de forma 100% offline."
 publishDate: "2026-09-05"
-category: "Segurança de Dados"
+category: "PDF"
 keywords: ["mesclar pdf offline seguro", "juntar contratos pdf privado", "pdf local-first"]
 ---
 

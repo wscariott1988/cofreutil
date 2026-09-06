@@ -2,7 +2,7 @@
 title: "Como Contar Caracteres de Redações para o ENEM e Concursos"
 description: "Otimize sua escrita para o ENEM ou redação de concurso público monitorando o tamanho do texto, linhas e contagem de caracteres sem distrações."
 publishDate: "2026-09-05"
-category: "Estudos"
+category: "Dados & Dev"
 keywords: ["contador de caracteres redacao", "contar letras de texto online", "contador de redação"]
 ---
 

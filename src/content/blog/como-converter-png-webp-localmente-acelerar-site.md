@@ -2,7 +2,7 @@
 title: "Como Converter PNG para WEBP Localmente para Acelerar seu Site"
 description: "Aprenda a otimizar o carregamento de sites e blogs convertendo imagens PNG pesadas para o formato moderno WEBP sem vazar arquivos na rede."
 publishDate: "2026-09-05"
-category: "Marketing & Vendas"
+category: "Mídia"
 keywords: ["converter png para webp", "converter jpg para webp online", "otimizar imagens site", "conversor webp gratis"]
 ---
 

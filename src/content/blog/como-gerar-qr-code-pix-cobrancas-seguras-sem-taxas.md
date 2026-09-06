@@ -2,7 +2,7 @@
 title: "Como Gerar QR Code Pix para Cobranças Seguras e Sem Taxas Intermediárias"
 description: "Crie QR Codes Pix de cobrança dinâmicos de forma privada e instantânea, mantendo suas transações financeiras livres de custos e comissões."
 publishDate: "2026-09-05"
-category: "Finanças & Negócios"
+category: "B2B / APIs"
 keywords: ["gerador de qr code pix", "qr code pix seguro", "criar cobranca pix online", "gerar pix copia e cola"]
 ---
 

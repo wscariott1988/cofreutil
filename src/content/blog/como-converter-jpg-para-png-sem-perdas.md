@@ -2,7 +2,7 @@
 title: "Como Converter JPG para PNG sem Perda de Qualidade (Offline)"
 description: "Aprenda a mudar o formato de suas fotos de JPG para PNG de maneira rápida e segura utilizando o processamento de imagens do próprio navegador."
 publishDate: "2026-09-05"
-category: "dev"
+category: "Mídia"
 keywords: ["converter jpg para png", "converter imagem gratis", "jpg para png offline", "mudar formato foto"]
 ---
 

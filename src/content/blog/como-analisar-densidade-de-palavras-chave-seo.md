@@ -2,7 +2,7 @@
 title: "Como Analisar a Densidade de Palavras-Chave de Textos para SEO"
 description: "Evite a punição de 'keyword stuffing' (excesso de palavras) do Google monitorando a densidade de termos do seu texto de forma totalmente privada."
 publishDate: "2026-09-05"
-category: "SEO & Redação"
+category: "Dados & Dev"
 keywords: ["ferramenta para contar palavras", "densidade de palavras-chave seo", "contador de termos seo"]
 ---
 

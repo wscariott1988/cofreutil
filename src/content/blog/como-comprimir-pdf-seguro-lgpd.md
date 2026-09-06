@@ -2,7 +2,7 @@
 title: "Como Comprimir PDF de Acordo com as Diretrizes da LGPD"
 description: "Veja como a compactação de arquivos e o tratamento de documentos digitais corporativos deve ser feita para se manter em total conformidade com a LGPD."
 publishDate: "2026-09-05"
-category: "Compliance"
+category: "PDF"
 keywords: ["comprimir pdf seguro", "compactar pdf lgpd", "conformidade digital de dados"]
 ---
 

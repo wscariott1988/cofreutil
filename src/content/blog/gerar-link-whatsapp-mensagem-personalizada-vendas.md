@@ -2,7 +2,7 @@
 title: "Link do WhatsApp com Mensagem Personalizada para Vendas"
 description: "Saiba como estruturar mensagens pré-definidas personalizadas no seu link de WhatsApp para organizar a entrada de contatos comerciais de diferentes campanhas."
 publishDate: "2026-09-05"
-category: "Vendas"
+category: "B2B / APIs"
 keywords: ["link whatsapp com mensagem personalizada", "gerador de link zap comercial", "link de vendas whatsapp"]
 ---
 

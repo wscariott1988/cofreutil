@@ -2,7 +2,7 @@
 title: "Gerador de Senhas Seguras: Por que os algoritmos de navegador são à prova de hackers?"
 description: "Entenda como funciona a geração de senhas randômicas no navegador por meio de criptografia local sem transmissão de dados na rede."
 publishDate: "2026-09-05"
-category: "Segurança & Dev"
+category: "Segurança"
 keywords: ["gerar senha forte", "gerador de senhas offline", "criptografia de senhas local", "criar senhas robustas"]
 ---
 
