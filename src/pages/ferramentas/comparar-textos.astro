@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import DiffCheckerTool from '../../components/tools/DiffCheckerTool';
+import ShareButton from '../../components/ShareButton';
 ---
 
 <Layout
@@ -41,6 +42,10 @@ import DiffCheckerTool from '../../components/tools/DiffCheckerTool';
     </div>
 
     <DiffCheckerTool client:only="react" />
+
+    <div class="mt-8 flex justify-end">
+      <ShareButton client:only="react" />
+    </div>
 
     <!-- CONTEUDO PERSUASIVO & H2 DE CAUDA LONGA -->
     <div class="mt-16 flex flex-col gap-10">

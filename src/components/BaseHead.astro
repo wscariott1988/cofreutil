@@ -75,5 +75,23 @@ const canonical = new URL(normalizedPath, SITE_URL).href;
 <meta name="twitter:image" content={image} />
 
 <!-- Cloudflare Web Analytics -->
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e57aad998c8c475fa3cd069aa5567b3d"}'></script>
+<script is:inline>
+  // Se o desenvolvedor acessar cofreutil.com.br/?ignore=true, ativa a flag de exclusão
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('ignore') === 'true') {
+    localStorage.setItem('ignoreAnalytics', 'true');
+    console.log('[CofreUtil] Suas visitas agora estão sendo desconsideradas no Analytics.');
+  }
+</script>
+<script is:inline>
+  if (localStorage.getItem('ignoreAnalytics') !== 'true') {
+    const script = document.createElement('script');
+    script.defer = true;
+    script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    script.setAttribute('data-cf-beacon', '{"token": "e57aad998c8c475fa3cd069aa5567b3d"}');
+    document.head.appendChild(script);
+  } else {
+    console.log('[CofreUtil] Analytics bloqueado localmente (Modo Desenvolvedor Ativo).');
+  }
+</script>
 <!-- End Cloudflare Web Analytics -->

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import WhatsappGeneratorTool from '../../components/tools/WhatsappGeneratorTool';
+import ShareButton from '../../components/ShareButton';
 
 const toolUrl = 'https://cofreutil.com.br/ferramentas/gerador-link-whatsapp';
 
@@ -152,6 +153,10 @@ const jsonLd = {
     </div>
 
     <WhatsappGeneratorTool client:only="react" />
+
+    <div class="mt-8 flex justify-end">
+      <ShareButton client:only="react" />
+    </div>
 
     <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
     <div class="mt-16 flex flex-col gap-10">

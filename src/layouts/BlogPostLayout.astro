@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BaseHead from '../components/BaseHead.astro';
+import ShareButton from '../components/ShareButton';
 import '../styles/global.css';
 
 const SITE_URL = 'https://cofreutil.com.br';
@@ -110,12 +111,15 @@ const jsonLd = {
         <slot />
 
         <footer class="mt-16 border-t border-[#27272A] pt-8">
-          <a
-            href="/blog"
-            class="inline-block font-mono text-sm text-white transition-colors hover:text-[#A1A1AA]"
-          >
-            ← VOLTAR PARA TODOS OS ARTIGOS
-          </a>
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <a
+              href="/blog"
+              class="inline-block font-mono text-sm text-white transition-colors hover:text-[#A1A1AA]"
+            >
+              ← VOLTAR PARA TODOS OS ARTIGOS
+            </a>
+            <ShareButton client:only="react" />
+          </div>
         </footer>
       </article>
     </main>

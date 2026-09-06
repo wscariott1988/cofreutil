@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import OcrTool from '../../components/tools/OcrTool';
+import ShareButton from '../../components/ShareButton';
 ---
 
 <Layout
@@ -37,6 +38,10 @@ import OcrTool from '../../components/tools/OcrTool';
     </div>
 
     <OcrTool client:only="react" />
+
+    <div class="mt-8 flex justify-end">
+      <ShareButton client:only="react" />
+    </div>
 
     <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
     <div class="mt-16 flex flex-col gap-10">
