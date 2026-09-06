@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+
+const title = 'Blog | CofreUtil — Como Fazer Grátis, Sem Login e 100% Privado';
+const description =
+  'Guias rápidos sobre como juntar PDF, comprimir arquivos, gerar link de WhatsApp, extrair texto de imagem e muito mais — tudo gratuito, sem cadastro e com processamento 100% local.';
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC', day: '2-digit', month: 'short', year: 'numeric' }).format(date);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Blog CofreUtil',
+  description,
+  url: 'https://cofreutil.com.br/blog',
+  publisher: { '@type': 'Organization', name: 'CofreUtil', url: 'https://cofreutil.com.br' },
+};
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-32">
+    <header class="border-b border-[#27272A] pb-10">
+      <span class="font-mono text-xs text-[#52525B]">// BASE DE CONHECIMENTO</span>
+      <h1 class="mt-4 font-mono text-3xl font-bold leading-tight tracking-tight md:text-5xl">
+        Blog do <span class="text-[#A1A1AA]">CofreUtil</span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-[#A1A1AA] md:text-lg">
+        {description}
+      </p>
+    </header>
+
+    {posts.length === 0 ? (
+      <p class="mt-16 font-mono text-sm text-[#52525B]">// NENHUM ARTIGO PUBLICADO AINDA</p>
+    ) : (
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+          >
+            <div class="flex items-center justify-between gap-4">
+              <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
+                {post.data.category}
+              </span>
+              <span class="font-mono text-xs text-[#52525B]">{formatDate(post.data.publishDate)}</span>
+            </div>
+            <h2 class="font-mono text-sm font-medium leading-snug text-white">{post.data.title}</h2>
+            <p class="text-xs leading-relaxed text-[#A1A1AA]">{post.data.description}</p>
+            <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
+              /blog/{post.id} →
+            </span>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</Layout>

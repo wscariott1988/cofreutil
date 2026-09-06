@@ -41,6 +41,14 @@ export default defineConfig({
           };
         }
 
+        if (path.startsWith('/blog')) {
+          return {
+            ...item,
+            priority: 0.8,
+            changefreq: 'weekly',
+          };
+        }
+
         return {
           ...item,
           priority: 0.5,
