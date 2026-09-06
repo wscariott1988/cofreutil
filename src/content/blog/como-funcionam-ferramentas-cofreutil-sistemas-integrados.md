@@ -1,7 +1,7 @@
 ---
 title: "Como funcionam as ferramentas do CofreUtil em sistemas integrados corporativos"
 description: "Entenda como nossa arquitetura estática descentralizada permite a integração direta de ferramentas de PDF e OCR locais em seus CRMs comerciais."
-publishDate: "2026-09-05"
+publishDate: "2026-06-07"
 category: "B2B / APIs"
 keywords: ["api cofreutil", "integracao de sistemas", "processamento de dados local", "sdk em lote"]
 ---
@@ -17,5 +17,5 @@ Enquanto servidores na nuvem tradicionais se tornam lentos à medida que mais us
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[💼 SOLICITE API DE INTEGRABILIDADE CORPORATIVA]</span>
   Fale com nossos especialistas comerciais e descubra o plano de transição técnica ideal para sua rede de faturamento.
-  <a href="mailto:contato@cofreutil.com.br?subject=Integração de SDK em Sistemas Corporativos" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Consultar Engenharia →</a>
+  <a href="mailto:contato@grupows.com?subject=Integração de SDK em Sistemas Corporativos" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Consultar Engenharia →</a>
 </div>

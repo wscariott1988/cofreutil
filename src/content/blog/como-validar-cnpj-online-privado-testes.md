@@ -1,7 +1,7 @@
 ---
 title: "Como validar CNPJ online de forma privada e instantânea para testes"
 description: "Aprenda a testar e validar o dígito verificador de chaves de CNPJ locais de forma 100% segura para desenvolvedores e testadores."
-publishDate: "2026-09-05"
+publishDate: "2026-04-08"
 category: "Dados & Dev"
 keywords: ["validar cnpj online", "validador de cnpj", "testar cnpj offline", "cnpj privado"]
 ---

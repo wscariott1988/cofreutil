@@ -1,7 +1,7 @@
 ---
 title: "O papel das ferramentas sem servidor (Serverless) na redução da pegada de carbono"
 description: "Descubra os benefícios ambientais e ecológicos de velocidade e sustentabilidade ao migrar sistemas para processamento estritamente local."
-publishDate: "2026-09-05"
+publishDate: "2026-01-23"
 category: "Segurança"
 keywords: ["sustentabilidade de software", "tecnologia sem servidor", "reducao pegada de carbono", "processamento local verde"]
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Como juntar comprovantes e notas fiscais em um único PDF de graça"
 description: "Aprenda a unificar múltiplos recibos e faturas em um único arquivo PDF compacto de forma rápida e segura para prestação de contas."
-publishDate: "2026-09-05"
+publishDate: "2026-05-14"
 category: "PDF"
 keywords: ["juntar pdf", "mesclar pdf gratis", "unificar notas fiscais pdf", "mesclar comprovantes"]
 ---

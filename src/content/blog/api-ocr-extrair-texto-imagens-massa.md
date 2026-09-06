@@ -16,5 +16,5 @@ Para fluxos pesados que necessitam de uma API robusta de OCR para leitura de com
   <span class="text-xs text-zinc-500 font-mono block mb-2">[🔍 SOLUÇÃO CORPORATIVA]</span>
   <h3 class="text-lg font-bold text-white mb-2">Integre OCR Seguro no seu Software</h3>
   <p class="text-zinc-400 text-sm mb-4">Oferecemos endpoints e pacotes personalizados de processamento local de imagem para texto corporativo em alta velocidade.</p>
-  <a href="mailto:contato@cofreutil.com.br?subject=Orçamento de API de OCR em Lote" class="inline-block bg-white text-black px-4 py-2 text-xs font-bold hover:bg-zinc-200 transition-colors">Solicitar Orçamento de API →</a>
+  <a href="mailto:contato@grupows.com?subject=Orçamento de API de OCR em Lote" class="inline-block bg-white text-black px-4 py-2 text-xs font-bold hover:bg-zinc-200 transition-colors">Solicitar Orçamento de API →</a>
 </div>

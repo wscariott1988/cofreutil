@@ -1,7 +1,7 @@
 ---
 title: "Criar Botão do WhatsApp em HTML e CSS para Sites (Grátis)"
 description: "Copie e cole um código HTML e CSS limpo de botão flutuante ou estático do WhatsApp no seu site sem carregar scripts pesados de terceiros."
-publishDate: "2026-09-05"
+publishDate: "2026-03-21"
 category: "Dados & Dev"
 keywords: ["criar botao whatsapp html gratis", "html botao de whatsapp para site", "codigo botao whatsapp"]
 ---

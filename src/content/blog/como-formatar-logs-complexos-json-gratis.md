@@ -1,7 +1,7 @@
 ---
 title: "Como formatar logs complexos de sistema em JSON legível de graça"
 description: "Aprenda técnicas de formatação e endentação de strings de logs extensas no formato JSON localmente, sem risco de expor chaves."
-publishDate: "2026-09-05"
+publishDate: "2026-06-19"
 category: "Dados & Dev"
 keywords: ["formatar json", "identar json online", "formatador de json gratis", "logs de sistema json"]
 ---

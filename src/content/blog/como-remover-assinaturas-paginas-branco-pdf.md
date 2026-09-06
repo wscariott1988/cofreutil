@@ -1,7 +1,7 @@
 ---
 title: "Como remover assinaturas e páginas em branco de arquivos PDF online"
 description: "Saiba como limpar e remover folhas em branco ou páginas de assinaturas indesejadas de seus arquivos PDF de forma rápida e privada."
-publishDate: "2026-09-05"
+publishDate: "2026-04-23"
 category: "PDF"
 keywords: ["dividir pdf", "extrair paginas pdf", "remover folha branca pdf", "fatiar pdf grande"]
 ---

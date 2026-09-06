@@ -1,7 +1,7 @@
 ---
 title: "Vantagens de APIs de compressão de documentos hospedadas localmente"
 description: "Saiba como APIs locais privadas de compactação evitam dependências de redes externas e aumentam a velocidade operacional de ERPs."
-publishDate: "2026-09-05"
+publishDate: "2025-12-12"
 category: "B2B / APIs"
 keywords: ["api compressao pdf", "comprimir pdf lote", "api de documentos offline", "compressao local segura"]
 ---
@@ -17,5 +17,5 @@ Nossas APIs de compressão e manipulação funcionam localmente, eliminando a le
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[💼 ADQUIRA SDK LOCAL DE PROCESSAMENTO PDF]</span>
   Garanta o faturamento ininterrupto do seu sistema integrando nossos SDKs estáticos offline com retenção zero de arquivos.
-  <a href="mailto:contato@cofreutil.com.br?subject=Orçamento de SDK de PDF Offline" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Orçamento de SDK PDF →</a>
+  <a href="mailto:contato@grupows.com?subject=Orçamento de SDK de PDF Offline" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Orçamento de SDK PDF →</a>
 </div>

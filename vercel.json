@@ -5,6 +5,16 @@
       "source": "/ferramentas/gerador-de-senhas-fortes",
       "destination": "/ferramentas/gerador-senhas",
       "permanent": true
+    },
+    {
+      "source": "/ferramentas/converter-audio",
+      "destination": "/ferramentas",
+      "permanent": false
+    },
+    {
+      "source": "/ferramentas/validador-cnpj",
+      "destination": "/ferramentas",
+      "permanent": false
     }
   ],
   "headers": [

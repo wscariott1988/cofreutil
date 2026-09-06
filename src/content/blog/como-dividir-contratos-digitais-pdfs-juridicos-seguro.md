@@ -1,7 +1,7 @@
 ---
 title: "Como dividir contratos digitais e PDFs jurídicos de forma segura"
 description: "Saiba como fatiar contratos judiciais confidenciais e minutas societárias em PDFs menores com total segurança legal sob a LGPD."
-publishDate: "2026-09-05"
+publishDate: "2026-07-07"
 category: "PDF"
 keywords: ["dividir pdf", "separar pdf", "contratos pdf juridicos", "fatiar pdf seguro"]
 ---

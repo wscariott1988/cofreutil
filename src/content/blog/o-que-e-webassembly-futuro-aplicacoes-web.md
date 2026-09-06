@@ -1,7 +1,7 @@
 ---
 title: "O que é WebAssembly e por que ele é o futuro dos apps de navegador?"
 description: "Descubra o funcionamento técnico do WebAssembly (WASM) e por que ele viabiliza ferramentas de altíssima performance diretamente na RAM do cliente."
-publishDate: "2026-09-05"
+publishDate: "2026-02-13"
 category: "Dados & Dev"
 keywords: ["o que e webassembly", "o que e wasm", "rodar compilado no navegador", "performance web"]
 ---

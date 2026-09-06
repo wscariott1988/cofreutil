@@ -1,7 +1,7 @@
 ---
 title: "Como fatiar e extrair páginas específicas de um PDF volumoso"
 description: "Saiba como separar e extrair páginas de relatórios em PDF pesados de forma rápida, sem carregar seus arquivos em servidores na nuvem."
-publishDate: "2026-09-05"
+publishDate: "2026-06-22"
 category: "PDF"
 keywords: ["dividir pdf", "separar pdf", "fatiar pdf grande", "extrair paginas pdf"]
 ---

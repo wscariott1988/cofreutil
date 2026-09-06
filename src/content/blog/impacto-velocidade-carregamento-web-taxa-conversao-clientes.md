@@ -1,7 +1,7 @@
 ---
 title: "O Impacto da Velocidade de Carregamento Web na Taxa de Conversão de Clientes"
 description: "Como otimizar a velocidade de seu site corporativo para maximizar a conversão de leads e satisfazer o algoritmo Core Web Vitals do Google."
-publishDate: "2026-09-05"
+publishDate: "2026-02-22"
 category: "B2B / APIs"
 keywords: ["velocidade de carregamento site", "core web vitals google", "maximizar conversão de leads", "otimizar performance seo"]
 ---

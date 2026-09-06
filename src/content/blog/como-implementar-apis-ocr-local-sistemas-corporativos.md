@@ -1,7 +1,7 @@
 ---
 title: "Como implementar APIs de OCR local para sistemas corporativos privados"
 description: "Descubra as vantagens operacionais e de privacidade ao integrar APIs de OCR estritamente locais em seus sistemas corporativos ERP e CRM."
-publishDate: "2026-09-05"
+publishDate: "2026-05-20"
 category: "B2B / APIs"
 keywords: ["api ocr", "ocr local seguro", "ocr offline em lote", "extrair texto api b2b"]
 ---
@@ -17,5 +17,5 @@ Oferecemos soluções de APIs de OCR local baseadas em WebAssembly e inteligênc
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[💼 CONEXÃO B2B: SOLICITE ORÇAMENTO DE API OCR]</span>
   Precisa processar milhares de comprovantes por minuto em lote local de forma 100% segura? Entre em contato para integrarmos nossa API ao seu sistema de faturamento.
-  <a href="mailto:contato@cofreutil.com.br?subject=Orçamento de API de OCR Local" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Solicitar Orçamento de API →</a>
+  <a href="mailto:contato@grupows.com?subject=Orçamento de API de OCR Local" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Solicitar Orçamento de API →</a>
 </div>

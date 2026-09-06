@@ -1,7 +1,7 @@
 ---
 title: "Por que os programadores preferem geradores de senhas offline"
 description: "Descubra por que profissionais de engenharia de software evitam geradores de senhas em nuvem e utilizam apenas geradores locais."
-publishDate: "2026-09-05"
+publishDate: "2025-12-30"
 category: "Segurança"
 keywords: ["gerador de senhas offline", "gerador de chaves", "seguranca para programadores", "senhas locais"]
 ---

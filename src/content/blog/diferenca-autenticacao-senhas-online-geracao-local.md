@@ -1,7 +1,7 @@
 ---
 title: "Entenda a diferença entre autenticação de senhas online e geração local"
 description: "Saiba por que o ato de autenticar senhas em contas exige rede, enquanto a criação de novas senhas deve ser idealmente 100% offline."
-publishDate: "2026-09-05"
+publishDate: "2026-03-18"
 category: "Segurança"
 keywords: ["gerador de senhas", "senhas fortes", "autenticacao de senhas", "gerador de chaves"]
 ---

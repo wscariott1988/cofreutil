@@ -1,7 +1,7 @@
 ---
 title: "Como Automatizar a Compressão de PDFs em Lote na sua Empresa"
 description: "Saiba como automatizar o processamento e a compressão de grandes volumes de documentos PDF de forma segura, mantendo a conformidade com a LGPD."
-publishDate: "2026-09-05"
+publishDate: "2026-08-27"
 category: "B2B / APIs"
 keywords: ["comprimir pdf em lote", "api de compressao de pdf", "automatizar processamento pdf", "comprimir pdf desenvolvedor"]
 ---
@@ -16,5 +16,5 @@ Se a sua empresa precisa integrar uma API rápida, segura e escalável para dimi
   <span class="text-xs text-zinc-500 font-mono block mb-2">[⚡ SOLUÇÃO CORPORATIVA]</span>
   <h3 class="text-lg font-bold text-white mb-2">Precisa de Compressão em Lote ou API Privada?</h3>
   <p class="text-zinc-400 text-sm mb-4">Desenvolvemos APIs personalizadas de compressão e manipulação local de PDFs com conformidade absoluta de dados para o seu sistema.</p>
-  <a href="mailto:contato@cofreutil.com.br?subject=Orçamento de API de PDF em Lote" class="inline-block bg-white text-black px-4 py-2 text-xs font-bold hover:bg-zinc-200 transition-colors">Solicitar Orçamento de API →</a>
+  <a href="mailto:contato@grupows.com?subject=Orçamento de API de PDF em Lote" class="inline-block bg-white text-black px-4 py-2 text-xs font-bold hover:bg-zinc-200 transition-colors">Solicitar Orçamento de API →</a>
 </div>

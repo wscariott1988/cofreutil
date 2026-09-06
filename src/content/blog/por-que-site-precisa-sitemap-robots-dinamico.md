@@ -1,7 +1,7 @@
 ---
 title: "Por que seu Site Precisa de um Sitemap Automático e Robots Dinâmico para Rankear Bem"
 description: "Aprenda a importância das diretivas automatizadas de rastreamento de SEO técnico e como elas aceleram a indexação de páginas novas no Google."
-publishDate: "2026-09-05"
+publishDate: "2025-12-24"
 category: "Dados & Dev"
 keywords: ["sitemap automatico", "robots.txt dinamico", "otimizacao de seo tecnico", "indexacao de site"]
 ---

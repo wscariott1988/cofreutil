@@ -1,7 +1,7 @@
 ---
 title: "O que é WebAssembly (WASM) e Como ele Protege sua Navegação na Web"
 description: "Entenda o conceito por trás do formato binário do WebAssembly e de que forma essa tecnologia revolucionária une velocidade nativa e segurança digital."
-publishDate: "2026-09-05"
+publishDate: "2026-02-10"
 category: "Segurança"
 keywords: ["webassembly", "como funciona wasm", "segurança do navegador", "privacidade de dados"]
 ---

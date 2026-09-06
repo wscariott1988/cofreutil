@@ -1,7 +1,7 @@
 ---
 title: "Como funciona a encriptação de senhas local no navegador"
 description: "Entenda como a Web Crypto API nativa permite gerar e encriptar senhas de forma imbatível sem sair do navegador do usuário."
-publishDate: "2026-09-05"
+publishDate: "2026-06-13"
 category: "Segurança"
 keywords: ["encriptacao de senhas local", "gerador de senhas offline", "criptografia web crypto api", "senhas seguras"]
 ---

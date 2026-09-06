@@ -119,12 +119,6 @@ const jsonLd = {
     transition: opacity 0.18s ease, transform 0.18s ease;
   }
 
-  .blog-card.is-hidden {
-    opacity: 0;
-    transform: translateY(10px);
-    pointer-events: none;
-  }
-
   .blog-card.is-reveal {
     animation: blogCardIn 0.22s ease both;
   }
@@ -147,6 +141,14 @@ const jsonLd = {
     const cards = Array.from(document.querySelectorAll('[data-blog-category]'));
     if (tabs.length === 0 || cards.length === 0) return;
 
+const normalizeCategory = (value: string) =>
+      (value ?? '')
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, ' ')
+        .replace(/^b2b$/i, 'b2b / apis')
+        .replace(/^b2b\s*\/\s*apis$/, 'b2b / apis');
+
     const setActiveTab = (value: string) => {
       tabs.forEach((tab) => {
         const active = tab.dataset.blogTab === value;
@@ -156,18 +158,18 @@ const jsonLd = {
     };
 
     const applyFilter = (value: string) => {
+      const normalized = normalizeCategory(value);
       cards.forEach((card) => {
-        const match = value === 'todos' || card.dataset.blogCategory === value;
+        const cardCategory = normalizeCategory(card.dataset.blogCategory ?? '');
+        const match = normalized === 'todos' || cardCategory === normalized;
         if (match) {
+          card.classList.remove('hidden');
           card.hidden = false;
-          card.classList.remove('is-hidden');
           card.classList.add('is-reveal');
         } else {
+          card.hidden = true;
+          card.classList.add('hidden');
           card.classList.remove('is-reveal');
-          card.classList.add('is-hidden');
-          window.setTimeout(() => {
-            if (card.classList.contains('is-hidden')) card.hidden = true;
-          }, 200);
         }
       });
     };

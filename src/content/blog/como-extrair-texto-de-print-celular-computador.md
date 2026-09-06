@@ -1,7 +1,7 @@
 ---
 title: "Como Extrair Texto de Print (Celular ou Computador)"
 description: "Veja como capturar as letras e strings de texto contidas em prints de redes sociais, mensagens ou slides de palestras em apenas um passo."
-publishDate: "2026-09-05"
+publishDate: "2026-06-25"
 category: "Mídia"
 keywords: ["extrair texto de print", "imagem para texto online", "print para texto"]
 ---

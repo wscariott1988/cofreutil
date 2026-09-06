@@ -1,7 +1,7 @@
 ---
 title: "Guia Prático: Como identificar e corrigir erros sintáticos em arquivos JSON"
 description: "Identifique chaves ausentes, vírgulas duplicadas ou aspas inválidas em seus payloads JSON de forma local e com total segurança de privacidade."
-publishDate: "2026-09-05"
+publishDate: "2026-05-23"
 category: "Dados & Dev"
 keywords: ["validar json", "erros sintaticos json", "depurar json online", "json parser offline"]
 ---

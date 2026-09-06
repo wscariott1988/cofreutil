@@ -1,7 +1,7 @@
 ---
 title: "O perigo invisível de validar dados fiscais (CPF/CNPJ) em sites com cookies"
 description: "Entenda como sites de validação comuns usam cookies de publicidade para capturar chaves fiscais de clientes consultados de forma ilegal."
-publishDate: "2026-09-05"
+publishDate: "2026-01-14"
 category: "Segurança"
 keywords: ["validar cnpj online", "validador de cnpj", "perigo de cookies", "privacidade fiscal"]
 ---

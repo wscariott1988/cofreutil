@@ -1,7 +1,7 @@
 ---
 title: "O que é WebAssembly (WASM) e Como ele Protege sua Privacidade de Dados?"
 description: "Entenda o que é a tecnologia de WebAssembly (WASM) e por que ela representa o maior salto de segurança de dados na internet moderna."
-publishDate: "2026-09-05"
+publishDate: "2026-02-07"
 category: "Segurança"
 keywords: ["o que e webassembly", "wasm como funciona", "processamento local da web", "privacidade de dados wasm"]
 ---

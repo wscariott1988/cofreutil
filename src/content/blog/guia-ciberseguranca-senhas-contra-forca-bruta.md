@@ -1,7 +1,7 @@
 ---
 title: "Guia de Cibersegurança: Como criar senhas indestrutíveis contra ataques de força bruta"
 description: "Descubra as regras de tamanho e entropia necessárias para proteger suas contas contra ataques automatizados de força bruta de forma offline."
-publishDate: "2026-09-05"
+publishDate: "2026-03-06"
 category: "Segurança"
 keywords: ["gerador de senhas", "senhas fortes", "ataques de forca bruta", "senhas indestrutiveis"]
 ---

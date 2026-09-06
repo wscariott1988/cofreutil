@@ -1,7 +1,7 @@
 ---
 title: "Como processar arquivos em lote na sua empresa sem violar a LGPD"
 description: "Saiba como fatiar, juntar ou comprimir relatórios corporativos em lotes automatizados com total conformidade jurídica nativa."
-publishDate: "2026-09-05"
+publishDate: "2026-04-29"
 category: "B2B / APIs"
 keywords: ["processar pdf lote", "api de compressao offline", "conformidade lgpd lote", "processamento local corporativo"]
 ---
@@ -17,5 +17,5 @@ Nossos módulos corporativos de fatiamento e compressão em lotes são desenhado
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[💼 DEMANDA CORPORATIVA EM LOTE DE PDF]</span>
   Automatize a compressão e junção de milhares de certidões e notas da sua empresa com total segurança regulatória local.
-  <a href="mailto:contato@cofreutil.com.br?subject=Orçamento de Automação de Arquivos em Lote" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Contatar Equipe de Integração →</a>
+  <a href="mailto:contato@grupows.com?subject=Orçamento de Automação de Arquivos em Lote" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Contatar Equipe de Integração →</a>
 </div>

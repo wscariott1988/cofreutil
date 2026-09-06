@@ -1,7 +1,7 @@
 ---
 title: "O que são metadados Exif e por que removê-los antes de publicar fotos"
 description: "Saiba o que são metadados de fotos (Exif) e o perigo de vazar coordenadas GPS exatas e detalhes de dispositivos ao enviar imagens na internet."
-publishDate: "2026-09-05"
+publishDate: "2026-02-04"
 category: "Segurança"
 keywords: ["remover dados exif", "metadados de foto", "limpar localizacao de fotos", "privacidade de fotos"]
 ---

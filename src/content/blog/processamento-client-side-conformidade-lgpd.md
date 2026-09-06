@@ -1,7 +1,7 @@
 ---
 title: "Como o processamento client-side protege dados confidenciais sob a LGPD"
 description: "Aprenda como a arquitetura técnica client-side evita vazamentos de dados, eliminando custos de infraestrutura e multas da LGPD."
-publishDate: "2026-09-05"
+publishDate: "2025-12-18"
 category: "Segurança"
 keywords: ["processamento client-side", "conformidade lgpd", "privacidade de dados", "seguranca corporativa"]
 ---

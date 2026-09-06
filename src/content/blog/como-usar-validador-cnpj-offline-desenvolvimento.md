@@ -1,7 +1,7 @@
 ---
 title: "Como usar o validador de CNPJ offline para agilizar o desenvolvimento"
 description: "Agilize a depuração de seus formulários e rotinas fiscais testando CNPJs com um validador local de carregamento instantâneo."
-publishDate: "2026-09-05"
+publishDate: "2026-04-11"
 category: "Dados & Dev"
 keywords: ["validador de cnpj", "validar cnpj online", "cnpj de teste", "validador offline"]
 ---

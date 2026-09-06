@@ -1,7 +1,7 @@
 ---
 title: "Como Limpar Metadados e Remover a Localização de Fotos Online"
 description: "Saiba como o EXIF revela onde e quando suas fotos foram tiradas e como remover esses dados de forma 100% local antes de postar na internet."
-publishDate: "2026-09-05"
+publishDate: "2026-05-08"
 category: "Mídia"
 keywords: ["limpar metadados de foto", "remover dados exif", "remover localizacao de foto", "metadados imagem"]
 ---
@@ -17,5 +17,5 @@ Para proteger sua privacidade e a de sua família, você deve expurgar os dados 
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 HIGIENIZADOR EXIF OFFLINE]</span>
   Arraste suas fotos para remover coordenadas de geolocalização e especificações de aparelhos de forma instantânea e privada.
-  <a href="/ferramentas/limpar-metadados-foto" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Limpar Metadados de Fotos →</a>
+  <a href="/ferramentas/limpador-de-metadados-exif" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Limpar Metadados de Fotos →</a>
 </div>

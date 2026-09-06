@@ -1,7 +1,7 @@
 ---
 title: "Como verificar se uma estrutura de dados JSON é válida localmente"
 description: "Descubra como validar a estrutura de dados e formatações complexas de JSON utilizando analisadores locais baseados no seu navegador."
-publishDate: "2026-09-05"
+publishDate: "2026-03-27"
 category: "Dados & Dev"
 keywords: ["validar json", "formatador json", "estrutura json offline", "formatar json seguro"]
 ---

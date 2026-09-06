@@ -1,7 +1,7 @@
 ---
 title: "Como reduzir o consumo de banda de servidores usando compressão local"
 description: "Saiba como empresas inovadoras economizam milhares de gigabytes de transferências de rede comprimindo arquivos localmente antes do upload."
-publishDate: "2026-09-05"
+publishDate: "2026-04-26"
 category: "B2B / APIs"
 keywords: ["comprimir pdf local", "otimizar fotos local", "economizar banda servidor", "compressao descentralizada"]
 ---
@@ -17,5 +17,5 @@ Ao integrar nossos compressores locais em seu funil de upload, as imagens e arqu
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[💼 ECONOMIZE EM INFRAESTRUTURA DE NUVEM]</span>
   Adquira nossa biblioteca de compressão no client-side e reduza seus custos de armazenamento e banda de servidores.
-  <a href="mailto:contato@cofreutil.com.br?subject=Orçamento de Compressor de Arquivos Client-Side" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Solicitar Orçamento →</a>
+  <a href="mailto:contato@grupows.com?subject=Orçamento de Compressor de Arquivos Client-Side" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Solicitar Orçamento →</a>
 </div>

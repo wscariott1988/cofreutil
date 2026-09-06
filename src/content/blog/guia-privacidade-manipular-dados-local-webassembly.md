@@ -1,7 +1,7 @@
 ---
 title: "Guia de Privacidade: Como Manipular Dados de Clientes de Forma 100% Local com WebAssembly"
 description: "Descubra como o WebAssembly permite que empresas e desenvolvedores criem fluxos de processamento robustos em total conformidade regulatória com a LGPD."
-publishDate: "2026-09-05"
+publishDate: "2026-02-25"
 category: "Segurança"
 keywords: ["webassembly", "lgpd", "privacidade de dados corporativa", "processamento local client-side"]
 ---

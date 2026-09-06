@@ -1,7 +1,7 @@
 ---
 title: "Como Validar Documentos e Formatar Códigos com Segurança no Navegador"
 description: "Descubra como validar dados confidenciais e formatar códigos JSON de forma segura sem transferir seus arquivos para servidores de terceiros."
-publishDate: "2026-09-05"
+publishDate: "2026-04-02"
 category: "Dados & Dev"
 keywords: ["validar json", "formatar codigo", "validador de cnpj", "validar documentos offline"]
 ---

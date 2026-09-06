@@ -1,7 +1,7 @@
 ---
 title: "Como Gerar QR Code do WhatsApp para Imprimir (Grátis)"
 description: "Aprenda a criar um código QR direcionando para o seu WhatsApp de forma 100% segura, local e gratuita para expor no balcão da sua loja ou em cartões de visita."
-publishDate: "2026-09-05"
+publishDate: "2026-05-29"
 category: "Dados & Dev"
 keywords: ["gerar qr code whatsapp", "qr code do whatsapp para imprimir", "qr code de whatsapp offline"]
 ---

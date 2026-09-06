@@ -1,7 +1,7 @@
 ---
 title: "Otimização de Imagens para Web: Como converter fotos PNG para formato WEBP"
 description: "Descubra as vantagens do formato WEBP do Google e aprenda a otimizar o carregamento de sites convertendo suas imagens localmente."
-publishDate: "2026-09-05"
+publishDate: "2026-01-26"
 category: "Mídia"
 keywords: ["converter png para webp", "converter imagem", "otimizacao de fotos webp", "imagens mais leves"]
 ---
@@ -17,5 +17,5 @@ Com o conversor estático do CofreUtil, você carrega suas imagens em PNG e as c
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 CONVERSOR PNG PARA WEBP LOCAL]</span>
   Gere imagens otimizadas para internet sem limites de tamanho ou uploads e com privacidade absoluta de cofre.
-  <a href="/ferramentas/converter-imagem" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Converter para WEBP →</a>
+  <a href="/ferramentas/conversor-de-imagem" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Converter para WEBP →</a>
 </div>

@@ -1,7 +1,7 @@
 ---
 title: "Como criar uma senha de alta segurança e fácil de memorizar"
 description: "Descubra técnicas fáceis de memorização de chaves de segurança geradas por algoritmos criptográficos robustos de forma privada."
-publishDate: "2026-09-05"
+publishDate: "2026-07-13"
 category: "Segurança"
 keywords: ["criar senha segura", "senha facil de memorizar", "gerador de senhas", "gerador de chaves"]
 ---

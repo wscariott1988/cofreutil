@@ -1,7 +1,7 @@
 ---
 title: "Como comprimir arquivos PDF pesados direto no Chrome sem perder qualidade"
 description: "Reduza drasticamente o peso de seus relatórios e arquivos em PDF utilizando compressores estáticos de carregamento local na memória."
-publishDate: "2026-09-05"
+publishDate: "2026-08-21"
 category: "PDF"
 keywords: ["comprimir pdf", "diminuir tamanho pdf", "pdf leve offline", "compactar pdf seguro"]
 ---

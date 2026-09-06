@@ -1,7 +1,7 @@
 ---
 title: "Como Validar Documentos e Listas Sem Expor Dados Pessoais na Web"
 description: "Como validar CNPJs, formatar códigos JSON e higienizar listas de dados confidenciais com segurança, eliminando o tráfego de servidores externos."
-publishDate: "2026-09-05"
+publishDate: "2026-03-30"
 category: "Dados & Dev"
 keywords: ["validador de cnpj offline", "formatar json seguro", "validar dados lgpd", "higienizar listas de e-mails"]
 ---
@@ -16,5 +16,5 @@ Para manter a segurança jurídica da sua operação, utilize apenas validadores
   <span class="text-xs text-zinc-500 font-mono block mb-2">[📂 DADOS SEGUROS]</span>
   <h3 class="text-lg font-bold text-white mb-2">Utilize Nossos Validadores Locais</h3>
   <p class="text-zinc-400 text-sm mb-4">Formate arquivos JSON, limpe repetições e valide CNPJs em nossa interface brutalista ultra-segura sem vazar dados.</p>
-  <a href="/ferramentas/validador-cnpj" class="inline-block bg-white text-black px-4 py-2 text-xs font-bold hover:bg-zinc-200 transition-colors">Acessar Validador de CNPJ →</a>
+  <a href="/ferramentas" class="inline-block bg-white text-black px-4 py-2 text-xs font-bold hover:bg-zinc-200 transition-colors">Acessar Validador de CNPJ →</a>
 </div>

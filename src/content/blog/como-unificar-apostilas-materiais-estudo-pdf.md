@@ -1,7 +1,7 @@
 ---
 title: "Como unificar apostilas e materiais de estudo em PDF sem app pago"
 description: "Saiba como agrupar capítulos de apostilas, slides de aulas e PDFs de estudo em um único arquivo unificado de forma grátis e rápida."
-publishDate: "2026-09-05"
+publishDate: "2026-04-17"
 category: "PDF"
 keywords: ["juntar pdf", "mesclar pdf gratis", "unificar materiais estudo pdf", "mesclar apostilas gratis"]
 ---

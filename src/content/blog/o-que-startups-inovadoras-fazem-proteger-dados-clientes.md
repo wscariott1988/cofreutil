@@ -1,7 +1,7 @@
 ---
 title: "O que as startups inovadoras estão fazendo para proteger os dados de seus clientes"
 description: "Conheça a tendência de arquitetura descentralizada com processamento local (client-side) adotada por startups de elite de tecnologia."
-publishDate: "2026-09-05"
+publishDate: "2026-02-01"
 category: "Segurança"
 keywords: ["startups seguranca de dados", "privacidade startups", "processamento local startups", "conformidade lgpd"]
 ---

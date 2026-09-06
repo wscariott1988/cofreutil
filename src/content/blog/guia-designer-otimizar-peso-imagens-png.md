@@ -1,7 +1,7 @@
 ---
 title: "Guia do Designer: Como otimizar o peso visual de imagens PNG sem distorcer pixels"
 description: "Descubra técnicas avançadas de compressão e conversão de PNG pesado para WEBP leve sem degradar a qualidade cromática de pixels."
-publishDate: "2026-09-05"
+publishDate: "2026-03-03"
 category: "Mídia"
 keywords: ["converter png para webp", "otimizar fotos png", "formato webp designer", "compressao de imagens"]
 ---
@@ -17,5 +17,5 @@ No CofreUtil, você otimiza o peso das imagens dos seus layouts de forma estéri
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 CONVERSOR PNG PARA WEBP PROFESSIONAL]</span>
   Converta ativos visuais pesados com precisão cromática de pixels e de forma 100% segura localmente.
-  <a href="/ferramentas/converter-imagem" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Converter para WEBP →</a>
+  <a href="/ferramentas/conversor-de-imagem" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Converter para WEBP →</a>
 </div>

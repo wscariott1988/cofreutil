@@ -1,7 +1,7 @@
 ---
 title: "Como juntar certidões negativas em um único PDF para licitações"
 description: "Aprenda a unificar e organizar certidões fiscais e negativas em um único PDF compacto exigido em processos de licitações públicas."
-publishDate: "2026-09-05"
+publishDate: "2026-05-17"
 category: "PDF"
 keywords: ["juntar pdf", "mesclar certidoes pdf", "unificar pdf para licitacao", "juntar certidao negativa"]
 ---
