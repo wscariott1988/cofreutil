@@ -1,0 +1,283 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SilenceRemoverTool from '../../components/tools/SilenceRemoverTool';
+import ShareButton from '../../components/ShareButton';
+
+const toolUrl = 'https://cofreutil.com.br/ferramentas/remover-silencio';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: 'Removedor de Silêncio Inteligente de Vídeo e Áudio | CofreUtil',
+      url: toolUrl,
+      applicationCategory: 'MultimediaApplication',
+      operatingSystem: 'Any',
+      browserRequirements: 'Requires JavaScript',
+      inLanguage: 'pt-BR',
+      isAccessibleForFree: true,
+      featureList: [
+        'Remover silêncio de vídeos e áudios 100% no navegador',
+        'Detecção automática de silêncio com o filtro silencedetect do FFmpeg',
+        'Fatiamento e concatenação lossless (-c copy) sem perder qualidade',
+        'Sliders de sensibilidade de ruído (dB) e duração mínima de silêncio',
+        'Linha do tempo gráfica mostrando onde o silêncio será removido',
+        'Aceita MP4, WebM, MOV, MKV, AVI, MP3, WAV, OGG, M4A, FLAC e mais',
+      ],
+      description:
+        'Remova silêncios de vídeos e gravações de áudio 100% no navegador via FFmpeg WebAssembly local. Corte e concatenação lossless: qualidade original preservada, zero upload e zero login (LGPD).',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'BRL',
+      },
+      author: {
+        '@type': 'Person',
+        name: 'Willian Scariott',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'CofreUtil',
+        url: 'https://cofreutil.com.br',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cofreutil.com.br' },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Ferramentas',
+          item: 'https://cofreutil.com.br/#ferramentas',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Remover Silêncio',
+          item: toolUrl,
+        },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Como remover silêncio de vídeo sem perder qualidade?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Selecione o arquivo, ajuste a sensibilidade de ruído (dB) e a duração mínima de silêncio, clique em [Detectar Silêncio] e depois em [Remover Silêncio e Baixar]. O fatiamento usa -c copy: os trechos ativos são unidos sem re-encodar, preservando 100% da qualidade original.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'O que o removedor de silêncio faz com meu arquivo?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Nada sai da sua máquina. O FFmpeg roda em WebAssembly dentro do navegador e processa o arquivo inteiramente em memória. Sem upload, sem cadastro e sem servidores intermediários (conformidade LGPD).',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Quais formatos de vídeo e áudio são aceitos?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Vídeo: MP4, WebM, MOV, MKV, AVI, M4V. Áudio: MP3, WAV, OGG, M4A, FLAC, AAC, WMA e OPUS, com limite de 200MB por arquivo.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Como funciona a detecção de silêncio?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Usamos o filtro silencedetect do FFmpeg na faixa de áudio. O evento de log é monitorado para extrair os instantes de silence_start e silence_end, que definem os intervalos a serem removidos. Você controla o limiar em dB (sensibilidade) e a duração mínima do silêncio.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'O corte é realmente lossless (sem re-encode)?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sim. O fatiamento dos trechos ativos é feito com -c copy, copiando os bytes originais, e a concatenação usa o demuxer concat também com -c copy. Não há re-encodação, portanto não há degradação de qualidade nem queda de bitrate.',
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<Layout
+  title="Removedor de Silêncio de Vídeo e Áudio Online — Lossless 100% Local | CofreUtil"
+  description="Remova silêncios de vídeos e áudios grátis, 100% no navegador via FFmpeg local. Corte e concatenação lossless (-c copy) preservam a qualidade original. Zero upload e zero login."
+  keywords="remover silencio de video, cortar silencio de audio, removedor de silencio online, remover pausas de video lossless, cortar silencio mp4, remover silencio audio podcast, ffmpeg wasm navegador"
+  jsonLd={jsonLd}
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [FFmpeg Local]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Lossless]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [-c copy]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Vídeo & Áudio]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Removedor de Silêncio Inteligente de Vídeo e Áudio
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Corte pausas mortas de gravações, aulas, podcasts e reuniões —
+        100% no navegador e sem perder qualidade.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Arraste seu vídeo ou áudio (MP4, WebM, MOV, MP3, WAV, OGG e outros), ajuste a
+        sensibilidade de ruído e a duração mínima de silêncio, e o motor FFmpeg compilado
+        para WebAssembly detecta automaticamente cada pausa. Os trechos com som são
+        fatiados e unidos em modo lossless (<code class="text-white">-c copy</code>): a
+        qualidade original é copiada bit a bit, sem re-encodação. Nada é enviado a
+        servidores e nada exige cadastro.
+      </p>
+    </div>
+
+    <SilenceRemoverTool client:only="react" />
+
+    <div class="mt-8 flex justify-end">
+      <ShareButton client:only="react" />
+    </div>
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Remover silêncio de vídeo sem perder qualidade (modo lossless)
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          A maioria das ferramentas "corta pausas" re-encoda o vídeo inteiro, o que
+          derruba a nitidez e incha o arquivo. Aqui o caminho é outro: o FFmpeg detecta
+          os silêncios com o filtro <code class="text-white">silencedetect</code>,
+          fatia apenas os trechos com som usando <code class="text-white">-c copy</code> e
+          os concatena com o demuxer <code class="text-white">concat</code>. O resultado
+          mantém 100% da qualidade original, do bitrate e da taxa de quadros — só sobra
+          o conteúdo que realmente importa.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Cortar silêncio de gravações de áudio e podcasts
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Gravações de voz acumulam segundos (ou minutos) de respiros, hesitações e pausas
+          técnicas. Ajuste a sensibilidade de ruído em dB para o limiar da sua gravação e a
+          duração mínima do silêncio para preservar respiros naturais da fala. Em um clique
+          o arquivo sai enxuto, direto ao ponto, pronto para publicar.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Linha do tempo visual: você controla exatamente o que será removido
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Antes de exportar, a ferramenta renderiza uma linha do tempo gráfica: blocos
+          claros representam o som mantido e blocos cinzas, os silêncios que serão
+          removidos. Você vê, na tela, quanto tempo será economizado e pode reajustar os
+          sliders até o resultado ficar do jeito que deseja.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que remover silêncio localmente (sem subir o arquivo)?
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Conteúdo corporativo e pessoal — reuniões, aulas, depoimentos, entrevistas —
+          costuma ser confidencial. Ferramentas online tradicionais recebem o arquivo e o
+          armazenam em nuvem. O removedor do CofreUtil processa tudo com FFmpeg
+          WebAssembly dentro do seu navegador: os bytes nunca saem da sua máquina, não há
+          conta, fila ou limite de banda. É privacidade de cofre aplicada ao processamento
+          de mídia.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre o Removedor de Silêncio
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Qual é a diferença entre detectar silêncio e remover silêncio?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Detectar é analisar a faixa de áudio e marcar os intervalos de silêncio
+            (silence_start / silence_end). Remover é reconstruir o arquivo sem esses
+            intervalos. A ferramenta faz as duas coisas: a detecção roda primeiro e mostra
+            a linha do tempo; a remoção fatia e concatena os trechos ativos.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O que significam sensibilidade de ruído e duração mínima?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            A sensibilidade (dB) é o limiar de volume abaixo do qual o áudio é tratado como
+            silêncio — quanto mais negativo, mais sensível à captura de sons baixos. A
+            duração mínima define o menor silêncio a ser removido, preservando respiros e
+            pausas naturais da fala.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O corte com -c copy funciona para vídeo também?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Sim. Tanto o fatiamento dos trechos com som quanto a concatenação são feitos em
+            modo stream copy, sem decodificar e re-encodar o vídeo. O áudio e o vídeo são
+            passados por inteiro para a saída, preservando qualidade e sincronia.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Meu arquivo de vídeo ou áudio é enviado a algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. A detecção, o fatiamento e a concatenação acontecem 100% na memória do seu
+            navegador, com o motor FFmpeg compilado para WebAssembly hospedado localmente.
+            Nenhum byte sai da sua máquina (arquitetura zero-server, LGPD).
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Existe limite de uso da ferramenta?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Há um teto gratuito de 3 exportações por dia na ferramenta para manter o projeto
+            no ar. Arquivos de até 200MB são suportados. Se a ferramenta te ajuda, considere
+            apoiar via Pix — a chave aparece ao completar a primeira exportação.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+</Layout>

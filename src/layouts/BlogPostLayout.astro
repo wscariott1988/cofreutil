@@ -13,9 +13,12 @@ interface Props {
   publishDate: Date;
   category: string;
   keywords: string[];
+  author?: string;
 }
 
-const { title, description, publishDate, category, keywords } = Astro.props;
+const { title, description, publishDate, category, keywords, author } = Astro.props;
+
+const postAuthor = author || 'Willian Scariott';
 
 const post = {
   title,
@@ -54,7 +57,7 @@ const jsonLd = {
   mainEntityOfPage: canonical,
   author: {
     '@type': 'Person',
-    name: 'Willian Scariott',
+    name: postAuthor,
     url: SITE_URL,
   },
   publisher: {
@@ -106,7 +109,7 @@ const jsonLd = {
             {post.title}
           </h1>
           <p class="mt-4 font-mono text-sm text-[#A1A1AA]">
-            Escrito por <span class="font-bold text-white">Willian Scariott</span>
+            Escrito por <span class="font-bold text-white">{postAuthor}</span>
             <span class="mx-2 text-[#52525B]">•</span>
             {formattedDate}
           </p>

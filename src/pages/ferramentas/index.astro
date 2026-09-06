@@ -57,6 +57,11 @@ const categories = [
         title: 'Conversor de Áudio',
         desc: 'Converta WAV, MP3 e OGG e corte trechos 100% no navegador, sem upload. Zero servidores.',
       },
+      {
+        href: '/ferramentas/remover-silencio',
+        title: 'Removedor de Silêncio',
+        desc: 'Remova silêncios de vídeos e áudios 100% no navegador via FFmpeg local, com corte e concatenação lossless (-c copy). Zero upload.',
+      },
     ],
   },
   {
@@ -132,9 +137,9 @@ const categories = [
 
 const totalTools = categories.reduce((acc, cat) => acc + cat.items.length, 0);
 
-const title = 'Ferramentas Grátis Online | 21 Utilitários 100% Locais e Privados | CofreUtil';
+const title = 'Ferramentas Grátis Online | 22 Utilitários 100% Locais e Privados | CofreUtil';
 const description =
-  'Catálogo com 21 ferramentas online gratuitas que rodam 100% no seu navegador: conversor de imagens, juntar e dividir PDF, OCR, gerador de QR Code Pix, formatação JSON, conversor de áudio e mais. Zero upload, zero cadastro e conformidade LGPD.';
+  'Catálogo com 22 ferramentas online gratuitas que rodam 100% no seu navegador: conversor de imagens, juntar e dividir PDF, OCR, gerador de QR Code Pix, remover silêncio de vídeo e áudio, formatação JSON, conversor de áudio e mais. Zero upload, zero cadastro e conformidade LGPD.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
