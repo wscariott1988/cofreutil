@@ -17,4 +17,5 @@ Se a sua empresa precisa integrar uma API rápida, segura e escalável para dimi
   <h3 class="text-lg font-bold text-white mb-2">Precisa de Compressão em Lote ou API Privada?</h3>
   <p class="text-zinc-400 text-sm mb-4">Desenvolvemos APIs personalizadas de compressão e manipulação local de PDFs com conformidade absoluta de dados para o seu sistema.</p>
   <a href="mailto:contato@grupows.com?subject=Orçamento de API de PDF em Lote" class="inline-block bg-white text-black px-4 py-2 text-xs font-bold hover:bg-zinc-200 transition-colors">Solicitar Orçamento de API →</a>
+  <a href="/ferramentas/comprimir-pdf" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Testar Compressão Local →</a>
 </div>

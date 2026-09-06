@@ -20,6 +20,9 @@ dev-out.log
 # Scratch
 src/test2.txt
 
+# Local audit scripts
+scripts/check-cta.mjs
+
 # Environment
 .env
 .env.*

@@ -18,4 +18,5 @@ O CofreUtil desenvolveu empacotamentos estáticos em WebAssembly altamente integ
   <span class="text-white font-bold block mb-2">[💼 CONEXÃO TÉCNICA DE ENGENHARIA WASM]</span>
   Fale com nossos desenvolvedores e saiba como adquirir SDKs em WebAssembly customizados para as rotinas fiscais do seu ERP.
   <a href="mailto:contato@grupows.com?subject=Orçamento de SDK WebAssembly para ERP" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Consultar Engenharia →</a>
+  <a href="/ferramentas" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Ver Todas as Ferramentas →</a>
 </div>

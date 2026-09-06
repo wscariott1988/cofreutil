@@ -21,4 +21,5 @@ Nossa equipe técnica comercial analisa as especificações da sua demanda de fa
   <span class="text-white font-bold block mb-2">[💼 CONEXÃO DIRETA COM ENGENHARIA DE SOFTWARE]</span>
   Envie sua demanda operacional de faturamento e receba uma análise de impacto e orçamento para SDK local corporativo.
   <a href="mailto:contato@grupows.com?subject=Solicitação de Orçamento para API Privada" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Orçamento de API Privada →</a>
+  <a href="/ferramentas" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Ver Todas as Ferramentas →</a>
 </div>

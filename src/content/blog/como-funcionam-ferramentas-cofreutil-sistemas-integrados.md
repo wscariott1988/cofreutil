@@ -18,4 +18,5 @@ Enquanto servidores na nuvem tradicionais se tornam lentos à medida que mais us
   <span class="text-white font-bold block mb-2">[💼 SOLICITE API DE INTEGRABILIDADE CORPORATIVA]</span>
   Fale com nossos especialistas comerciais e descubra o plano de transição técnica ideal para sua rede de faturamento.
   <a href="mailto:contato@grupows.com?subject=Integração de SDK em Sistemas Corporativos" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Consultar Engenharia →</a>
+  <a href="/ferramentas" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Ver Todas as Ferramentas →</a>
 </div>

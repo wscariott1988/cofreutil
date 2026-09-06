@@ -17,5 +17,5 @@ Adotar e promover o uso de softwares com processamento 100% no cliente (client-s
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 SEGURANÇA MÁXIMA PARA SEU TIME]</span>
   Adote ferramentas seguras e livres de rastreamento no dia a dia operacional do seu escritório de negócios.
-  <a href="/" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Ver Todas as Ferramentas →</a>
+  <a href="/ferramentas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Ver Todas as Ferramentas →</a>
 </div>

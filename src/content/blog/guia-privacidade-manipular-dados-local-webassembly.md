@@ -17,5 +17,5 @@ Ao projetar aplicações que utilizam WebAssembly (WASM), todo o tratamento, fil
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 COMPLIANCE LGPD INATO]</span>
   Use e compartilhe ferramentas profissionais de processamento que protegem as informações sigilosas de clientes por arquitetura.
-  <a href="/" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Navegar com Segurança →</a>
+  <a href="/ferramentas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Navegar com Segurança →</a>
 </div>

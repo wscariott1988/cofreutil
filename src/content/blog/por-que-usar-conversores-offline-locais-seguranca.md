@@ -23,7 +23,7 @@ Conheça nosso catálogo de ferramentas e descubra como o processamento de utili
 
 <div class="border border-zinc-800 p-6 bg-zinc-950 my-6 rounded-none text-center">
   <p class="text-white font-mono text-sm mb-4">[🔒 CONFIRA NOSSO PORTAL DE UTILITÁRIOS LOCAIS GRÁTIS]</p>
-  <a href="/" class="inline-block bg-white text-black font-bold px-6 py-3 rounded-none text-sm font-mono hover:bg-zinc-200 transition-colors">
+  <a href="/ferramentas" class="inline-block bg-white text-black font-bold px-6 py-3 rounded-none text-sm font-mono hover:bg-zinc-200 transition-colors">
     ACESSAR HOME DO COFREUTIL →
   </a>
 </div>

@@ -18,4 +18,5 @@ Oferecemos soluções de APIs de OCR local baseadas em WebAssembly e inteligênc
   <span class="text-white font-bold block mb-2">[💼 CONEXÃO B2B: SOLICITE ORÇAMENTO DE API OCR]</span>
   Precisa processar milhares de comprovantes por minuto em lote local de forma 100% segura? Entre em contato para integrarmos nossa API ao seu sistema de faturamento.
   <a href="mailto:contato@grupows.com?subject=Orçamento de API de OCR Local" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Solicitar Orçamento de API →</a>
+  <a href="/ferramentas/extrair-texto-imagem" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Testar OCR no Navegador →</a>
 </div>

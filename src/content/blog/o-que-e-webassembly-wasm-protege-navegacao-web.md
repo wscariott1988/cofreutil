@@ -17,5 +17,5 @@ O grande trunfo do WebAssembly em termos de proteção digital é que ele opera 
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 ECOSSISTEMA SEGURO COFREUTIL]</span>
   Navegue em nossa rede de ferramentas e conheça o verdadeiro significado de utilitários construídos com privacidade por design.
-  <a href="/" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Página Inicial →</a>
+  <a href="/ferramentas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Página Inicial →</a>
 </div>

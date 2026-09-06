@@ -17,5 +17,5 @@ Startups que comprovam que não transitam dados dos usuários ganham a confianç
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 INTEGRAÇÃO DE ARQUITETURA PRIVADA]</span>
   Construa sua plataforma de utilitários rápidos com total segurança local e livre de custos de processamento em nuvem.
-  <a href="/" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Acessar CofreUtil →</a>
+  <a href="/ferramentas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Acessar CofreUtil →</a>
 </div>

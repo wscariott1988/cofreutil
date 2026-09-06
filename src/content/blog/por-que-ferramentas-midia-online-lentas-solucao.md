@@ -17,5 +17,5 @@ A tecnologia moderna permite que executemos engines de processamento nativo dire
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 TECNOLOGIA ZERO COOKIES COFREUTIL]</span>
   Descubra utilitários ultrarápidos que respeitam sua banda de internet, sua máquina e seus dados pessoais sob a LGPD.
-  <a href="/" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Conhecer Nossas Ferramentas →</a>
+  <a href="/ferramentas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Conhecer Nossas Ferramentas →</a>
 </div>

@@ -18,4 +18,5 @@ Além de ajudar os buscadores legítimos, ter um endpoint que controle dinamicam
   <span class="text-white font-bold block mb-2">[🔒 BLOG TÉCNICO COFREUTIL]</span>
   Explore nossos guias e arquiteturas estáticas para se posicionar com alto desempenho e segurança de código na web moderna.
   <a href="/blog" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Ir para o Blog →</a>
+  <a href="/ferramentas" class="inline-block mt-4 ml-2 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Ver Todas as Ferramentas →</a>
 </div>

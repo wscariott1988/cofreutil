@@ -17,5 +17,5 @@ Nossa filosofia estática descentralizada permite que tarefas pesadas operem na 
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 TECNOLOGIA VERDE E SUSTENTÁVEL]</span>
   Adote utilitários sem servidor com processamento local eficiente, colaborando com a pegada de carbono de tecnologia.
-  <a href="/" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Acessar CofreUtil →</a>
+  <a href="/ferramentas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Acessar CofreUtil →</a>
 </div>

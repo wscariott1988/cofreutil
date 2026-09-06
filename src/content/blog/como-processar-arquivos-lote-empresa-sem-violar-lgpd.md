@@ -18,4 +18,5 @@ Nossos módulos corporativos de fatiamento e compressão em lotes são desenhado
   <span class="text-white font-bold block mb-2">[💼 DEMANDA CORPORATIVA EM LOTE DE PDF]</span>
   Automatize a compressão e junção de milhares de certidões e notas da sua empresa com total segurança regulatória local.
   <a href="mailto:contato@grupows.com?subject=Orçamento de Automação de Arquivos em Lote" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Contatar Equipe de Integração →</a>
+  <a href="/ferramentas" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Ver Todas as Ferramentas →</a>
 </div>

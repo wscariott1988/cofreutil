@@ -18,4 +18,5 @@ A tecnologia estéril de manipulação de PDFs do CofreUtil permite que você fa
   <span class="text-white font-bold block mb-2">[💼 CONEXÃO COM SISTEMAS DE FATURAMENTO]</span>
   Adquira nossos módulos de manipulação de PDF em lote integrados para ERPs e garanta a segurança fiscal da sua empresa.
   <a href="mailto:contato@grupows.com?subject=Integração de Faturamento PDF em Lote" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Consultar Integração →</a>
+  <a href="/ferramentas/juntar-pdf" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Testar Juntar PDF →</a>
 </div>

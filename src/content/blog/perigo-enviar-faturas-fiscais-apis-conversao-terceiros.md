@@ -18,4 +18,5 @@ Nossa API privada local realiza a leitura e conversão de PDFs de faturamento de
   <span class="text-white font-bold block mb-2">[💼 SOLICITE API DE CONVERSÃO EXCLUSIVA]</span>
   Substitua APIs de PDF inseguras na nuvem por nosso módulo proprietário local de altíssima performance para ERPs comerciais.
   <a href="mailto:contato@grupows.com?subject=Orçamento de API de PDF Privada" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Orçamento de API de PDF →</a>
+  <a href="/ferramentas/sanitizador-pdf" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Testar Sanitizador de PDF →</a>
 </div>

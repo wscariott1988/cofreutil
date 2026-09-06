@@ -18,4 +18,5 @@ Ao integrar nossos compressores locais em seu funil de upload, as imagens e arqu
   <span class="text-white font-bold block mb-2">[💼 ECONOMIZE EM INFRAESTRUTURA DE NUVEM]</span>
   Adquira nossa biblioteca de compressão no client-side e reduza seus custos de armazenamento e banda de servidores.
   <a href="mailto:contato@grupows.com?subject=Orçamento de Compressor de Arquivos Client-Side" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Solicitar Orçamento →</a>
+  <a href="/ferramentas/comprimir-pdf" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Testar Compressor de PDF →</a>
 </div>

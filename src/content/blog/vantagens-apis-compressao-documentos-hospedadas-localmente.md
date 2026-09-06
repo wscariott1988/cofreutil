@@ -18,4 +18,5 @@ Nossas APIs de compressão e manipulação funcionam localmente, eliminando a le
   <span class="text-white font-bold block mb-2">[💼 ADQUIRA SDK LOCAL DE PROCESSAMENTO PDF]</span>
   Garanta o faturamento ininterrupto do seu sistema integrando nossos SDKs estáticos offline com retenção zero de arquivos.
   <a href="mailto:contato@grupows.com?subject=Orçamento de SDK de PDF Offline" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Orçamento de SDK PDF →</a>
+  <a href="/ferramentas/comprimir-pdf" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Testar Compressão Grátis →</a>
 </div>

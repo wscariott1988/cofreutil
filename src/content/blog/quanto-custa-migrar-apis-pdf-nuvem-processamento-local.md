@@ -18,4 +18,5 @@ Ao implementar nosso SDK local privado em WebAssembly ou API local offline, o cu
   <span class="text-white font-bold block mb-2">[💼 REDUZA SEUS CUSTOS DE API DE PDF EM ATÉ 90%]</span>
   Fale com nosso time de arquitetura de software B2B e saiba como migrar seus fluxos de faturamento para processamento local privado de custo previsível.
   <a href="mailto:contato@grupows.com?subject=Migração de API de PDF para Local" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Falar com Especialistas →</a>
+  <a href="/ferramentas/comprimir-pdf" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Testar Compressão Local →</a>
 </div>

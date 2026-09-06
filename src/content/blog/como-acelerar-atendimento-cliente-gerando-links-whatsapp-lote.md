@@ -18,4 +18,5 @@ A tecnologia do CofreUtil permite a criação de links e QR Codes locais de What
   <span class="text-white font-bold block mb-2">[💼 CONEXÃO COM SISTEMAS DE ATENDIMENTO COMERCIAL]</span>
   Adquira nossa biblioteca corporativa para geração de links e QR Codes de WhatsApp em lote para o CRM do seu e-commerce.
   <a href="mailto:contato@grupows.com?subject=Orçamento de Geração de WhatsApp em Lote" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Solicitar Orçamento →</a>
+  <a href="/ferramentas/gerador-link-whatsapp" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Testar Gerador de Link →</a>
 </div>

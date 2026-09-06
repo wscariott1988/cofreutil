@@ -18,4 +18,5 @@ Diferente de APIs web lentas, nossa tecnologia de extração local reconhece tex
   <span class="text-white font-bold block mb-2">[💼 API OCR PARA FLUXOS DE REEMBOLSO]</span>
   Integre o motor de OCR local do CofreUtil em seu ERP interno e automatize a extração de relatórios sem riscos corporativos de segurança.
   <a href="mailto:contato@grupows.com?subject=Orçamento de API de OCR de Comprovantes" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Orçamento de API OCR →</a>
+  <a href="/ferramentas/extrair-texto-imagem" class="inline-block mt-4 ml-0 border border-zinc-700 text-white bg-transparent px-4 py-2 font-bold rounded-none no-underline hover:bg-zinc-900 transition-colors">Testar OCR Local →</a>
 </div>

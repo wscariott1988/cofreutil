@@ -17,5 +17,5 @@ Graças ao poder do WebAssembly, agora podemos rodar o FFmpeg (o motor líder de
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 CONVERSOR DE ÁUDIO WASM OFFLINE]</span>
   Comprima e converta WAV, MP3 e OGG de forma ultrarápida utilizando o poder de computação do seu próprio navegador.
-  <a href="/ferramentas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Converter Áudios Offline →</a>
+  <a href="/ferramentas/conversor-de-audio" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Converter Áudios Offline →</a>
 </div>

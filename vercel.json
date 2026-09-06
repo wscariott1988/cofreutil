@@ -8,8 +8,8 @@
     },
     {
       "source": "/ferramentas/converter-audio",
-      "destination": "/ferramentas",
-      "permanent": false
+      "destination": "/ferramentas/conversor-de-audio",
+      "permanent": true
     },
     {
       "source": "/ferramentas/validador-cnpj",

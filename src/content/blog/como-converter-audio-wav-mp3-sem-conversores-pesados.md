@@ -17,5 +17,5 @@ O CofreUtil utiliza o motor industrial FFmpeg compilado para rodar nativamente d
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 CONVERSOR DE ÁUDIO OFFLINE E SEGURO]</span>
   Transforme mídias pesadas de WAV em MP3 compacto com processamento estritamente local e zero cookies.
-  <a href="/ferramentas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Acessar Conversor Áudio →</a>
+  <a href="/ferramentas/conversor-de-audio" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Acessar Conversor Áudio →</a>
 </div>
