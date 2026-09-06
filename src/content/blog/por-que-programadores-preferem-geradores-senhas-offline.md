@@ -17,5 +17,5 @@ Ao rodar a geração de senhas em JavaScript/TypeScript local sem dependência d
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 GERADOR DE SENHAS CRYPTO LOCAL]</span>
   Crie chaves de acesso indestrutíveis de forma segura em uma ferramenta sem cookies e 100% local no cliente.
-  <a href="/ferramentas/gerador-de-senhas-fortes" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Acessar Gerador Senhas →</a>
+  <a href="/ferramentas/gerador-senhas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Acessar Gerador Senhas →</a>
 </div>

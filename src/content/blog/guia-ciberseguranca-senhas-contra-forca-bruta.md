@@ -17,5 +17,5 @@ Com o nosso gerador de senhas estático, você cria combinações aleatórias ba
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 GERADOR DE SENHAS FORTES OFFLINE]</span>
   Gere chaves militares de acesso seguro sem risco de gravação em logs na internet de forma 100% local.
-  <a href="/ferramentas/gerador-de-senhas-fortes" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Gerar Senha Forte →</a>
+  <a href="/ferramentas/gerador-senhas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Gerar Senha Forte →</a>
 </div>

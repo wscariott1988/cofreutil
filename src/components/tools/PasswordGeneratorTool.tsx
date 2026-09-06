@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   DEFAULT_PASSWORD_OPTIONS,
   PASSWORD_MIN_LENGTH,
@@ -8,6 +8,8 @@ import {
   estimateStrength,
   type PasswordOptions,
 } from '../../lib/passwordUtils';
+import { BatchLimiter } from '../../lib/BatchLimiter';
+import { generatePixCopyPaste } from '../../lib/pix';
 
 const buttonClass =
   'border border-[#27272A] bg-[#09090B] px-4 py-3 font-mono text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B] disabled:cursor-not-allowed disabled:opacity-50';
@@ -71,19 +73,41 @@ export default function PasswordGeneratorTool() {
   );
   const [password, setPassword] = useState('');
   const [copied, setCopied] = useState(false);
+  const [usagesLeft, setUsagesLeft] = useState(() => BatchLimiter.getRemaining());
+  const [showSupport, setShowSupport] = useState(false);
+  const [pixCopied, setPixCopied] = useState(false);
+
+  const lastGeneratedRef = useRef<string | null>(null);
+  const pixPayload = generatePixCopyPaste();
 
   const options: PasswordOptions = useMemo(
     () => ({ length, lowercase, uppercase, digits, symbols, excludeAmbiguous }),
     [length, lowercase, uppercase, digits, symbols, excludeAmbiguous],
   );
 
-  const regenerate = useCallback(() => {
-    setPassword(generatePassword(options));
+  const generate = useCallback(() => {
+    const next = generatePassword(options);
+    setPassword(next);
+    return next;
   }, [options]);
 
   useEffect(() => {
-    regenerate();
-  }, [regenerate]);
+    generate();
+  }, [generate]);
+
+  const handleRegenerate = useCallback(() => {
+    const next = generate();
+    if (lastGeneratedRef.current !== next) {
+      lastGeneratedRef.current = next;
+      try {
+        const count = BatchLimiter.incrementUsage(1);
+        setUsagesLeft(BatchLimiter.getRemaining());
+        if (count >= 3) setShowSupport(true);
+      } catch {
+        // Sem bloqueio quando o armazenamento local está indisponível.
+      }
+    }
+  }, [generate]);
 
   const pools = useMemo(() => getActivePools(options), [options]);
   const strength = useMemo(() => estimateStrength(length, options), [length, options]);
@@ -116,6 +140,19 @@ export default function PasswordGeneratorTool() {
 
   return (
     <div className="flex w-full max-w-2xl flex-col gap-6">
+      {/* Badge de privacidade local */}
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [100% Local]
+        </span>
+        <span className="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero Upload]
+        </span>
+        <span className="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Web Crypto API]
+        </span>
+      </div>
+
       {/* Visor da senha gerada */}
       <div className="flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6">
         <div className="flex items-center justify-between">
@@ -133,7 +170,7 @@ export default function PasswordGeneratorTool() {
           <button onClick={handleCopy} disabled={!password} className={`flex-1 ${buttonClass}`}>
             {copied ? '[Copiado!]' : '[Copiar Senha]'}
           </button>
-          <button onClick={regenerate} className={`flex-1 ${buttonClass}`}>
+          <button onClick={handleRegenerate} className={`flex-1 ${buttonClass}`}>
             [Gerar Nova]
           </button>
         </div>
@@ -241,6 +278,48 @@ export default function PasswordGeneratorTool() {
           independentemente da entropia.
         </p>
       </div>
+
+      <p className="font-mono text-[11px] text-[#52525B]">
+        {usagesLeft > 0
+          ? `${usagesLeft} ${usagesLeft === 1 ? 'geração' : 'gerações'} sem lembrete de apoio`
+          : 'Obrigado pelo seu apoio!'}
+      </p>
+
+      {/* Support Modal */}
+      {showSupport && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+          <div className="mx-4 flex w-full max-w-md flex-col gap-5 rounded-none border border-[#27272A] bg-[#09090B] p-8">
+            <h3 className="text-center font-mono text-lg font-bold tracking-tight text-white">
+              Mantenha o CofreUtil no Ar
+            </h3>
+            <p className="text-center text-sm leading-relaxed text-[#A1A1AA]">
+              Ferramenta 100% gratuita e privada (zero servidores). Se te economizou tempo,
+              considere apoiar o projeto com qualquer valor via Pix.
+            </p>
+            <div className="border border-[#27272A] bg-black px-4 py-3 text-center">
+              <span className="font-mono text-sm text-white">
+                Chave Pix: apoio@grupows.com
+              </span>
+            </div>
+            <button
+              onClick={async () => {
+                await navigator.clipboard.writeText(pixPayload);
+                setPixCopied(true);
+                setTimeout(() => setPixCopied(false), 2000);
+              }}
+              className="rounded-none border border-[#27272A] bg-[#09090B] px-4 py-3 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+            >
+              {pixCopied ? '[Copiado com Sucesso!]' : '[Copiar Pix Copia e Cola]'}
+            </button>
+            <button
+              onClick={() => setShowSupport(false)}
+              className="self-center text-xs text-[#52525B] transition-colors hover:text-white"
+            >
+              Continuar sem apoiar →
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -17,5 +17,5 @@ Diferente de sistemas com back-end em servidores onde a senha transita e é vuln
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 SENHAS CRIPTOGRAFADAS LOCALMENTE]</span>
   Garanta a proteção máxima de suas contas gerando combinações secretas imbatíveis sem enviar dados pela web.
-  <a href="/ferramentas/gerador-de-senhas-fortes" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Criar Senha Forte →</a>
+  <a href="/ferramentas/gerador-senhas" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Criar Senha Forte →</a>
 </div>

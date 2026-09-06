@@ -1,5 +1,12 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/ferramentas/gerador-de-senhas-fortes",
+      "destination": "/ferramentas/gerador-senhas",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
