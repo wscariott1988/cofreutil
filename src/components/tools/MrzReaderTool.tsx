@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BatchLimiter } from '../../lib/BatchLimiter';
-import { generatePixCopyPaste } from '../../lib/pix';
 import ReferenceSources from '../ReferenceSources';
 import { formatFileSize } from '../../lib/pdfUtils';
 import {
@@ -11,6 +10,7 @@ import {
   type MrzProgress,
   MRZ_STATUS_LABELS,
 } from '../../lib/mrzUtils';
+import PixSupportModal from './PixSupportModal';
 
 type Mode = 'file' | 'camera';
 
@@ -96,13 +96,10 @@ export default function MrzReaderTool() {
   const [copied, setCopied] = useState(false);
   const [manualText, setManualText] = useState('');
   const [showSupport, setShowSupport] = useState(false);
-  const [pixCopied, setPixCopied] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
-  const interactionCount = useRef(0);
-  const pixPayload = generatePixCopyPaste();
 
   const selectedRef = useRef(selected);
   selectedRef.current = selected;
@@ -163,9 +160,7 @@ export default function MrzReaderTool() {
 
       Promise.resolve().then(() => {
         BatchLimiter.incrementUsage(1);
-        interactionCount.current += 1;
-        if (interactionCount.current >= 2) {
-          interactionCount.current = 0;
+        if (BatchLimiter.isLimitReached()) {
           setShowSupport(true);
         }
       });
@@ -728,40 +723,7 @@ export default function MrzReaderTool() {
       </p>
 
       {/* Support Modal */}
-      {showSupport && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          <div className="mx-4 flex w-full max-w-md flex-col gap-5 border border-[#27272A] bg-[#09090B] p-8">
-            <h3 className="text-center font-mono text-lg font-bold tracking-tight text-white">
-              Mantenha o CofreUtil no Ar
-            </h3>
-            <p className="text-center text-sm leading-relaxed text-[#A1A1AA]">
-              Ferramenta 100% gratuita e privada (zero servidores). Se te economizou tempo,
-              considere apoiar o projeto com qualquer valor via Pix.
-            </p>
-            <div className="border border-[#27272A] bg-black px-4 py-3 text-center">
-              <span className="font-mono text-sm text-white">
-                Chave Pix: apoio@grupows.com
-              </span>
-            </div>
-            <button
-              onClick={async () => {
-                await navigator.clipboard.writeText(pixPayload);
-                setPixCopied(true);
-                setTimeout(() => setPixCopied(false), 2000);
-              }}
-              className="border border-[#27272A] bg-[#09090B] px-4 py-3 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-            >
-              {pixCopied ? '[Copiado com Sucesso!]' : '[Copiar Pix Copia e Cola]'}
-            </button>
-            <button
-              onClick={() => setShowSupport(false)}
-              className="self-center text-xs text-[#52525B] transition-colors hover:text-white"
-            >
-              Continuar sem apoiar →
-            </button>
-          </div>
-        </div>
-      )}
+      <PixSupportModal open={showSupport} onClose={() => setShowSupport(false)} />
 
       <ReferenceSources
         sources={[

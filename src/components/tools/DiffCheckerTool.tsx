@@ -1,12 +1,12 @@
-import { useState, useCallback, useMemo, useEffect } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { BatchLimiter } from '../../lib/BatchLimiter';
-import { generatePixCopyPaste } from '../../lib/pix';
 import {
   computeDiff,
   type DiffResult,
   type DiffLevel,
   type InlineSegment,
 } from '../../lib/textDiff';
+import PixSupportModal from './PixSupportModal';
 
 const LEVELS: { id: DiffLevel; label: string; desc: string }[] = [
   { id: 'lines', label: 'Linhas', desc: 'Compara cada linha' },
@@ -90,30 +90,13 @@ export default function DiffCheckerTool() {
   const [result, setResult] = useState<DiffResult | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const [locked, setLocked] = useState(() => BatchLimiter.isLimitReached());
-  const [remaining, setRemaining] = useState(() => BatchLimiter.getRemaining());
-  const [showSupport, setShowSupport] = useState(locked);
-  const [pixCopied, setPixCopied] = useState(false);
-  const pixPayload = generatePixCopyPaste();
-
-  useEffect(() => {
-    if (BatchLimiter.isLimitReached()) {
-      setLocked(true);
-      setRemaining(0);
-      setShowSupport(true);
-    }
-  }, []);
+  const [showSupport, setShowSupport] = useState(false);
 
   const bothEmpty = original.trim() === '' && modified.trim() === '';
   const canCompare = !bothEmpty;
 
   const bump = useCallback(() => {
     BatchLimiter.incrementUsage(1);
-    const left = BatchLimiter.getRemaining();
-    setRemaining(left);
-    if (BatchLimiter.isLimitReached()) {
-      setLocked(true);
-    }
   }, []);
 
   const handleCompare = useCallback(() => {
@@ -122,10 +105,10 @@ export default function DiffCheckerTool() {
     const diffResult = computeDiff(original, modified, level);
     setResult(diffResult);
     bump();
-    if (locked || BatchLimiter.isLimitReached()) {
+    if (BatchLimiter.isLimitReached()) {
       setShowSupport(true);
     }
-  }, [original, modified, level, locked, bothEmpty, bump]);
+  }, [original, modified, level, bothEmpty, bump]);
 
   const handleSwap = useCallback(() => {
     setOriginal(modified);
@@ -331,14 +314,7 @@ export default function DiffCheckerTool() {
           >
             [Limpar]
           </button>
-          {locked && (
-            <span className="font-mono text-xs text-[#52525B]">
-              {remaining > 0
-                ? `${remaining} ${remaining === 1 ? 'comparação' : 'comparações'} restante(s)`
-                : 'Apoio voluntário solicitado — obrigado!'}
-            </span>
-          )}
-        </div>
+          </div>
 
         {original.trim() !== '' || modified.trim() !== '' ? (
           <p className="font-mono text-[11px] text-[#52525B]">
@@ -505,13 +481,6 @@ export default function DiffCheckerTool() {
       <p className="mt-6 font-mono text-xs text-[#A1A1AA]">
         Comparação de textos 100% offline: seu documento nunca sai do dispositivo.
       </p>
-      <p className="mt-1 font-mono text-[11px] text-[#52525B]">
-        {locked
-          ? 'Obrigado pelo seu apoio!'
-          : remaining > 0
-            ? `${remaining} ${remaining === 1 ? 'comparação' : 'comparações'} sem lembrete de apoio`
-            : 'Obrigado pelo seu apoio!'}
-      </p>
 
       {/* Badge Zero Cookies */}
       <div className="mt-6 rounded-none border border-[#27272A] bg-[#09090B] p-4 font-mono text-xs text-[#52525B]">
@@ -520,41 +489,7 @@ export default function DiffCheckerTool() {
         Todo o processamento de textos acontece estritamente dentro da memoria RAM do seu navegador.
       </div>
 
-      {/* Support Modal */}
-      {showSupport && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          <div className="mx-4 flex w-full max-w-md flex-col gap-5 rounded-none border border-[#27272A] bg-[#09090B] p-8">
-            <h3 className="text-center font-mono text-lg font-bold tracking-tight text-white">
-              Mantenha o CofreUtil no Ar
-            </h3>
-            <p className="text-center text-sm leading-relaxed text-[#A1A1AA]">
-              Ferramenta 100% gratuita e privada (zero servidores). Se te economizou
-              tempo, considere apoiar o projeto com qualquer valor via Pix.
-            </p>
-            <div className="border border-[#27272A] bg-black px-4 py-3 text-center">
-              <span className="font-mono text-sm text-white">
-                Chave Pix: apoio@grupows.com
-              </span>
-            </div>
-            <button
-              onClick={async () => {
-                await navigator.clipboard.writeText(pixPayload);
-                setPixCopied(true);
-                setTimeout(() => setPixCopied(false), 2000);
-              }}
-              className="rounded-none border border-[#27272A] bg-[#09090B] px-4 py-3 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-            >
-              {pixCopied ? '[Copiado com Sucesso!]' : '[Copiar Pix Copia e Cola]'}
-            </button>
-            <button
-              onClick={() => setShowSupport(false)}
-              className="self-center text-xs text-[#52525B] transition-colors hover:text-white"
-            >
-              Continuar Usando Gratis
-            </button>
-          </div>
-        </div>
-      )}
+      <PixSupportModal open={showSupport} onClose={() => setShowSupport(false)} />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { BatchLimiter } from '../../lib/BatchLimiter';
-import { generatePixCopyPaste } from '../../lib/pix';
 import { formatFileSize } from '../../lib/pdfUtils';
 import {
   openPdf,
@@ -14,6 +13,7 @@ import {
   type PdfDocumentRef,
   type PageThumbnail,
 } from '../../lib/pdfToImageUtils';
+import PixSupportModal from './PixSupportModal';
 
 const THUMB_SCALE = 0.5;
 const MAX_THUMBS = 60;
@@ -48,23 +48,11 @@ export default function PdfToImageTool() {
   const [error, setError] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState(false);
 
-  const [remaining, setRemaining] = useState(() => BatchLimiter.getRemaining());
   const [showSupport, setShowSupport] = useState(false);
-  const [pixCopied, setPixCopied] = useState(false);
 
   const docRef = useRef<PdfDocumentRef | null>(null);
   const versionRef = useRef(0);
-  const interactionCount = useRef(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const pixPayload = generatePixCopyPaste();
-
-  const triggerSupportIfNeeded = useCallback(() => {
-    interactionCount.current += 1;
-    if (interactionCount.current >= 2) {
-      interactionCount.current = 0;
-      setShowSupport(true);
-    }
-  }, []);
 
   const cancelPdfLoad = useCallback(() => {
     versionRef.current += 1;
@@ -187,8 +175,6 @@ export default function PdfToImageTool() {
       // BatchLimiter assíncrono — nunca bloqueia a exportação
       Promise.resolve().then(() => {
         BatchLimiter.incrementUsage(1);
-        setRemaining(BatchLimiter.getRemaining());
-        triggerSupportIfNeeded();
         if (BatchLimiter.isLimitReached()) setShowSupport(true);
       });
 
@@ -215,7 +201,7 @@ export default function PdfToImageTool() {
         setExportProgress(null);
       }
     },
-    [isExporting, format, quality, triggerSupportIfNeeded],
+    [isExporting, format, quality],
   );
 
   const handleDownloadSingle = useCallback(
@@ -560,49 +546,11 @@ export default function PdfToImageTool() {
           <p className="mt-6 font-mono text-xs text-[#A1A1AA]">
             Seu PDF é convertido 100% no navegador e nunca é enviado a servidores.
           </p>
-          <p className="mt-1 font-mono text-[11px] text-[#52525B]">
-            {remaining > 0
-              ? `${remaining} ${remaining === 1 ? 'conversão' : 'conversões'} sem lembrete de apoio`
-              : 'Obrigado pelo seu apoio!'}
-          </p>
         </>
       )}
 
       {/* Support Modal */}
-      {showSupport && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          <div className="mx-4 flex w-full max-w-md flex-col gap-5 rounded-none border border-[#27272A] bg-[#09090B] p-8">
-            <h3 className="text-center font-mono text-lg font-bold tracking-tight text-white">
-              Mantenha o CofreUtil no Ar
-            </h3>
-            <p className="text-center text-sm leading-relaxed text-[#A1A1AA]">
-              Ferramenta 100% gratuita e privada (zero servidores). Se te economizou
-              tempo, considere apoiar o projeto com qualquer valor via Pix.
-            </p>
-            <div className="border border-[#27272A] bg-black px-4 py-3 text-center">
-              <span className="font-mono text-sm text-white">
-                Chave Pix: apoio@grupows.com
-              </span>
-            </div>
-            <button
-              onClick={async () => {
-                await navigator.clipboard.writeText(pixPayload);
-                setPixCopied(true);
-                setTimeout(() => setPixCopied(false), 2000);
-              }}
-              className="rounded-none border border-[#27272A] bg-[#09090B] px-4 py-3 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-            >
-              {pixCopied ? '[Copiado com Sucesso!]' : '[Copiar Pix Copia e Cola]'}
-            </button>
-            <button
-              onClick={() => setShowSupport(false)}
-              className="self-center text-xs text-[#52525B] transition-colors hover:text-white"
-            >
-              Continuar sem apoiar →
-            </button>
-          </div>
-        </div>
-      )}
+      <PixSupportModal open={showSupport} onClose={() => setShowSupport(false)} />
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import { useState, useCallback, useRef } from 'react';
 import { BatchLimiter } from '../../lib/BatchLimiter';
-import { generatePixCopyPaste } from '../../lib/pix';
 import {
   extractPdfPages,
   splitEveryPage,
   countPdfPages,
 } from '../../lib/pdfSplitter';
 import { formatFileSize } from '../../lib/pdfUtils';
+import PixSupportModal from './PixSupportModal';
 
 type SplitMode = 'interval' | 'every-page';
 
@@ -63,18 +63,7 @@ export default function PdfSplitTool() {
   const [error, setError] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
-  const [pixCopied, setPixCopied] = useState(false);
-  const interactionCount = useRef(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const pixPayload = generatePixCopyPaste();
-
-  const triggerSupportIfNeeded = useCallback(() => {
-    interactionCount.current += 1;
-    if (interactionCount.current >= 2) {
-      interactionCount.current = 0;
-      setShowSupport(true);
-    }
-  }, []);
 
   const selectFile = useCallback(async (file: File | undefined) => {
     if (!file) return;
@@ -121,7 +110,9 @@ export default function PdfSplitTool() {
     // BatchLimiter assíncrono — nunca bloqueia a divisão
     Promise.resolve().then(() => {
       BatchLimiter.incrementUsage(1);
-      triggerSupportIfNeeded();
+      if (BatchLimiter.isLimitReached()) {
+        setShowSupport(true);
+      }
     });
 
     try {
@@ -150,7 +141,7 @@ export default function PdfSplitTool() {
     } finally {
       setIsSplitting(false);
     }
-  }, [pdf, isSplitting, mode, parsedPages, triggerSupportIfNeeded]);
+  }, [pdf, isSplitting, mode, parsedPages]);
 
   const handleDownloadSingle = useCallback(() => {
     if (!result || result.type !== 'single') return;
@@ -367,40 +358,7 @@ export default function PdfSplitTool() {
       )}
 
       {/* Support Modal */}
-      {showSupport && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          <div className="mx-4 flex w-full max-w-md flex-col gap-5 border border-[#27272A] bg-[#09090B] p-8">
-            <h3 className="text-center font-mono text-lg font-bold tracking-tight text-white">
-              Mantenha o CofreUtil no Ar
-            </h3>
-            <p className="text-center text-sm leading-relaxed text-[#A1A1AA]">
-              Ferramenta 100% gratuita e privada (zero servidores). Se te economizou
-              tempo, considere apoiar o projeto com qualquer valor via Pix.
-            </p>
-            <div className="border border-[#27272A] bg-black px-4 py-3 text-center">
-              <span className="font-mono text-sm text-white">
-                Chave Pix: apoio@grupows.com
-              </span>
-            </div>
-            <button
-              onClick={async () => {
-                await navigator.clipboard.writeText(pixPayload);
-                setPixCopied(true);
-                setTimeout(() => setPixCopied(false), 2000);
-              }}
-              className="border border-[#27272A] bg-[#09090B] px-4 py-3 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-            >
-              {pixCopied ? '[Copiado com Sucesso!]' : '[Copiar Pix Copia e Cola]'}
-            </button>
-            <button
-              onClick={() => setShowSupport(false)}
-              className="self-center text-xs text-[#52525B] transition-colors hover:text-white"
-            >
-              Continuar sem apoiar →
-            </button>
-          </div>
-        </div>
-      )}
+      <PixSupportModal open={showSupport} onClose={() => setShowSupport(false)} />
     </div>
   );
 }

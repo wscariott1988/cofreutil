@@ -8,8 +8,8 @@ import {
 } from '../../lib/pixUtils';
 import { generateQrCodeSvg, generateQrCodePng } from '../../lib/qr';
 import { BatchLimiter } from '../../lib/BatchLimiter';
-import { generatePixCopyPaste } from '../../lib/pix';
 import ReferenceSources from '../ReferenceSources';
+import PixSupportModal from './PixSupportModal';
 
 interface KeyTypeOption {
   value: PixKeyType;
@@ -47,9 +47,7 @@ export default function PixQrCodeTool() {
   const [formError, setFormError] = useState<string | null>(null);
   const [qrError, setQrError] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [usagesLeft, setUsagesLeft] = useState<number | null>(null);
   const [showSupport, setShowSupport] = useState(false);
-  const [pixCopied, setPixCopied] = useState(false);
   const [payloadCopied, setPayloadCopied] = useState(false);
 
   const clearResult = () => {
@@ -118,9 +116,10 @@ export default function PixQrCodeTool() {
     }
 
     try {
-      const count = BatchLimiter.incrementUsage(1);
-      setUsagesLeft(BatchLimiter.getRemaining());
-      if (count >= 5) setShowSupport(true);
+      BatchLimiter.incrementUsage(1);
+      if (BatchLimiter.isLimitReached()) {
+        setShowSupport(true);
+      }
     } catch {
       // Armazenamento local indisponível — segue sem bloqueio.
     }
@@ -149,16 +148,6 @@ export default function PixQrCodeTool() {
       document.body.removeChild(link);
     } catch {
       setQrError('Não foi possível gerar o arquivo PNG neste navegador.');
-    }
-  };
-
-  const handleCopySupportPix = async () => {
-    try {
-      await navigator.clipboard.writeText(generatePixCopyPaste());
-      setPixCopied(true);
-      setTimeout(() => setPixCopied(false), 2000);
-    } catch {
-      setPixCopied(false);
     }
   };
 
@@ -282,14 +271,6 @@ export default function PixQrCodeTool() {
         <button onClick={handleGenerate} disabled={isGenerating} className={buttonClass}>
           {isGenerating ? 'Gerando...' : 'Gerar QR Code Pix'}
         </button>
-
-        {usagesLeft !== null && (
-          <p className="font-mono text-xs text-[#52525B]">
-            {usagesLeft > 0
-              ? `${usagesLeft} ${usagesLeft === 1 ? 'uso' : 'usos'} sem lembrete de apoio`
-              : 'Obrigado pelo seu apoio!'}
-          </p>
-        )}
       </div>
 
       {/* Painel de resultado */}
@@ -337,37 +318,7 @@ export default function PixQrCodeTool() {
       )}
 
       {/* Modal de Apoio Pix */}
-      {showSupport && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          <div className="mx-4 flex w-full max-w-md flex-col gap-5 border border-[#27272A] bg-[#09090B] p-8">
-            <h3 className="text-center font-mono text-lg font-bold tracking-tight text-white">
-              Mantenha o CofreUtil no Ar
-            </h3>
-
-            <p className="text-center text-sm leading-relaxed text-[#A1A1AA]">
-              Ferramenta 100% gratuita e privada (zero servidores). Se te economizou
-              tempo, considere apoiar o projeto com qualquer valor via Pix.
-            </p>
-
-            <div className="border border-[#27272A] bg-black px-4 py-3 text-center">
-              <span className="font-mono text-sm text-white">
-                Chave Pix: apoio@grupows.com
-              </span>
-            </div>
-
-            <button onClick={handleCopySupportPix} className={buttonClass}>
-              {pixCopied ? '[Copiado com Sucesso!]' : '[Copiar Pix Copia e Cola]'}
-            </button>
-
-            <button
-              onClick={() => setShowSupport(false)}
-              className="self-center text-xs text-[#52525B] transition-colors hover:text-white"
-            >
-              Continuar sem apoiar →
-            </button>
-          </div>
-        </div>
-      )}
+      <PixSupportModal open={showSupport} onClose={() => setShowSupport(false)} />
 
       <ReferenceSources
         sources={[

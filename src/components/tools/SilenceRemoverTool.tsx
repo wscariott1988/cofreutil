@@ -2,8 +2,8 @@ import { useCallback, useRef, useState } from 'react';
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { toBlobURL } from '@ffmpeg/util';
 import { BatchLimiter } from '../../lib/BatchLimiter';
-import { generatePixCopyPaste } from '../../lib/pix';
 import ReferenceSources from '../ReferenceSources';
+import PixSupportModal from './PixSupportModal';
 
 const MAX_BYTES = 200 * 1024 * 1024;
 const LOCAL_CORE = '/wasm/ffmpeg/ffmpeg-core.js';
@@ -82,18 +82,15 @@ export default function SilenceRemoverTool() {
   const [savedSeconds, setSavedSeconds] = useState(0);
 
   const [showSupport, setShowSupport] = useState(false);
-  const [pixCopied, setPixCopied] = useState(false);
 
   const ffmpegRef = useRef<FFmpeg | null>(null);
   const fileRef = useRef<File | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const supportPromptedRef = useRef(false);
   const logLinesRef = useRef<string[]>([]);
   const detectedSegmentsRef = useRef<Segment[]>([]);
   const totalDurationRef = useRef(0);
   detectedSegmentsRef.current = detectedSegments;
   totalDurationRef.current = totalDuration;
-  const pixPayload = generatePixCopyPaste();
 
   const pushLog = useCallback((line: string) => {
     logLinesRef.current.push(line);
@@ -277,11 +274,7 @@ export default function SilenceRemoverTool() {
     if (!current || isProcessing || isDetecting) return;
 
     if (BatchLimiter.isLimitReached()) {
-      setError(
-        'Você atingiu o limite gratuito de 3 exportações por dia. Tente novamente amanhã ou considere apoiar o projeto.',
-      );
       setShowSupport(true);
-      return;
     }
 
     setError(null);
@@ -389,8 +382,7 @@ export default function SilenceRemoverTool() {
       setSavedSeconds(Math.max(0, total - kept));
 
       BatchLimiter.incrementUsage(1);
-      if (!supportPromptedRef.current) {
-        supportPromptedRef.current = true;
+      if (BatchLimiter.isLimitReached()) {
         setShowSupport(true);
       }
       pushLog('processamento lossless concluído');
@@ -674,38 +666,7 @@ export default function SilenceRemoverTool() {
       </p>
 
       {showSupport && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          <div className="mx-4 flex w-full max-w-md flex-col gap-5 border border-[#27272A] bg-[#09090B] p-8">
-            <h3 className="text-center font-mono text-lg font-bold tracking-tight text-white">
-              Mantenha o CofreUtil no Ar
-            </h3>
-            <p className="text-center text-sm leading-relaxed text-[#A1A1AA]">
-              Ferramenta 100% gratuita e privada (zero servidores). Se te economizou
-              tempo, considere apoiar o projeto com qualquer valor via Pix.
-            </p>
-            <div className="border border-[#27272A] bg-black px-4 py-3 text-center">
-              <span className="font-mono text-sm text-white">
-                Chave Pix: apoio@grupows.com
-              </span>
-            </div>
-            <button
-              onClick={async () => {
-                await navigator.clipboard.writeText(pixPayload);
-                setPixCopied(true);
-                setTimeout(() => setPixCopied(false), 2000);
-              }}
-              className="border border-[#27272A] bg-[#09090B] px-4 py-3 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-            >
-              {pixCopied ? '[Copiado com Sucesso!]' : '[Copiar Pix Copia e Cola]'}
-            </button>
-            <button
-              onClick={() => setShowSupport(false)}
-              className="self-center text-xs text-[#52525B] transition-colors hover:text-white"
-            >
-              Continuar sem apoiar →
-            </button>
-          </div>
-        </div>
+        <PixSupportModal open={showSupport} onClose={() => setShowSupport(false)} />
       )}
 
       <ReferenceSources

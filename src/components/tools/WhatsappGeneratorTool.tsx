@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { generateQrCodeSvg, generateQrCodePng } from '../../lib/qr';
 import { BatchLimiter } from '../../lib/BatchLimiter';
-import { generatePixCopyPaste } from '../../lib/pix';
+import PixSupportModal from './PixSupportModal';
 
 interface WaHistoryItem {
   id: string;
@@ -91,9 +91,7 @@ export default function WhatsappGeneratorTool() {
   const [qrError, setQrError] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [history, setHistory] = useState<WaHistoryItem[]>([]);
-  const [usagesLeft, setUsagesLeft] = useState<number | null>(null);
   const [showSupport, setShowSupport] = useState(false);
-  const [pixCopied, setPixCopied] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [htmlCopied, setHtmlCopied] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -103,11 +101,6 @@ export default function WhatsappGeneratorTool() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     setHistory(loadHistory());
-    try {
-      setUsagesLeft(BatchLimiter.getRemaining());
-    } catch {
-      setUsagesLeft(null);
-    }
   }, []);
 
   const digits = normalizeBraDial(phone);
@@ -160,9 +153,10 @@ export default function WhatsappGeneratorTool() {
 
     if (isNew) {
       try {
-        const count = BatchLimiter.incrementUsage(1);
-        setUsagesLeft(BatchLimiter.getRemaining());
-        if (count >= 3) setShowSupport(true);
+        BatchLimiter.incrementUsage(1);
+        if (BatchLimiter.isLimitReached()) {
+          setShowSupport(true);
+        }
       } catch {
         // Sem bloqueio quando o armazenamento local está indisponível.
       }
@@ -237,12 +231,6 @@ export default function WhatsappGeneratorTool() {
       document.body.removeChild(ta);
     }
   }
-
-  const handleCopySupportPix = async () => {
-    await copyText(generatePixCopyPaste());
-    setPixCopied(true);
-    setTimeout(() => setPixCopied(false), 2000);
-  };
 
   return (
     <div className="flex w-full flex-col gap-6">
@@ -328,14 +316,6 @@ export default function WhatsappGeneratorTool() {
             <span className={badgeClass}>[Histórico local]</span>
             <span className={badgeClass}>[LGPD]</span>
           </div>
-
-          {usagesLeft !== null && (
-            <p className="font-mono text-xs text-[#52525B]">
-              {usagesLeft > 0
-                ? `Este lote ainda tem ${usagesLeft} ${usagesLeft === 1 ? 'operação' : 'operações'} gratuitas`
-                : 'Obrigado pelo seu apoio! O lote é ilimitado, sem cadastro.'}
-            </p>
-          )}
         </div>
 
         {/* SIMULADOR DE CHAT (LIVE PREVIEW) */}
@@ -565,36 +545,8 @@ export default function WhatsappGeneratorTool() {
         </div>
       </div>
 
-      {/* MODAL DE APOIO VOLUNTÁRIO (soft-block) */}
-      {showSupport && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          <div className="mx-4 flex w-full max-w-md flex-col gap-5 rounded-none border border-[#27272A] bg-[#09090B] p-8">
-            <h3 className="text-center font-mono text-lg font-bold tracking-tight text-white">
-              Mantenha o CofreUtil no Ar
-            </h3>
-            <p className="text-center text-sm leading-relaxed text-[#A1A1AA]">
-              Este lote terminou (3 operações grátis). A ferramenta segue funcionando
-              normalmente — mas se ela te ajudou, considere apoiar o projeto com
-              qualquer valor via Pix.
-            </p>
-            <div className="border border-[#27272A] bg-black px-4 py-3 text-center">
-              <span className="font-mono text-sm text-white">
-                Chave Pix: apoio@grupows.com
-              </span>
-            </div>
-            <button type="button" onClick={() => void handleCopySupportPix()} className={buttonClass}>
-              {pixCopied ? '[Copiado com Sucesso!]' : '[Copiar Pix Copia e Cola]'}
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowSupport(false)}
-              className="self-center text-xs text-[#A1A1AA] transition-colors hover:text-white"
-            >
-              Continuar usando grátis →
-            </button>
-          </div>
-        </div>
-      )}
+      {/* MODAL DE APOIO VOLUNTÁRIO (soft) */}
+      <PixSupportModal open={showSupport} onClose={() => setShowSupport(false)} />
     </div>
   );
 }
