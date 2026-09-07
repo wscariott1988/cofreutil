@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import WhatsappGeneratorTool from '../../components/tools/WhatsappGeneratorTool';
 import ShareButton from '../../components/ShareButton';
+import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
 
 const toolUrl = 'https://cofreutil.com.br/ferramentas/gerador-link-whatsapp';
 
@@ -153,6 +154,8 @@ const jsonLd = {
     </div>
 
     <WhatsappGeneratorTool client:only="react" />
+
+    <OfflineChallengeBadge />
 
     <div class="mt-8 flex justify-end">
       <ShareButton client:only="react" />

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PdfSanitizerTool from '../../components/tools/PdfSanitizerTool';
+import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
 ---
 
 <Layout
@@ -48,6 +49,8 @@ import PdfSanitizerTool from '../../components/tools/PdfSanitizerTool';
     </div>
 
     <PdfSanitizerTool client:only="react" />
+
+    <OfflineChallengeBadge />
 
     <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
     <div class="mt-16 flex flex-col gap-10">

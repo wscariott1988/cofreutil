@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PdfSplitTool from '../../components/tools/PdfSplitTool';
+import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
 ---
 
 <Layout
@@ -38,6 +39,8 @@ import PdfSplitTool from '../../components/tools/PdfSplitTool';
     </div>
 
     <PdfSplitTool client:only="react" />
+
+    <OfflineChallengeBadge />
 
     <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
     <div class="mt-16 flex flex-col gap-10">

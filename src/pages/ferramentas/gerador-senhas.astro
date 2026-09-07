@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PasswordGeneratorTool from '../../components/tools/PasswordGeneratorTool';
+import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
 ---
 
 <Layout
@@ -38,6 +39,8 @@ import PasswordGeneratorTool from '../../components/tools/PasswordGeneratorTool'
     </div>
 
     <PasswordGeneratorTool client:only="react" />
+
+    <OfflineChallengeBadge />
 
     <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
     <div class="mt-16 flex flex-col gap-10">
