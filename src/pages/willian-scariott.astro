@@ -1,10 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// TODO: substituir pelos perfis reais antes do lançamento das páginas de autoridade.
-const GITHUB_URL = 'https://github.com/SEU_USUARIO';
-const LINKEDIN_URL = 'https://www.linkedin.com/in/SEU_PERFIL';
-
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -17,7 +13,6 @@ const personJsonLd = {
     name: 'CofreUtil',
     url: 'https://cofreutil.com.br',
   },
-  sameAs: [GITHUB_URL, LINKEDIN_URL],
   knowsAbout: [
     'Arquitetura Zero-Server',
     'WebAssembly',
@@ -104,7 +99,7 @@ const personJsonLd = {
 
       <div class="flex flex-col gap-3">
         <h2 class="font-mono text-xl font-bold text-white">
-          Contato e redes profissionais
+          Contato
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Para parcerias técnicas, auditorias de segurança ou imprensa especializada:
@@ -115,22 +110,6 @@ const personJsonLd = {
             class="max-w-fit text-[#A1A1AA] underline decoration-dotted underline-offset-4 transition-colors hover:text-white"
           >
             [E-mail Corporativo] contato@grupows.com
-          </a>
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            class="max-w-fit text-[#A1A1AA] underline decoration-dotted underline-offset-4 transition-colors hover:text-white"
-          >
-            [GitHub] {GITHUB_URL.replace('https://', '')}
-          </a>
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            class="max-w-fit text-[#A1A1AA] underline decoration-dotted underline-offset-4 transition-colors hover:text-white"
-          >
-            [LinkedIn] {LINKEDIN_URL.replace('https://', '')}
           </a>
         </div>
       </div>
