@@ -2,116 +2,63 @@
 import Layout from '../../layouts/Layout.astro';
 import AudioConverterTool from '../../components/tools/AudioConverterTool';
 import ShareButton from '../../components/ShareButton';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
 
-const toolUrl = 'https://cofreutil.com.br/ferramentas/conversor-de-audio';
+const toolUrl = `${SITE_URL}/ferramentas/conversor-de-audio`;
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
+const jsonLd = toolPageGraph({
+  type: 'WebApplication',
+  name: 'Conversor de Áudio Online — WAV para MP3 e OGG com Corte | CofreUtil',
+  url: toolUrl,
+  applicationCategory: 'MultimediaApplication',
+  browserRequirements: 'Requires JavaScript',
+  featureList: [
+    'Converter WAV, MP3 e OGG no navegador',
+    'Conversão sem enviar o arquivo a servidores',
+    'Cortar trechos de áudio e baixar só o trecho',
+    'Exportar em WAV (sem perdas), MP3 (até 320kbps) ou OGG Vorbis',
+    'Ouvir o trecho selecionado antes de converter',
+    'Aceita WAV, MP3, OGG, M4A e WebM',
+  ],
+  description:
+    'Converta e corte áudio online grátis: WAV, MP3 e OGG no navegador, sem upload e sem login. Privacidade por arquitetura: seu arquivo nunca sai da sua máquina.',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
     {
-      '@type': 'WebApplication',
-      name: 'Conversor de Áudio Online — WAV para MP3 e OGG com Corte | CofreUtil',
+      name: 'Conversor de Áudio Online e Cortador de Trechos',
       url: toolUrl,
-      applicationCategory: 'MultimediaApplication',
-      operatingSystem: 'Any',
-      browserRequirements: 'Requires JavaScript',
-      inLanguage: 'pt-BR',
-      isAccessibleForFree: true,
-      featureList: [
-        'Converter WAV, MP3 e OGG 100% no navegador',
-        'Conversão sem enviar o arquivo a servidores',
-        'Cortar trechos de áudio e baixar só o trecho',
-        'Exportar em WAV (sem perdas), MP3 (até 320kbps) ou OGG Vorbis',
-        'Ouvir o trecho selecionado antes de converter',
-        'Aceita WAV, MP3, OGG, M4A e WebM',
-      ],
-      description:
-        'Converta e corte áudio online grátis: WAV, MP3 e OGG 100% no navegador, sem upload e sem login. Privacidade total: seu arquivo nunca sai da sua máquina (LGPD).',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'BRL',
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Willian Scariott',
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'CofreUtil',
-        url: 'https://cofreutil.com.br',
-      },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cofreutil.com.br' },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Ferramentas',
-          item: 'https://cofreutil.com.br/#ferramentas',
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Conversor de Áudio',
-          item: toolUrl,
-        },
-      ],
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'Como converter WAV para MP3 grátis sem enviar o arquivo?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Selecione o arquivo WAV e escolha MP3 na saída. O conversor processa tudo no seu navegador com encode LAME (até 320kbps). Nenhum byte do áudio sai da sua máquina.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Qual é o limite de tamanho do arquivo de áudio?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Aceitamos arquivos de até 100MB. Formatos suportados na entrada: WAV, MP3, OGG, M4A e WebM.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Posso cortar um trecho e converter só ele?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Sim. Defina o início e o fim em segundos, ouça o trecho com o botão [Ouvir Trecho] e converta. O resultado será apenas o trecho, no formato escolhido.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'O arquivo de áudio fica armazenado em algum servidor?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Não. A decodificação, o corte e a codificação (WAV, MP3 e OGG) acontecem 100% na memória do seu navegador, com arquitetura zero-server e conformidade com a LGPD.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Por que escolher o formato OGG?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'OGG (Vorbis) é um codec aberto, sem royalties, com ótima taxa de compactação em relação à qualidade — melhor tamanho que MP3 na mesma escuta subjetiva, ideal para web e armazenamento.',
-          },
-        },
-      ],
     },
   ],
-};
+  faq: [
+    {
+      name: 'Como converter WAV para MP3 grátis sem enviar o arquivo?',
+      text: 'Selecione o arquivo WAV e escolha MP3 na saída. O conversor processa tudo no seu navegador com encode LAME (até 320kbps). Nenhum byte do áudio sai da sua máquina.',
+    },
+    {
+      name: 'Qual é o limite de tamanho do arquivo de áudio?',
+      text: 'Aceitamos arquivos de até 100MB. Formatos suportados na entrada: WAV, MP3, OGG, M4A e WebM.',
+    },
+    {
+      name: 'Posso cortar um trecho e converter só ele?',
+      text: 'Sim. Defina o início e o fim em segundos, ouça o trecho com o botão [Ouvir Trecho] e converta. O resultado será apenas o trecho, no formato escolhido.',
+    },
+    {
+      name: 'O arquivo de áudio fica armazenado em algum servidor?',
+      text: 'Não. A decodificação, o corte e a codificação (WAV, MP3 e OGG) acontecem na memória do seu navegador, com arquitetura zero-server.',
+    },
+    {
+      name: 'Por que escolher o formato OGG?',
+      text: 'OGG (Vorbis) é um codec aberto, sem royalties, com ótima taxa de compactação em relação à qualidade — melhor tamanho que MP3 na mesma escuta subjetiva, ideal para web e armazenamento.',
+    },
+  ],
+});
 ---
 
 <Layout
   title="Conversor de Áudio Online — WAV para MP3 e OGG | Corte de Áudio | CofreUtil"
-  description="Converter áudio online grátis: WAV para MP3, MP3 para OGG, cortar trechos e baixar 100% no navegador, sem upload e sem login. Privacidade total (LGPD)."
+  description="Converter áudio online grátis: WAV para MP3, MP3 para OGG, cortar trechos e baixar no navegador, sem upload e sem login. Privacidade por arquitetura."
   keywords="converter audio wav mp3, conversor de audio online gratis, cortar audio wav, converter audio para ogg, audio para mp3 sem enviar servidor, converter audio offline"
   jsonLd={jsonLd}
 >
@@ -146,7 +93,7 @@ const jsonLd = {
       </h1>
 
       <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
-        Converta WAV para MP3 ou OGG e corte áudio 100% no navegador.
+        Converta WAV para MP3 ou OGG e corte áudio no navegador.
       </h2>
 
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
@@ -271,5 +218,9 @@ const jsonLd = {
         </details>
       </div>
     </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="conversor-de-audio" />
   </section>
 </Layout>

@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://cofreutil.com.br',
+  site: 'https://www.cofreutil.com.br',
   output: 'static',
   integrations: [
     react(),
@@ -72,12 +72,6 @@ export default defineConfig({
       lastmod: new Date(),
     }),
   ],
-  server: {
-    headers: {
-      'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Embedder-Policy': 'require-corp',
-    },
-  },
   vite: {
     optimizeDeps: {
       include: ['pdf-lib', 'pdfjs-dist', 'qrcode'],

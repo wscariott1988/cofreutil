@@ -2,6 +2,26 @@
 import Layout from '../../layouts/Layout.astro';
 import PasswordGeneratorTool from '../../components/tools/PasswordGeneratorTool';
 import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+
+const jsonLd = toolPageGraph({
+  name: 'Gerador de Senhas Fortes — CofreUtil',
+  description: 'Gere senhas fortes e aleatorias no navegador com Web Crypto API (getRandomValues), com medicao de entropia em bits e tempo estimado de quebra. Sem envio a servidores.',
+  url: `${SITE_URL}/ferramentas/gerador-senhas`,
+  applicationCategory: 'UtilitiesApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Gerador de Senhas Fortes', url: `${SITE_URL}/ferramentas/gerador-senhas` },
+  ],
+  faq: [
+    { name: 'Minha senha gerada e enviada para algum servidor?', text: 'Nao. A geracao usa exclusivamente a Web Crypto API do seu navegador, sem envio a servidores.' },
+    { name: 'Qual a diferenca entre entropia e forca da senha?', text: 'Entropia e a medida matematica de imprevisibilidade em bits; a forca interpreta essa entropia em rotulos como Fraca, Media, Forte ou Muito Forte.' },
+    { name: 'Por que devo evitar caracteres ambiguos?', text: 'Caracteres como 0/O ou 1/l/I sao faceis de confundir ao digitar a senha; remove-los evita erros de digitacao.' },
+    { name: 'Preciso pagar ou me cadastrar para usar?', text: 'Nao. A ferramenta e gratuita, sem cadastro e sem limite de geracoes.' },
+  ],
+});
 ---
 
 <Layout

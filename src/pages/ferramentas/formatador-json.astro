@@ -1,11 +1,32 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import JsonFormatterTool from '../../components/tools/JsonFormatterTool';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+
+const jsonLd = toolPageGraph({
+  name: 'Formatador e Validador JSON — CofreUtil',
+  description: 'Formate, minifique e valide JSON no navegador, com relatorio de erros indicando linha e coluna aproximadas e destaque numerico. Processamento local.',
+  url: `${SITE_URL}/ferramentas/formatador-json`,
+  applicationCategory: 'DeveloperApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Formatador e Validador JSON', url: `${SITE_URL}/ferramentas/formatador-json` },
+  ],
+  faq: [
+    { name: 'Meus dados JSON sao enviados para algum servidor?', text: 'Nao. A formatacao, a minificacao e a validacao acontecem no seu navegador, sem envio a servidores.' },
+    { name: 'O validador aceita JSON com comentarios ou virgulas finais?', text: 'Nao. Seguimos a especificacao JSON estrita (RFC 8259): comentarios e virgulas finais sao apontados como erro.' },
+    { name: 'Esta ferramenta funciona offline?', text: 'Sim. Apos o carregamento da pagina, todo o processamento e local e a ferramenta funciona sem conexao.' },
+    { name: 'Preciso pagar ou me cadastrar para usar?', text: 'Nao. A ferramenta e gratuita e sem cadastro.' },
+  ],
+});
 ---
 
 <Layout
   title="Formatador e Validador JSON Online | CofreUtil"
-  description="Formate, minifique e valide JSON 100% no seu navegador. Relatório de erros com linha e coluna aproximadas, destaque numérico e privacidade total (LGPD)."
+  description="Formate, minifique e valide JSON no seu navegador. Relatório de erros com linha e coluna aproximadas, destaque numérico e sem envio de dados a servidores."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -76,7 +97,8 @@ import JsonFormatterTool from '../../components/tools/JsonFormatterTool';
           Sim. O CofreUtil processa o JSON inteiramente no seu navegador
           (arquitetura Zero-Server): nenhum caractere é enviado para servidores,
           então tokens de acesso e dados sensíveis que porventura estejam no
-          documento nunca deixam a sua máquina — em conformidade total com a LGPD.
+          documento nunca deixam a sua máquina — sem envio do conteúdo a servidores
+          do CofreUtil.
           A ferramenta funciona até mesmo offline após o carregamento da página.
         </p>
       </div>
@@ -93,9 +115,9 @@ import JsonFormatterTool from '../../components/tools/JsonFormatterTool';
             Meus dados JSON são enviados para algum servidor?
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
-            Não. A formatação, a minificação e a validação acontecem 100% no seu
-            navegador. Nada do que você cola sai da sua máquina, garantindo
-            privacidade total e adequação à LGPD.
+            Não. A formatação, a minificação e a validação acontecem no seu
+            navegador. Nada do que você cola sai da sua máquina — sem envio do
+            conteúdo a servidores do CofreUtil.
           </p>
         </details>
         <details class="border-b border-[#27272A] last:border-b-0">
@@ -129,69 +151,9 @@ import JsonFormatterTool from '../../components/tools/JsonFormatterTool';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Formatador e Validador JSON — CofreUtil',
-            applicationCategory: 'DeveloperApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Formate, minifique e valide JSON 100% no navegador, com relatório de erros indicando linha e coluna aproximadas e destaque numérico. Privacidade total e LGPD.',
-            url: 'https://cofreutil.com.br/ferramentas/formatador-json',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Meus dados JSON são enviados para algum servidor?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. A formatação, a minificação e a validação acontecem 100% no seu navegador, sem envio a servidores.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'O validador aceita JSON com comentários ou vírgulas finais?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. Seguimos a especificação JSON estrita (RFC 8259): comentários e vírgulas finais são apontados como erro.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Esta ferramenta funciona offline?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Após o carregamento da página, todo o processamento é local e a ferramenta funciona sem conexão.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Preciso pagar ou me cadastrar para usar?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. A ferramenta é gratuita e sem cadastro.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="formatador-json" />
   </section>
 </Layout>

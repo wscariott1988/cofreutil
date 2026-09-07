@@ -2,11 +2,32 @@
 import Layout from '../../layouts/Layout.astro';
 import MrzReaderTool from '../../components/tools/MrzReaderTool';
 import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+
+const jsonLd = toolPageGraph({
+  name: 'Leitor de MRZ e Passaportes Offline — CofreUtil',
+  description: 'Leia o MRZ de passaportes e documentos de viagem (TD1, TD2 e TD3) por foto ou câmera no navegador, extraindo nome, nº do documento, datas, nacionalidade e validando dígitos de controle ICAO 9303. Zero upload e privacidade por arquitetura.',
+  url: `${SITE_URL}/ferramentas/leitor-mrz-passaporte`,
+  applicationCategory: 'UtilitiesApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Leitor de MRZ e Passaportes Offline', url: `${SITE_URL}/ferramentas/leitor-mrz-passaporte` },
+  ],
+  faq: [
+    { name: 'O que é MRZ e quais formatos o leitor entende?', text: 'MRZ (Machine Readable Zone) é a faixa de caracteres na parte inferior do documento. O leitor decodifica os padrões TD1, TD2 e TD3 da ICAO.' },
+    { name: 'Posso ler com a câmera ao vivo ou só com foto?', text: 'Os dois. Use a aba Câmera/Webcam para capturar o quadro ou arraste uma foto no modo Foto/Documento. Processamento local.' },
+    { name: 'Como o dígito de controle valida os dados lidos?', text: 'Cada campo crítico tem um dígito verificador (pesos 7-3-1). Se o valor lido não confere, a ferramenta marca [CHECKSUM FALHOU].' },
+    { name: 'A imagem do meu passaporte é enviada a algum servidor?', text: 'Não. O OCR roda em Web Worker no navegador e os dados nunca deixam a sua máquina.' },
+  ],
+});
 ---
 
 <Layout
   title="Leitor de MRZ e Passaportes Offline | OCR Passaporte Grátis | CofreUtil"
-  description="Leia o MRZ de passaportes e documentos de viagem (TD1, TD2 e TD3) por foto ou câmera 100% no navegador. Extrai nome, nº do documento, datas e valida dígitos de controle. Zero upload e LGPD."
+  description="Leia o MRZ de passaportes e documentos de viagem (TD1, TD2 e TD3) por foto ou câmera no navegador. Extrai nome, nº do documento, datas e valida dígitos de controle. Zero upload e privacidade por arquitetura."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -92,8 +113,8 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Sim. A arquitetura é zero-server: a foto é lida na memória do navegador,
           processada localmente e descartada ao final da sessão. Não há upload, não
-          há armazenamento em nuvem e não há registro de logs — conformidade nativa
-          com a LGPD. Até o modelo de OCR é um software aberto que fica em cache no
+          há armazenamento em nuvem e não há registro de logs — privacidade por
+          arquitetura. Até o modelo de OCR é um software aberto que fica em cache no
           seu próprio dispositivo após a primeira leitura.
         </p>
       </div>
@@ -123,7 +144,7 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
             Os dois. Ative a aba "Câmera / Webcam" para enquadrar o documento e
             capturar o quadro, ou arraste uma foto/scan no modo "Foto / Documento".
-            Em ambos os casos o processamento é 100% local.
+            Em ambos os casos o processamento é local.
           </p>
         </details>
         <details class="border-b border-[#27272A] last:border-b-0">
@@ -160,69 +181,9 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Leitor de MRZ e Passaportes Offline — CofreUtil',
-            applicationCategory: 'UtilitiesApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Leia o MRZ de passaportes e documentos de viagem (TD1, TD2 e TD3) por foto ou câmera 100% no navegador, extraindo nome, nº do documento, datas, nacionalidade e validando dígitos de controle ICAO 9303. Zero upload e LGPD.',
-            url: 'https://cofreutil.com.br/ferramentas/leitor-mrz-passaporte',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'O que é MRZ e quais formatos o leitor entende?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'MRZ (Machine Readable Zone) é a faixa de caracteres na parte inferior do documento. O leitor decodifica os padrões TD1, TD2 e TD3 da ICAO.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Posso ler com a câmera ao vivo ou só com foto?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Os dois. Use a aba Câmera/Webcam para capturar o quadro ou arraste uma foto no modo Foto/Documento. Processamento 100% local.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Como o dígito de controle valida os dados lidos?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Cada campo crítico tem um dígito verificador (pesos 7-3-1). Se o valor lido não confere, a ferramenta marca [CHECKSUM FALHOU].',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'A imagem do meu passaporte é enviada a algum servidor?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. O OCR roda em Web Worker no navegador e os dados nunca deixam a sua máquina.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="leitor-mrz-passaporte" />
   </section>
 </Layout>

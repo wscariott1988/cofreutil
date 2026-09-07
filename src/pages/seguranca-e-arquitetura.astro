@@ -1,33 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import TechnicalReferences from '../components/TechnicalReferences.astro';
+import { techArticleGraph, SITE_URL } from '../lib/site';
 
-const techArticleJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'TechArticle',
+const title =
+  'Segurança e Arquitetura | Manifesto Zero-Server do CofreUtil';
+const description =
+  'Manifesto técnico da arquitetura Zero-Server do CofreUtil: processamento no navegador, sandboxes WebAssembly, Web Workers, telemetria documentada e adequação transparente aos princípios da LGPD.';
+
+const jsonLd = techArticleGraph({
   headline: 'Segurança e Arquitetura: o Manifesto Zero-Server do CofreUtil',
-  description:
-    'Manifesto técnico da arquitetura Zero-Server do CofreUtil: isolamento de memória RAM, sandboxes WebAssembly, Web Workers e adequação transparente aos princípios da LGPD.',
-  author: {
-    '@type': 'Person',
-    name: 'Willian Scariott',
-    url: 'https://cofreutil.com.br/willian-scariott',
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'CofreUtil',
-    url: 'https://cofreutil.com.br',
-  },
-  url: 'https://cofreutil.com.br/seguranca-e-arquitetura',
-  inLanguage: 'pt-BR',
-};
+  description,
+  url: `${SITE_URL}/seguranca-e-arquitetura`,
+  articleSection: 'Segurança',
+  dateModified: '2026-09-06',
+  citation: [
+    'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm',
+    'https://www.w3.org/TR/wasm-core-1/',
+    'https://developers.cloudflare.com/web-analytics/about/',
+  ],
+});
 ---
 
 <Layout
-  title="Segurança e Arquitetura | Manifesto Zero-Server do CofreUtil"
-  description="Manifesto técnico da arquitetura Zero-Server do CofreUtil: isolamento de memória RAM, sandboxes WebAssembly, Web Workers e adequação transparente aos artigos da LGPD."
+  title={title}
+  description={description}
   keywords="arquitetura zero-server, segurança WebAssembly, sandbox navegador, LGPD art 46, privacidade por design, processamento local RAM"
   type="article"
-  jsonLd={techArticleJsonLd}
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -51,6 +51,7 @@ const techArticleJsonLd = {
         O manifesto técnico da arquitetura Zero-Server do CofreUtil. Documentado como
         imperativo de engenharia, não como promessa de marketing.
       </h2>
+      <p class="font-mono text-xs text-[#52525B]">// Última revisão técnica: 06 de setembro de 2026</p>
     </div>
 
     <!-- MANIFESTO -->
@@ -69,10 +70,26 @@ const techArticleJsonLd = {
         </p>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Consequência prática: o vetor de ataque na camada do servidor fica restrito à
-          entrega de estáticos e golpes de cadeia de suprimentos do runtime, nunca ao
-          vazamento de conteúdo tratado pelo usuário — pois esse conteúdo não existe no
-          servidor em momento algum.
+          entrega de estáticos e golpes de cadeia de suprimentos dos recursos carregados
+          (CDNs de bibliotecas), nunca ao vazamento de conteúdo tratado pelo usuário —
+          pois esse conteúdo não existe no servidor em momento algum.
         </p>
+        <div class="mt-4 max-w-3xl border border-[#27272A] bg-black p-5">
+          <h3 class="font-mono text-xs font-bold tracking-widest text-white">
+            // COMO VERIFICAR EM 60 SEGUNDOS
+          </h3>
+          <ol class="mt-3 flex list-decimal flex-col gap-1.5 pl-5 text-xs leading-relaxed text-[#A1A1AA]">
+            <li>Abra uma ferramenta (ex.: Juntar PDF) e carregue um arquivo.</li>
+            <li>
+              Abra o DevTools (F12) → aba <span class="font-mono">Rede</span> e processe o
+              arquivo: nenhuma requisição deve conter o payload do arquivo.
+            </li>
+            <li>
+              Desligue a internet e repita o processo: ele continua funcionando, pois o
+              motor (WebAssembly) já está em cache e roda localmente.
+            </li>
+          </ol>
+        </div>
       </div>
 
       <div class="flex flex-col gap-3">
@@ -125,64 +142,127 @@ const techArticleJsonLd = {
           fornece um modelo de execução com memória linear própria, sem acesso direto ao
           DOM, ao sistema de arquivos do host ou à rede: qualquer operação dessas depende
           de funções de import/export explicitamente concedidas pelo embarcador. Essa
-          fronteira reduz drasticamente a superfície de exploração de um binário nativo
-          equivalente.
+          fronteira reduz a superfície de exploração em relação a um binário nativo executado
+          sem contenção.
         </p>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Para os cenários pesados de mídia e OCR, empregamos Web Workers dedicados com
           transferência de buffers por
           <span class="font-mono text-xs"> transferable objects</span> — sem duplicação de
-          memória entre thread principal e worker. Headers de isolamento cross-origin
-          (<span class="font-mono text-xs">Cross-Origin-Opener-Policy: same-origin</span>
-          e
-          <span class="font-mono text-xs">Cross-Origin-Embedder-Policy: require-corp</span>)
-          habilitam primitivas de alta performance e reforçam o isolamento do ambiente.
+          memória entre thread principal e worker. O build de FFmpeg aqui utilizado é
+          single-threaded (<span class="font-mono text-xs">@ffmpeg/core</span>), portanto
+          não depende de cross-origin isolation nem dos headers
+          <span class="font-mono text-xs">Cross-Origin-Opener-Policy</span> /
+          <span class="font-mono text-xs">Cross-Origin-Embedder-Policy</span>: a execução
+          limita-se ao sandbox da página e das Web Workers. Essa fronteira reduz a
+          superfície de exploração em comparação a um binário nativo executado sem
+          contenção.
         </p>
       </div>
 
       <div class="flex flex-col gap-3">
         <h2 class="font-mono text-xl font-bold text-white">
-          4. Ausência de telemetria de conteúdo
+          4. Riscos de cadeia de suprimentos (SSC)
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
-          O CofreUtil não opera cookies de rastreamento, não instrumenta o conteúdo
-          processado e não mantém logs de operações. A única telemetria presente é
-          agregada, anônima e desligável (Cloudflare Web Analytics), restrita a métricas
-          de visita — sem correlação com arquivos, textos ou parâmetros de ferramentas.
-          Qualquer auditoria de rede pode confirmar a ausência de requisições contendo
-          payloads de arquivo durante o uso.
-        </p>
-      </div>
-
-      <div class="flex flex-col gap-3">
-        <h2 class="font-mono text-xl font-bold text-white">
-          5. Adequação transparente aos princípios da LGPD
-        </h2>
-        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
-          A adequação não é declarada como um selo automático; ela é descrita em termos
-          dos dispositivos da Lei nº 13.709/2018:
+          A arquitetura Zero-Server elimina a exposição do conteúdo do usuário, mas não é
+          imune a vulnerabilidades de cadeia de suprimentos: a aplicação é entregue a
+          partir de uma CDN (Vercel) e carrega bibliotecas e motores WebAssembly.
+          Reconhecemos esses riscos de forma explícita, em vez de tratá-los como
+          "seguros por design".
         </p>
         <ul class="flex max-w-3xl list-disc flex-col gap-2 pl-5 text-sm leading-relaxed text-[#A1A1AA]">
           <li>
-            <strong class="text-white">Art. 6º, II e III (finalidade e necessidade / minimização):</strong>
+            <strong class="text-white">Riscos mapeados:</strong> comprometimento do
+            deploy/CDN ou do repositório com código malicioso; dependência de bibliotecas
+            de terceiros (npm, GitHub); motores WebAssembly vindos de CDN; e a necessidade
+            de confiar na integridade do código servido no momento da visita.
+          </li>
+          <li>
+            <strong class="text-white">Mitigações aplicadas:</strong> builds reproduzíveis
+            e versionadas; dependências com versões fixas; atualizações documentadas no
+            changelog; e o fato de o motor WebAssembly ser baixado uma única vez e ficar
+            disponível para reuso local (o que também viabiliza a auditoria offline do
+            binário com ferramentas de inspeção nativas do navegador).
+          </li>
+          <li>
+            <strong class="text-white">Limite da mitigação:</strong> nenhuma prática de
+            segurança torna uma aplicação client-side infalível; a auditoria é contínua e
+            as bibliotecas são atualizadas quando há correção publicada de segurança.
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          5. Ausência de telemetria de conteúdo
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Preciso sobre telemetria: o CofreUtil não lê nem armazena o conteúdo processado
+          e não opera cookies de rastreamento nem logs de operações com conteúdo. A única
+          telemetria do site é o Cloudflare Web Analytics, que mede métricas agregadas e
+          anônimas de visita (páginas acessadas, origem aproximada, dispositivo) sem
+          correlação com arquivos, textos ou parâmetros das ferramentas, e sem acessar o
+          conteúdo processado. As visitas do próprio desenvolvedor são auto-excluídas por
+          um mecanismo próprio (<span class="font-mono text-xs">?ignore=true</span>); a
+          desativação definitiva do recurso só pode ser feita no painel do Cloudflare.
+        </p>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Diferente do que esta documentação afirmava em versões anteriores, este site não
+          declara "ausência total de telemetria": a métrica de visitas existe, é
+          cookieless e é descrita aqui com transparência. O que não existe — e pode ser
+          confirmado pelas instruções de verificação acima — é a transmissão do conteúdo
+          dos arquivos para servidores.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          6. Adequação transparente aos princípios da LGPD
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          A adequação não é declarada como um selo automático; ela é descrita em termos
+          dos dispositivos da
+          <a
+            href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white underline decoration-dotted underline-offset-4 transition-colors hover:text-[#A1A1AA]"
+          >
+            Lei nº 13.709/2018 (LGPD)
+          </a>
+          , com orientação complementar da
+          <a
+            href="https://www.gov.br/anpd/pt-br"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-white underline decoration-dotted underline-offset-4 transition-colors hover:text-[#A1A1AA]"
+          >
+            Autoridade Nacional de Proteção de Dados (ANPD)
+          </a>
+          :
+        </p>
+        <ul class="flex max-w-3xl list-disc flex-col gap-2 pl-5 text-sm leading-relaxed text-[#A1A1AA]">
+          <li>
+            <strong class="text-white">Art. 6º, III (necessidade / minimização):</strong>
             por não coletarmos dados pessoais para processamento, o tratamento é limitado
             ao estritamente necessário — na prática, caminha para zero.
           </li>
           <li>
-            <strong class="text-white">Art. 6º, VI (segurança):</strong> os princípios de
-            Privacy-by-Design e Privacy-by-Default são incorporados desde a concepção de
-            cada ferramenta (arquitetura, não remendo posterior).
+            <strong class="text-white">Art. 6º, VI (segurança):</strong> a segurança da
+            informação é incorporada desde a concepção de cada ferramenta (arquitetura,
+            não remendo posterior), alinhada aos conceitos de Privacy-by-Design e
+            Privacy-by-Default.
           </li>
           <li>
             <strong class="text-white">Art. 46 e §2º (segurança e prevenção desde a concepção):</strong>
             o padrão Zero-Server evita a custódia, a transmissão e o armazenamento do dado
-            — os três vetores centrais de incidentes de segurança.
+            — três vetores centrais de incidentes de segurança.
           </li>
           <li>
             <strong class="text-white">Art. 48 (comunicação de incidente):</strong> a ausência
-            de armazenamento por nossa parte elimina a classe de incidente mais comum em
-            ferramentas do gênero (comprometimento de banco de dados), reduzindo
-            drasticamente a superfície de responsabilidade do controlador.
+            de armazenamento por nossa parte reduz o risco do tipo de incidente mais comum
+            em ferramentas do gênero (comprometimento de banco de dados).
           </li>
         </ul>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
@@ -195,7 +275,7 @@ const techArticleJsonLd = {
 
       <div class="flex flex-col gap-3">
         <h2 class="font-mono text-xl font-bold text-white">
-          6. Auditoria e transparência
+          7. Auditoria e transparência
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Todo o projeto é entregue como site estático: não há API back-end, banco de
@@ -219,5 +299,9 @@ const techArticleJsonLd = {
         </p>
       </div>
     </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="seguranca-e-arquitetura" />
   </section>
 </Layout>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { SITE_URL, ORG_ID, SITE_NAME } from '../../lib/site';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
@@ -15,9 +16,9 @@ const tabs = [
   { label: 'B2B / APIs', value: 'B2B / APIs' },
 ];
 
-const title = 'Blog | CofreUtil — Como Fazer Grátis, Sem Login e 100% Privado';
+const title = 'Blog | CofreUtil — Guias Técnicos e Tutoriais Gratuitos';
 const description =
-  'Guias rápidos sobre como juntar PDF, comprimir arquivos, gerar link de WhatsApp, extrair texto de imagem e muito mais — tudo gratuito, sem cadastro e com processamento 100% local.';
+  'Guias rápidos sobre como juntar PDF, comprimir arquivos, gerar link de WhatsApp, extrair texto de imagem e muito mais — gratuito, sem cadastro e com processamento local no navegador.';
 
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('pt-BR', {
@@ -32,10 +33,13 @@ const formatDate = (date: Date) =>
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
+  '@id': `${SITE_URL}/blog`,
   name: 'Blog CofreUtil',
   description,
-  url: 'https://cofreutil.com.br/blog',
-  publisher: { '@type': 'Organization', name: 'CofreUtil', url: 'https://cofreutil.com.br' },
+  url: `${SITE_URL}/blog`,
+  inLanguage: 'pt-BR',
+  isPartOf: { '@id': `${SITE_URL}#website` },
+  publisher: { '@id': ORG_ID },
 };
 ---
 

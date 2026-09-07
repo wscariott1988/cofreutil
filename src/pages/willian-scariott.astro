@@ -1,34 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { personPageGraph } from '../lib/site';
 
-const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Willian Scariott',
-  jobTitle: 'Engenheiro de Software e Fundador do CofreUtil',
-  url: 'https://cofreutil.com.br/willian-scariott',
-  email: 'mailto:contato@grupows.com',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'CofreUtil',
-    url: 'https://cofreutil.com.br',
-  },
-  knowsAbout: [
-    'Arquitetura Zero-Server',
-    'WebAssembly',
-    'Web Crypto API',
-    'Privacidade de Dados e LGPD',
-    'Engenharia de Software',
-    'Performance Web e Front-end',
-  ],
-};
+const jsonLd = personPageGraph();
 ---
 
 <Layout
-  title="Willian Scariott | Engenheiro de Software e Fundador do CofreUtil"
-  description="Willian Scariott é Engenheiro de Software e Fundador do CofreUtil. Conheça sua biografia, seu compromisso ético com a descentralização da web e a privacidade do usuário."
+  title="Willian Scariott | Desenvolvedor de Software e Fundador do CofreUtil"
+  description="Willian Scariott é Desenvolvedor de Software e Fundador do CofreUtil. Conheça sua biografia, seu compromisso ético com a descentralização da web e a privacidade do usuário."
   type="profile"
-  jsonLd={personJsonLd}
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -49,7 +30,7 @@ const personJsonLd = {
       </h1>
 
       <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
-        Engenheiro de Software e Fundador do CofreUtil.
+        Desenvolvedor de Software e Fundador do CofreUtil.
       </h2>
 
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
@@ -67,19 +48,20 @@ const personJsonLd = {
           Biografia
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
-          Willian Scariott atua na engenharia de software com ênfase em aplicações
+          Willian Scariott atua no desenvolvimento de software com ênfase em aplicações
           client-side, criptografia no navegador (Web Crypto API) e processamento via
           WebAssembly. Sua trajetória combina o desenvolvimento de produtos digitais
           com a defesa técnica da privacidade: ferramentas que executam localmente,
-          sem coletar telemetria, sem persistir arquivos e sem depender de infraestrutura
-          de nuvem para proteger o dado do usuário.
+          sem enviar o arquivo do usuário a um servidor de processamento, sem persistir
+          dados em servidores próprios e sem depender de backend para as operações.
         </p>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           No CofreUtil, essa postura se traduz em engenharia: cada ferramenta foi
-          construída para rodar dentro do navegador como ambiente de execução, em
-          conformidade com princípios de Privacy-by-Design e Privacy-by-Default da LGPD.
-          Não é discurso de marketing — é uma restrição arquitetural audível por
-          qualquer auditoria de código.
+          construída para rodar dentro do navegador como ambiente de execução, seguindo
+          os conceitos de Privacy-by-Design e Privacy-by-Default, sem receber ou
+          armazenar os dados processados. Não é apenas uma afirmação de marketing: é
+          uma restrição arquitetural auditável por meio do código executado no navegador
+          e da inspeção do tráfego de rede.
         </p>
       </div>
 

@@ -1,0 +1,41 @@
+---
+import { referencesBySlug } from '../lib/references';
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const refs = referencesBySlug[slug] ?? [];
+---
+
+{refs.length > 0 && (
+  <section
+    aria-label="Referências técnicas"
+    class="mt-16 border-t border-[#27272A] pt-6"
+  >
+    <h2 class="font-mono text-xl font-bold text-white">
+      Referências técnicas
+    </h2>
+    <p class="mt-2 max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+      Fontes primárias e documentação oficial utilizadas como base para esta
+      ferramenta. Todas as referências abaixo são públicas e podem ser
+      consultadas diretamente.
+    </p>
+    <ul class="mt-4 flex flex-col gap-3">
+      {refs.map((ref) => (
+        <li key={ref.url} class="max-w-3xl">
+          <a
+            href={ref.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-xs text-white underline decoration-dotted underline-offset-4 transition-colors hover:text-[#A1A1AA]"
+          >
+            {ref.institution} — {ref.title}
+          </a>
+          <p class="mt-0.5 text-xs leading-relaxed text-[#52525B]">{ref.note}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

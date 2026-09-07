@@ -3,11 +3,33 @@ import Layout from '../../layouts/Layout.astro';
 import DiffCheckerTool from '../../components/tools/DiffCheckerTool';
 import ShareButton from '../../components/ShareButton';
 import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+
+const jsonLd = toolPageGraph({
+  name: 'Comparador de Textos e Contratos — CofreUtil',
+  description: 'Comparador de textos e contratos offline: descubra o que mudou entre duas versoes — privado, sem envio de dados.',
+  url: `${SITE_URL}/ferramentas/comparar-textos`,
+  applicationCategory: 'UtilitiesApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Comparador de Textos e Contratos Offline', url: `${SITE_URL}/ferramentas/comparar-textos` },
+  ],
+  faq: [
+    { name: 'Meu texto ou contrato e enviado para algum servidor?', text: 'Nao. A comparacao acontece no seu navegador, sem envio a servidores, garantindo privacidade e sem envio do conteudo a servidores do CofreUtil.' },
+    { name: 'Qual a diferenca entre comparar em linhas, palavras e caracteres?', text: 'Linhas mostra apenas quais linhas mudaram. Palavras e caracteres refinam o destaque dentro das linhas alteradas, sublinhando exatamente o trecho que difere.' },
+    { name: 'Esta ferramenta funciona offline?', text: 'Sim. Apos o carregamento da pagina, todo o processamento e local e a comparacao funciona sem conexao.' },
+    { name: 'Preciso pagar ou me cadastrar para comparar textos?', text: 'Nao. A ferramenta e gratuita e sem cadastro.' },
+    { name: 'O que e um diff checker e como funciona?', text: 'Um diff checker compara dois textos e destaca as diferencas. O CofreUtil usa o algoritmo de Myers (1986) — o mesmo de editores de codigo — rodando inteiramente no navegador.' },
+  ],
+});
 ---
 
 <Layout
   title="Comparador de Textos e Contratos Offline | CofreUtil"
-  description="Comparador de textos e contratos offline: descubra exatamente o que mudou entre duas versoes — 100% privado e sem sair do navegador. Ferramenta gratis sem envio de dados."
+  description="Comparador de textos e contratos offline: descubra exatamente o que mudou entre duas versoes — privado e sem sair do navegador. Ferramenta gratis sem envio de dados."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -29,14 +51,14 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
 
       <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
         Comparador de Textos e Contratos Offline: descubra exatamente o que mudou
-        entre duas versoes de um texto ou documento — de forma 100% privada e sem
+        entre duas versoes de um texto ou documento — de forma privada e sem
         sair do navegador.
       </h2>
 
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
         Cole o texto original e a versao modificada e veja as diferencas em tres
         granularidades (linhas, palavras ou caracteres), em visao lado a lado ou
-        unificada. A comparacao usa o algoritmo de Myers (1986) e roda 100%
+        unificada. A comparacao usa o algoritmo de Myers (1986) e roda
         localmente: nenhum caractere do seu documento e enviado a servidores.
         <span class="hidden text-[#52525B]"> diff checker offline </span>
       </p>
@@ -58,9 +80,9 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Contratos, atas, minutas e copias de documentos contem clausulas que
-          mudam silenciosamente de uma versao para outra. Colar esse conteudo em
+          mudam silenciosamente de uma versao para outra.           Colar esse conteudo em
           um servico na nuvem expoe dados sensiveis — por isso este comparador
-          e 100% offline: todo o processamento acontece no seu navegador e nada
+          e offline: todo o processamento acontece no seu navegador e nada
           e transmitido. Voce ve, caractere por caractere, onde a versao antiga
           e a nova divergem.
         </p>
@@ -86,10 +108,10 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
           E seguro comparar um contrato aqui e verificar alteracoes sem envio?
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
-          Sim. Este comparador e 100% offline (arquitetura Zero-Server): o texto
+          Sim. Este comparador e offline (arquitetura Zero-Server): o texto
           digitado permanece na sua maquina, o algoritmo de diff roda localmente
           e nenhum dado e registrado. Com isso, voce pode verificar alteracoes em
-          contratos de forma privada e em conformidade total com a LGPD — a
+          contratos de forma privada, sem enviar o conteudo a servidores — a
           ferramenta funciona ate mesmo sem internet apos o carregamento da pagina.
         </p>
       </div>
@@ -106,9 +128,9 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
             Meu texto ou contrato e enviado para algum servidor?
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
-            Nao. A comparacao acontece 100% no seu navegador, com o algoritmo de
+            Nao. A comparacao acontece no seu navegador, com o algoritmo de
             diff executado localmente. Nenhum caractere sai da sua maquina —
-            garante privacidade total e atendimento a LGPD.
+            sem envio do conteudo a servidores do CofreUtil.
           </p>
         </details>
         <details class="border-b border-[#27272A] last:border-b-0">
@@ -155,77 +177,9 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Comparador de Textos e Contratos — CofreUtil',
-            applicationCategory: 'UtilitiesApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Comparador de textos e contratos offline: descubra o que mudou entre duas versoes — 100% privado, sem envio de dados, em conformidade com a LGPD.',
-            url: 'https://cofreutil.com.br/ferramentas/comparar-textos',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Meu texto ou contrato e enviado para algum servidor?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Nao. A comparacao acontece 100% no seu navegador, sem envio a servidores, garantindo privacidade total e atendimento a LGPD.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Qual a diferenca entre comparar em linhas, palavras e caracteres?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Linhas mostra apenas quais linhas mudaram. Palavras e caracteres refinam o destaque dentro das linhas alteradas, sublinhando exatamente o trecho que difere.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Esta ferramenta funciona offline?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Apos o carregamento da pagina, todo o processamento e local e a comparacao funciona sem conexao.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Preciso pagar ou me cadastrar para comparar textos?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Nao. A ferramenta e gratuita e sem cadastro.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'O que e um diff checker e como funciona?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Um diff checker compara dois textos e destaca as diferencas. O CofreUtil usa o algoritmo de Myers (1986) — o mesmo de editores de codigo — rodando inteiramente no navegador.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="comparar-textos" />
   </section>
 </Layout>

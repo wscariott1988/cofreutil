@@ -2,116 +2,63 @@
 import Layout from '../../layouts/Layout.astro';
 import SilenceRemoverTool from '../../components/tools/SilenceRemoverTool';
 import ShareButton from '../../components/ShareButton';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
 
-const toolUrl = 'https://cofreutil.com.br/ferramentas/remover-silencio';
+const toolUrl = `${SITE_URL}/ferramentas/remover-silencio`;
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
+const jsonLd = toolPageGraph({
+  type: 'WebApplication',
+  name: 'Removedor de Silêncio Inteligente de Vídeo e Áudio | CofreUtil',
+  url: toolUrl,
+  applicationCategory: 'MultimediaApplication',
+  browserRequirements: 'Requires JavaScript',
+  featureList: [
+    'Remover silêncio de vídeos e áudios no navegador',
+    'Detecção automática de silêncio com o filtro silencedetect do FFmpeg',
+    'Fatiamento e concatenação lossless (-c copy) sem perder qualidade',
+    'Sliders de sensibilidade de ruído (dB) e duração mínima de silêncio',
+    'Linha do tempo gráfica mostrando onde o silêncio será removido',
+    'Aceita MP4, WebM, MOV, MKV, AVI, MP3, WAV, OGG, M4A, FLAC e mais',
+  ],
+  description:
+    'Remova silêncios de vídeos e gravações de áudio no navegador via FFmpeg WebAssembly local. Corte e concatenação lossless: qualidade original preservada, zero upload e zero login.',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
     {
-      '@type': 'WebApplication',
-      name: 'Removedor de Silêncio Inteligente de Vídeo e Áudio | CofreUtil',
+      name: 'Removedor de Silêncio Inteligente de Vídeo e Áudio',
       url: toolUrl,
-      applicationCategory: 'MultimediaApplication',
-      operatingSystem: 'Any',
-      browserRequirements: 'Requires JavaScript',
-      inLanguage: 'pt-BR',
-      isAccessibleForFree: true,
-      featureList: [
-        'Remover silêncio de vídeos e áudios 100% no navegador',
-        'Detecção automática de silêncio com o filtro silencedetect do FFmpeg',
-        'Fatiamento e concatenação lossless (-c copy) sem perder qualidade',
-        'Sliders de sensibilidade de ruído (dB) e duração mínima de silêncio',
-        'Linha do tempo gráfica mostrando onde o silêncio será removido',
-        'Aceita MP4, WebM, MOV, MKV, AVI, MP3, WAV, OGG, M4A, FLAC e mais',
-      ],
-      description:
-        'Remova silêncios de vídeos e gravações de áudio 100% no navegador via FFmpeg WebAssembly local. Corte e concatenação lossless: qualidade original preservada, zero upload e zero login (LGPD).',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'BRL',
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Willian Scariott',
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'CofreUtil',
-        url: 'https://cofreutil.com.br',
-      },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cofreutil.com.br' },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Ferramentas',
-          item: 'https://cofreutil.com.br/#ferramentas',
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Remover Silêncio',
-          item: toolUrl,
-        },
-      ],
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'Como remover silêncio de vídeo sem perder qualidade?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Selecione o arquivo, ajuste a sensibilidade de ruído (dB) e a duração mínima de silêncio, clique em [Detectar Silêncio] e depois em [Remover Silêncio e Baixar]. O fatiamento usa -c copy: os trechos ativos são unidos sem re-encodar, preservando 100% da qualidade original.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'O que o removedor de silêncio faz com meu arquivo?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Nada sai da sua máquina. O FFmpeg roda em WebAssembly dentro do navegador e processa o arquivo inteiramente em memória. Sem upload, sem cadastro e sem servidores intermediários (conformidade LGPD).',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Quais formatos de vídeo e áudio são aceitos?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Vídeo: MP4, WebM, MOV, MKV, AVI, M4V. Áudio: MP3, WAV, OGG, M4A, FLAC, AAC, WMA e OPUS, com limite de 200MB por arquivo.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Como funciona a detecção de silêncio?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Usamos o filtro silencedetect do FFmpeg na faixa de áudio. O evento de log é monitorado para extrair os instantes de silence_start e silence_end, que definem os intervalos a serem removidos. Você controla o limiar em dB (sensibilidade) e a duração mínima do silêncio.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'O corte é realmente lossless (sem re-encode)?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Sim. O fatiamento dos trechos ativos é feito com -c copy, copiando os bytes originais, e a concatenação usa o demuxer concat também com -c copy. Não há re-encodação, portanto não há degradação de qualidade nem queda de bitrate.',
-          },
-        },
-      ],
     },
   ],
-};
+  faq: [
+    {
+      name: 'Como remover silêncio de vídeo sem perder qualidade?',
+      text: 'Selecione o arquivo, ajuste a sensibilidade de ruído (dB) e a duração mínima de silêncio, clique em [Detectar Silêncio] e depois em [Remover Silêncio e Baixar]. O fatiamento usa -c copy: os trechos ativos são unidos sem re-encodar, preservando 100% da qualidade original.',
+    },
+    {
+      name: 'O que o removedor de silêncio faz com meu arquivo?',
+      text: 'Nada sai da sua máquina. O FFmpeg roda em WebAssembly dentro do navegador e processa o arquivo inteiramente em memória. Sem upload, sem cadastro e sem servidores intermediários.',
+    },
+    {
+      name: 'Quais formatos de vídeo e áudio são aceitos?',
+      text: 'Vídeo: MP4, WebM, MOV, MKV, AVI, M4V. Áudio: MP3, WAV, OGG, M4A, FLAC, AAC, WMA e OPUS, com limite de 200MB por arquivo.',
+    },
+    {
+      name: 'Como funciona a detecção de silêncio?',
+      text: 'Usamos o filtro silencedetect do FFmpeg na faixa de áudio. O evento de log é monitorado para extrair os instantes de silence_start e silence_end, que definem os intervalos a serem removidos. Você controla o limiar em dB (sensibilidade) e a duração mínima do silêncio.',
+    },
+    {
+      name: 'O corte é realmente lossless (sem re-encode)?',
+      text: 'Sim. O fatiamento dos trechos ativos é feito com -c copy, copiando os bytes originais, e a concatenação usa o demuxer concat também com -c copy. Não há re-encodação, portanto não há degradação de qualidade nem queda de bitrate.',
+    },
+  ],
+});
 ---
 
 <Layout
-  title="Removedor de Silêncio de Vídeo e Áudio Online — Lossless 100% Local | CofreUtil"
-  description="Remova silêncios de vídeos e áudios grátis, 100% no navegador via FFmpeg local. Corte e concatenação lossless (-c copy) preservam a qualidade original. Zero upload e zero login."
+  title="Removedor de Silêncio de Vídeo e Áudio Online — Lossless Local | CofreUtil"
+  description="Remova silêncios de vídeos e áudios grátis, no navegador via FFmpeg local. Corte e concatenação lossless (-c copy) preservam a qualidade original. Zero upload e zero login."
   keywords="remover silencio de video, cortar silencio de audio, removedor de silencio online, remover pausas de video lossless, cortar silencio mp4, remover silencio audio podcast, ffmpeg wasm navegador"
   jsonLd={jsonLd}
 >
@@ -144,7 +91,7 @@ const jsonLd = {
 
       <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
         Corte pausas mortas de gravações, aulas, podcasts e reuniões —
-        100% no navegador e sem perder qualidade.
+        no navegador e sem perder qualidade.
       </h2>
 
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
@@ -279,5 +226,9 @@ const jsonLd = {
         </details>
       </div>
     </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="remover-silencio" />
   </section>
 </Layout>

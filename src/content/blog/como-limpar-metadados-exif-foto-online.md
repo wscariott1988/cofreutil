@@ -15,7 +15,7 @@ Os dados EXIF contêm as coordenadas exatas do GPS de onde a foto foi tirada (co
 Para proteger sua privacidade e a de sua família, você deve expurgar os dados EXIF da imagem antes de enviá-la para a nuvem. Ao processar o arquivo diretamente no navegador, as coordenadas geográficas são apagadas instantaneamente na memória RAM do seu dispositivo.
 
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
-  <span class="text-white font-bold block mb-2">[🔒 HIGIENIZADOR EXIF OFFLINE]</span>
-  Arraste suas fotos para remover coordenadas de geolocalização e especificações de aparelhos de forma instantânea e privada.
-  <a href="/ferramentas/limpador-de-metadados-exif" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Limpar Metadados de Fotos →</a>
+  <span class="text-white font-bold block mb-2">[🔒 LIMPADOR DE METADADOS DE FOTOS (REMOVER LOCALIZAÇÃO E GPS)]</span>
+  Arraste suas fotos para remover coordenadas de geolocalização, dados EXIF e especificações de aparelhos de forma instantânea e privada.
+  <a href="/ferramentas/limpador-de-metadados-exif" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Abrir Limpador de Metadados de Fotos →</a>
 </div>

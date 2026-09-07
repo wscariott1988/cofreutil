@@ -1,11 +1,33 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import QrScannerTool from '../../components/tools/QrScannerTool';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+
+const jsonLd = toolPageGraph({
+  name: 'Leitor e Scanner de QR Code Offline — CofreUtil',
+  description: 'Leia QR Codes pela câmera/webcam ou por imagens PNG, JPG e WEBP no navegador, com cópia em um clique e aviso de link seguro contra phishing. Privacidade por arquitetura.',
+  url: `${SITE_URL}/ferramentas/leitor-qr-code`,
+  applicationCategory: 'UtilitiesApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Leitor e Scanner de QR Code Offline', url: `${SITE_URL}/ferramentas/leitor-qr-code` },
+  ],
+  faq: [
+    { name: 'Posso escanear com a câmera do celular ou webcam?', text: 'Sim. Use o modo Scanner via Câmera/Webcam; a leitura é automática e contínua até o QR Code ser detectado.' },
+    { name: 'Quais formatos de imagem o leitor aceita?', text: 'PNG, JPG e WEBP — os formatos mais comuns de prints, fotos e capturas de tela.' },
+    { name: 'Por que o QR Code da minha imagem não foi detectado?', text: 'A detecção falha quando o código está pequeno, fora de foco, com baixo contraste ou muito inclinado.' },
+    { name: 'O leitor abre o link contido no QR Code automaticamente?', text: 'Não. Por segurança, o leitor apenas exibe e copia o conteúdo, mostrando o domínio antes de você decidir abrir.' },
+    { name: 'Minha imagem ou vídeo é enviado para algum servidor?', text: 'Não. A leitura acontece no seu navegador; imagem, vídeo e conteúdo nunca saem da sua máquina.' },
+  ],
+});
 ---
 
 <Layout
   title="Leitor e Scanner de QR Code Offline | Câmera e Imagem Grátis | CofreUtil"
-  description="Leia QR Codes pela câmera/webcam ou por imagens PNG, JPG e WEBP 100% no navegador. Copie o conteúdo com um clique, com alerta de link seguro contra phishing. Sem upload e LGPD."
+  description="Leia QR Codes pela câmera/webcam ou por imagens PNG, JPG e WEBP no navegador. Copie o conteúdo com um clique, com alerta de link seguro contra phishing. Sem upload e privacidade por arquitetura."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -42,7 +64,7 @@ import QrScannerTool from '../../components/tools/QrScannerTool';
       </h2>
 
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
-        Dois modos de leitura 100% locais: aponte a câmera do celular ou webcam para
+        Dois modos de leitura locais: aponte a câmera do celular ou webcam para
         o código para leitura instantânea, ou arraste uma imagem (PNG, JPG, WEBP) com
         um QR Code. O conteúdo é decodificado via Canvas API + jsQR (carregado sob
         demanda) e exibido em caixa monoespaçada, com cópia em um clique e aviso de
@@ -84,10 +106,10 @@ import QrScannerTool from '../../components/tools/QrScannerTool';
           A leitura é segura para QR Codes de imagens confidenciais?
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
-          Sim. O processamento é 100% local (arquitetura zero-server): a imagem é lida
+          Sim. O processamento é local (arquitetura zero-server): a imagem é lida
           na memória do navegador e descartada ao final da sessão. Nenhum pixel, QR
-          Code ou conteúdo decodificado sai da sua máquina — conformidade nativa com a
-          LGPD, sem coleta ou armazenamento por terceiros.
+          Code ou conteúdo decodificado sai da sua máquina — privacidade por
+          arquitetura, sem coleta ou armazenamento por terceiros.
         </p>
       </div>
     </div>
@@ -141,83 +163,15 @@ import QrScannerTool from '../../components/tools/QrScannerTool';
             Minha imagem ou vídeo é enviado para algum servidor?
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
-            Não. A leitura acontece 100% no seu navegador via Canvas API e jsQR. A
+            Não. A leitura acontece no seu navegador via Canvas API e jsQR. A
             imagem, o vídeo e o conteúdo decodificado nunca saem da sua máquina.
           </p>
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Leitor e Scanner de QR Code Offline — CofreUtil',
-            applicationCategory: 'UtilitiesApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Leia QR Codes pela câmera/webcam ou por imagens PNG, JPG e WEBP 100% no navegador, com cópia em um clique e aviso de link seguro contra phishing. Privacidade total e LGPD.',
-            url: 'https://cofreutil.com.br/ferramentas/leitor-qr-code',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Posso escanear com a câmera do celular ou webcam?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Use o modo Scanner via Câmera/Webcam; a leitura é automática e contínua até o QR Code ser detectado.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Quais formatos de imagem o leitor aceita?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'PNG, JPG e WEBP — os formatos mais comuns de prints, fotos e capturas de tela.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Por que o QR Code da minha imagem não foi detectado?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'A detecção falha quando o código está pequeno, fora de foco, com baixo contraste ou muito inclinado.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'O leitor abre o link contido no QR Code automaticamente?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. Por segurança, o leitor apenas exibe e copia o conteúdo, mostrando o domínio antes de você decidir abrir.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Minha imagem ou vídeo é enviado para algum servidor?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. A leitura acontece 100% no seu navegador; imagem, vídeo e conteúdo nunca saem da sua máquina.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="leitor-qr-code" />
   </section>
 </Layout>

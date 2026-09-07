@@ -1,11 +1,32 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ImageConverterTool from '../../components/tools/ImageConverterTool';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+
+const jsonLd = toolPageGraph({
+  name: 'Conversor de Imagens — CofreUtil',
+  description: 'Converta imagens JPG, PNG, WEBP, GIF e BMP para PNG, JPG ou WEBP em lote, no navegador e sem enviar arquivos a servidores. Privacidade por arquitetura.',
+  url: `${SITE_URL}/ferramentas/conversor-de-imagem`,
+  applicationCategory: 'MultimediaApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Conversor de Imagens (PNG, JPG, WEBP)', url: `${SITE_URL}/ferramentas/conversor-de-imagem` },
+  ],
+  faq: [
+    { name: 'Quais formatos de imagem eu posso converter?', text: 'Você pode enviar JPG, PNG, WEBP, GIF e BMP e converter para PNG, JPG ou WEBP. GIFs animados têm apenas o primeiro quadro convertido.' },
+    { name: 'Posso converter várias imagens de uma vez?', text: 'Sim. O plano gratuito converte até 3 imagens por lote, mantendo o nome original de cada arquivo e trocando apenas a extensão.' },
+    { name: 'O que a barra de qualidade faz na conversão?', text: 'Para JPG e WEBP, a qualidade (de 10% a 100%) controla o nível de compressão. PNG ignora a barra, pois é sempre codificado sem perdas.' },
+    { name: 'Minhas imagens são enviadas para algum servidor?', text: 'Não. Todo o processamento acontece dentro do seu navegador via Canvas API. Suas imagens nunca saem do seu computador.' },
+  ],
+});
 ---
 
 <Layout
   title="Conversor de Imagens Online Grátis | PNG, JPG e WEBP | CofreUtil"
-  description="Converta imagens JPG, PNG, WEBP, GIF e BMP para PNG, JPG ou WEBP em lote, 100% no navegador e sem enviar arquivos a servidores. Controle de qualidade, privacidade total e LGPD."
+  description="Converta imagens JPG, PNG, WEBP, GIF e BMP para PNG, JPG ou WEBP em lote, no navegador e sem enviar arquivos a servidores. Controle de qualidade, privacidade por arquitetura."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -41,8 +62,8 @@ import ImageConverterTool from '../../components/tools/ImageConverterTool';
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
         Transforme JPG, PNG, WEBP, GIF e BMP para o formato que você precisar
         (PNG, JPG ou WEBP) com controle fino de qualidade. Toda a conversão
-        acontece 100% no seu navegador via Canvas API nativa: zero upload, zero
-        armazenamento em nuvem e privacidade total.
+        acontece no seu navegador via Canvas API nativa: zero upload, zero
+        armazenamento em nuvem e dados que não saem da sua máquina.
       </p>
     </div>
 
@@ -84,10 +105,10 @@ import ImageConverterTool from '../../components/tools/ImageConverterTool';
           É seguro converter imagens confidenciais neste site?
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
-          Sim. A arquitetura é 100% zero-server: não existe servidor recebendo os
+          Sim. A arquitetura é zero-server: não existe servidor recebendo os
           seus arquivos, não existem logs e não existe banco de dados. A conversão
-          roda localmente na sua máquina, o que confere conformidade nativa com a
-          LGPD — sem coleta, sem tratamento e sem repasse de dados pessoais a
+          roda localmente na sua máquina, o que confere privacidade por
+          arquitetura — sem coleta, sem tratamento e sem repasse de dados pessoais a
           terceiros.
         </p>
       </div>
@@ -141,69 +162,9 @@ import ImageConverterTool from '../../components/tools/ImageConverterTool';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Conversor de Imagens — CofreUtil',
-            applicationCategory: 'MultimediaApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Converta imagens JPG, PNG, WEBP, GIF e BMP para PNG, JPG ou WEBP em lote, 100% no navegador e sem enviar arquivos a servidores. Privacidade total e LGPD.',
-            url: 'https://cofreutil.com.br/ferramentas/conversor-de-imagem',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Quais formatos de imagem eu posso converter?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Você pode enviar JPG, PNG, WEBP, GIF e BMP e converter para PNG, JPG ou WEBP. GIFs animados têm apenas o primeiro quadro convertido.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Posso converter várias imagens de uma vez?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. O plano gratuito converte até 3 imagens por lote, mantendo o nome original de cada arquivo e trocando apenas a extensão.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'O que a barra de qualidade faz na conversão?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Para JPG e WEBP, a qualidade (de 10% a 100%) controla o nível de compressão. PNG ignora a barra, pois é sempre codificado sem perdas.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Minhas imagens são enviadas para algum servidor?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. Todo o processamento acontece dentro do seu navegador via Canvas API. Suas imagens nunca saem do seu computador.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="conversor-de-imagem" />
   </section>
 </Layout>

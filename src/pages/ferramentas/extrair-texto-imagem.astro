@@ -3,12 +3,33 @@ import Layout from '../../layouts/Layout.astro';
 import OcrTool from '../../components/tools/OcrTool';
 import ShareButton from '../../components/ShareButton';
 import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+
+const jsonLd = toolPageGraph({
+  name: 'Extrator de Texto de Imagem (OCR Offline Seguro) — CofreUtil',
+  description: 'Converter imagem para texto grátis com leitor OCR offline. Extrai texto de print, fotos e documentos no navegador, sem enviar arquivos a servidores. Suporta português e inglês (Tesseract.js + WASM local).',
+  url: `${SITE_URL}/ferramentas/extrair-texto-imagem`,
+  applicationCategory: 'UtilitiesApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Extrator de Texto de Imagem (OCR Offline Seguro)', url: `${SITE_URL}/ferramentas/extrair-texto-imagem` },
+  ],
+  faq: [
+    { name: 'A imagem que eu envio é enviada para algum servidor?', text: 'Não. O OCR roda em Web Worker com WebAssembly dentro do navegador. A imagem é processada e descartada na memória, sem trafegar pela internet.' },
+    { name: 'Quais idiomas o OCR offline suporta?', text: 'Português e Inglês, selecionáveis antes do processamento. O modelo de idioma é carregado localmente e fica em cache no dispositivo.' },
+    { name: 'Como converter imagem para texto grátis sem instalar nada?', text: 'Arraste o arquivo PNG, JPG, WEBP ou BMP, escolha o idioma e copie o texto extraído. Tudo roda no navegador, sem cadastro.' },
+    { name: 'O leitor OCR offline precisa de conexão com a internet?', text: 'Apenas para carregar a página e, na primeira leitura, o motor WASM e o modelo de idioma a partir do próprio domínio. Depois disso ficam em cache local.' },
+  ],
+});
 ---
 
 <Layout
   title="Extrator de Texto de Imagem (OCR Offline Seguro) | Grátis | CofreUtil"
-  description="Converta imagem para texto grátis com leitor OCR offline. Extraia texto de print, fotos e documentos 100% no navegador, sem enviar arquivos a servidores. Português e Inglês."
+  description="Converta imagem para texto grátis com leitor OCR offline. Extraia texto de print, fotos e documentos no navegador, sem enviar arquivos a servidores. Português e Inglês."
   keywords="converter imagem para texto gratis, leitor ocr offline, extrair texto de print, ocr online privado, extrair texto de imagem local"
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -34,7 +55,7 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
         óptico de caracteres (OCR) roda em um Web Worker com WebAssembly no seu próprio
         dispositivo. Escolha entre Português e Inglês, acompanhe o progresso em tempo real e
         copie o texto extraído com um clique. Nenhuma imagem sai da sua máquina — privacidade
-        de cofre, em conformidade nativa com a LGPD.
+        por arquitetura.
       </p>
     </div>
 
@@ -99,7 +120,7 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
           <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">A imagem que eu envio é enviada para algum servidor?</summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
             Não. O OCR roda em um Web Worker com WebAssembly dentro do seu navegador. A imagem é
-            processada e descartada na memória — nunca viaja para a internet (LGPD por
+            processada e descartada na memória — nunca viaja para a internet (privacidade por
             arquitetura).
           </p>
         </details>
@@ -136,50 +157,9 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Extrator de Texto de Imagem (OCR Offline Seguro) — CofreUtil',
-            applicationCategory: 'UtilitiesApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Converter imagem para texto grátis com leitor OCR offline. Extrai texto de print, fotos e documentos 100% no navegador, sem enviar arquivos a servidores. Suporta português e inglês (Tesseract.js + WASM local).',
-            url: 'https://cofreutil.com.br/ferramentas/extrair-texto-imagem',
-            offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
-            author: { '@type': 'Person', name: 'Willian Scariott' },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'A imagem que eu envio é enviada para algum servidor?',
-                acceptedAnswer: { '@type': 'Answer', text: 'Não. O OCR roda em Web Worker com WebAssembly dentro do navegador. A imagem é processada e descartada na memória, sem trafegar pela internet.' },
-              },
-              {
-                '@type': 'Question',
-                name: 'Quais idiomas o OCR offline suporta?',
-                acceptedAnswer: { '@type': 'Answer', text: 'Português e Inglês, selecionáveis antes do processamento. O modelo de idioma é carregado localmente e fica em cache no dispositivo.' },
-              },
-              {
-                '@type': 'Question',
-                name: 'Como converter imagem para texto grátis sem instalar nada?',
-                acceptedAnswer: { '@type': 'Answer', text: 'Arraste o arquivo PNG, JPG, WEBP ou BMP, escolha o idioma e copie o texto extraído. Tudo roda 100% no navegador, sem cadastro.' },
-              },
-              {
-                '@type': 'Question',
-                name: 'O leitor OCR offline precisa de conexão com a internet?',
-                acceptedAnswer: { '@type': 'Answer', text: 'Apenas para carregar a página e, na primeira leitura, o motor WASM e o modelo de idioma a partir do próprio domínio. Depois disso ficam em cache local.' },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="extrair-texto-imagem" />
   </section>
 </Layout>

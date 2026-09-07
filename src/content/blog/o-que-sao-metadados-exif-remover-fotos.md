@@ -15,7 +15,7 @@ Os metadados guardam a localização GPS exata de onde a foto foi batida, o mode
 Muitos sites que limpam metadados guardam suas fotos originais. A forma correta e recomendável de tratar imagens é carregar o arquivo na RAM do seu navegador e salvar uma cópia limpa localmente, sem metadados.
 
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
-  <span class="text-white font-bold block mb-2">[🔒 DESTRUTOR DE METADADOS EXIF LOCAL]</span>
-  Remova coordenadas geográficas, dados de lentes e datas de suas fotos pessoais sem passar arquivos pela nuvem.
-  <a href="/ferramentas/limpador-de-metadados-exif" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Limpar Fotos Agora →</a>
+  <span class="text-white font-bold block mb-2">[🔒 LIMPADOR DE METADADOS DE FOTOS (REMOVER LOCALIZAÇÃO E GPS)]</span>
+  Remova coordenadas geográficas, dados EXIF de lentes e datas de suas fotos pessoais sem passar arquivos pela nuvem.
+  <a href="/ferramentas/limpador-de-metadados-exif" class="inline-block mt-4 text-black bg-white px-4 py-2 hover:bg-zinc-200 transition-colors font-bold rounded-none no-underline">Abrir Limpador de Metadados de Fotos →</a>
 </div>

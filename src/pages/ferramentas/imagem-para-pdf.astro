@@ -2,11 +2,48 @@
 import Layout from '../../layouts/Layout.astro';
 import ImageToPdfTool from '../../components/tools/ImageToPdfTool';
 import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+
+const jsonLd = toolPageGraph({
+  name: 'Converter Imagem para PDF — CofreUtil',
+  applicationCategory: 'UtilitiesApplication',
+  description:
+    'Converta imagens (JPG, PNG, WEBP) para PDF no navegador, sem enviar arquivos a servidores. Privacidade por arquitetura.',
+  url: `${SITE_URL}/ferramentas/imagem-para-pdf`,
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    {
+      name: 'Converter Imagem para PDF (JPG, PNG)',
+      url: `${SITE_URL}/ferramentas/imagem-para-pdf`,
+    },
+  ],
+  faq: [
+    {
+      name: 'Quais formatos de imagem são suportados?',
+      text: 'JPG, PNG e WEBP. Imagens com transparência são convertidas para um fundo branco automaticamente.',
+    },
+    {
+      name: 'Posso converter várias imagens de uma vez?',
+      text: 'Sim. Selecione ou arraste várias imagens, reorganize a ordem com as setas e gere um único PDF com todas elas.',
+    },
+    {
+      name: 'Minhas imagens são enviadas para algum servidor?',
+      text: 'Não. A conversão acontece inteiramente no seu navegador. Suas imagens nunca saem do seu computador.',
+    },
+    {
+      name: 'Esta ferramenta funciona offline?',
+      text: 'Sim. Após o carregamento da página, a conversão roda localmente, sem necessidade de conexão com a internet.',
+    },
+  ],
+});
 ---
 
 <Layout
   title="Converter Imagem em PDF Grátis e Seguro | JPG/PNG para PDF | CofreUtil"
-  description="Converta imagens (JPG, PNG, WEBP) para PDF 100% no navegador, sem enviar arquivos a servidores. Privacidade total e compatível com a LGPD."
+  description="Converta imagens (JPG, PNG, WEBP) para PDF no navegador, sem enviar arquivos a servidores. Privacidade por arquitetura."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -38,8 +75,8 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
 
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
         Converta imagens JPG, PNG e WEBP para um único PDF em segundos. Todo o
-        processamento acontece 100% no seu navegador via Canvas API e pdf-lib:
-        zero upload, zero armazenamento em nuvem e privacidade total.
+        processamento acontece no seu navegador via Canvas API e pdf-lib:
+        zero upload, zero armazenamento em nuvem e privacidade por arquitetura.
       </p>
     </div>
 
@@ -123,75 +160,15 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
             Esta ferramenta funciona offline?
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
-            Sim. Após o carregamento da página, a conversão roda 100% localmente,
+            Sim. Após o carregamento da página, a conversão roda localmente,
             sem necessidade de conexão com a internet.
           </p>
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Converter Imagem para PDF — CofreUtil',
-            applicationCategory: 'UtilitiesApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Converta imagens JPG, PNG e WEBP para PDF 100% no navegador, sem enviar arquivos a servidores. Privacidade total e compatível com a LGPD.',
-            url: 'https://cofreutil.com.br/ferramentas/imagem-para-pdf',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Quais formatos de imagem são suportados?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'JPG, PNG e WEBP. Imagens com transparência são convertidas para um fundo branco automaticamente.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Posso converter várias imagens de uma vez?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Selecione ou arraste várias imagens, reorganize a ordem com as setas e gere um único PDF com todas elas.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Minhas imagens são enviadas para algum servidor?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. A conversão acontece inteiramente no seu navegador. Suas imagens nunca saem do seu computador.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Esta ferramenta funciona offline?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Após o carregamento da página, a conversão roda 100% localmente, sem necessidade de conexão com a internet.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="imagem-para-pdf" />
   </section>
 </Layout>

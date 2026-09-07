@@ -3,116 +3,58 @@ import Layout from '../../layouts/Layout.astro';
 import WhatsappGeneratorTool from '../../components/tools/WhatsappGeneratorTool';
 import ShareButton from '../../components/ShareButton';
 import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
 
-const toolUrl = 'https://cofreutil.com.br/ferramentas/gerador-link-whatsapp';
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
+const jsonLd = toolPageGraph({
+  type: 'WebApplication',
+  name: 'Gerador de Link para WhatsApp e QR Code — CofreUtil',
+  description:
+    'Crie link de WhatsApp grátis, sem login, com mensagem personalizada e QR Code que também funciona offline no navegador. Privacidade por arquitetura: seu número nunca sai da sua máquina.',
+  url: `${SITE_URL}/ferramentas/gerador-link-whatsapp`,
+  applicationCategory: 'UtilitiesApplication',
+  browserRequirements: 'Requires JavaScript',
+  featureList: [
+    'Criar link de WhatsApp grátis sem login',
+    'Link curto wa.me com mensagem personalizada',
+    'QR Code gerado no navegador',
+    'Simulador de balão de mensagem ao vivo',
+    'Exportação de botão HTML brutalista',
+    'Histórico local dos últimos 5 links',
+  ],
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Gerador de Link para WhatsApp e QR Code Offline', url: `${SITE_URL}/ferramentas/gerador-link-whatsapp` },
+  ],
+  faq: [
     {
-      '@type': 'WebApplication',
-      name: 'Gerador de Link para WhatsApp e QR Code — CofreUtil',
-      url: toolUrl,
-      applicationCategory: 'UtilitiesApplication',
-      operatingSystem: 'Any',
-      browserRequirements: 'Requires JavaScript',
-      inLanguage: 'pt-BR',
-      isAccessibleForFree: true,
-      featureList: [
-        'Criar link de WhatsApp grátis sem login',
-        'Link curto wa.me com mensagem personalizada',
-        'QR Code gerado 100% no navegador',
-        'Simulador de balão de mensagem ao vivo',
-        'Exportação de botão HTML brutalista',
-        'Histórico local dos últimos 5 links',
-      ],
-      description:
-        'Crie link de WhatsApp grátis, sem login, com mensagem personalizada e QR Code 100% offline no navegador. Privacidade total: seu número nunca sai da sua máquina (LGPD).',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'BRL',
-      },
-      author: {
-        '@type': 'Person',
-        name: 'Willian Scariott',
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'CofreUtil',
-        url: 'https://cofreutil.com.br',
-      },
+      name: 'Como criar um link de WhatsApp grátis com mensagem personalizada?',
+      text: 'Preencha o celular com DDD e a mensagem desejada. O CofreUtil monta o link curto wa.me com o texto codificado, além de um QR Code para imprimir ou compartilhar.',
     },
     {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cofreutil.com.br' },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Ferramentas',
-          item: 'https://cofreutil.com.br/#ferramentas',
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Gerador de Link para WhatsApp',
-          item: toolUrl,
-        },
-      ],
+      name: 'O gerador de link de WhatsApp exige login ou cadastro?',
+      text: 'Não. O gerador funciona sem login, sem cadastro e sem instalar nada — tudo acontece no próprio navegador, mesmo offline após o carregamento da página.',
     },
     {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'Como criar um link de WhatsApp grátis com mensagem personalizada?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Preencha o celular com DDD e a mensagem desejada. O CofreUtil monta o link curto wa.me com o texto codificado, além de um QR Code para imprimir ou compartilhar.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'O gerador de link de WhatsApp exige login ou cadastro?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Não. O gerador funciona sem login, sem cadastro e sem instalar nada — tudo acontece no próprio navegador, mesmo offline após o carregamento da página.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Meu número e minha mensagem são enviados para algum servidor?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Não. O link, a mensagem e o QR Code são gerados 100% no seu navegador (arquitetura zero-server). Nenhum dado sai da sua máquina e não guardamos registros — conformidade total com a LGPD.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'O QR Code funciona no celular das pessoas?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Sim. O QR Code aponta para o link wa.me com o número e a mensagem pré-preenchida. Qualquer WhatsApp (Android, iPhone ou Web) abre a conversa já pronta para envio.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Por que usar o domínio wa.me em vez de um link longo?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'O wa.me é o encurtador oficial de links do WhatsApp: gera endereços curtos e confiáveis que abrem a conversa diretamente no aplicativo, sem registros de redirecionamento por terceiros.',
-          },
-        },
-      ],
+      name: 'Meu número e minha mensagem são enviados para algum servidor?',
+      text: 'Não. O link, a mensagem e o QR Code são gerados no seu navegador (arquitetura zero-server). Nenhum dado sai da sua máquina e não guardamos registros — sem enviar os dados a servidores do CofreUtil.',
+    },
+    {
+      name: 'O QR Code funciona no celular das pessoas?',
+      text: 'Sim. O QR Code aponta para o link wa.me com o número e a mensagem pré-preenchida. Qualquer WhatsApp (Android, iPhone ou Web) abre a conversa já pronta para envio.',
+    },
+    {
+      name: 'Por que usar o domínio wa.me em vez de um link longo?',
+      text: 'O wa.me é o encurtador oficial de links do WhatsApp: gera endereços curtos e confiáveis que abrem a conversa diretamente no aplicativo, sem registros de redirecionamento por terceiros.',
     },
   ],
-};
+});
 ---
 
 <Layout
   title="Gerador de Link para WhatsApp e QR Code Offline | Sem Login | CofreUtil"
-  description="Criar link de WhatsApp grátis, gerador de link de zap sem login, encurtar link de WhatsApp com mensagem personalizada e QR Code 100% offline no navegador. Privacidade total e LGPD."
+  description="Criar link de WhatsApp grátis, gerador de link de zap sem login, encurtar link de WhatsApp com mensagem personalizada e QR Code no navegador, também offline. Privacidade por arquitetura."
   keywords="criar link de whatsapp gratis, gerador link de zap sem login, encurtar link whatsapp com mensagem personalizada, gerador link whatsapp com mensagem, qr code whatsapp, wa.me"
   jsonLd={jsonLd}
 >
@@ -149,7 +91,7 @@ const jsonLd = {
         obtenha em segundos um link curto wa.me com o texto já pré-preenchido — além de
         um QR Code em alta resolução para imprimir ou divulgar. Tudo acontece no seu
         navegador: nem o número nem a mensagem saem da sua máquina. Sem cadastro, sem
-        instalar nada, 100% offline após o carregamento.
+        instalar nada, e também funciona offline após o carregamento.
       </p>
     </div>
 
@@ -239,7 +181,7 @@ const jsonLd = {
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
             Não. Geração de link, simulação de chat e QR Code funcionam sem login, sem
-            cadastro e sem instalação — apenas no seu navegador, com privacidade total.
+            cadastro e sem instalação — apenas no seu navegador, com privacidade por arquitetura.
           </p>
         </details>
         <details class="border-b border-[#27272A] last:border-b-0">
@@ -247,9 +189,9 @@ const jsonLd = {
             Meu número ou mensagem é enviado para algum servidor?
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
-            Não. Todo o processamento é 100% local (zero-server). Nenhum número,
+            Não. Todo o processamento é local (zero-server). Nenhum número,
             mensagem ou link sai da sua máquina, e não guardamos registros de contato —
-            conformidade nativa com a LGPD.
+            privacidade por arquitetura.
           </p>
         </details>
         <details class="border-b border-[#27272A] last:border-b-0">
@@ -284,5 +226,9 @@ const jsonLd = {
         </details>
       </div>
     </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="gerador-link-whatsapp" />
   </section>
 </Layout>

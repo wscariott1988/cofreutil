@@ -11,6 +11,13 @@ interface ChangelogEntry {
 const entries: ChangelogEntry[] = [
   {
     date: '2026-09-06',
+    tag: 'geo',
+    title: 'Revisão GEO: dados estruturados e domínio canônico',
+    detail:
+      'Migração do domínio canônico para www.cofreutil.com.br, JSON-LD centralizado com @id de organização, autor e ferramentas, seção "Referências técnicas" com fontes primárias em cada página, correção de afirmações sobre telemetria, COOP/COEP e LGPD, e robots.txt explícito para rastreadores de IA.',
+  },
+  {
+    date: '2026-09-06',
     tag: 'feat',
     title: 'Badge de desafio offline de privacidade',
     detail:
@@ -56,7 +63,7 @@ const entries: ChangelogEntry[] = [
     tag: 'feat',
     title: 'Blog estático com Content Collections',
     detail:
-      'Implementação do blog com rotas estáticas e importação em lotes até 93 artigos de SEO local, com filtro por categorias.',
+      'Implementação do blog com rotas estáticas e importação em lotes até 93 artigos técnicos e tutoriais, com filtro por categorias.',
   },
   {
     date: '2026-09-05',
@@ -91,7 +98,7 @@ const entries: ChangelogEntry[] = [
     tag: 'segurança',
     title: 'Migração para Cloudflare Web Analytics (cookieless)',
     detail:
-      'Substituição do Google Tag Manager por Web Analytics cookieless e compatível com a LGPD, com auto-exclusão de visitas do desenvolvedor.',
+      'Substituição do Google Tag Manager por Web Analytics cookieless (sem cookies de rastreamento), com auto-exclusão de visitas do desenvolvedor.',
   },
   {
     date: '2026-09-04',

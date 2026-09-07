@@ -1,12 +1,35 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CharCounterTool from '../../components/tools/CharCounterTool';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+
+const jsonLd = toolPageGraph({
+  name: 'Contador de Caracteres e Palavras — CofreUtil',
+  description: 'Contador de caracteres e palavras offline com analise de densidade de SEO: estatisticas completas e tempo de leitura — privado, sem envio de dados.',
+  url: `${SITE_URL}/ferramentas/contador-caracteres`,
+  type: 'WebApplication',
+  applicationCategory: 'UtilitiesApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Contador de Caracteres e Palavras Offline Seguro', url: `${SITE_URL}/ferramentas/contador-caracteres` },
+  ],
+  faq: [
+    { name: 'Meu texto e enviado para algum servidor ao contar caracteres?', text: 'Nao. Todo o processamento acontece no seu navegador, na memoria RAM. Nenhum caractere sai da sua maquina — sem envio a servidores.' },
+    { name: 'O que e densidade de palavras e por que importa para SEO?', text: 'Densidade de palavras e a porcentagem de vezes que uma palavra aparece em relacao ao total. Palavras acima de 2-3% podem indicar keyword stuffing, penalizado por motores de busca.' },
+    { name: 'Como e calculado o tempo estimado de leitura?', text: 'O tempo de leitura e baseado na media de 200 palavras por minuto, velocidade media para textos em portugues.' },
+    { name: 'Preciso pagar ou me cadastrar para usar o contador?', text: 'Nao. A ferramenta e gratuita e sem cadastro.' },
+    { name: 'Posso usar offline apos o primeiro carregamento?', text: 'Sim. Apos o carregamento da pagina, todo o processamento e local e funciona sem conexao com a internet.' },
+  ],
+});
 ---
 
 <Layout
   title="Contador de Caracteres e Palavras Offline Seguro | CofreUtil"
-  description="Contador de caracteres e palavras offline: analise texto com densidade de SEO, tempo de leitura e estatisticas completas — 100% privado e sem sair do navegador."
+  description="Contador de caracteres e palavras offline: analise texto com densidade de SEO, tempo de leitura e estatisticas completas — privado e sem sair do navegador."
   keywords="contar letras de texto online, contador de caracteres redacao, ferramenta para contar palavras, contador de caracteres offline, analise densidade seo, contar palavras online gratis"
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -28,7 +51,7 @@ import CharCounterTool from '../../components/tools/CharCounterTool';
 
       <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
         Ferramenta para contar palavras e caracteres com analise de densidade de SEO:
-        veja estatisticas completas do seu texto em tempo real, 100% offline e privado.
+        veja estatisticas completas do seu texto em tempo real, offline e privado.
       </h2>
 
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
@@ -51,9 +74,8 @@ import CharCounterTool from '../../components/tools/CharCounterTool';
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Redacoes academicas, artigos para blogs e postagens em redes sociais possuem
           limites rigidos de caracteres e palavras. Colar seu texto em um servico online
-          pode expor dados sensiveis. O CofreUtil resolve isso rodando 100% no navegador:
-          o texto nunca sai da sua maquina, garantindo privacidade total e conformidade
-          com a LGPD.
+          pode expor dados sensiveis. O CofreUtil resolve isso rodando no navegador:
+          o texto nunca sai da sua maquina, garantindo privacidade por arquitetura.
         </p>
       </div>
 
@@ -76,7 +98,7 @@ import CharCounterTool from '../../components/tools/CharCounterTool';
           E seguro contar palavras e caracteres aqui sem enviar meus textos?
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
-          Sim. Este contador e 100% offline (arquitetura Zero-Server): o texto
+          Sim. Este contador e offline (arquitetura Zero-Server): o texto
           digitado permanece na sua maquina, todo o processamento acontece localmente
           na memoria RAM e nenhum dado e registrado ou transmitido. Voce pode contar
           caracteres e analisar densidade de SEO de textos sensiveis — como contratos,
@@ -96,9 +118,8 @@ import CharCounterTool from '../../components/tools/CharCounterTool';
             Meu texto e enviado para algum servidor ao contar caracteres?
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
-            Nao. Todo o processamento acontece 100% no seu navegador, na memoria RAM.
-            Nenhum caractere sai da sua maquina — garante privacidade total e atendimento
-            a LGPD.
+            Nao. Todo o processamento acontece no seu navegador, na memoria RAM.
+            Nenhum caractere sai da sua maquina — sem envio do conteudo a servidores.
           </p>
         </details>
         <details class="border-b border-[#27272A] last:border-b-0">
@@ -144,77 +165,9 @@ import CharCounterTool from '../../components/tools/CharCounterTool';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'WebApplication',
-            name: 'Contador de Caracteres e Palavras — CofreUtil',
-            applicationCategory: 'UtilitiesApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Contador de caracteres e palavras offline com analise de densidade de SEO: estatisticas completas e tempo de leitura — 100% privado, sem envio de dados.',
-            url: 'https://cofreutil.com.br/ferramentas/contador-caracteres',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Meu texto e enviado para algum servidor ao contar caracteres?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Nao. Todo o processamento acontece 100% no seu navegador, sem envio a servidores, garantindo privacidade total e atendimento a LGPD.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'O que e densidade de palavras e por que importa para SEO?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Densidade de palavras e a porcentagem de vezes que uma palavra aparece em relacao ao total. Palavras acima de 2-3% podem indicar keyword stuffing, penalizado por motores de busca.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Como e calculado o tempo estimado de leitura?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'O tempo de leitura e baseado na media de 200 palavras por minuto, velocidade media para textos em portugues.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Preciso pagar ou me cadastrar para usar o contador?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Nao. A ferramenta e gratuita e sem cadastro.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Posso usar offline apos o primeiro carregamento?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Apos o carregamento da pagina, todo o processamento e local e funciona sem conexao com a internet.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="contador-caracteres" />
   </section>
 </Layout>

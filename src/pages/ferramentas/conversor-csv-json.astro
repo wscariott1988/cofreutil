@@ -1,11 +1,32 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CsvJsonTool from '../../components/tools/CsvJsonTool';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+
+const jsonLd = toolPageGraph({
+  name: 'Conversor de CSV para JSON — CofreUtil',
+  description: 'Converta CSV para JSON e JSON para CSV no navegador, com suporte a virgula, ponto e virgula e tab, tratamento de aspas RFC 4180 e download do arquivo.',
+  url: `${SITE_URL}/ferramentas/conversor-csv-json`,
+  applicationCategory: 'DeveloperApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Conversor de CSV para JSON', url: `${SITE_URL}/ferramentas/conversor-csv-json` },
+  ],
+  faq: [
+    { name: 'Quais delimitadores de CSV sao suportados?', text: 'Virgula, ponto e virgula e tabulacao. No modo Auto, a ferramenta detecta o delimitador pela primeira linha.' },
+    { name: 'O que acontece se um campo do CSV contiver virgula ou aspas?', text: 'Seguimos a RFC 4180: campos entre aspas duplas podem conter delimitadores e quebras de linha, com aspas internas escapadas.' },
+    { name: 'Posso converter um JSON com objetos aninhados para CSV?', text: 'Objetos e arrays aninhados sao serializados como JSON dentro da celula, mantendo os dados.' },
+    { name: 'Meus dados sao enviados para algum servidor?', text: 'Nao. A conversao acontece no seu navegador; seus dados nunca saem da sua maquina.' },
+  ],
+});
 ---
 
 <Layout
   title="Conversor de CSV para JSON Online | CofreUtil"
-  description="Converta CSV para JSON e JSON para CSV 100% no navegador, com suporte a vírgula, ponto e vírgula e tab. Tratamento de aspas (RFC 4180), download do arquivo e privacidade total (LGPD)."
+  description="Converta CSV para JSON e JSON para CSV no navegador, com suporte a vírgula, ponto e vírgula e tab. Tratamento de aspas (RFC 4180), download do arquivo e sem envio de dados a servidores."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -81,8 +102,8 @@ import CsvJsonTool from '../../components/tools/CsvJsonTool';
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Sim. O CofreUtil tem arquitetura zero-server: nenhum caractere dos seus
           dados é enviado pela internet. O processamento acontece inteiramente no
-          navegador, garantindo conformidade nativa com a LGPD — sem coleta, sem
-          logs e sem armazenamento por terceiros.
+          navegador, sem enviar o conteúdo a servidores do CofreUtil — sem coleta,
+          sem logs e sem armazenamento por terceiros.
         </p>
       </div>
     </div>
@@ -133,69 +154,9 @@ import CsvJsonTool from '../../components/tools/CsvJsonTool';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Conversor de CSV para JSON — CofreUtil',
-            applicationCategory: 'DeveloperApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Converta CSV para JSON e JSON para CSV 100% no navegador, com suporte a vírgula, ponto e vírgula e tab, tratamento de aspas RFC 4180, download do arquivo e privacidade total (LGPD).',
-            url: 'https://cofreutil.com.br/ferramentas/conversor-csv-json',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Quais delimitadores de CSV são suportados?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Vírgula, ponto e vírgula e tabulação. No modo Auto, a ferramenta detecta o delimitador pela primeira linha.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'O que acontece se um campo do CSV contiver vírgula ou aspas?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Seguimos a RFC 4180: campos entre aspas duplas podem conter delimitadores e quebras de linha, com aspas internas escapadas.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Posso converter um JSON com objetos aninhados para CSV?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Objetos e arrays aninhados são serializados como JSON dentro da célula, mantendo os dados.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Meus dados são enviados para algum servidor?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. A conversão acontece 100% no seu navegador; seus dados nunca saem da sua máquina.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="conversor-csv-json" />
   </section>
 </Layout>

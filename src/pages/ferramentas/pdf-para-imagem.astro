@@ -2,11 +2,52 @@
 import Layout from '../../layouts/Layout.astro';
 import PdfToImageTool from '../../components/tools/PdfToImageTool';
 import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+
+const jsonLd = toolPageGraph({
+  name: 'Conversor de PDF para Imagem — CofreUtil',
+  applicationCategory: 'UtilitiesApplication',
+  description:
+    'Converta páginas de PDF em imagens PNG, JPEG ou WEBP no navegador, sem enviar arquivos a servidores, com privacidade por arquitetura.',
+  url: `${SITE_URL}/ferramentas/pdf-para-imagem`,
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    {
+      name: 'Conversor de PDF para Imagem (PNG, JPEG, WEBP)',
+      url: `${SITE_URL}/ferramentas/pdf-para-imagem`,
+    },
+  ],
+  faq: [
+    {
+      name: 'Meus documentos enviados para conversão ficam armazenados em servidores?',
+      text: 'Não. O arquivo é convertido dentro do navegador, sem upload ou armazenamento em servidores.',
+    },
+    {
+      name: 'Esta ferramenta está em conformidade com a LGPD?',
+      text: 'Sim. Nenhum dado sai da sua máquina, eliminando coleta e trânsito de dados pessoais por terceiros.',
+    },
+    {
+      name: 'Posso converter apenas algumas páginas do PDF?',
+      text: 'Sim. Use a opção Páginas Específicas com sequências como "1, 3, 5-7" ou o download individual de cada miniatura.',
+    },
+    {
+      name: 'Qual a diferença entre PNG, JPEG e WEBP para exportar um PDF?',
+      text: 'PNG é sem perdas; JPEG gera arquivos menores com fundo branco; WEBP equilibra qualidade e tamanho para a web.',
+    },
+    {
+      name: 'O arquivo original é modificado durante a conversão?',
+      text: 'Não. O PDF original permanece intacto; apenas novas imagens são geradas.',
+    },
+  ],
+});
 ---
 
 <Layout
   title="Conversor de PDF para Imagem PNG, JPEG e WEBP Grátis | CofreUtil"
-  description="Converta páginas de PDF em imagens PNG, JPEG ou WEBP 100% no navegador, sem enviar o arquivo a servidores. Privacidade total e conformidade LGPD."
+  description="Converta páginas de PDF em imagens PNG, JPEG ou WEBP no navegador, sem enviar o arquivo a servidores. Privacidade por arquitetura."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -32,7 +73,7 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
 
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
         Selecione um PDF e escolha o formato de saída: PNG sem perdas, JPEG compacto
-        ou WEBP eficiente. A conversão acontece 100% na memória do seu navegador via
+        ou WEBP eficiente. A conversão acontece na memória do seu navegador via
         renderização Canvas — zero upload, zero armazenamento em nuvem e privacidade
         absoluta dos seus documentos.
       </p>
@@ -65,7 +106,7 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
           Ideal para advogados, contadores e profissionais de RH que precisam
           compartilhar páginas de documentos sensíveis como recortes de imagem.
           Como nada é enviado à internet, o tratamento de dados pessoais fica sob
-          seu controle total, em conformidade com a LGPD, sem depender de políticas
+          seu controle total, sem depender de políticas
           de privacidade de terceiros.
         </p>
       </div>
@@ -94,7 +135,7 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
             Meus documentos enviados para conversão ficam armazenados em servidores?
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
-            Não. O arquivo é lido e convertido 100% dentro do seu navegador,
+            Não. O arquivo é lido e convertido dentro do seu navegador,
             diretamente na memória local. Não há upload, armazenamento em nuvem
             nem logs de servidor. Ao fechar a página, tudo é descartado.
           </p>
@@ -140,77 +181,9 @@ import OfflineChallengeBadge from '../../components/OfflineChallengeBadge';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Conversor de PDF para Imagem — CofreUtil',
-            applicationCategory: 'UtilitiesApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Converta páginas de PDF em imagens PNG, JPEG ou WEBP 100% no navegador, sem enviar arquivos a servidores, com privacidade total e conformidade LGPD.',
-            url: 'https://cofreutil.com.br/ferramentas/pdf-para-imagem',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Meus documentos enviados para conversão ficam armazenados em servidores?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. O arquivo é convertido 100% dentro do navegador, sem upload ou armazenamento em servidores.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Esta ferramenta está em conformidade com a LGPD?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Nenhum dado sai da sua máquina, eliminando coleta e trânsito de dados pessoais por terceiros.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Posso converter apenas algumas páginas do PDF?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Use a opção Páginas Específicas com sequências como "1, 3, 5-7" ou o download individual de cada miniatura.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Qual a diferença entre PNG, JPEG e WEBP para exportar um PDF?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'PNG é sem perdas; JPEG gera arquivos menores com fundo branco; WEBP equilibra qualidade e tamanho para a web.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'O arquivo original é modificado durante a conversão?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. O PDF original permanece intacto; apenas novas imagens são geradas.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="pdf-para-imagem" />
   </section>
 </Layout>

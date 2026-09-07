@@ -19,7 +19,7 @@ export default function ReferenceSources({ sources }: ReferenceSourcesProps) {
             <a
               href={source.href}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer"
               className="underline decoration-dotted underline-offset-2 transition-colors hover:text-[#A1A1AA]"
             >
               {source.label}

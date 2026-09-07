@@ -1,4 +1,6 @@
 ---
+import { SITE_URL, SITE_DESCRIPTION } from '../lib/site';
+
 interface Props {
   title?: string;
   description?: string;
@@ -8,11 +10,9 @@ interface Props {
   jsonLd?: object | object[];
 }
 
-const SITE_URL = 'https://cofreutil.com.br';
-
 const {
-  title = 'CofreUtil | Ferramentas Web Locais e Seguras (Zero Nuvem)',
-  description = 'Utilitários de alta performance 100% no seu navegador. Comprima PDFs, converta arquivos e processe dados com privacidade pela arquitetura e zero upload para servidores.',
+  title = 'CofreUtil | Ferramentas Web Gratuitas com Processamento Local no Navegador',
+  description = SITE_DESCRIPTION,
   keywords,
   image = `${SITE_URL}/og-image.png`,
   type = 'website',
@@ -76,7 +76,7 @@ const canonical = new URL(normalizedPath, SITE_URL).href;
 
 <!-- Cloudflare Web Analytics -->
 <script is:inline>
-  // Se o desenvolvedor acessar cofreutil.com.br/?ignore=true, ativa a flag de exclusão
+  // Se o desenvolvedor acessar www.cofreutil.com.br/?ignore=true, ativa a flag de exclusão
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('ignore') === 'true') {
     localStorage.setItem('ignoreAnalytics', 'true');

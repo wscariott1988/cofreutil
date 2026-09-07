@@ -1,11 +1,32 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HashCalculatorTool from '../../components/tools/HashCalculatorTool';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+
+const jsonLd = toolPageGraph({
+  name: 'Calculadora de Hash de Arquivos — CofreUtil',
+  description: 'Calcule o hash MD5, SHA-1, SHA-256 e SHA-512 de qualquer arquivo no navegador, sem enviar o arquivo a servidores do CofreUtil.',
+  url: `${SITE_URL}/ferramentas/calculadora-hash`,
+  applicationCategory: 'DeveloperApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Calculadora de Hash de Arquivos', url: `${SITE_URL}/ferramentas/calculadora-hash` },
+  ],
+  faq: [
+    { name: 'Consigo calcular o hash de arquivos muito grandes?', text: 'Sim. O arquivo é lido em blocos de 4 MiB via FileReader, mantendo a página responsiva e mostrando o progresso.' },
+    { name: 'O MD5 e o SHA-1 ainda servem para alguma coisa?', text: 'Servem para detectar corrupção acidental de arquivos legados, mas para verificar autenticidade prefira SHA-256 ou SHA-512.' },
+    { name: 'Meus arquivos são enviados para algum servidor?', text: 'Não. Todo o processamento acontece dentro do seu navegador; os arquivos nunca saem do seu computador.' },
+    { name: 'A calculadora de hash funciona offline?', text: 'Sim. Após o carregamento da página, o cálculo é local e funciona sem conexão.' },
+  ],
+});
 ---
 
 <Layout
   title="Calculadora de Hash de Arquivos Online | MD5, SHA-1, SHA-256, SHA-512 | CofreUtil"
-  description="Calcule o hash MD5, SHA-1, SHA-256 e SHA-512 de qualquer arquivo 100% no navegador. Verifique integridade de downloads sem enviar o arquivo a servidores. Privacidade total e LGPD."
+  description="Calcule o hash MD5, SHA-1, SHA-256 e SHA-512 de qualquer arquivo no navegador. Verifique integridade de downloads sem enviar o arquivo a servidores."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -87,7 +108,7 @@ import HashCalculatorTool from '../../components/tools/HashCalculatorTool';
           Seus arquivos são seguros para calcular hash aqui?
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
-          Sim. O cálculo acontece 100% no seu navegador, em arquitetura
+          Sim. O cálculo acontece no seu navegador, em arquitetura
           zero-server: o arquivo é lido localmente em chunks e nenhum byte sai da
           sua máquina. A arquitetura é construída de acordo com os princípios de
           Privacy-by-Design e Privacy-by-Default da LGPD —
@@ -136,75 +157,15 @@ import HashCalculatorTool from '../../components/tools/HashCalculatorTool';
             A calculadora de hash funciona offline?
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
-            Sim. Após o carregamento da página, o cálculo é 100% local e continua
+            Sim. Após o carregamento da página, o cálculo é local e continua
             funcionando sem conexão com a internet.
           </p>
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Calculadora de Hash de Arquivos — CofreUtil',
-            applicationCategory: 'DeveloperApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Calcule o hash MD5, SHA-1, SHA-256 e SHA-512 de qualquer arquivo 100% no navegador, sem enviar o arquivo a servidores. Privacidade total e LGPD.',
-            url: 'https://cofreutil.com.br/ferramentas/calculadora-hash',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Consigo calcular o hash de arquivos muito grandes?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. O arquivo é lido em blocos de 4 MiB via FileReader, mantendo a página responsiva e mostrando o progresso.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'O MD5 e o SHA-1 ainda servem para alguma coisa?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Servem para detectar corrupção acidental de arquivos legados, mas para verificar autenticidade prefira SHA-256 ou SHA-512.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Meus arquivos são enviados para algum servidor?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. Todo o processamento acontece dentro do seu navegador; os arquivos nunca saem do seu computador.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'A calculadora de hash funciona offline?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Após o carregamento da página, o cálculo é 100% local e funciona sem conexão.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="calculadora-hash" />
   </section>
 </Layout>

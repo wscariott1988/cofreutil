@@ -4,9 +4,8 @@ import Footer from '../components/Footer.astro';
 import BaseHead from '../components/BaseHead.astro';
 import ShareButton from '../components/ShareButton';
 import OfflineChallengeBadge from '../components/OfflineChallengeBadge';
+import { SITE_URL, ORG_ID, AUTHOR_ID, AUTHOR_NAME, SITE_NAME, AUTHOR_PAGE } from '../lib/site';
 import '../styles/global.css';
-
-const SITE_URL = 'https://cofreutil.com.br';
 
 interface Props {
   title: string;
@@ -19,7 +18,7 @@ interface Props {
 
 const { title, description, publishDate, category, keywords, author } = Astro.props;
 
-const postAuthor = author || 'Willian Scariott';
+const postAuthor = author || AUTHOR_NAME;
 
 const post = {
   title,
@@ -47,29 +46,37 @@ const formattedDate = new Intl.DateTimeFormat('pt-BR', {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: post.title,
-  description: post.description,
-  datePublished: isoDate,
-  dateModified: isoDate,
-  articleSection: post.category,
-  keywords: post.keywords,
-  inLanguage: 'pt-BR',
-  mainEntityOfPage: canonical,
-  author: {
-    '@type': 'Person',
-    name: postAuthor,
-    url: SITE_URL,
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'CofreUtil',
-    url: SITE_URL,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${SITE_URL}/og-image.png`,
+  '@graph': [
+    {
+      '@type': 'TechArticle',
+      headline: post.title,
+      description: post.description,
+      datePublished: isoDate,
+      dateModified: isoDate,
+      articleSection: post.category,
+      keywords: post.keywords,
+      inLanguage: 'pt-BR',
+      mainEntityOfPage: canonical,
+      author: { '@id': AUTHOR_ID },
+      publisher: { '@id': ORG_ID },
     },
-  },
+    {
+      '@type': 'Person',
+      '@id': AUTHOR_ID,
+      name: AUTHOR_NAME,
+      url: AUTHOR_PAGE,
+    },
+    {
+      '@type': 'Organization',
+      '@id': ORG_ID,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/og-image.png`,
+      },
+    },
+  ],
 };
 ---
 

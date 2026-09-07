@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { SITE_URL, ORG_ID, WEBSITE_ID } from '../../lib/site';
 
 const categories = [
   {
@@ -71,8 +72,8 @@ const categories = [
     items: [
       {
         href: '/ferramentas/limpador-de-metadados-exif',
-        title: 'Limpador de Metadados de Fotos',
-        desc: 'Remova GPS e dados da câmera de fotos (JPG, PNG, WEBP) 100% no navegador, sem upload.',
+        title: 'Limpador de Metadados de Fotos (Remover Localização e GPS)',
+        desc: 'Remova GPS, localização e dados EXIF da câmera de fotos (JPG, PNG, WEBP) 100% no navegador, sem upload.',
       },
       {
         href: '/ferramentas/sanitizador-pdf',
@@ -137,23 +138,27 @@ const categories = [
 
 const totalTools = categories.reduce((acc, cat) => acc + cat.items.length, 0);
 
-const title = 'Ferramentas Grátis Online | 22 Utilitários 100% Locais e Privados | CofreUtil';
+const title = 'Ferramentas Online Grátis | 22 Utilitários de Processamento Local | CofreUtil';
 const description =
-  'Catálogo com 22 ferramentas online gratuitas que rodam 100% no seu navegador: conversor de imagens, juntar e dividir PDF, OCR, gerador de QR Code Pix, remover silêncio de vídeo e áudio, formatação JSON, conversor de áudio e mais. Zero upload, zero cadastro e conformidade LGPD.';
+  'Catálogo com 22 ferramentas online gratuitas que processam arquivos e dados no próprio navegador: conversor de imagens, juntar e dividir PDF, OCR, gerador de QR Code Pix, remover silêncio de vídeo e áudio, formatação JSON e mais. Sem cadastro e sem enviar o conteúdo a servidores do CofreUtil.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Ferramentas Online Grátis e Privadas',
+  '@id': `${SITE_URL}/ferramentas`,
+  name: 'Ferramentas Online Grátis de Processamento Local',
   description,
-  url: 'https://cofreutil.com.br/ferramentas',
+  url: `${SITE_URL}/ferramentas`,
   numberOfItems: totalTools,
+  inLanguage: 'pt-BR',
+  isPartOf: { '@id': WEBSITE_ID },
+  publisher: { '@id': ORG_ID },
   itemListElement: categories.flatMap((cat, catIndex) =>
     cat.items.map((item, itemIndex) => ({
       '@type': 'ListItem',
       position: catIndex * 1000 + itemIndex + 1,
       name: item.title,
-      url: `https://cofreutil.com.br${item.href}`,
+      url: `${SITE_URL}${item.href}`,
     })),
   ),
 };

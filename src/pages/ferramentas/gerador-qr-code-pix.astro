@@ -1,11 +1,32 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PixQrCodeTool from '../../components/tools/PixQrCodeTool';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+
+const jsonLd = toolPageGraph({
+  name: 'Gerador de QR Code Pix — CofreUtil',
+  description: 'Gere QR Code Pix no padrão EMVCo / BR Code do Banco Central no seu navegador, sem enviar sua chave para servidores. Privacidade por arquitetura.',
+  url: `${SITE_URL}/ferramentas/gerador-qr-code-pix`,
+  applicationCategory: 'FinanceApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Gerador de QR Code Pix', url: `${SITE_URL}/ferramentas/gerador-qr-code-pix` },
+  ],
+  faq: [
+    { name: 'É seguro gerar meu QR Code Pix neste site?', text: 'Sim. O código BR Code é montado no seu navegador, sem envio da sua chave ou dos seus dados para qualquer servidor.' },
+    { name: 'O QR Code funciona em todos os bancos?', text: 'Sim. Utilizamos o padrão EMVCo / BR Code oficial do Banco Central, com cálculo de CRC16-CCITT.' },
+    { name: 'Posso gerar um Pix com valor fixo?', text: 'Sim. Basta preencher o campo de valor (em R$), que é embutido no payload.' },
+    { name: 'Preciso pagar ou me cadastrar para usar?', text: 'Não. A ferramenta é gratuita e sem cadastro, com sugestão de apoio voluntário via Pix.' },
+  ],
+});
 ---
 
 <Layout
   title="Gerador de QR Code Pix | CofreUtil"
-  description="Gere QR Code Pix no padrão BR Code do Banco Central 100% no seu navegador. Sua chave nunca sai do seu computador. Privacidade total e LGPD."
+  description="Gere QR Code Pix no padrão BR Code do Banco Central no seu navegador. Sua chave nunca sai do seu computador. Privacidade por arquitetura."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -62,7 +83,8 @@ import PixQrCodeTool from '../../components/tools/PixQrCodeTool';
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Ao contrário de geradores hospedados em servidores, o CofreUtil não faz upload
           da sua chave, do seu nome ou do valor da transação. Tudo é calculado via
-          JavaScript e Web Crypto local, em conformidade total com a LGPD. Após o
+          JavaScript e Web Crypto local, em uma arquitetura que não envia os dados a
+          servidores do CofreUtil. Após o
           carregamento da página, a ferramenta funciona até mesmo offline.
         </p>
       </div>
@@ -91,7 +113,7 @@ import PixQrCodeTool from '../../components/tools/PixQrCodeTool';
             É seguro gerar meu QR Code Pix neste site?
           </summary>
           <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
-            Sim. O código BR Code é montado 100% no seu navegador, sem envio da sua chave
+            Sim. O código BR Code é montado no seu navegador, sem envio da sua chave
             ou dos seus dados para qualquer servidor. Isso minimiza drasticamente o vetor de
             ataque na camada do servidor, isolando o tráfego sensível ao seu dispositivo, em
             uma arquitetura construída de acordo com os princípios de Privacy-by-Design e
@@ -130,69 +152,9 @@ import PixQrCodeTool from '../../components/tools/PixQrCodeTool';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Gerador de QR Code Pix — CofreUtil',
-            applicationCategory: 'FinanceApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Gere QR Code Pix no padrão EMVCo / BR Code do Banco Central 100% no seu navegador, sem enviar sua chave para servidores. Privacidade total e LGPD.',
-            url: 'https://cofreutil.com.br/ferramentas/gerador-qr-code-pix',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'É seguro gerar meu QR Code Pix neste site?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. O código BR Code é montado 100% no seu navegador, sem envio da sua chave ou dos seus dados para qualquer servidor.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'O QR Code funciona em todos os bancos?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Utilizamos o padrão EMVCo / BR Code oficial do Banco Central, com cálculo de CRC16-CCITT.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Posso gerar um Pix com valor fixo?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. Basta preencher o campo de valor (em R$), que é embutido no payload.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Preciso pagar ou me cadastrar para usar?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. A ferramenta é gratuita e sem cadastro, com sugestão de apoio voluntário via Pix.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="gerador-qr-code-pix" />
   </section>
 </Layout>

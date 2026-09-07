@@ -1,8 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { homePageGraph } from '../lib/site';
+
+const title =
+  'CofreUtil — Ferramentas Web Gratuitas com Processamento Local no Navegador';
+const description =
+  'Ferramentas web gratuitas que processam arquivos e dados diretamente no seu navegador, sem enviar o conteúdo inserido pelo usuário ao backend do CofreUtil. Junte PDF, converta imagens, gere QR Code Pix e muito mais.';
 ---
 
-<Layout>
+<Layout
+  title={title}
+  description={description}
+  jsonLd={homePageGraph()}
+>
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="flex flex-col gap-8">
       <h1 class="font-mono text-4xl font-bold leading-tight tracking-tight md:text-5xl">
@@ -11,10 +21,10 @@ import Layout from '../layouts/Layout.astro';
       </h1>
 
       <p class="max-w-2xl text-base leading-relaxed text-[#A1A1AA] md:text-lg">
-        Utilitários web de alta performance que rodam 100% no seu navegador.
-        Nenhum arquivo é enviado para servidores externos — compressão, conversão,
-        OCR e validação acontecem inteiramente na sua máquina, em conformidade
-        total com a LGPD.
+        Utilitários web gratuitos que rodam diretamente no seu navegador. O
+        conteúdo que você insere não é enviado ao backend do CofreUtil:
+        compressão, conversão, OCR e validação acontecem localmente, na sua
+        máquina.
       </p>
 
       <div class="mt-4 flex items-center gap-4">
@@ -79,7 +89,8 @@ import Layout from '../layouts/Layout.astro';
         <h3 class="font-mono text-sm font-medium text-white">Gerador de Link para WhatsApp</h3>
         <p class="text-xs leading-relaxed text-[#A1A1AA]">
           Crie link de WhatsApp grátis sem login, com mensagem personalizada, simulador
-          ao vivo, QR Code e histórico local. 100% offline na sua máquina.
+          ao vivo, QR Code e histórico local. Assim como as demais ferramentas, também
+          funciona com a internet desligada.
         </p>
         <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
           /ferramentas/gerador-link-whatsapp →
@@ -162,7 +173,7 @@ import Layout from '../layouts/Layout.astro';
         <h3 class="font-mono text-sm font-medium text-white">Comparar Textos</h3>
         <p class="text-xs leading-relaxed text-[#A1A1AA]">
           Diff checker offline: veja alterações entre dois textos ou contratos em
-          linhas, palavras ou caracteres. 100% local e privado (LGPD).
+          linhas, palavras ou caracteres. Processamento local, sem upload.
         </p>
         <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
           /ferramentas/comparar-textos →
@@ -178,8 +189,8 @@ import Layout from '../layouts/Layout.astro';
         </span>
         <h3 class="font-mono text-sm font-medium text-white">Contador de Caracteres e Palavras</h3>
         <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Contador offline com analise de densidade de SEO, tempo de leitura e
-          estatisticas completas. 100% privado e local.
+          Contador offline com análise de densidade de SEO, tempo de leitura e
+          estatísticas completas. Privado e local.
         </p>
         <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
           /ferramentas/contador-caracteres →
@@ -290,9 +301,9 @@ import Layout from '../layouts/Layout.astro';
         <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
           [MÍDIA & PRIVACIDADE]
         </span>
-        <h3 class="font-mono text-sm font-medium text-white">Limpador de Metadados de Fotos</h3>
+        <h3 class="font-mono text-sm font-medium text-white">Limpador de Metadados de Fotos (Remover Localização e GPS)</h3>
         <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Remova GPS e dados da câmera de fotos (JPG, PNG, WEBP) 100% no navegador, sem upload.
+          Remova GPS, localização e dados EXIF da câmera de fotos (JPG, PNG, WEBP) 100% no navegador, sem upload.
         </p>
         <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
           /ferramentas/limpador-de-metadados-exif →
@@ -376,7 +387,8 @@ import Layout from '../layouts/Layout.astro';
         </span>
         <h3 class="font-mono text-sm font-medium text-white">Conversor de Áudio</h3>
         <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Converta WAV, MP3 e OGG e corte trechos 100% no navegador, sem upload. Zero servidores.
+          Converta WAV, MP3 e OGG e corte trechos no próprio navegador, sem
+          upload do arquivo.
         </p>
         <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
           /ferramentas/conversor-de-audio →
@@ -410,9 +422,13 @@ import Layout from '../layouts/Layout.astro';
           Como a Tecnologia Zero-Server Protege Seus Dados
         </h2>
         <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
-          Nenhuma ferramenta do CofreUtil depende de um servidor central. Tudo o
-          que você processa roda dentro do seu próprio navegador — o que elimina
-          por design qualquer coleta, trânsito ou armazenamento dos seus dados.
+          O CofreUtil é um site estático servido por uma CDN (Vercel), que
+          entrega somente os arquivos do site — JS, CSS, imagens e o motor
+          WebAssembly das ferramentas. A aplicação em si roda inteiramente no
+          seu navegador: a conversão, a compressão e a validação são executadas
+          por Web Workers e bibliotecas WebAssembly, sem um servidor de
+          aplicação processando o seu conteúdo. O arquivo que você carrega não
+          é enviado ao backend do CofreUtil.
         </p>
       </div>
 
@@ -454,9 +470,9 @@ import Layout from '../layouts/Layout.astro';
             [Privacy-by-Design & Privacy-by-Default]
           </h3>
           <p class="text-xs leading-relaxed text-[#A1A1AA]">
-            Arquitetura construída de acordo com os princípios de
-            Privacy-by-Design e Privacy-by-Default da LGPD, dispensando a
-            custódia ou processamento de dados por terceiros.
+            Arquitetura alinhada aos conceitos de Privacy-by-Design e
+            Privacy-by-Default: por construção, o site não recebe, não constrói
+            bancos de dados nem processa dados pessoais em servidores próprios.
           </p>
         </div>
       </div>

@@ -1,11 +1,31 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CpfCnpjTool from '../../components/tools/CpfCnpjTool';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+
+const jsonLd = toolPageGraph({
+  name: 'Gerador de CPF e Validador de CNPJ — CofreUtil',
+  description: 'Gere CPFs e CNPJs validos matematicamente para testes de software. Valide documentos sem enviar dados para servidores. Local e seguro.',
+  url: `${SITE_URL}/ferramentas/gerador-de-cpf`,
+  applicationCategory: 'DeveloperApplication',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    { name: 'Gerar e Validar CPF/CNPJ', url: `${SITE_URL}/ferramentas/gerador-de-cpf` },
+  ],
+  faq: [
+    { name: 'Esta ferramenta funciona offline?', text: 'Sim. O calculo dos digitos verificadores de CPF e CNPJ roda inteiramente no seu navegador, sem necessidade de conexao com a internet.' },
+    { name: 'Existe algum limite de geracoes?', text: 'A ferramenta e gratuita e sem bloqueio rigido. Apos varias utilizacoes, uma mensagem amigavel sugere um apoio voluntario via Pix.' },
+    { name: 'Meus dados sao enviados para algum servidor?', text: 'Nao. Nada e enviado ou armazenado em servidores. Tudo acontece localmente, em arquitetura construida conforme os principios de Privacy-by-Design e Privacy-by-Default da LGPD, dispensando a custodia de dados por terceiros.' },
+  ],
+});
 ---
 
 <Layout
   title="Gerador de CPF e Validador de CNPJ (Algoritmo Local) | CofreUtil"
-  description="Gere CPFs e CNPJs válidos matematicamente para testes de software. Valide documentos sem enviar dados para servidores. 100% local e seguro."
+  description="Gere CPFs e CNPJs válidos matematicamente para testes de software. Valide documentos sem enviar dados para servidores. Local e seguro."
+  jsonLd={jsonLd}
 >
   <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
     <div class="mb-10 flex flex-col gap-6">
@@ -30,8 +50,8 @@ import CpfCnpjTool from '../../components/tools/CpfCnpjTool';
       <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
         Ferramenta indispensável para desenvolvedores e QAs. Gere CPFs e CNPJs válidos
         matematicamente para testes de software sem chamadas de API externas. Nenhum
-        dado é enviado para servidores — tudo acontece localmente, em conformidade
-        total com a LGPD.
+        dado é enviado para servidores — tudo acontece localmente, sem envio do
+        conteúdo a servidores do CofreUtil.
       </p>
     </div>
 
@@ -45,7 +65,7 @@ import CpfCnpjTool from '../../components/tools/CpfCnpjTool';
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           O nosso gerador de CPF e validador de CNPJ executa o cálculo dos dígitos
-          verificadores 100% no seu computador. Isso significa que nenhum dado é
+          verificadores no seu computador. Isso significa que nenhum dado é
           transmitido pela internet nem registrado em servidores — a geração acontece
           instantaneamente, sem latência de rede e sem rastreadores de terceiros.
         </p>
@@ -59,13 +79,13 @@ import CpfCnpjTool from '../../components/tools/CpfCnpjTool';
           Desenvolvedores e profissionais de QA precisam de dados de teste matematicamente
           válidos para validar formulários e integrações. Ao processar localmente, você
           evita depender de APIs externas instáveis, protege o ambiente de desenvolvimento
-          e cumpre os princípios de minimização de dados previstos na LGPD.
+          e minimiza a exposição de dados, que permanecem apenas na sua máquina.
         </p>
       </div>
 
       <div class="flex flex-col gap-3">
         <h2 class="font-mono text-xl font-bold text-white">
-          Privacidade e adequação à LGPD em dados de teste
+          Privacidade em dados de teste
         </h2>
         <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
           Como todo o processamento é feito no seu navegador (arquitetura Zero-Server),
@@ -115,61 +135,9 @@ import CpfCnpjTool from '../../components/tools/CpfCnpjTool';
         </details>
       </div>
     </div>
+  </section>
 
-    <!-- SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'SoftwareApplication',
-            name: 'Gerador de CPF e Validador de CNPJ — CofreUtil',
-            applicationCategory: 'DeveloperApplication',
-            operatingSystem: 'Web Browser',
-            description: 'Gere CPFs e CNPJs válidos matematicamente para testes de software. Valide documentos sem enviar dados para servidores. 100% local.',
-            url: 'https://cofreutil.com.br/ferramentas/gerador-de-cpf',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'BRL',
-            },
-            author: {
-              '@type': 'Person',
-              name: 'Willian Scariott',
-            },
-          },
-          {
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Esta ferramenta funciona offline?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Sim. O cálculo dos dígitos verificadores de CPF e CNPJ roda inteiramente no seu navegador, sem necessidade de conexão com a internet.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Existe algum limite de gerações?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'A ferramenta é gratuita e sem bloqueio rígido. Após várias utilizações, uma mensagem amigável sugere um apoio voluntário via Pix.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Meus dados são enviados para algum servidor?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'Não. Nada é enviado ou armazenado em servidores, em arquitetura construída segundo os princípios de Privacy-by-Design e Privacy-by-Default da LGPD.',
-                },
-              },
-            ],
-          },
-        ],
-      })}
-    />
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="gerador-de-cpf" />
   </section>
 </Layout>
