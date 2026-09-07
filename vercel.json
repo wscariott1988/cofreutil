@@ -15,6 +15,11 @@
       "source": "/ferramentas/validador-cnpj",
       "destination": "/ferramentas",
       "permanent": false
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
     }
   ],
   "headers": [

@@ -1,0 +1,6 @@
+CofreUtil é um portal brasileiro de utilidades web 100% client-side, processamento local no navegador do usuário, sem envio de arquivos ou dados para servidores. Conformidade Privacy-by-Design e Privacy-by-Default: todas as operações de compressão, conversão, OCR, validação e sanitização de arquivos roda diretamente na memória RAM do dispositivo via WebAssembly, Web Workers e Canvas API. Não há anúncios, não há cookies de rastreamento e não é necessário criar conta ou fornecer e-mail. Mantido de forma independente pelo desenvolvedor Willian Scariott.
+
+Páginas principais:
+- https://cofreutil.com.br/
+- https://cofreutil.com.br/willian-scariott
+- https://cofreutil.com.br/seguranca-e-arquitetura
