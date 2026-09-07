@@ -10,6 +10,7 @@ import {
 } from '../../lib/passwordUtils';
 import { BatchLimiter } from '../../lib/BatchLimiter';
 import { generatePixCopyPaste } from '../../lib/pix';
+import ReferenceSources from '../ReferenceSources';
 
 const buttonClass =
   'border border-[#27272A] bg-[#09090B] px-4 py-3 font-mono text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B] disabled:cursor-not-allowed disabled:opacity-50';
@@ -320,6 +321,19 @@ export default function PasswordGeneratorTool() {
           </div>
         </div>
       )}
+
+      <ReferenceSources
+        sources={[
+          {
+            label: 'W3C — Web Crypto API (Specification)',
+            href: 'https://www.w3.org/TR/WebCryptoAPI/',
+          },
+          {
+            label: 'OWASP ASVS — Application Security Verification Standard',
+            href: 'https://owasp.org/www-project-application-security-verification-standard/',
+          },
+        ]}
+      />
     </div>
   );
 }

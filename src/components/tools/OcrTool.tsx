@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BatchLimiter } from '../../lib/BatchLimiter';
 import { generatePixCopyPaste } from '../../lib/pix';
+import ReferenceSources from '../ReferenceSources';
 import { formatFileSize } from '../../lib/pdfUtils';
 import {
   OCR_LANGS,
@@ -369,6 +370,15 @@ export default function OcrTool() {
           </div>
         </div>
       )}
+
+      <ReferenceSources
+        sources={[
+          {
+            label: 'Tesseract OCR — Motor Open-Source (Repositório Oficial)',
+            href: 'https://github.com/tesseract-ocr/tesseract',
+          },
+        ]}
+      />
     </div>
   );
 }

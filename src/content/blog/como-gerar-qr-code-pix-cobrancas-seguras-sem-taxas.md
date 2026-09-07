@@ -15,6 +15,6 @@ Ao utilizar ferramentas estáticas de geração de Pix local, você insere sua c
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-8">
   <span class="text-xs text-zinc-500 font-mono block mb-2">[💰 DINHEIRO SEGURO]</span>
   <h3 class="text-lg font-bold text-white mb-2">Gere Seu QR Code Pix sem Taxas</h3>
-  <p class="text-zinc-400 text-sm mb-4">Preencha sua chave, defina o valor opcional e gere a imagem de cobrança Pix na sua tela com privacidade absoluta e custo zero.</p>
+  <p class="text-zinc-400 text-sm mb-4">Preencha sua chave, defina o valor opcional e gere a imagem de cobrança Pix na sua tela com custo zero e minimização drástica do vetor de ataque na camada do servidor.</p>
   <a href="/ferramentas/gerador-qr-code-pix" class="inline-block bg-white text-black px-4 py-2 text-xs font-bold hover:bg-zinc-200 transition-colors">Acessar Gerador Pix →</a>
 </div>

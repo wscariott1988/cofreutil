@@ -1,4 +1,5 @@
 ---
+import ContactButton from './ContactButton';
 ---
 
 <footer class="border-t border-[#27272A] bg-[#09090B]">
@@ -10,7 +11,7 @@
       Todo o processamento de arquivos e textos acontece estritamente dentro da memoria RAM do seu navegador.
     </div>
 
-    <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
       <div class="flex flex-col gap-2">
         <span class="font-mono text-sm text-white">[C] Cofre<span class="text-[#A1A1AA]">Util</span></span>
         <p class="max-w-sm text-xs leading-relaxed text-[#A1A1AA]">
@@ -19,13 +20,42 @@
         </p>
       </div>
 
-      <div class="flex flex-col gap-2 text-right">
+      <!-- Hub de Transparencia & Autoridade -->
+      <nav class="flex flex-col gap-2" aria-label="Transparencia e autoridade">
+        <span class="font-mono text-[10px] uppercase tracking-wider text-[#52525B]">
+          [Transparencia]
+        </span>
+        <a
+          href="/willian-scariott"
+          class="text-xs text-[#A1A1AA] transition-colors hover:text-white"
+        >
+          Sobre o Autor
+        </a>
+        <a
+          href="/seguranca-e-arquitetura"
+          class="text-xs text-[#A1A1AA] transition-colors hover:text-white"
+        >
+          Segurança e Arquitetura
+        </a>
+        <a
+          href="/changelog"
+          class="text-xs text-[#A1A1AA] transition-colors hover:text-white"
+        >
+          Changelog
+        </a>
+      </nav>
+
+      <div class="flex flex-col items-start gap-3 md:items-end">
         <span class="text-xs text-[#A1A1AA]">
           Zero servidores. Zero envio de dados. Privacidade de cofre.
         </span>
-        <span class="text-xs text-[#52525B]">
+        <a
+          href="/willian-scariott"
+          class="text-xs text-[#52525B] transition-colors hover:text-white"
+        >
           Desenvolvido por Willian Scariott
-        </span>
+        </a>
+        <ContactButton client:only="react" />
       </div>
     </div>
   </div>

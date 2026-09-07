@@ -12,7 +12,7 @@ Com a maturidade de regulamentações como a LGPD e a GDPR, o manuseio de dados 
 Ao terceirizar tarefas simples de manipulação de relatórios ou validações básicas para soluções de terceiros baseadas em APIs externas, as corporações criam vazamentos potenciais de custódia e exposição indevida de dados privados.
 
 ### A blindagem técnica com WebAssembly e Client-Side estrito
-Ao projetar aplicações que utilizam WebAssembly (WASM), todo o tratamento, filtragem e transcodificação de informações ocorre em uma caixa de areia segura de memória no lado do cliente. Não há tráfego de dados sensíveis na internet, anulando o risco de vazamentos e garantindo conformidade nativa e robusta por design.
+Ao projetar aplicações que utilizam WebAssembly (WASM), todo o tratamento, filtragem e transcodificação de informações ocorre em uma caixa de areia segura de memória no lado do cliente. Não há tráfego de dados sensíveis na internet, minimizando drasticamente o vetor de ataque na camada do servidor e isolando o tráfego sensível ao seu dispositivo — uma arquitetura construída de acordo com os princípios de Privacy-by-Design e Privacy-by-Default da LGPD.
 
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 COMPLIANCE LGPD INATO]</span>

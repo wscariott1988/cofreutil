@@ -12,7 +12,7 @@ Durante o desenvolvimento de softwares que possuem cadastro de clientes (como e-
 Sob as rígidas diretrizes da LGPD, usar CPFs ou dados pessoais reais de clientes em ambientes de testes e homologação é uma infração grave de conformidade e segurança da informação.
 
 ### Geração limpa baseada estritamente em algoritmos locais
-Utilize geradores de massa de teste baseados em algoritmos locais que geram sequências aleatórias consistentes com os cálculos do módulo 11 dos dígitos verificadores. Risco zero e privacidade absoluta.
+Utilize geradores de massa de teste baseados em algoritmos locais que geram sequências aleatórias consistentes com os cálculos do módulo 11 dos dígitos verificadores. Sem coleta e sem custódia de dados por terceiros.
 
 <div class="border border-zinc-800 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 GERADOR DE CPF PARA DESENVOLVEDORES]</span>

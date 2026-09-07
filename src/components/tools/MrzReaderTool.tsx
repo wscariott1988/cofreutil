@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BatchLimiter } from '../../lib/BatchLimiter';
 import { generatePixCopyPaste } from '../../lib/pix';
+import ReferenceSources from '../ReferenceSources';
 import { formatFileSize } from '../../lib/pdfUtils';
 import {
   ocrAndParseMrz,
@@ -761,6 +762,15 @@ export default function MrzReaderTool() {
           </div>
         </div>
       )}
+
+      <ReferenceSources
+        sources={[
+          {
+            label: 'ICAO Doc 9303 — Machine Readable Travel Documents',
+            href: 'https://www.icao.int/publications/pages/publication.aspx?docnum=9303',
+          },
+        ]}
+      />
     </div>
   );
 }

@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// TODO: substituir pelos perfis reais antes do lançamento das páginas de autoridade.
+const GITHUB_URL = 'https://github.com/SEU_USUARIO';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/SEU_PERFIL';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Willian Scariott',
+  jobTitle: 'Engenheiro de Software e Fundador do CofreUtil',
+  url: 'https://cofreutil.com.br/willian-scariott',
+  email: 'mailto:contato@grupows.com',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'CofreUtil',
+    url: 'https://cofreutil.com.br',
+  },
+  sameAs: [GITHUB_URL, LINKEDIN_URL],
+  knowsAbout: [
+    'Arquitetura Zero-Server',
+    'WebAssembly',
+    'Web Crypto API',
+    'Privacidade de Dados e LGPD',
+    'Engenharia de Software',
+    'Performance Web e Front-end',
+  ],
+};
+---
+
+<Layout
+  title="Willian Scariott | Engenheiro de Software e Fundador do CofreUtil"
+  description="Willian Scariott é Engenheiro de Software e Fundador do CofreUtil. Conheça sua biografia, seu compromisso ético com a descentralização da web e a privacidade do usuário."
+  type="profile"
+  jsonLd={personJsonLd}
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Sobre o Autor]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [E-E-A-T]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Willian Scariott
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Engenheiro de Software e Fundador do CofreUtil.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Construtor da arquitetura Zero-Server do CofreUtil, um portal de utilitários
+        digitais que processa arquivos e dados exclusivamente na memória RAM do
+        navegador — sem upload, sem servidores intermediários e sem custódia de dados
+        por terceiros.
+      </p>
+    </div>
+
+    <!-- Biografia -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Biografia
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Willian Scariott atua na engenharia de software com ênfase em aplicações
+          client-side, criptografia no navegador (Web Crypto API) e processamento via
+          WebAssembly. Sua trajetória combina o desenvolvimento de produtos digitais
+          com a defesa técnica da privacidade: ferramentas que executam localmente,
+          sem coletar telemetria, sem persistir arquivos e sem depender de infraestrutura
+          de nuvem para proteger o dado do usuário.
+        </p>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          No CofreUtil, essa postura se traduz em engenharia: cada ferramenta foi
+          construída para rodar dentro do navegador como ambiente de execução, em
+          conformidade com princípios de Privacy-by-Design e Privacy-by-Default da LGPD.
+          Não é discurso de marketing — é uma restrição arquitetural audível por
+          qualquer auditoria de código.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Compromisso ético com a descentralização da web
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          A web centralizada concentra dados, poder de observação e superfície de ataque.
+          O compromisso do fundador do CofreUtil é com a alternativa: softwares que
+          devolvem o processamento ao dispositivo do usuário, reduzem a coleta massiva de
+          informações e eliminam a figura do intermediário que "precisa" guardar o seu
+          arquivo para processá-lo. Quando a aplicação não armazena dados, não há banco
+          de dados a invadir.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Contato e redes profissionais
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Para parcerias técnicas, auditorias de segurança ou imprensa especializada:
+        </p>
+        <div class="flex flex-col gap-2 font-mono text-sm">
+          <a
+            href="mailto:contato@grupows.com"
+            class="max-w-fit text-[#A1A1AA] underline decoration-dotted underline-offset-4 transition-colors hover:text-white"
+          >
+            [E-mail Corporativo] contato@grupows.com
+          </a>
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="max-w-fit text-[#A1A1AA] underline decoration-dotted underline-offset-4 transition-colors hover:text-white"
+          >
+            [GitHub] {GITHUB_URL.replace('https://', '')}
+          </a>
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="max-w-fit text-[#A1A1AA] underline decoration-dotted underline-offset-4 transition-colors hover:text-white"
+          >
+            [LinkedIn] {LINKEDIN_URL.replace('https://', '')}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

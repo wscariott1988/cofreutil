@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const techArticleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'Segurança e Arquitetura: o Manifesto Zero-Server do CofreUtil',
+  description:
+    'Manifesto técnico da arquitetura Zero-Server do CofreUtil: isolamento de memória RAM, sandboxes WebAssembly, Web Workers e adequação transparente aos princípios da LGPD.',
+  author: {
+    '@type': 'Person',
+    name: 'Willian Scariott',
+    url: 'https://cofreutil.com.br/willian-scariott',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'CofreUtil',
+    url: 'https://cofreutil.com.br',
+  },
+  url: 'https://cofreutil.com.br/seguranca-e-arquitetura',
+  inLanguage: 'pt-BR',
+};
+---
+
+<Layout
+  title="Segurança e Arquitetura | Manifesto Zero-Server do CofreUtil"
+  description="Manifesto técnico da arquitetura Zero-Server do CofreUtil: isolamento de memória RAM, sandboxes WebAssembly, Web Workers e adequação transparente aos artigos da LGPD."
+  keywords="arquitetura zero-server, segurança WebAssembly, sandbox navegador, LGPD art 46, privacidade por design, processamento local RAM"
+  type="article"
+  jsonLd={techArticleJsonLd}
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Metodologia]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Sandbox WASM]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Segurança e Arquitetura
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        O manifesto técnico da arquitetura Zero-Server do CofreUtil. Documentado como
+        imperativo de engenharia, não como promessa de marketing.
+      </h2>
+    </div>
+
+    <!-- MANIFESTO -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          1. O que significa "Zero-Server"
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Zero-Server descreve uma restrição arquitetural: nenhuma etapa do fluxo de
+          dados do usuário depende de um processo executando em infraestrutura operada
+          pelo CofreUtil. O navegador do visitante é o único runtime. O servidor entrega
+          apenas os artefatos estáticos (HTML, JavaScript, WebAssembly, fontes e o motor
+          de OCR em cache) e não participa do processamento. Com isso, não existe camada
+          intermediária que receba, persista, indexe ou reencaminhe o conteúdo do usuário.
+        </p>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Consequência prática: o vetor de ataque na camada do servidor fica restrito à
+          entrega de estáticos e golpes de cadeia de suprimentos do runtime, nunca ao
+          vazamento de conteúdo tratado pelo usuário — pois esse conteúdo não existe no
+          servidor em momento algum.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          2. Isolamento e ciclo de vida na memória RAM
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Todos os buffers de arquivo, decodificações, transcodificações e extrações são
+          mantidos exclusivamente na memória volátil (RAM) do navegador. O ciclo de vida
+          é determinístico:
+        </p>
+        <ul class="flex max-w-3xl list-disc flex-col gap-2 pl-5 text-sm leading-relaxed text-[#A1A1AA]">
+          <li>
+            <strong class="text-white">Ingestão:</strong> o arquivo é lido via
+            <span class="font-mono text-xs text-[#A1A1AA]"> FileReader → ArrayBuffer</span>
+            sem transmissão de rede.
+          </li>
+          <li>
+            <strong class="text-white">Processamento:</strong> módulos WebAssembly operam
+            sobre a memória linear isolada; dados sensíveis não são serializados para o
+            DOM nem para o armazenamento persistente.
+          </li>
+          <li>
+            <strong class="text-white">Descarte:</strong> ao final, as referências são
+            liberadas e os buffers tornam-se elegíveis para coleta pelo garbage collector.
+            Não há escrita em
+            <span class="font-mono text-xs"> localStorage / IndexedDB / cookies</span> de
+            conteúdo processado (as únicas persistências possíveis são parâmetros não
+            sensíveis de preferência de interface).
+          </li>
+        </ul>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          É importante distinguir "isolamento de memória" do conceito de memória protegida
+          de sistemas operacionais: aqui o termo refere-se a manter o dado dentro do
+          processo da aba (sandbox do navegador e das Web Workers), impedindo sua
+          materialização fora dele — em disco, na nuvem ou em logs de servidor. A
+          separação real entre abas e processos é responsabilidade do navegador,
+          implementada conforme seus modelos de isolamento (site isolation e
+          fenced frames).
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          3. Sandboxes WebAssembly
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Motores como FFmpeg, Tesseract e as rotinas binárias de PDF são compilados para
+          WebAssembly e executados dentro de Web Workers. A especificação WebAssembly
+          fornece um modelo de execução com memória linear própria, sem acesso direto ao
+          DOM, ao sistema de arquivos do host ou à rede: qualquer operação dessas depende
+          de funções de import/export explicitamente concedidas pelo embarcador. Essa
+          fronteira reduz drasticamente a superfície de exploração de um binário nativo
+          equivalente.
+        </p>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Para os cenários pesados de mídia e OCR, empregamos Web Workers dedicados com
+          transferência de buffers por
+          <span class="font-mono text-xs"> transferable objects</span> — sem duplicação de
+          memória entre thread principal e worker. Headers de isolamento cross-origin
+          (<span class="font-mono text-xs">Cross-Origin-Opener-Policy: same-origin</span>
+          e
+          <span class="font-mono text-xs">Cross-Origin-Embedder-Policy: require-corp</span>)
+          habilitam primitivas de alta performance e reforçam o isolamento do ambiente.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          4. Ausência de telemetria de conteúdo
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          O CofreUtil não opera cookies de rastreamento, não instrumenta o conteúdo
+          processado e não mantém logs de operações. A única telemetria presente é
+          agregada, anônima e desligável (Cloudflare Web Analytics), restrita a métricas
+          de visita — sem correlação com arquivos, textos ou parâmetros de ferramentas.
+          Qualquer auditoria de rede pode confirmar a ausência de requisições contendo
+          payloads de arquivo durante o uso.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          5. Adequação transparente aos princípios da LGPD
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          A adequação não é declarada como um selo automático; ela é descrita em termos
+          dos dispositivos da Lei nº 13.709/2018:
+        </p>
+        <ul class="flex max-w-3xl list-disc flex-col gap-2 pl-5 text-sm leading-relaxed text-[#A1A1AA]">
+          <li>
+            <strong class="text-white">Art. 6º, II e III (finalidade e necessidade / minimização):</strong>
+            por não coletarmos dados pessoais para processamento, o tratamento é limitado
+            ao estritamente necessário — na prática, caminha para zero.
+          </li>
+          <li>
+            <strong class="text-white">Art. 6º, VI (segurança):</strong> os princípios de
+            Privacy-by-Design e Privacy-by-Default são incorporados desde a concepção de
+            cada ferramenta (arquitetura, não remendo posterior).
+          </li>
+          <li>
+            <strong class="text-white">Art. 46 e §2º (segurança e prevenção desde a concepção):</strong>
+            o padrão Zero-Server evita a custódia, a transmissão e o armazenamento do dado
+            — os três vetores centrais de incidentes de segurança.
+          </li>
+          <li>
+            <strong class="text-white">Art. 48 (comunicação de incidente):</strong> a ausência
+            de armazenamento por nossa parte elimina a classe de incidente mais comum em
+            ferramentas do gênero (comprometimento de banco de dados), reduzindo
+            drasticamente a superfície de responsabilidade do controlador.
+          </li>
+        </ul>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Em fluxos onde o usuário é o único operador dos próprios dados dentro de seu
+          dispositivo, dispensamos a custódia ou processamento de dados por terceiros —
+          o que remove a necessidade de bases legais de tratamento de conteúdo, pois não
+          há tratamento realizado por nós.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          6. Auditoria e transparência
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Todo o projeto é entregue como site estático: não há API back-end, banco de
+          dados ou fila de jobs a auditar. O registro público de manutenção, correções e
+          evoluções de segurança está no
+          <a
+            href="/changelog"
+            class="text-white underline decoration-dotted underline-offset-4 transition-colors hover:text-[#A1A1AA]"
+          >
+            changelog
+          </a>
+          , e o detalhamento da responsabilidade técnica está na
+          <a
+            href="/willian-scariott"
+            class="text-white underline decoration-dotted underline-offset-4 transition-colors hover:text-[#A1A1AA]"
+          >
+            página do autor
+          </a>
+          . Dúvidas de engenharia ou pedidos de revisão de segurança podem ser enviados ao
+          e-mail corporativo: contato@grupows.com.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

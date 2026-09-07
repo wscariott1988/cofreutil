@@ -9,6 +9,7 @@ import {
 import { generateQrCodeSvg, generateQrCodePng } from '../../lib/qr';
 import { BatchLimiter } from '../../lib/BatchLimiter';
 import { generatePixCopyPaste } from '../../lib/pix';
+import ReferenceSources from '../ReferenceSources';
 
 interface KeyTypeOption {
   value: PixKeyType;
@@ -367,6 +368,19 @@ export default function PixQrCodeTool() {
           </div>
         </div>
       )}
+
+      <ReferenceSources
+        sources={[
+          {
+            label: 'Banco Central do Brasil — Manual de Padrões para Iniciação do Pix (BR Code)',
+            href: 'https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf',
+          },
+          {
+            label: 'EMVCo — EMV QR Code Specification',
+            href: 'https://www.emvco.com/emv-qr-code/',
+          },
+        ]}
+      />
     </div>
   );
 }

@@ -1,0 +1,165 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface ChangelogEntry {
+  date: string;
+  tag: string;
+  title: string;
+  detail: string;
+}
+
+const entries: ChangelogEntry[] = [
+  {
+    date: '2026-09-06',
+    tag: 'feat',
+    title: 'Badge de desafio offline de privacidade',
+    detail:
+      'Componente que convida o visitante a desligar a rede para comprovar o processamento 100% client-side.',
+  },
+  {
+    date: '2026-09-06',
+    tag: 'fix',
+    title: 'Estabilização do removedor de silêncio',
+    detail:
+      'Correção de travamento em vídeos longos e refatoração do feed do blog para lista brutalista compacta (melhor densidade e velocidade).',
+  },
+  {
+    date: '2026-09-05',
+    tag: 'feat',
+    title: 'Lançamento do removedor de silêncio lossless',
+    detail:
+      'Remoção de silêncios de vídeo e áudio via FFmpeg WebAssembly local, com corte e concatenação lossless e sem perda de qualidade.',
+  },
+  {
+    date: '2026-09-05',
+    tag: 'feat',
+    title: 'Conversor de áudio local',
+    detail:
+      'Conversão e corte de WAV/MP3/OGG inteiramente na memória do navegador, com link do Conversor de Áudio corrigido no menu e na home.',
+  },
+  {
+    date: '2026-09-05',
+    tag: 'feat',
+    title: 'Gerador de senhas offline + hub de ferramentas',
+    detail:
+      'Gerador de senhas com Web Crypto API, categorização do blog por abas e criação do hub de ferramentas com correção de links CTA.',
+  },
+  {
+    date: '2026-09-05',
+    tag: 'fix',
+    title: 'Correção da máscara de celular no Gerador de Link WhatsApp',
+    detail:
+      'Corrigida a formatação de telefones com prefixo DDI estático, evitando QR Codes e links inválidos para números nacionais.',
+  },
+  {
+    date: '2026-09-05',
+    tag: 'feat',
+    title: 'Blog estático com Content Collections',
+    detail:
+      'Implementação do blog com rotas estáticas e importação em lotes até 93 artigos de SEO local, com filtro por categorias.',
+  },
+  {
+    date: '2026-09-05',
+    tag: 'perf',
+    title: 'Automação de sitemap, robots dinâmico e geo-targeting',
+    detail:
+      'Geração automática de sitemap, bloqueio de rastreadores indesejados via robots.txt e meta tags de geolocalização para o Brasil.',
+  },
+  {
+    date: '2026-09-05',
+    tag: 'feat',
+    title: 'Leitor de imagem (OCR) com Tesseract local',
+    detail:
+      'Extrair texto de imagens com o motor open-source Tesseract, compilado para WebAssembly e mantido em cache no dispositivo.',
+  },
+  {
+    date: '2026-09-04',
+    tag: 'refactor',
+    title: 'Copy de SEO atenuada + banner zero cookies',
+    detail:
+      'Ajuste de claims de segurança para linguagem tecnicamente precisa e adição do banner "Zero Cookies & 100% Local".',
+  },
+  {
+    date: '2026-09-04',
+    tag: 'feat',
+    title: 'Comparador de textos offline + BatchLimiter',
+    detail:
+      'Comparador de contratos/textos com diff local e integração do limite assíncrono de uso sem bloqueio da operação.',
+  },
+  {
+    date: '2026-09-04',
+    tag: 'segurança',
+    title: 'Migração para Cloudflare Web Analytics (cookieless)',
+    detail:
+      'Substituição do Google Tag Manager por Web Analytics cookieless e compatível com a LGPD, com auto-exclusão de visitas do desenvolvedor.',
+  },
+  {
+    date: '2026-09-04',
+    tag: 'feat',
+    title: 'Leitor de MRZ + Sanitizador de PDF + Scanner de QR Code',
+    detail:
+      'Leitura de passaportes ICAO 9303, remoção de metadados de PDFs e leitura de QR Codes pela câmera, tudo no navegador.',
+  },
+  {
+    date: '2026-09-04',
+    tag: 'feat',
+    title: 'Conversores de imagem, PDF para imagem, hash, CSV/JSON',
+    detail:
+      'Conversor de imagens, PDF para imagem, calculadora de hash e conversor CSV/JSON — todos sem envio a servidores.',
+  },
+  {
+    date: '2026-09-04',
+    tag: 'feat',
+    title: 'Base da plataforma: SEO, OG Image e gerador de QR Code Pix',
+    detail:
+      'BaseHead com SEO/Open Graph, favicon, gerador de QR Code Pix e ferramentas inaugurais do portal.',
+  },
+];
+---
+
+<Layout
+  title="Changelog | Histórico de Manutenção do CofreUtil"
+  description="Linha do tempo pública de manutenção do CofreUtil: correções, novas ferramentas e evoluções de segurança documentadas para auditoria e transparência."
+  keywords="changelog, cofreutil, histórico de atualizações, manutenção de ferramentas, transparência"
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Transparência]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Auditável]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Changelog
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Linha do tempo pública de revisões e manutenção. Cada entrada corresponde a uma
+        alteração real de engenharia do CofreUtil.
+      </h2>
+    </div>
+
+    <div class="mt-16 flex flex-col">
+      {entries.map((entry) => (
+        <div class="flex flex-col gap-1 border-b border-[#27272A] py-6 transition-colors hover:bg-[#09090B] sm:flex-row sm:items-start sm:gap-6">
+          <div class="w-36 shrink-0">
+            <span class="font-mono text-xs text-[#52525B]">[{entry.date}]</span>
+          </div>
+          <div class="flex flex-1 flex-col gap-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="border border-[#27272A] bg-black px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#A1A1AA]">
+                {entry.tag}
+              </span>
+              <h3 class="font-mono text-sm font-bold text-white">{entry.title}</h3>
+            </div>
+            <p class="max-w-3xl text-xs leading-relaxed text-[#A1A1AA]">{entry.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

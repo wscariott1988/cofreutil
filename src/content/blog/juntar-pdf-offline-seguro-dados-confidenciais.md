@@ -10,8 +10,8 @@ Para profissionais que lidam diariamente com informações altamente confidencia
 
 De acordo com o regulamento de compliance digital de grandes corporações, fazer o upload desses arquivos sigilosos para sites de terceiros pode constituir quebra de segredo comercial ou profissional, mesmo que o site declare que "apaga os arquivos após 1 hora".
 
-### A garantia de privacidade absoluta do CofreUtil
-No portal do **CofreUtil**, não existe a possibilidade de vazamento de dados, pois **não possuímos banco de dados para arquivos e nenhuma infraestrutura de armazenamento**. 
+### A minimização de ataque do CofreUtil
+No portal do **CofreUtil**, o vetor de ataque na camada do servidor é praticamente anulado, pois **não possuímos banco de dados para arquivos e nenhuma infraestrutura de armazenamento**. 
 
 Quando você faz o upload de um PDF em nosso site:
 1. O arquivo permanece na pasta temporária local da aba ativa do seu navegador.
@@ -19,7 +19,7 @@ Quando você faz o upload de um PDF em nosso site:
 3. Se você desligar a sua conexão com a internet (Wi-Fi/Cabo), a ferramenta continuará funcionando perfeitamente, provando o seu isolamento offline real.
 
 ### ⚡ Proteja sua empresa hoje:
-Elimine o risco de vazamento de dados confidenciais dos seus clientes integrando utilitários de arquitetura local e conformidade comprovada em sua rotina diária.
+Minimize drasticamente o vetor de ataque de vazamento de dados confidenciais dos seus clientes integrando utilitários de arquitetura local e conformidade comprovada em sua rotina diária.
 
 <div class="border border-zinc-800 p-6 bg-zinc-950 my-6 rounded-none text-center">
   <p class="text-white font-mono text-sm mb-4">[🔒 RECOMENDADO PARA COMPLIANCE CORPORATIVO & LGPD]</p>

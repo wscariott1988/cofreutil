@@ -12,7 +12,7 @@ Para advogados, paralegais e analistas de compliance societário, lidar com minu
 Ao usar compressores ou divisores de PDF online comuns, as minutas de patentes ou segredos financeiros societários de fusões e aquisições podem ser interceptadas ou catalogadas.
 
 ### Isolamento local absoluto por WebAssembly
-O divisor estático do CofreUtil executa a lógica binária de fatiamento de PDFs diretamente dentro da memória isolada do Chrome ou Firefox do usuário, com risco zero de vazamentos.
+O divisor estático do CofreUtil executa a lógica binária de fatiamento de PDFs diretamente dentro da memória isolada do Chrome ou Firefox do usuário, minimizando drasticamente o vetor de ataque na camada do servidor e isolando o tráfego sensível ao seu dispositivo.
 
 <div class="border border-zinc-850 p-6 bg-zinc-950 rounded-none my-6 font-mono text-xs">
   <span class="text-white font-bold block mb-2">[🔒 DIVISOR DE CONTRATOS PDF LOCAL]</span>

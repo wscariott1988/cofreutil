@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import { BatchLimiter } from '../../lib/BatchLimiter';
 import { generatePixCopyPaste } from '../../lib/pix';
+import ReferenceSources from '../ReferenceSources';
 import { mergePDFBuffers, formatFileSize } from '../../lib/pdfUtils';
 
 interface PdfFile {
@@ -279,6 +280,15 @@ export default function PdfMergeTool() {
           </div>
         </div>
       )}
+
+      <ReferenceSources
+        sources={[
+          {
+            label: 'ISO 32000 — PDF (Portable Document Format) Specification',
+            href: 'https://www.iso.org/standard/75839.html',
+          },
+        ]}
+      />
     </div>
   );
 }

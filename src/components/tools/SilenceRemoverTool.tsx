@@ -3,6 +3,7 @@ import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { toBlobURL } from '@ffmpeg/util';
 import { BatchLimiter } from '../../lib/BatchLimiter';
 import { generatePixCopyPaste } from '../../lib/pix';
+import ReferenceSources from '../ReferenceSources';
 
 const MAX_BYTES = 200 * 1024 * 1024;
 const LOCAL_CORE = '/wasm/ffmpeg/ffmpeg-core.js';
@@ -706,6 +707,15 @@ export default function SilenceRemoverTool() {
           </div>
         </div>
       )}
+
+      <ReferenceSources
+        sources={[
+          {
+            label: 'FFmpeg.wasm — Documentação Técnica Oficial',
+            href: 'https://ffmpegwasm.netlify.app/docs/overview',
+          },
+        ]}
+      />
     </div>
   );
 }
