@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /testes
+Disallow: /homologacao
+Disallow: /privado
+Disallow: /obrigado
+
+Sitemap: https://cofreutil.com.br/sitemap-index.xml

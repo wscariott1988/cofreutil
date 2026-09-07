@@ -23,12 +23,6 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: GPTBot
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
-
 Sitemap: ${new URL('sitemap-index.xml', siteUrl).toString()}
 `;
 }
