@@ -32,6 +32,29 @@ function formatSeconds(total: number): string {
   return `${m}:${s.toFixed(1).padStart(4, '0')}`;
 }
 
+const NO_SILENCE_MESSAGE = 'Nenhum trecho de silêncio detectado. O arquivo original foi mantido intacto.';
+
+function parseSilences(text: string): Silence[] {
+  const silences: Silence[] = [];
+  let lastStart: number | null = null;
+  const re = /silence_(start|end)\s*:\s*(-?[\d.]+)/g;
+  let match: RegExpExecArray | null;
+  while ((match = re.exec(text)) !== null) {
+    const kind = match[1];
+    const time = Math.max(0, parseTime(match[2]));
+    if (kind === 'start') {
+      lastStart = time;
+    } else if (lastStart !== null) {
+      const end = Math.max(lastStart, time);
+      if (end - lastStart > 0.0001) {
+        silences.push({ start: lastStart, end });
+      }
+      lastStart = null;
+    }
+  }
+  return silences;
+}
+
 export default function SilenceRemoverTool() {
   const [file, setFile] = useState<File | null>(null);
   const [isLoadingFfmpeg, setIsLoadingFfmpeg] = useState(false);
@@ -50,8 +73,11 @@ export default function SilenceRemoverTool() {
   const [totalDuration, setTotalDuration] = useState(0);
   const [detectedSegments, setDetectedSegments] = useState<Segment[]>([]);
   const [removedSilences, setRemovedSilences] = useState<Silence[]>([]);
+  const [hasRunDetection, setHasRunDetection] = useState(false);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [resultName, setResultName] = useState<string>('');
+  const [resultNotice, setResultNotice] = useState<string | null>(null);
+  const [resultIsOriginal, setResultIsOriginal] = useState(false);
   const [savedSeconds, setSavedSeconds] = useState(0);
 
   const [showSupport, setShowSupport] = useState(false);
@@ -148,6 +174,9 @@ export default function SilenceRemoverTool() {
       setRemovedSilences([]);
       setTotalDuration(0);
       setSavedSeconds(0);
+      setResultNotice(null);
+      setResultIsOriginal(false);
+      setHasRunDetection(false);
       logLinesRef.current = [];
       setLog([]);
     },
@@ -172,6 +201,8 @@ export default function SilenceRemoverTool() {
       if (url) URL.revokeObjectURL(url);
       return null;
     });
+    setResultNotice(null);
+    setResultIsOriginal(false);
     setDetectedSegments([]);
     setRemovedSilences([]);
     logLinesRef.current = [];
@@ -196,25 +227,20 @@ export default function SilenceRemoverTool() {
       ]);
 
       let total = 0;
-      const durationLine = logLinesRef.current
-        .map((l) => l.match(/Duration:\s*(\d+):(\d+):([\d.]+)/))
-        .find((m) => m !== undefined);
+      const logText = logLinesRef.current.filter(Boolean).join('\n');
+      const durationLine = logText.match(/Duration:\s*(\d{1,3}):(\d{2}):(\d{2}(?:\.\d+)?)/);
       if (durationLine) {
         const [, h, m, s] = durationLine;
-        total = Number(h ?? 0) * 3600 + Number(m ?? 0) * 60 + Number(s ?? 0);
+        total = parseTime(h) * 3600 + parseTime(m) * 60 + parseTime(s);
         setTotalDuration(total);
       }
 
-      const silences: Silence[] = [];
-      let lastStart: number | null = null;
-      for (const line of logLinesRef.current) {
-        const startMatch = line.match(/silence_start:\s*([\d.]+)/);
-        if (startMatch) lastStart = parseTime(startMatch[1]);
-        const endMatch = line.match(/silence_end:\s*([\d.]+)/);
-        if (endMatch && lastStart !== null) {
-          silences.push({ start: lastStart, end: parseTime(endMatch[1]) });
-          lastStart = null;
-        }
+      const silences = parseSilences(logText);
+
+      if (total <= 0) {
+        const latestEnd = silences.reduce((acc, s) => Math.max(acc, s.end), 0);
+        if (latestEnd > 0) total = latestEnd;
+        if (total > 0) setTotalDuration(total);
       }
 
       const segments: Segment[] = [];
@@ -232,7 +258,12 @@ export default function SilenceRemoverTool() {
       setDetectedSegments(segments);
       setRemovedSilences(silences);
       setSavedSeconds(Math.max(0, total - kept));
-      pushLog(`análise concluída: ${segments.length} trecho(s) de som ativo`);
+      setHasRunDetection(true);
+      pushLog(
+        segments.length
+          ? `análise concluída: ${segments.length} trecho(s) de som ativo`
+          : 'análise concluída: nenhum trecho de som ativo detectado',
+      );
     } catch (cause) {
       setError((cause as Error)?.message ?? 'Falha na detecção de silêncio.');
     } finally {
@@ -242,7 +273,7 @@ export default function SilenceRemoverTool() {
 
   const handleRemove = useCallback(async () => {
     const current = fileRef.current;
-    if (!current || !detectedSegmentsRef.current.length || isProcessing || isDetecting) return;
+    if (!current || isProcessing || isDetecting) return;
 
     if (BatchLimiter.isLimitReached()) {
       setError(
@@ -255,23 +286,42 @@ export default function SilenceRemoverTool() {
     setError(null);
     setIsProcessing(true);
     setProgress('');
+    setResultNotice(null);
     setResultUrl((url) => {
       if (url) URL.revokeObjectURL(url);
       return null;
     });
 
+    const keepOriginal = () => {
+      const originalUrl = URL.createObjectURL(current);
+      setResultUrl(originalUrl);
+      setResultName(current.name);
+      setResultIsOriginal(true);
+      setSavedSeconds(0);
+      setResultNotice(NO_SILENCE_MESSAGE);
+      pushLog('nenhum trecho de silêncio removível: arquivo original mantido intacto');
+    };
+
     try {
+      const segments = detectedSegmentsRef.current;
+      const total = totalDurationRef.current;
+
+      if (!segments.length || total <= 0) {
+        pushLog('análise sem janelas de áudio ativo; mantendo arquivo original');
+        keepOriginal();
+        return;
+      }
+
       const ffmpeg = await ensureFFmpeg();
       const ext = current.name.match(/\.([a-zA-Z0-9]+)$/)?.[1] ?? 'mp4';
       const inputName = `entrada.${ext}`;
       const outputName = `saida.${ext}`;
       const listName = 'concat_list.txt';
-      const total = totalDurationRef.current;
 
       await ffmpeg.writeFile(inputName, new Uint8Array(await current.arrayBuffer()));
 
       const pad = 0.02;
-      const lines = detectedSegmentsRef.current
+      const lines = segments
         .map((seg) => {
           const start = Math.max(0, seg.start - pad);
           const end = Math.min(total, seg.end + pad);
@@ -284,11 +334,10 @@ export default function SilenceRemoverTool() {
         await ffmpeg.exec(['-f', 'concat', '-safe', '0', '-i', listName, '-c', 'copy', outputName]);
       } catch (cause) {
         pushLog(`concat demuxer indisponível, usando filtro concat: ${(cause as Error)?.message ?? ''}`);
-        const segments = detectedSegmentsRef.current;
         const chain = segments
           .map((seg, i) => {
-            const start = (Math.max(0, seg.start - pad)).toFixed(3);
-            const end = (Math.min(total, seg.end + pad)).toFixed(3);
+            const start = Math.max(0, seg.start - pad).toFixed(3);
+            const end = Math.min(total, seg.end + pad).toFixed(3);
             return `[${i}:v]trim=${start}:${end},setpts=PTS-STARTPTS[v${i}];[${i}:a]atrim=${start}:${end},asetpts=PTS-STARTPTS[a${i}]`;
           })
           .join(';');
@@ -314,17 +363,29 @@ export default function SilenceRemoverTool() {
       }
 
       const data = await ffmpeg.readFile(outputName);
+
+      for (const name of [inputName, listName, outputName]) {
+        try {
+          await ffmpeg.deleteFile(name);
+        } catch {
+          /* ignore */
+        }
+      }
+
+      if (!data || data.length === 0) {
+        pushLog('saída vazia após processamento 100%; mantendo arquivo original');
+        keepOriginal();
+        return;
+      }
+
       const blob = new Blob([data as BlobPart]);
       const objectUrl = URL.createObjectURL(blob);
       setResultUrl(objectUrl);
       setResultName(current.name.replace(/\.[^.]+$/, '') + '_sem_silencio.' + ext);
+      setResultIsOriginal(false);
 
-      const kept = detectedSegmentsRef.current.reduce((acc, s) => acc + (s.end - s.start), 0);
+      const kept = segments.reduce((acc, s) => acc + (s.end - s.start), 0);
       setSavedSeconds(Math.max(0, total - kept));
-
-      ffmpeg.deleteFile(inputName);
-      ffmpeg.deleteFile(listName);
-      ffmpeg.deleteFile(outputName);
 
       BatchLimiter.incrementUsage(1);
       if (!supportPromptedRef.current) {
@@ -351,6 +412,9 @@ export default function SilenceRemoverTool() {
     setRemovedSilences([]);
     setTotalDuration(0);
     setSavedSeconds(0);
+    setResultNotice(null);
+    setResultIsOriginal(false);
+    setHasRunDetection(false);
     logLinesRef.current = [];
     setLog([]);
     setError(null);
@@ -477,6 +541,13 @@ export default function SilenceRemoverTool() {
                 : '[Detectar Silêncio]'}
           </button>
 
+          {hasRunDetection && !hasDetected && (
+            <p className="border border-[#27272A] bg-black px-3 py-2 font-mono text-xs leading-relaxed text-[#A1A1AA]">
+              Nenhum trecho de silêncio detectado com estes parâmetros. Ajuste a
+              sensibilidade de ruído e a duração mínima e tente novamente.
+            </p>
+          )}
+
           {hasDetected && (
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between font-mono text-xs">
@@ -563,15 +634,29 @@ export default function SilenceRemoverTool() {
 
       {resultUrl && (
         <div className="mt-4 flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-4">
-          <span className="font-mono text-sm text-white">[ARQUIVO PRONTO]</span>
-          <video src={resultUrl} controls className="max-h-72 w-full border border-[#27272A] bg-black" />
+          <div className="flex items-center justify-between gap-3">
+            <span className="font-mono text-sm text-white">
+              [{resultIsOriginal ? 'ARQUIVO INTACTO' : 'ARQUIVO PRONTO'}]
+            </span>
+            {!resultIsOriginal && (
+              <span className="font-mono text-xs text-[#52525B]">{resultName}</span>
+            )}
+          </div>
+          {resultNotice && (
+            <p className="border border-[#27272A] bg-black px-3 py-2 font-mono text-xs leading-relaxed text-[#A1A1AA]">
+              {resultNotice}
+            </p>
+          )}
+          {!resultIsOriginal && (
+            <video src={resultUrl} controls className="max-h-72 w-full border border-[#27272A] bg-black" />
+          )}
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={resultUrl}
               download={resultName}
               className="border border-[#27272A] bg-black px-4 py-2 font-mono text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
             >
-              [Baixar {resultName}]
+              [Baixar {resultIsOriginal ? 'Arquivo Original' : 'Arquivo Editado'}]
             </a>
             <span className="font-mono text-xs text-[#A1A1AA]">
               {savedSeconds > 0.001

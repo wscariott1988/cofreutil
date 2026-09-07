@@ -20,7 +20,14 @@ const description =
   'Guias rápidos sobre como juntar PDF, comprimir arquivos, gerar link de WhatsApp, extrair texto de imagem e muito mais — tudo gratuito, sem cadastro e com processamento 100% local.';
 
 const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC', day: '2-digit', month: 'short', year: 'numeric' }).format(date);
+  new Intl.DateTimeFormat('pt-BR', {
+    timeZone: 'UTC',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  })
+    .format(date)
+    .replace(/ de /g, ' ');
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -72,23 +79,21 @@ const jsonLd = {
           </div>
         </nav>
 
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-8 border-t border-[#27272a]">
           {posts.map((post) => (
             <a
               href={`/blog/${post.id}`}
-              class="blog-card group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+              class="blog-row group grid grid-cols-[88px_1fr_auto] items-center gap-3 border-b border-[#27272a] py-4 transition-opacity sm:gap-6 md:grid-cols-[120px_1fr_auto]"
               data-blog-category={post.data.category}
             >
-              <div class="flex items-center justify-between gap-4">
-                <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-                  {post.data.category}
-                </span>
-                <span class="font-mono text-xs text-[#52525B]">{formatDate(post.data.publishDate)}</span>
-              </div>
-              <h2 class="font-mono text-sm font-medium leading-snug text-white">{post.data.title}</h2>
-              <p class="text-xs leading-relaxed text-[#A1A1AA]">{post.data.description}</p>
-              <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-                /blog/{post.id} →
+              <time class="font-mono text-xs text-[#52525b]">
+                {formatDate(post.data.publishDate)}
+              </time>
+              <h2 class="truncate font-mono text-sm font-bold text-white underline-offset-4 transition-colors group-hover:underline md:text-base">
+                {post.data.title}
+              </h2>
+              <span class="justify-self-end rounded-none border border-[#27272a] px-2 py-0.5 font-mono text-[10px] text-[#a1a1aa]">
+                {post.data.category}
               </span>
             </a>
           ))}
@@ -115,15 +120,15 @@ const jsonLd = {
     color: #000000;
   }
 
-  .blog-card {
+  .blog-row {
     transition: opacity 0.18s ease, transform 0.18s ease;
   }
 
-  .blog-card.is-reveal {
-    animation: blogCardIn 0.22s ease both;
+  .blog-row.is-reveal {
+    animation: blogRowIn 0.22s ease both;
   }
 
-  @keyframes blogCardIn {
+  @keyframes blogRowIn {
     from {
       opacity: 0;
       transform: translateY(10px);
@@ -138,8 +143,8 @@ const jsonLd = {
 <script>
   (() => {
     const tabs = Array.from(document.querySelectorAll('[data-blog-tab]'));
-    const cards = Array.from(document.querySelectorAll('[data-blog-category]'));
-    if (tabs.length === 0 || cards.length === 0) return;
+    const rows = Array.from(document.querySelectorAll('[data-blog-category]'));
+    if (tabs.length === 0 || rows.length === 0) return;
 
 const normalizeCategory = (value: string) =>
       (value ?? '')
@@ -159,17 +164,17 @@ const normalizeCategory = (value: string) =>
 
     const applyFilter = (value: string) => {
       const normalized = normalizeCategory(value);
-      cards.forEach((card) => {
-        const cardCategory = normalizeCategory(card.dataset.blogCategory ?? '');
-        const match = normalized === 'todos' || cardCategory === normalized;
+      rows.forEach((row) => {
+        const rowCategory = normalizeCategory(row.dataset.blogCategory ?? '');
+        const match = normalized === 'todos' || rowCategory === normalized;
         if (match) {
-          card.classList.remove('hidden');
-          card.hidden = false;
-          card.classList.add('is-reveal');
+          row.classList.remove('hidden');
+          row.hidden = false;
+          row.classList.add('is-reveal');
         } else {
-          card.hidden = true;
-          card.classList.add('hidden');
-          card.classList.remove('is-reveal');
+          row.hidden = true;
+          row.classList.add('hidden');
+          row.classList.remove('is-reveal');
         }
       });
     };
