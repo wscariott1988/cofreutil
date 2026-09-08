@@ -1,0 +1,151 @@
+---
+---
+<script client:only="window">
+  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement
+  const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+
+  if (!canvas || !ctx) return
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const pixelRatio = Math.min(window.devicePixelRatio || 1, 2)
+
+  let particles: Particle[] = []
+  let animationId: number | null = null
+  let startTime = 0
+
+  interface Particle {
+    x: number
+    y: number
+    ox: number
+    oy: number
+    opacity: number
+    targetOpacity: number
+  }
+
+  const PARTICLE_SIZE = 3
+  const BASE_DENSITY = 0.08
+  const CENTER_RADIUS_RATIO = 0.4
+
+  const setCanvasSize = () => {
+    const width = Math.min(document.documentElement.clientWidth || 0, 1920)
+    const height = Math.min(document.documentElement.clientHeight || 0, 1080)
+    canvas.width = width * pixelRatio
+    canvas.height = height * pixelRatio
+    canvas.style.width = `${width}px`
+    canvas.style.height = `${height}px`
+    ctx.scale(pixelRatio, pixelRatio)
+  }
+
+  const calcDrift = (t: number, offset: number, amplitude: number = 20) => {
+    return offset + Math.sin(t * 0.0005 + offset) * amplitude * 0.5 + Math.cos(t * 0.0003 + offset) * amplitude * 0.3
+  }
+
+  const initParticles = () => {
+    const width = canvas.clientWidth || canvas.width / pixelRatio
+    const height = canvas.clientHeight || canvas.height / pixelRatio
+    particles = []
+
+    const cols = Math.floor(width / PARTICLE_SIZE) + 2
+    const rows = Math.floor(height / PARTICLE_SIZE) + 2
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const x = col * PARTICLE_SIZE
+        const y = row * PARTICLE_SIZE
+
+        const distFromCenter = Math.hypot(x - width / 2, y - height / 2)
+        const centerRadius = Math.min(width, height) * CENTER_RADIUS_RATIO
+        const isInCenter = distFromCenter < centerRadius
+
+        const density = isInCenter ? BASE_DENSITY * 0.3 : BASE_DENSITY
+        const opacity = isInCenter ? 0.15 : 0.35
+
+        if (Math.random() > density) continue
+
+        particles.push({
+          x,
+          y,
+          ox: x,
+          oy: y,
+          opacity,
+          targetOpacity: opacity,
+        })
+      }
+    }
+  }
+
+  const updateParticles = (t: number) => {
+    if (reducedMotion) {
+      ctx.clearRect(0, 0, canvas.width / pixelRatio, canvas.height / pixelRatio)
+      particles.forEach(p => {
+        ctx.fillStyle = `rgba(39, 39, 42, ${p.targetOpacity})`
+        ctx.fillRect(p.x, p.y, PARTICLE_SIZE, PARTICLE_SIZE)
+      })
+      animationId = requestAnimationFrame(updateParticles)
+      return
+    }
+
+    ctx.clearRect(0, 0, canvas.width / pixelRatio, canvas.height / pixelRatio)
+
+    particles.forEach(p => {
+      p.x = calcDrift(t, p.ox, 25)
+      p.y = calcDrift(t, p.oy, 20)
+
+      p.targetOpacity = 0.35 + Math.sin(t * 0.001 + p.oy * 0.01) * 0.1
+      p.opacity += (p.targetOpacity - p.opacity) * 0.05
+
+      ctx.fillStyle = `rgba(39, 39, 42, ${Math.max(0, Math.min(1, p.opacity))})`
+      ctx.fillRect(p.x, p.y, PARTICLE_SIZE, PARTICLE_SIZE)
+    })
+
+    animationId = requestAnimationFrame(updateParticles)
+  }
+
+  const onResize = () => {
+    setCanvasSize()
+    initParticles()
+    if (animationId === null && !reducedMotion) {
+      startTime = performance.now()
+      requestAnimationFrame(updateParticles)
+    }
+  }
+
+  const onVisibilityChange = () => {
+    if (document.hidden) {
+      if (animationId) {
+        cancelAnimationFrame(animationId)
+        animationId = null
+      }
+    } else {
+      if (animationId === null && !reducedMotion) {
+        startTime = performance.now()
+        requestAnimationFrame(updateParticles)
+      }
+    }
+  }
+
+  window.addEventListener('load', () => {
+    setCanvasSize()
+    initParticles()
+    if (!reducedMotion) {
+      startTime = performance.now()
+      requestAnimationFrame(updateParticles)
+    }
+  })
+
+  window.addEventListener('resize', onResize)
+  document.addEventListener('visibilitychange', onVisibilityChange)
+</script>
+
+<style>
+  canvas {
+    display: block;
+    image-rendering: optimizeSpeed;
+  }
+</style>
+
+<canvas
+  id="hero-canvas"
+  class="absolute inset-0 w-full h-full pointer-events-none z-0"
+  aria-hidden="true"
+></canvas>

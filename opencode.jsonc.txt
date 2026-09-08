@@ -1,0 +1,31 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // 1. Evita que o OpenCode jogue na mesa arquivos temporários de compilação
+  "ignore": [
+    "**/node_modules/**",
+    "**/.astro/**",
+    "**/dist/**",
+    "**/tmp/**"
+  ],
+  // 2. compactação inteligente: apaga logs de comandos antigos do chat após o sucesso
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 8000
+  },
+  // 3. Define modelos inteligentes baseados na complexidade
+  "model": "anthropic/claude-3-5-sonnet", // Sênior para codificar
+  "small_model": "anthropic/claude-haiku-4-5", // Assistente júnior para commits, resumos e nomes
+  
+  // 4. Atalhos rápidos de comandos para o OpenCode economizar digitação
+  "command": {
+    "build": {
+      "template": "Execute npm run build para validar se todas as rotas e tipos TypeScript estão corretos.",
+      "description": "Roda o build estático completo"
+    },
+    "limpar": {
+      "template": "Exclua rascunhos ou arquivos órfãos não rastreados pelo Git para higienizar o diretório.",
+      "description": "Limpa arquivos mortos do projeto"
+    }
+  }
+}
