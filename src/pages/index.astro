@@ -1,335 +1,350 @@
-﻿---
+---
 import Layout from '../layouts/Layout.astro';
-import { homePageGraph } from '../lib/site';
-import HeroParticles from '../components/HeroParticles.astro';
 
-const title =
-  'CofreUtil — Ferramentas Web Gratuitas com Processamento Local no Navegador';
-const description =
-  'Ferramentas web gratuitas que processam arquivos e dados diretamente no seu navegador, sem enviar o conteúdo inserido pelo usuário ao backend do CofreUtil. Junte PDF, converta imagens, gere QR Code Pix e muito mais.';
+const title = "CofreUtil | Ferramentas Web Locais e Seguras (Zero Nuvem)";
+const description = "Utilitários de alta performance que rodam 100% no seu navegador. Comprima PDFs, converta arquivos e gere dados sem enviar nada para servidores. Privacidade absoluta.";
+
+// Mapa de ícones em SVG inline puros (100% livre de CDNs ou dependências para COOP/COEP)
+const iconMap = {
+  pdf: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>`,
+  compress: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9V4.5M15 9h4.5M15 9l5.25-5.25M15 15v4.5M15 15h4.5M15 15l5.25 5.25" /></svg>`,
+  ocr: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5zM13.5 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5z" /></svg>`,
+  idcard: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15A2.25 2.25 0 0 0 2.25 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25zm3-10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM3.75 18v-.075c0-1.116.764-2.07 1.85-2.205a5.161 5.161 0 0 1 3.75 0c1.086.135 1.85 1.089 1.85 2.205V18" /></svg>`,
+  image: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375 0 1 1-.75 0 .375 0 0 1 .75 0z" /></svg>`,
+  audio: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3z" /></svg>`,
+  pix: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5zM20.25 14.625v.008H20.26v-.008h-.008zm0 2.25v.008H20.26V16.87h-.008zm-2.25-2.25v.008h.008v-.008h-.008zm0 2.25v.008h.008V16.87h-.008zm-2.25-2.25v.008h.008v-.008h-.008zm0 2.25v.008h.008V16.87h-.008zm-2.25-2.25v.008h.008v-.008h-.008zm0 2.25v.008h.008V16.87h-.008zm4.5 4.5v.008h.008V21.37h-.008zm-2.25 0v.008h.008V21.37h-.008zm-2.25 0v.008h.008V21.37h-.008zm-2.25 0v.008h.008V21.37h-.008z" /></svg>`,
+  key: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 1 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25z" /></svg>`,
+  shield: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12z" /></svg>`,
+  code: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" /></svg>`,
+  hash: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5-3.9 19.5m-2.1-19.5-3.9 19.5" /></svg>`,
+  chat: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a.598.598 0 0 1-.655-.705l.437-2.337A10.026 10.026 0 0 1 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>`
+};
 
 const tools = [
   {
-    name: 'Gerador de CPF/CNPJ',
-    href: '/ferramentas/gerador-de-cpf',
-    category: 'utilitarios',
-    icon: 'M4 6h16M4 12h16M4 18h16',
+    title: "Juntar PDF",
+    description: "Junte contratos e documentos sensíveis diretamente na memória do seu navegador. Não fazemos upload dos seus arquivos, garantindo sigilo absoluto.",
+    href: "/ferramentas/juntar-pdf",
+    category: "midia",
+    iconKey: "pdf"
   },
   {
-    name: 'Gerador de QR Code Pix',
-    href: '/ferramentas/gerador-qr-code-pix',
-    category: 'midia',
-    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5',
+    title: "Comprimir PDF",
+    description: "Reduza o tamanho de PDFs pesados sem risco de vazamento de dados. Ideal para advogados, contadores e empresas que lidam com informações confidenciais.",
+    href: "/ferramentas/comprimir-pdf",
+    category: "midia",
+    iconKey: "compress"
   },
   {
-    name: 'Gerador de Link para WhatsApp',
-    href: '/ferramentas/gerador-link-whatsapp',
-    category: 'utilitarios',
-    icon: 'M8 12h.08M12 12h.08M16 12h.08M21 21c0 1-1 2-2 2H5c-1 0-2-1-2-2V5c0-1 1-2 2-2h14c1 0 2 1 2 2v14c0 1-1 2-2 2v14zM8 12l-4 4 8 8 4-4-8-8z',
+    title: "Imagem para Texto (OCR)",
+    description: "Utilize inteligência artificial (WASM Tesseract) rodando diretamente no seu processador. Converta prints e fotos em texto editável em segundos.",
+    href: "/ferramentas/imagem-para-texto",
+    category: "midia",
+    iconKey: "ocr"
   },
   {
-    name: 'Gerador de Senhas Fortes',
-    href: '/ferramentas/gerador-senhas',
-    category: 'seguranca',
-    icon: 'M13 2L3 14h9l-1 8 10-10-8-3L9 7l-3 8H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8l3-8z',
+    title: "Conversor de Imagem",
+    description: "Mude o formato das suas imagens instantaneamente para WEBP. Processamento via Canvas API que protege sua privacidade.",
+    href: "/ferramentas/converter-imagem",
+    category: "midia",
+    iconKey: "image"
   },
   {
-    name: 'Formatador e Validador JSON',
-    href: '/ferramentas/formatador-json',
-    category: 'utilitarios',
-    icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z',
+    title: "Conversor de Áudio",
+    description: "Mude o formato de arquivos de som (WAV, MP3, OGG) usando o poder do seu próprio computador via FFmpeg no navegador.",
+    href: "/ferramentas/converter-audio",
+    category: "midia",
+    iconKey: "audio"
   },
   {
-    name: 'Calculadora de Hash de Arquivos',
-    href: '/ferramentas/calculadora-hash',
-    category: 'utilitarios',
-    icon: 'M17 21h5v-5a3 3 0 0 0-5.356-1.857M17 8a5 5 0 0 1-5 5v5h5a1 1 0 0 1 0 2h-5v5a1 1 0 1 1-2 0v-5H5a1 1 0 1 1 0-2h5v-5a3 3 0 0 0-5.356-1.857M7 3a1 1 0 0 1 1 1h4a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1V3z',
+    title: "Gerador de CPF / Validador de CNPJ",
+    description: "Ferramenta indispensável para desenvolvedores e QAs. Gere dados válidos matematicamente para testes de software sem chamadas de API externas.",
+    href: "/ferramentas/gerador-de-cpf",
+    category: "utilitarios",
+    iconKey: "idcard"
   },
   {
-    name: 'Conversor CSV para JSON',
-    href: '/ferramentas/conversor-csv-json',
-    category: 'utilitarios',
-    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
+    title: "Gerador de QR Code Pix",
+    description: "Não informe sua chave Pix em sites desconhecidos. Nosso gerador monta o código do Banco Central (BR Code) apenas no seu visor.",
+    href: "/ferramentas/gerador-qr-code-pix",
+    category: "utilitarios",
+    iconKey: "pix"
   },
   {
-    name: 'Comparar Textos',
-    href: '/ferramentas/comparar-textos',
-    category: 'utilitarios',
-    icon: 'M12 4v16M8 12h8m4-16v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z',
+    title: "Gerador de Link WhatsApp",
+    description: "Gere links diretos de WhatsApp com mensagens personalizadas em um segundo, sem cookies e totalmente local.",
+    href: "/ferramentas/gerador-link-whatsapp",
+    category: "utilitarios",
+    iconKey: "chat"
   },
   {
-    name: 'Contador de Caracteres e Palavras',
-    href: '/ferramentas/contador-caracteres',
-    category: 'utilitarios',
-    icon: 'M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m14 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4',
+    title: "Formatador e Validador JSON",
+    description: "Formate, embeleze, valide e analise seus dados JSON localmente. Sem envio de dados, mantendo seus payloads de desenvolvimento 100% seguros.",
+    href: "/ferramentas/formatador-json",
+    category: "utilitarios",
+    iconKey: "code"
   },
   {
-    name: 'Juntar PDF',
-    href: '/ferramentas/juntar-pdf',
-    category: 'midia',
-    icon: 'M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m14 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4',
+    title: "Calculadora de Hash",
+    description: "Calcule hashes SHA-256, SHA-1, MD5 de seus arquivos de forma local no navegador para verificação rápida de integridade.",
+    href: "/ferramentas/calculadora-hash",
+    category: "utilitarios",
+    iconKey: "hash"
   },
   {
-    name: 'Comprimir PDF',
-    href: '/ferramentas/comprimir-pdf',
-    category: 'midia',
-    icon: 'M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m14 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4',
+    title: "Gerador de Senhas Fortes",
+    description: "Gere senhas altamente seguras e chaves criptográficas fortes localmente no seu dispositivo usando a Web Crypto API nativa do navegador.",
+    href: "/ferramentas/gerador-senhas",
+    category: "seguranca",
+    iconKey: "key"
   },
   {
-    name: 'Imagem para PDF',
-    href: '/ferramentas/imagem-para-pdf',
-    category: 'midia',
-    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
-  },
-  {
-    name: 'PDF para Imagem',
-    href: '/ferramentas/pdf-para-imagem',
-    category: 'midia',
-    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
-  },
-  {
-    name: 'Dividir PDF',
-    href: '/ferramentas/dividir-pdf',
-    category: 'midia',
-    icon: 'M19 21v-5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m14 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4',
-  },
-  {
-    name: 'Sanitizador de Metadados de PDF',
-    href: '/ferramentas/sanitizador-pdf',
-    category: 'midia',
-    icon: 'M19 21H5a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-1M7 7h2m4 0h2a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-4M7 7h2',
-  },
-  {
-    name: 'Limpador de Metadados de Fotos (Remover Localização e GPS)',
-    href: '/ferramentas/limpador-de-metadados-exif',
-    category: 'midia',
-    icon: 'M17 21H7a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1M5 18h14c1.1 0 2.2-.9 2-2V5c0-1.1-.9-2-2-2H5c-.1 0-2.1.9-2 2v1',
-  },
-  {
-    name: 'Conversor de Imagens',
-    href: '/ferramentas/conversor-de-imagem',
-    category: 'midia',
-    icon: 'M12 2L2 12l10 0l-2 8 8 2v8l-10 0 2-8L12 12l-8 2 2-10z',
-  },
-  {
-    name: 'Leitor de MRZ / Passaportes',
-    href: '/ferramentas/leitor-mrz-passaporte',
-    category: 'utilitarios',
-    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
-  },
-  {
-    name: 'Extrator de Texto de Imagem (OCR)',
-    href: '/ferramentas/extrair-texto-imagem',
-    category: 'midia',
-    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
-  },
-  {
-    name: 'Leitor e Scanner de QR Code',
-    href: '/ferramentas/leitor-qr-code',
-    category: 'midia',
-    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5',
-  },
-  {
-    name: 'Conversor de Áudio',
-    href: '/ferramentas/conversor-de-audio',
-    category: 'midia',
-    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5',
-  },
-  {
-    name: 'Removedor de Silêncio',
-    href: '/ferramentas/remover-silencio',
-    category: 'midia',
-    icon: 'M12 2L2 12l10 0l-2 8 8 2v8l-10 0 2-8L12 12l-8 2 2-10zM2 22h20v-2H2v2z',
-  },
+    title: "Limpador de Metadados EXIF",
+    description: "Sanitizar e remova geolocalização (GPS), modelo de câmera e metadados de suas fotos antes de compartilhá-las.",
+    href: "/ferramentas/limpar-metadados-exif",
+    category: "seguranca",
+    iconKey: "shield"
+  }
 ];
-
 ---
-<div class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36 relative">
-  <HeroParticles />
-  <div class="flex flex-col gap-8">
-    <h1 class="font-mono text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-      Processamento local.<br />
-      <span class="text-[#A1A1AA]">Privacidade de cofre.</span>
-    </h1>
 
-    <p class="max-w-2xl text-base leading-relaxed text-[#A1A1AA] md:text-lg">
-      Utilitários web gratuitos que rodam diretamente no seu navegador. O
-      conteúdo que você insere não é enviado ao backend do CofreUtil:
-      compressão, conversão, OCR e validação acontecem localmente, na sua
-      máquina.
-    </p>
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="relative min-h-[60vh] flex items-center justify-center border-b border-[#27272A] bg-black overflow-hidden py-24 md:py-32">
+    <!-- Efeito Canvas 2D de Partículas (Estilo Trae / Terminal Criptográfico) -->
+    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-40" aria-hidden="true"></canvas>
 
-    <div class="mt-4 flex items-center gap-4">
-      <a
-        href="#ferramentas"
-        class="border border-[#27272A] bg-[#09090B] px-5 py-2.5 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        Ver ferramentas
-      </a>
-      <a
-        href="#como-funciona"
-        class="text-sm text-[#A1A1AA] transition-colors hover:text-white"
-      >
-        Como funciona
-      </a>
-    </div>
-  </div>
-</div>
-
-<div class="mx-auto max-w-6xl scroll-mt-14 px-6 pb-24">
-  <h2 class="mb-6 font-mono text-sm text-[#A1A1AA]">// ferramentas</h2>
-
-  <!-- Filtros brutalistas -->
-  <div class="flex gap-2 mb-6" role="tablist">
-    <button
-      data-category="todos"
-      class="active:bg-white active:text-[black] bg-transparent text-[#A1A1AA] border-b-2 border-[#27272A] rounded-none px-4 py-1 text-sm transition-colors hover:bg-white hover:text-black"
-    >
-      Todos
-    </button>
-    <button
-      data-category="midia"
-      class="bg-transparent text-[#A1A1AA] border-b-2 border-[#27272A] rounded-none px-4 py-1 text-sm transition-colors hover:bg-white hover:text-black"
-    >
-      Mídia & OCR
-    </button>
-    <button
-      data-category="seguranca"
-      class="bg-transparent text-[#A1A1AA] border-b-2 border-[#27272A] rounded-none px-4 py-1 text-sm transition-colors hover:bg-white hover:text-black"
-    >
-      Segurança & Privacidade
-    </button>
-    <button
-      data-category="utilitarios"
-      class="bg-transparent text-[#A1A1AA] border-b-2 border-[#27272A] rounded-none px-4 py-1 text-sm transition-colors hover:bg-white hover:text-black"
-    >
-      Dev & Utilidades
-    </button>
-  </div>
-
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="tools-grid">
-    {tools.map((tool) => {
-      return (
-        <a
-          href={tool.href}
-          class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-          data-category={tool.category}
-        >
-          <svg
-            class="w-6 h-6 currentColor mb-3 self-start"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path d={tool.icon} />
-          </svg>
-          <h3 class="font-mono text-sm font-medium text-white">{tool.name}</h3>
-          <p class="text-xs leading-relaxed text-[#A1A1AA]">
-            {tool.description}
-          </p>
-          <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-            /ferramentas/{tool.name} →
-          </span>
-        </a>
-      );
-    })}
-  </div>
-</div>
-
-<div class="mx-auto max-w-6xl scroll-mt-14 px-6 pb-24">
-  <section id="como-funciona" class="mx-auto max-w-6xl scroll-mt-14 px-6 pb-24">
-    <div class="flex flex-col gap-8 border border-[#27272A] bg-[#09090B] p-6 md:p-10">
-      <div class="flex flex-col gap-3">
-        <span class="font-mono text-xs text-[#A1A1AA]">// como funciona</span>
-        <h2 class="font-mono text-2xl font-bold leading-tight tracking-tight text-white md:text-3xl">
-          Como a Tecnologia Zero-Server Protege Seus Dados
-        </h2>
-        <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
-          O CofreUtil é um site estático servido por uma CDN (Vercel), que
-          entrega somente os arquivos do site — JS, CSS, imagens e o motor
-          WebAssembly das ferramentas. A aplicação em si roda inteiramente no
-          seu navegador: a conversão, a compressão e a validação são executadas
-          por Web Workers e bibliotecas WebAssembly, sem um servidor de
-          aplicação processando o seu conteúdo. O arquivo que você carrega não
-          é enviado ao backend do CofreUtil.
+    <div class="relative z-10 mx-auto max-w-6xl px-6 w-full flex flex-col gap-8 text-left">
+      <div class="flex flex-col gap-6">
+        <h1 class="font-mono text-4xl font-bold leading-tight tracking-tight md:text-6xl text-white">
+          Processamento local.<br>
+          <span class="text-[#A1A1AA]">Privacidade de cofre.</span>
+        </h1>
+        
+        <p class="max-w-2xl text-base leading-relaxed text-[#A1A1AA] md:text-lg">
+          O CofreUtil não é um site comum. Nossa tecnologia <em class="text-white not-italic font-mono">Zero-Server</em> garante que seus documentos, fotos e dados nunca saiam do seu computador. Tudo é processado localmente, garantindo velocidade máxima e adequação automática à LGPD.
         </p>
       </div>
 
-      <div class="grid gap-4 md:grid-cols-3">
-        <div class="flex flex-col gap-3 border border-[#27272A] bg-black p-6">
-          <div class="flex items-center justify-between">
-            <span class="font-mono text-[11px] text-[#52525B]">01</span>
-            <span class="font-mono text-[11px] text-[#52525B]">// zero-server</span>
-          </div>
-          <h3 class="font-mono text-sm font-medium text-white">
-            [Navegador como Servidor]
+      <div class="mt-4 flex items-center gap-4">
+        <a href="#ferramentas" class="border border-[#27272A] bg-[#09090B] px-5 py-2.5 text-sm text-white font-mono hover:border-[#3F3F46] hover:bg-[#18181B] hover:text-white transition-colors">
+          Ver ferramentas
+        </a>
+        <a href="#como-funciona" class="text-sm text-[#A1A1AA] font-mono hover:text-white transition-colors">
+          Como funciona &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lista de Ferramentas com Filtros -->
+  <section id="ferramentas" class="bg-black py-16 md:py-24 border-b border-[#27272A] scroll-mt-14">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <h2 class="font-mono text-sm text-[#A1A1AA] mb-2">// CATALOGO COMPLETO</h2>
+          <h3 class="font-mono text-2xl font-bold text-white">Nossos Utilitários</h3>
+        </div>
+
+        <!-- Filtros brutalistas -->
+        <div class="flex flex-wrap gap-2" role="tablist" id="filter-buttons">
+          <button data-category="todos" class="filter-btn bg-white text-black border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors uppercase">
+            Todos
+          </button>
+          <button data-category="midia" class="filter-btn bg-transparent text-[#A1A1AA] border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors hover:text-white hover:border-[#3F3F46] uppercase">
+            Mídia & OCR
+          </button>
+          <button data-category="seguranca" class="filter-btn bg-transparent text-[#A1A1AA] border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors hover:text-white hover:border-[#3F3F46] uppercase">
+            Segurança & Privacidade
+          </button>
+          <button data-category="utilitarios" class="filter-btn bg-transparent text-[#A1A1AA] border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors hover:text-white hover:border-[#3F3F46] uppercase">
+            Dev & Utilidades
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid de Cartões Brutalistas -->
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="tools-grid">
+        {tools.map((tool) => (
+          <a href={tool.href} class="tool-card group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-all duration-150 hover:border-[#3F3F46] hover:bg-[#111113]" data-category={tool.category}>
+            <!-- SVG Icon Holder -->
+            <div class="self-start text-[#A1A1AA] group-hover:text-white transition-colors" set:html={iconMap[tool.iconKey]} />
+            
+            <h3 class="font-mono text-sm font-semibold text-white tracking-tight mt-2">{tool.title}</h3>
+            <p class="text-xs leading-relaxed text-[#A1A1AA]">{tool.description}</p>
+            
+            <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA] transition-colors pt-4 flex items-center gap-1">
+              {tool.href} <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Como Funciona Section -->
+  <section id="como-funciona" class="bg-black py-16 md:py-24">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="font-mono text-sm text-[#A1A1AA] mb-4">// ARQUITETURA LOCAL E PRIVACIDADE</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="flex flex-col gap-6">
+          <h3 class="text-2xl font-bold text-white leading-snug">
+            Por que processar dados localmente protege você?
           </h3>
-          <p class="text-xs leading-relaxed text-[#A1A1AA]">
-            Todo o processamento ocorre via WebAssembly, Web Workers e Canvas API
-            locais — diretamente na sua máquina.
+          <p class="text-sm leading-relaxed text-[#A1A1AA]">
+            A maioria dos sites de utilitários na nuvem exige que você faça o upload dos seus arquivos (documentos fiscais, PDFs de contratos, áudios com segredos comerciais) para servidores remotos para processá-los. Isso viola as regras estritas da LGPD e introduz grandes vulnerabilidades de vazamento de dados.
+          </p>
+          <p class="text-sm leading-relaxed text-[#A1A1AA]">
+            No <strong>CofreUtil</strong>, nós implementamos uma arquitetura de <strong>Privacidade por Design (Privacy-by-Architecture)</strong>. Usamos APIs nativas como Web Crypto, Canvas API e binários compilados em <strong>WebAssembly (WASM)</strong> rodando dentro de abas isoladas (Web Workers). O processamento ocorre diretamente no hardware da sua máquina. Nada é enviado para o nosso backend, garantindo sigilo total, rapidez extrema e conformidade por padrão.
           </p>
         </div>
 
-        <div class="flex flex-col gap-3 border border-[#27272A] bg-black p-6">
-          <div class="flex items-center justify-between">
-            <span class="font-mono text-[11px] text-[#52525B]">02</span>
-            <span class="font-mono text-[11px] text-[#52525B]">// zero-upload</span>
-          </div>
-          <h3 class="font-mono text-sm font-medium text-white">
-            [Zero Upload & Zero Log]
-          </h3>
-          <p class="text-xs leading-relaxed text-[#A1A1AA]">
-            Seus arquivos nunca transitam pela internet nem ficam salvos em
-            bancos de dados.
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-3 border border-[#27272A] bg-black p-6">
-          <div class="flex items-center justify-between">
-            <span class="font-mono text-[11px] text-[#52525B]">03</span>
-            <span class="font-mono text-[11px] text-[#52525B]">// lgpd</span>
-          </div>
-          <h3 class="font-mono text-sm font-medium text-white">
-            [Privacy-by-Design & Privacy-by-Default]
-          </h3>
-          <p class="text-xs leading-relaxed text-[#A1A1AA]">
-            Arquitetura alinhada aos conceitos de Privacy-by-Design e
-            Privacy-by-Default: por construção, o site não recebe, não constrói
-            bancos de dados nem processa dados pessoais em servidores próprios.
-          </p>
+        <div class="border border-[#27272A] p-8 flex flex-col justify-center gap-6 bg-[#09090B]">
+          <h4 class="font-mono text-xs text-white uppercase tracking-wider">// Garantias de Segurança</h4>
+          <ul class="font-mono text-xs text-[#A1A1AA] flex flex-col gap-4">
+            <li class="flex items-start gap-2">
+              <span class="text-white">[✓]</span> 100% Client-Side (Zero upload para servidores)
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-white">[✓]</span> Sem Cookies invasivos de terceiros
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-white">[✓]</span> Totalmente adequado à LGPD por arquitetura
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-white">[✓]</span> Custo zero de infraestrutura e carregamento offline
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
-</div>
 
-<script>
-  // Client-side filter script for brutalist filter buttons
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('[data-category]');
-    const toolCards = document.querySelectorAll('#tools-grid a');
+  <!-- Script das Partículas & Filtro no Cliente -->
+  <script is:inline>
+    // 1. Script para Filtros de Categorias
+    const buttons = document.querySelectorAll('#filter-buttons .filter-btn');
+    const cards = document.querySelectorAll('#tools-grid .tool-card');
 
-    filterButtons.forEach((btn) => {
+    buttons.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach((b) => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
+        // Remover estado ativo de todos os botões
+        buttons.forEach(b => {
+          b.classList.remove('bg-white', 'text-black');
+          b.classList.add('bg-transparent', 'text-[#A1A1AA]');
+        });
 
-        const category = btn.dataset.category;
+        // Adicionar estado ativo ao botão clicado
+        btn.classList.remove('bg-transparent', 'text-[#A1A1AA]');
+        btn.classList.add('bg-white', 'text-black');
 
-        toolCards.forEach((card) => {
-          const cardCategory = card.dataset.category;
-          if (category === 'todos' || cardCategory === category) {
+        const category = btn.getAttribute('data-category');
+
+        cards.forEach(card => {
+          if (category === 'todos' || card.getAttribute('data-category') === category) {
             card.classList.remove('hidden');
-            card.style.display = 'block';
           } else {
             card.classList.add('hidden');
-            card.style.display = 'none';
           }
         });
       });
     });
-  });
-</script>
+
+    // 2. Script para Partículas Math Sin/Cos (Fundo da Hero)
+    const canvas = document.getElementById('hero-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+
+      let particles = [];
+      let animationId = null;
+      let width = 0;
+      let height = 0;
+
+      const PARTICLE_SIZE = 3;
+      const GRID_SPACING = 30; // espaçamento entre as linhas da grade para performance
+      const DRIFT_AMPLITUDE = 15;
+
+      const resize = () => {
+        width = canvas.parentElement.clientWidth;
+        height = canvas.parentElement.clientHeight;
+        canvas.width = width * pixelRatio;
+        canvas.height = height * pixelRatio;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        ctx.scale(pixelRatio, pixelRatio);
+        init();
+      };
+
+      const init = () => {
+        particles = [];
+        const cols = Math.floor(width / GRID_SPACING);
+        const rows = Math.floor(height / GRID_SPACING);
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = c * GRID_SPACING + (GRID_SPACING / 2);
+            const y = r * GRID_SPACING + (GRID_SPACING / 2);
+
+            // Evitar partículas demais bem no centro da Hero para manter boa leitura do título
+            const distFromCenter = Math.hypot(x - width / 2, y - height / 2);
+            const isCenterArea = distFromCenter < Math.min(width, height) * 0.35;
+            
+            if (isCenterArea && Math.random() > 0.2) continue; // remove 80% das partículas centrais
+
+            particles.push({
+              ox: x,
+              oy: y,
+              x: x,
+              y: y,
+              phase: Math.random() * Math.PI * 2,
+              speed: 0.5 + Math.random() * 0.5,
+              opacity: 0.1 + Math.random() * 0.25
+            });
+          }
+        }
+      };
+
+      const animate = (timestamp) => {
+        ctx.clearRect(0, 0, width, height);
+
+        particles.forEach(p => {
+          // Deslocamento usando senos e cossenos combinados para suavidade
+          const elapsed = timestamp * 0.001 * p.speed;
+          const driftX = Math.sin(elapsed + p.phase) * DRIFT_AMPLITUDE;
+          const driftY = Math.cos(elapsed * 0.7 + p.phase) * DRIFT_AMPLITUDE;
+
+          p.x = p.ox + driftX;
+          p.y = p.oy + driftY;
+
+          // Desenha quadradinho brutalista
+          ctx.fillStyle = `rgba(39, 39, 42, ${p.opacity})`;
+          ctx.fillRect(p.x, p.y, PARTICLE_SIZE, PARTICLE_SIZE);
+        });
+
+        animationId = requestAnimationFrame(animate);
+      };
+
+      // Iniciar animação se não houver prefers-reduced-motion ativo
+      window.addEventListener('resize', resize);
+      resize();
+
+      if (!reducedMotion) {
+        animationId = requestAnimationFrame(animate);
+      } else {
+        // Apenas renderiza um frame estático de grade brutalista
+        animate(0);
+      }
+
+      // Parar animação em abas inativas
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (animationId) cancelAnimationFrame(animationId);
+        } else {
+          if (!reducedMotion) animationId = requestAnimationFrame(animate);
+        }
+      });
+    }
+  </script>
+</Layout>
