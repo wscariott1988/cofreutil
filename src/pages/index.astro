@@ -1,16 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "CofreUtil | Ferramentas Web Locais e Seguras (Zero Nuvem)";
-const description = "Utilitários de alta performance que rodam 100% no seu navegador. Comprima PDFs, converta arquivos e gere dados sem enviar nada para servidores. Privacidade absoluta.";
+const title = "CofreUtil | 23 Ferramentas Web Locais e Seguras (Zero Nuvem)";
+const description = "Utilitários de alta performance que rodam 100% no seu navegador. Comprima PDFs, converta arquivos, gere dados e analise textos sem enviar nada para servidores. Privacidade absoluta.";
 
 // Mapa de ícones em SVG inline puros (100% livre de CDNs ou dependências para COOP/COEP)
 const iconMap = {
   pdf: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>`,
   compress: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9V4.5M15 9h4.5M15 9l5.25-5.25M15 15v4.5M15 15h4.5M15 15l5.25 5.25" /></svg>`,
+  split: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9m-9 6h9m-9 6h9M4.5 6h.008v.008H4.5V6zm0 6h.008v.008H4.5V12zm0 6h.008v.008H4.5V18z" /></svg>`,
   ocr: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5zM13.5 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5z" /></svg>`,
   idcard: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15A2.25 2.25 0 0 0 2.25 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25zm3-10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM3.75 18v-.075c0-1.116.764-2.07 1.85-2.205a5.161 5.161 0 0 1 3.75 0c1.086.135 1.85 1.089 1.85 2.205V18" /></svg>`,
-  image: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375 0 1 1-.75 0 .375 0 0 1 .75 0z" /></svg>`,
+  image: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375 0 1 1-.75 0 .375.375 0 0 1 .75 0z" /></svg>`,
   audio: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3z" /></svg>`,
   pix: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5zM20.25 14.625v.008H20.26v-.008h-.008zm0 2.25v.008H20.26V16.87h-.008zm-2.25-2.25v.008h.008v-.008h-.008zm0 2.25v.008h.008V16.87h-.008zm-2.25-2.25v.008h.008v-.008h-.008zm0 2.25v.008h.008V16.87h-.008zm-2.25-2.25v.008h.008v-.008h-.008zm0 2.25v.008h.008V16.87h-.008zm4.5 4.5v.008h.008V21.37h-.008zm-2.25 0v.008h.008V21.37h-.008zm-2.25 0v.008h.008V21.37h-.008zm-2.25 0v.008h.008V21.37h-.008z" /></svg>`,
   key: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 1 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25z" /></svg>`,
@@ -21,89 +22,171 @@ const iconMap = {
 };
 
 const tools = [
+  // --- SEÇÃO MÍDIA, DOCUMENTOS & OCR (10 ferramentas) ---
   {
     title: "Juntar PDF",
-    description: "Junte contratos e documentos sensíveis diretamente na memória do seu navegador. Não fazemos upload dos seus arquivos, garantindo sigilo absoluto.",
+    description: "Junte contratos e documentos sensíveis diretamente na memória do seu navegador sem upload.",
     href: "/ferramentas/juntar-pdf",
     category: "midia",
     iconKey: "pdf"
   },
   {
     title: "Comprimir PDF",
-    description: "Reduza o tamanho de PDFs pesados sem risco de vazamento de dados. Ideal para advogados, contadores e empresas que lidam com informações confidenciais.",
+    description: "Reduza o tamanho de PDFs pesados mantendo a qualidade visual e o sigilo total dos dados.",
     href: "/ferramentas/comprimir-pdf",
     category: "midia",
     iconKey: "compress"
   },
   {
+    title: "Dividir PDF",
+    description: "Separe páginas específicas ou divida documentos longos de forma instantânea e 100% local.",
+    href: "/ferramentas/dividir-pdf",
+    category: "midia",
+    iconKey: "split"
+  },
+  {
+    title: "Mesclar Documentos PDF",
+    description: "Unifique múltiplos relatórios, PDFs e folhas avulsas em uma única sequência organizada.",
+    href: "/ferramentas/pdf-merge",
+    category: "midia",
+    iconKey: "pdf"
+  },
+  {
+    title: "Sanitizar PDF",
+    description: "Remova scripts, metadados ocilantes, anexos e elementos de rastreamento de arquivos PDF.",
+    href: "/ferramentas/pdf-sanitizer",
+    category: "midia",
+    iconKey: "shield"
+  },
+  {
+    title: "Imagem para PDF",
+    description: "Converta fotos, escaneamentos e prints (JPG, PNG, WEBP) em um arquivo PDF estruturado.",
+    href: "/ferramentas/image-to-pdf",
+    category: "midia",
+    iconKey: "image"
+  },
+  {
     title: "Imagem para Texto (OCR)",
-    description: "Utilize inteligência artificial (WASM Tesseract) rodando diretamente no seu processador. Converta prints e fotos em texto editável em segundos.",
+    description: "Extraia textos editáveis de fotos e prints usando IA local (Tesseract WASM no processador).",
     href: "/ferramentas/imagem-para-texto",
     category: "midia",
     iconKey: "ocr"
   },
   {
     title: "Conversor de Imagem",
-    description: "Mude o formato das suas imagens instantaneamente para WEBP. Processamento via Canvas API que protege sua privacidade.",
+    description: "Altere o formato de suas imagens para WEBP, PNG ou JPG via Canvas API local.",
     href: "/ferramentas/converter-imagem",
     category: "midia",
     iconKey: "image"
   },
   {
     title: "Conversor de Áudio",
-    description: "Mude o formato de arquivos de som (WAV, MP3, OGG) usando o poder do seu próprio computador via FFmpeg no navegador.",
+    description: "Converta arquivos de som (WAV, MP3, OGG) diretamente pelo navegador usando FFmpeg WASM.",
     href: "/ferramentas/converter-audio",
     category: "midia",
     iconKey: "audio"
   },
   {
-    title: "Gerador de CPF / Validador de CNPJ",
-    description: "Ferramenta indispensável para desenvolvedores e QAs. Gere dados válidos matematicamente para testes de software sem chamadas de API externas.",
-    href: "/ferramentas/gerador-de-cpf",
-    category: "utilitarios",
+    title: "Removedor de Silêncio em Áudio",
+    description: "Corte automaticamente pausas e trechos silenciosos de gravações e podcasts.",
+    href: "/ferramentas/silence-remover",
+    category: "midia",
+    iconKey: "audio"
+  },
+  {
+    title: "Leitor de Passaporte (MRZ)",
+    description: "Extraia e decodifique dados da Zona Legível por Máquina (MRZ) de passaportes e RGs.",
+    href: "/ferramentas/mrz-reader",
+    category: "midia",
     iconKey: "idcard"
   },
-  {
-    title: "Gerador de QR Code Pix",
-    description: "Não informe sua chave Pix em sites desconhecidos. Nosso gerador monta o código do Banco Central (BR Code) apenas no seu visor.",
-    href: "/ferramentas/gerador-qr-code-pix",
-    category: "utilitarios",
-    iconKey: "pix"
-  },
-  {
-    title: "Gerador de Link WhatsApp",
-    description: "Gere links diretos de WhatsApp com mensagens personalizadas em um segundo, sem cookies e totalmente local.",
-    href: "/ferramentas/gerador-link-whatsapp",
-    category: "utilitarios",
-    iconKey: "chat"
-  },
-  {
-    title: "Formatador e Validador JSON",
-    description: "Formate, embeleze, valide e analise seus dados JSON localmente. Sem envio de dados, mantendo seus payloads de desenvolvimento 100% seguros.",
-    href: "/ferramentas/formatador-json",
-    category: "utilitarios",
-    iconKey: "code"
-  },
-  {
-    title: "Calculadora de Hash",
-    description: "Calcule hashes SHA-256, SHA-1, MD5 de seus arquivos de forma local no navegador para verificação rápida de integridade.",
-    href: "/ferramentas/calculadora-hash",
-    category: "utilitarios",
-    iconKey: "hash"
-  },
+
+  // --- SEÇÃO SEGURANÇA & PRIVACIDADE (4 ferramentas) ---
   {
     title: "Gerador de Senhas Fortes",
-    description: "Gere senhas altamente seguras e chaves criptográficas fortes localmente no seu dispositivo usando a Web Crypto API nativa do navegador.",
+    description: "Gere senhas criptográficas ultra-seguras usando a Web Crypto API nativa do seu navegador.",
     href: "/ferramentas/gerador-senhas",
     category: "seguranca",
     iconKey: "key"
   },
   {
     title: "Limpador de Metadados EXIF",
-    description: "Sanitizar e remova geolocalização (GPS), modelo de câmera e metadados de suas fotos antes de compartilhá-las.",
+    description: "Remova coordenadas GPS, modelo de câmera e dados pessoais de fotos antes de compartilhar.",
     href: "/ferramentas/limpar-metadados-exif",
     category: "seguranca",
     iconKey: "shield"
+  },
+  {
+    title: "Calculadora de Hash",
+    description: "Calcule hashes SHA-256, SHA-1 e MD5 de arquivos localmente para checagem de integridade.",
+    href: "/ferramentas/calculadora-hash",
+    category: "seguranca",
+    iconKey: "hash"
+  },
+
+  // --- SEÇÃO DEV, PIX & UTILIDADES (9 ferramentas) ---
+  {
+    title: "Gerador de CPF / Validador de CNPJ",
+    description: "Gere e valide CPFs e CNPJs válidos matematicamente para testes de desenvolvimento e QA.",
+    href: "/ferramentas/gerador-de-cpf",
+    category: "utilitarios",
+    iconKey: "idcard"
+  },
+  {
+    title: "Validador de CNPJ",
+    description: "Confira a estrutura matemática e os dígitos verificadores de CNPJs de forma rápida e offline.",
+    href: "/ferramentas/validador-cnpj",
+    category: "utilitarios",
+    iconKey: "idcard"
+  },
+  {
+    title: "Gerador de QR Code Pix",
+    description: "Crie códigos BR Code estáticos e dinâmicos do Banco Central para cobranças sem intermediação.",
+    href: "/ferramentas/gerador-qr-code-pix",
+    category: "utilitarios",
+    iconKey: "pix"
+  },
+  {
+    title: "Gerador de Link WhatsApp",
+    description: "Crie links diretos para iniciar conversas no WhatsApp com mensagens personalizadas.",
+    href: "/ferramentas/gerador-link-whatsapp",
+    category: "utilitarios",
+    iconKey: "chat"
+  },
+  {
+    title: "Formatador e Validador JSON",
+    description: "Formate, idente e valide payloads JSON localmente sem trafegar dados sensíveis em APIs.",
+    href: "/ferramentas/formatador-json",
+    category: "utilitarios",
+    iconKey: "code"
+  },
+  {
+    title: "Comparador de Textos (Diff Checker)",
+    description: "Compare dois blocos de código ou texto e veja as diferenças destacadas linha a linha.",
+    href: "/ferramentas/diff-checker",
+    category: "utilitarios",
+    iconKey: "code"
+  },
+  {
+    title: "Contador de Caracteres & Palavras",
+    description: "Analise métricas de texto, total de palavras, caracteres, linhas e estimativa de leitura.",
+    href: "/ferramentas/char-counter",
+    category: "utilitarios",
+    iconKey: "hash"
+  },
+  {
+    title: "Gerador Pix Cópiar e Cola",
+    description: "Gere chaves e payloads Pix prontos para cópia rápida em transações do dia a dia.",
+    href: "/ferramentas/pix-qr-code-generator",
+    category: "utilitarios",
+    iconKey: "pix"
+  },
+  {
+    title: "Formatador de Código",
+    description: "Embeleze e organize trechos de código em múltiplos formatos com foco em produtividade.",
+    href: "/ferramentas/formatador-codigo",
+    category: "utilitarios",
+    iconKey: "code"
   }
 ];
 ---
@@ -122,53 +205,53 @@ const tools = [
         </h1>
         
         <p class="max-w-2xl text-base leading-relaxed text-[#A1A1AA] md:text-lg">
-          O CofreUtil não é um site comum. Nossa tecnologia <em class="text-white not-italic font-mono">Zero-Server</em> garante que seus documentos, fotos e dados nunca saiam do seu computador. Tudo é processado localmente, garantindo velocidade máxima e adequação automática à LGPD.
+          O CofreUtil é seu diretório de 23 utilitários <em class="text-white not-italic font-mono">Zero-Server</em>. Seus documentos, fotos, áudios e dados rodam 100% no seu navegador via WebAssembly e APIs locais. Zero uploads, velocidade máxima e conformidade nativa com a LGPD.
         </p>
       </div>
 
       <div class="mt-4 flex items-center gap-4">
         <a href="#ferramentas" class="border border-[#27272A] bg-[#09090B] px-5 py-2.5 text-sm text-white font-mono hover:border-[#3F3F46] hover:bg-[#18181B] hover:text-white transition-colors">
-          Ver ferramentas
+          Explorar 23 ferramentas &rarr;
         </a>
         <a href="#como-funciona" class="text-sm text-[#A1A1AA] font-mono hover:text-white transition-colors">
-          Como funciona &rarr;
+          Como funciona
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Lista de Ferramentas com Filtros -->
+  <!-- Catálogo Completo de 23 Ferramentas -->
   <section id="ferramentas" class="bg-black py-16 md:py-24 border-b border-[#27272A] scroll-mt-14">
     <div class="mx-auto max-w-6xl px-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <h2 class="font-mono text-sm text-[#A1A1AA] mb-2">// CATALOGO COMPLETO</h2>
+          <h2 class="font-mono text-sm text-[#A1A1AA] mb-2">// CATÁLOGO COMPLETO (23 FERRAMENTAS)</h2>
           <h3 class="font-mono text-2xl font-bold text-white">Nossos Utilitários</h3>
         </div>
 
-        <!-- Filtros brutalistas -->
+        <!-- Filtros brutalistas por Categoria -->
         <div class="flex flex-wrap gap-2" role="tablist" id="filter-buttons">
           <button data-category="todos" class="filter-btn bg-white text-black border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors uppercase">
-            Todos
+            Todos (23)
           </button>
           <button data-category="midia" class="filter-btn bg-transparent text-[#A1A1AA] border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors hover:text-white hover:border-[#3F3F46] uppercase">
-            Mídia & OCR
+            Mídia & OCR (11)
           </button>
           <button data-category="seguranca" class="filter-btn bg-transparent text-[#A1A1AA] border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors hover:text-white hover:border-[#3F3F46] uppercase">
-            Segurança & Privacidade
+            Segurança & Privacidade (3)
           </button>
           <button data-category="utilitarios" class="filter-btn bg-transparent text-[#A1A1AA] border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors hover:text-white hover:border-[#3F3F46] uppercase">
-            Dev & Utilidades
+            Dev & Utilidades (9)
           </button>
         </div>
       </div>
 
-      <!-- Grid de Cartões Brutalistas -->
+      <!-- Grid de 23 Cartões Brutalistas -->
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="tools-grid">
         {tools.map((tool) => (
           <a href={tool.href} class="tool-card group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-all duration-150 hover:border-[#3F3F46] hover:bg-[#111113]" data-category={tool.category}>
             <!-- SVG Icon Holder -->
-            <div class="self-start text-[#A1A1AA] group-hover:text-white transition-colors" set:html={iconMap[tool.iconKey]} />
+            <div class="self-start text-[#A1A1AA] group-hover:text-white transition-colors" set:html={iconMap[tool.iconKey] || iconMap['code']} />
             
             <h3 class="font-mono text-sm font-semibold text-white tracking-tight mt-2">{tool.title}</h3>
             <p class="text-xs leading-relaxed text-[#A1A1AA]">{tool.description}</p>
@@ -182,7 +265,7 @@ const tools = [
     </div>
   </section>
 
-  <!-- Como Funciona Section -->
+  <!-- Seção Arquitetura & LGPD -->
   <section id="como-funciona" class="bg-black py-16 md:py-24">
     <div class="mx-auto max-w-6xl px-6">
       <h2 class="font-mono text-sm text-[#A1A1AA] mb-4">// ARQUITETURA LOCAL E PRIVACIDADE</h2>
@@ -192,10 +275,10 @@ const tools = [
             Por que processar dados localmente protege você?
           </h3>
           <p class="text-sm leading-relaxed text-[#A1A1AA]">
-            A maioria dos sites de utilitários na nuvem exige que você faça o upload dos seus arquivos (documentos fiscais, PDFs de contratos, áudios com segredos comerciais) para servidores remotos para processá-los. Isso viola as regras estritas da LGPD e introduz grandes vulnerabilidades de vazamento de dados.
+            A maioria dos sites de utilitários na nuvem exige que você faça o upload dos seus arquivos (documentos fiscais, PDFs de contratos, áudios com segredos comerciais) para servidores remotos. Isso viola as regras estritas da LGPD e introduz grandes vulnerabilidades de vazamento de dados.
           </p>
           <p class="text-sm leading-relaxed text-[#A1A1AA]">
-            No <strong>CofreUtil</strong>, nós implementamos uma arquitetura de <strong>Privacidade por Design (Privacy-by-Architecture)</strong>. Usamos APIs nativas como Web Crypto, Canvas API e binários compilados em <strong>WebAssembly (WASM)</strong> rodando dentro de abas isoladas (Web Workers). O processamento ocorre diretamente no hardware da sua máquina. Nada é enviado para o nosso backend, garantindo sigilo total, rapidez extrema e conformidade por padrão.
+            No <strong>CofreUtil</strong>, implementamos uma arquitetura de <strong>Privacidade por Design (Privacy-by-Architecture)</strong>. Usamos Web Crypto, Canvas API e binários compilados em <strong>WebAssembly (WASM)</strong> rodando no seu hardware. Nada é enviado para o nosso backend, garantindo sigilo total, rapidez extrema e conformidade automática.
           </p>
         </div>
 
@@ -203,16 +286,16 @@ const tools = [
           <h4 class="font-mono text-xs text-white uppercase tracking-wider">// Garantias de Segurança</h4>
           <ul class="font-mono text-xs text-[#A1A1AA] flex flex-col gap-4">
             <li class="flex items-start gap-2">
-              <span class="text-white">[✓]</span> 100% Client-Side (Zero upload para servidores)
+              <span class="text-white">[✓]</span> 23 Ferramentas 100% Client-Side (Zero upload)
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-white">[✓]</span> Sem Cookies invasivos de terceiros
+              <span class="text-white">[✓]</span> Sem Cookies invasivos ou rastreadores terceiros
             </li>
             <li class="flex items-start gap-2">
               <span class="text-white">[✓]</span> Totalmente adequado à LGPD por arquitetura
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-white">[✓]</span> Custo zero de infraestrutura e carregamento offline
+              <span class="text-white">[✓]</span> Funcionamento offline e velocidade máxima
             </li>
           </ul>
         </div>
@@ -220,7 +303,7 @@ const tools = [
     </div>
   </section>
 
-  <!-- Script das Partículas & Filtro no Cliente -->
+  <!-- Script de Filtro e Partículas -->
   <script is:inline>
     // 1. Script para Filtros de Categorias
     const buttons = document.querySelectorAll('#filter-buttons .filter-btn');
@@ -228,13 +311,11 @@ const tools = [
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Remover estado ativo de todos os botões
         buttons.forEach(b => {
           b.classList.remove('bg-white', 'text-black');
           b.classList.add('bg-transparent', 'text-[#A1A1AA]');
         });
 
-        // Adicionar estado ativo ao botão clicado
         btn.classList.remove('bg-transparent', 'text-[#A1A1AA]');
         btn.classList.add('bg-white', 'text-black');
 
@@ -250,7 +331,7 @@ const tools = [
       });
     });
 
-    // 2. Script para Partículas Math Sin/Cos (Fundo da Hero)
+    // 2. Script para Partículas no Canvas 2D
     const canvas = document.getElementById('hero-canvas');
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -263,7 +344,7 @@ const tools = [
       let height = 0;
 
       const PARTICLE_SIZE = 3;
-      const GRID_SPACING = 30; // espaçamento entre as linhas da grade para performance
+      const GRID_SPACING = 30;
       const DRIFT_AMPLITUDE = 15;
 
       const resize = () => {
@@ -287,11 +368,10 @@ const tools = [
             const x = c * GRID_SPACING + (GRID_SPACING / 2);
             const y = r * GRID_SPACING + (GRID_SPACING / 2);
 
-            // Evitar partículas demais bem no centro da Hero para manter boa leitura do título
             const distFromCenter = Math.hypot(x - width / 2, y - height / 2);
             const isCenterArea = distFromCenter < Math.min(width, height) * 0.35;
             
-            if (isCenterArea && Math.random() > 0.2) continue; // remove 80% das partículas centrais
+            if (isCenterArea && Math.random() > 0.2) continue;
 
             particles.push({
               ox: x,
@@ -310,7 +390,6 @@ const tools = [
         ctx.clearRect(0, 0, width, height);
 
         particles.forEach(p => {
-          // Deslocamento usando senos e cossenos combinados para suavidade
           const elapsed = timestamp * 0.001 * p.speed;
           const driftX = Math.sin(elapsed + p.phase) * DRIFT_AMPLITUDE;
           const driftY = Math.cos(elapsed * 0.7 + p.phase) * DRIFT_AMPLITUDE;
@@ -318,7 +397,6 @@ const tools = [
           p.x = p.ox + driftX;
           p.y = p.oy + driftY;
 
-          // Desenha quadradinho brutalista
           ctx.fillStyle = `rgba(39, 39, 42, ${p.opacity})`;
           ctx.fillRect(p.x, p.y, PARTICLE_SIZE, PARTICLE_SIZE);
         });
@@ -326,18 +404,15 @@ const tools = [
         animationId = requestAnimationFrame(animate);
       };
 
-      // Iniciar animação se não houver prefers-reduced-motion ativo
       window.addEventListener('resize', resize);
       resize();
 
       if (!reducedMotion) {
         animationId = requestAnimationFrame(animate);
       } else {
-        // Apenas renderiza um frame estático de grade brutalista
         animate(0);
       }
 
-      // Parar animação em abas inativas
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           if (animationId) cancelAnimationFrame(animationId);
