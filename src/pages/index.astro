@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import { homePageGraph } from '../lib/site';
 
@@ -6,414 +6,236 @@ const title =
   'CofreUtil — Ferramentas Web Gratuitas com Processamento Local no Navegador';
 const description =
   'Ferramentas web gratuitas que processam arquivos e dados diretamente no seu navegador, sem enviar o conteúdo inserido pelo usuário ao backend do CofreUtil. Junte PDF, converta imagens, gere QR Code Pix e muito mais.';
+
+const tools = [
+  {
+    name: 'Gerador de CPF/CNPJ',
+    href: '/ferramentas/gerador-de-cpf',
+    category: 'utilitarios',
+    icon: 'M4 6h16M4 12h16M4 18h16',
+  },
+  {
+    name: 'Gerador de QR Code Pix',
+    href: '/ferramentas/gerador-qr-code-pix',
+    category: 'midia',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5',
+  },
+  {
+    name: 'Gerador de Link para WhatsApp',
+    href: '/ferramentas/gerador-link-whatsapp',
+    category: 'utilitarios',
+    icon: 'M8 12h.08M12 12h.08M16 12h.08M21 21c0 1-1 2-2 2H5c-1 0-2-1-2-2V5c0-1 1-2 2-2h14c1 0 2 1 2 2v14c0 1-1 2-2 2v14zM8 12l-4 4 8 8 4-4-8-8z',
+  },
+  {
+    name: 'Gerador de Senhas Fortes',
+    href: '/ferramentas/gerador-senhas',
+    category: 'seguranca',
+    icon: 'M13 2L3 14h9l-1 8 10-10-8-3L9 7l-3 8H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8l3-8z',
+  },
+  {
+    name: 'Formatador e Validador JSON',
+    href: '/ferramentas/formatador-json',
+    category: 'utilitarios',
+    icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z',
+  },
+  {
+    name: 'Calculadora de Hash de Arquivos',
+    href: '/ferramentas/calculadora-hash',
+    category: 'utilitarios',
+    icon: 'M17 21h5v-5a3 3 0 0 0-5.356-1.857M17 8a5 5 0 0 1-5 5v5h5a1 1 0 0 1 0 2h-5v5a1 1 0 1 1-2 0v-5H5a1 1 0 1 1 0-2h5v-5a3 3 0 0 0-5.356-1.857M7 3a1 1 0 0 1 1 1h4a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1V3z',
+  },
+  {
+    name: 'Conversor CSV para JSON',
+    href: '/ferramentas/conversor-csv-json',
+    category: 'utilitarios',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
+  },
+  {
+    name: 'Comparar Textos',
+    href: '/ferramentas/comparar-textos',
+    category: 'utilitarios',
+    icon: 'M12 4v16M8 12h8m4-16v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z',
+  },
+  {
+    name: 'Contador de Caracteres e Palavras',
+    href: '/ferramentas/contador-caracteres',
+    category: 'utilitarios',
+    icon: 'M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m14 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4',
+  },
+  {
+    name: 'Juntar PDF',
+    href: '/ferramentas/juntar-pdf',
+    category: 'midia',
+    icon: 'M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m14 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4',
+  },
+  {
+    name: 'Comprimir PDF',
+    href: '/ferramentas/comprimir-pdf',
+    category: 'midia',
+    icon: 'M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m14 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4',
+  },
+  {
+    name: 'Imagem para PDF',
+    href: '/ferramentas/imagem-para-pdf',
+    category: 'midia',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
+  },
+  {
+    name: 'PDF para Imagem',
+    href: '/ferramentas/pdf-para-imagem',
+    category: 'midia',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
+  },
+  {
+    name: 'Dividir PDF',
+    href: '/ferramentas/dividir-pdf',
+    category: 'midia',
+    icon: 'M19 21v-5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14m14 2v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4',
+  },
+  {
+    name: 'Sanitizador de Metadados de PDF',
+    href: '/ferramentas/sanitizador-pdf',
+    category: 'midia',
+    icon: 'M19 21H5a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-1M7 7h2m4 0h2a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-4M7 7h2',
+  },
+  {
+    name: 'Limpador de Metadados de Fotos (Remover Localização e GPS)',
+    href: '/ferramentas/limpador-de-metadados-exif',
+    category: 'midia',
+    icon: 'M17 21H7a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1M5 18h14c1.1 0 2.2-.9 2-2V5c0-1.1-.9-2-2-2H5c-.1 0-2.1.9-2 2v1',
+  },
+  {
+    name: 'Conversor de Imagens',
+    href: '/ferramentas/conversor-de-imagem',
+    category: 'midia',
+    icon: 'M12 2L2 12l10 0l-2 8 8 2v8l-10 0 2-8L12 12l-8 2 2-10z',
+  },
+  {
+    name: 'Leitor de MRZ / Passaportes',
+    href: '/ferramentas/leitor-mrz-passaporte',
+    category: 'utilitarios',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
+  },
+  {
+    name: 'Extrator de Texto de Imagem (OCR)',
+    href: '/ferramentas/extrair-texto-imagem',
+    category: 'midia',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5',
+  },
+  {
+    name: 'Leitor e Scanner de QR Code',
+    href: '/ferramentas/leitor-qr-code',
+    category: 'midia',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5',
+  },
+  {
+    name: 'Conversor de Áudio',
+    href: '/ferramentas/conversor-de-audio',
+    category: 'midia',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5',
+  },
+  {
+    name: 'Removedor de Silêncio',
+    href: '/ferramentas/remover-silencio',
+    category: 'midia',
+    icon: 'M12 2L2 12l10 0l-2 8 8 2v8l-10 0 2-8L12 12l-8 2 2-10zM2 22h20v-2H2v2z',
+  },
+];
+
 ---
+<div class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+  <div class="flex flex-col gap-8">
+    <h1 class="font-mono text-4xl font-bold leading-tight tracking-tight md:text-5xl">
+      Processamento local.<br />
+      <span class="text-[#A1A1AA]">Privacidade de cofre.</span>
+    </h1>
 
-<Layout
-  title={title}
-  description={description}
-  jsonLd={homePageGraph()}
->
-  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
-    <div class="flex flex-col gap-8">
-      <h1 class="font-mono text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-        Processamento local.<br />
-        <span class="text-[#A1A1AA]">Privacidade de cofre.</span>
-      </h1>
+    <p class="max-w-2xl text-base leading-relaxed text-[#A1A1AA] md:text-lg">
+      Utilitários web gratuitos que rodam diretamente no seu navegador. O
+      conteúdo que você insere não é enviado ao backend do CofreUtil:
+      compressão, conversão, OCR e validação acontecem localmente, na sua
+      máquina.
+    </p>
 
-      <p class="max-w-2xl text-base leading-relaxed text-[#A1A1AA] md:text-lg">
-        Utilitários web gratuitos que rodam diretamente no seu navegador. O
-        conteúdo que você insere não é enviado ao backend do CofreUtil:
-        compressão, conversão, OCR e validação acontecem localmente, na sua
-        máquina.
-      </p>
-
-      <div class="mt-4 flex items-center gap-4">
-        <a
-          href="#ferramentas"
-          class="border border-[#27272A] bg-[#09090B] px-5 py-2.5 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-        >
-          Ver ferramentas
-        </a>
-        <a
-          href="#como-funciona"
-          class="text-sm text-[#A1A1AA] transition-colors hover:text-white"
-        >
-          Como funciona
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="ferramentas" class="mx-auto max-w-6xl scroll-mt-14 px-6 pb-24">
-    <h2 class="mb-6 font-mono text-sm text-[#A1A1AA]">// ferramentas</h2>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-4 flex items-center gap-4">
       <a
-        href="/ferramentas/gerador-de-cpf"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+        href="#ferramentas"
+        class="border border-[#27272A] bg-[#09090B] px-5 py-2.5 text-sm text-white transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
       >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [DADOS & DEV]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Gerador de CPF/CNPJ</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Gere e valide CPFs e CNPJs com algoritmo matemático local. Sem API externa.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/gerador-de-cpf →
-        </span>
+        Ver ferramentas
       </a>
-
       <a
-        href="/ferramentas/gerador-qr-code-pix"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+        href="#como-funciona"
+        class="text-sm text-[#A1A1AA] transition-colors hover:text-white"
       >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [DADOS & DEV]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Gerador de QR Code Pix</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Gere QR Code Pix (BR Code) 100% local, sem enviar sua chave a servidores.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/gerador-qr-code-pix →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/gerador-link-whatsapp"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [DADOS & DEV]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Gerador de Link para WhatsApp</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Crie link de WhatsApp grátis sem login, com mensagem personalizada, simulador
-          ao vivo, QR Code e histórico local. Assim como as demais ferramentas, também
-          funciona com a internet desligada.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/gerador-link-whatsapp →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/gerador-senhas"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [DADOS & DEV]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Gerador de Senhas Fortes</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Gere senhas com criptografia Web Crypto (getRandomValues), medindo entropia e tempo estimado de quebra. 100% local.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/gerador-senhas →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/formatador-json"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [DADOS & DEV]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Formatador e Validador JSON</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Formate, minifique e valide JSON com relatório de erros (linha/coluna). Processamento 100% local.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/formatador-json →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/calculadora-hash"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [DADOS & DEV]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Calculadora de Hash de Arquivos</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Calcule MD5, SHA-1, SHA-256 e SHA-512 de qualquer arquivo 100% no
-          navegador, com leitura em chunks e crypto.subtle nativo.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/calculadora-hash →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/conversor-csv-json"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [DADOS & DEV]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Conversor CSV para JSON</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Converta CSV em JSON e JSON em CSV com vírgula, ponto e vírgula ou tab.
-          Tratamento RFC 4180, 100% local.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/conversor-csv-json →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/comparar-textos"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [DADOS & DEV]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Comparar Textos</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Diff checker offline: veja alterações entre dois textos ou contratos em
-          linhas, palavras ou caracteres. Processamento local, sem upload.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/comparar-textos →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/contador-caracteres"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [DADOS & DEV]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Contador de Caracteres e Palavras</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Contador offline com análise de densidade de SEO, tempo de leitura e
-          estatísticas completas. Privado e local.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/contador-caracteres →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/juntar-pdf"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [PDF]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Juntar PDF</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Mescle PDFs 100% no navegador, sem enviar documentos a servidores.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/juntar-pdf →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/comprimir-pdf"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [PDF]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Comprimir PDF</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Reduza o tamanho de PDFs pesados 100% no navegador, sem enviar arquivos a servidores.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/comprimir-pdf →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/imagem-para-pdf"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [PDF]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Imagem para PDF</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Converta JPG, PNG e WEBP em um único PDF, 100% no navegador, sem upload.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/imagem-para-pdf →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/pdf-para-imagem"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [PDF]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">PDF para Imagem</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Converta páginas de PDF em PNG, JPEG ou WEBP 100% no navegador, sem upload.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/pdf-para-imagem →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/dividir-pdf"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [PDF]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Dividir PDF</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Extraia páginas específicas ou divida cada página como PDF individual, 100% local.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/dividir-pdf →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/sanitizador-pdf"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [PDF]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Sanitizador de Metadados de PDF</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Remova autor, software e datas ocultas de PDFs 100% no navegador, sem
-          enviar documentos a servidores. Ideal para escritórios e LGPD.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/sanitizador-pdf →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/limpador-de-metadados-exif"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [MÍDIA & PRIVACIDADE]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Limpador de Metadados de Fotos (Remover Localização e GPS)</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Remova GPS, localização e dados EXIF da câmera de fotos (JPG, PNG, WEBP) 100% no navegador, sem upload.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/limpador-de-metadados-exif →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/conversor-de-imagem"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [MÍDIA & PRIVACIDADE]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Conversor de Imagens</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Converta JPG, PNG, WEBP, GIF e BMP em lote para PNG, JPG ou WEBP, 100%
-          no navegador, sem upload.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/conversor-de-imagem →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/leitor-mrz-passaporte"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [MÍDIA & PRIVACIDADE]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Leitor de MRZ / Passaportes</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Leia a zona MRZ (TD1, TD2 e TD3) de passaportes e identidades por foto ou
-          câmera, com validação de dígitos de controle. OCR 100% local.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/leitor-mrz-passaporte →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/extrair-texto-imagem"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [MÍDIA & PRIVACIDADE]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Extrator de Texto de Imagem (OCR)</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Converta imagem para texto grátis e extraia texto de print em Português ou Inglês
-          100% no navegador, com OCR offline e Tesseract.js local. Zero upload.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/extrair-texto-imagem →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/leitor-qr-code"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [MÍDIA & PRIVACIDADE]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Leitor e Scanner de QR Code</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Escaneie QR Codes pela câmera/webcam ou leia de imagens PNG, JPG e WEBP
-          localmente, com cópia em um clique e aviso de link seguro.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/leitor-qr-code →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/conversor-de-audio"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [MÍDIA & PRIVACIDADE]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Conversor de Áudio</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Converta WAV, MP3 e OGG e corte trechos no próprio navegador, sem
-          upload do arquivo.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/conversor-de-audio →
-        </span>
-      </a>
-
-      <a
-        href="/ferramentas/remover-silencio"
-        class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
-      >
-        <span class="self-start border border-[#27272A] bg-black px-2 py-0.5 font-mono text-xs text-[#A1A1AA]">
-          [MÍDIA & PRIVACIDADE]
-        </span>
-        <h3 class="font-mono text-sm font-medium text-white">Removedor de Silêncio</h3>
-        <p class="text-xs leading-relaxed text-[#A1A1AA]">
-          Remova silêncios de vídeos e áudios 100% no navegador via FFmpeg local, com
-          corte e concatenação lossless. Zero upload.
-        </p>
-        <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
-          /ferramentas/remover-silencio →
-        </span>
+        Como funciona
       </a>
     </div>
-  </section>
+  </div>
+</div>
 
+<div class="mx-auto max-w-6xl scroll-mt-14 px-6 pb-24">
+  <h2 class="mb-6 font-mono text-sm text-[#A1A1AA]">// ferramentas</h2>
+
+  <!-- Filtros brutalistas -->
+  <div class="flex gap-2 mb-6" role="tablist">
+    <button
+      data-category="todos"
+      class="active:bg-white active:text-[black] bg-transparent text-[#A1A1AA] border-b-2 border-[#27272A] rounded-none px-4 py-1 text-sm transition-colors hover:bg-white hover:text-black"
+    >
+      Todos
+    </button>
+    <button
+      data-category="midia"
+      class="bg-transparent text-[#A1A1AA] border-b-2 border-[#27272A] rounded-none px-4 py-1 text-sm transition-colors hover:bg-white hover:text-black"
+    >
+      Mídia & OCR
+    </button>
+    <button
+      data-category="seguranca"
+      class="bg-transparent text-[#A1A1AA] border-b-2 border-[#27272A] rounded-none px-4 py-1 text-sm transition-colors hover:bg-white hover:text-black"
+    >
+      Segurança & Privacidade
+    </button>
+    <button
+      data-category="utilitarios"
+      class="bg-transparent text-[#A1A1AA] border-b-2 border-[#27272A] rounded-none px-4 py-1 text-sm transition-colors hover:bg-white hover:text-black"
+    >
+      Dev & Utilidades
+    </button>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="tools-grid">
+    {tools.map((tool) => {
+      return (
+        <a
+          href={tool.href}
+          class="group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-colors hover:border-[#3F3F46] hover:bg-[#18181B]"
+          data-category={tool.category}
+        >
+          <svg
+            class="w-6 h-6 currentColor mb-3 self-start"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
+            <path d={tool.icon} />
+          </svg>
+          <h3 class="font-mono text-sm font-medium text-white">{tool.name}</h3>
+          <p class="text-xs leading-relaxed text-[#A1A1AA]">
+            {tool.description}
+          </p>
+          <span class="mt-auto font-mono text-xs text-[#52525B] group-hover:text-[#A1A1AA]">
+            /ferramentas/{tool.name} →
+          </span>
+        </a>
+      );
+    })}
+  </div>
+</div>
+
+<div class="mx-auto max-w-6xl scroll-mt-14 px-6 pb-24">
   <section id="como-funciona" class="mx-auto max-w-6xl scroll-mt-14 px-6 pb-24">
     <div class="flex flex-col gap-8 border border-[#27272A] bg-[#09090B] p-6 md:p-10">
       <div class="flex flex-col gap-3">
@@ -478,4 +300,34 @@ const description =
       </div>
     </div>
   </section>
-</Layout>
+</div>
+
+<script>
+  // Client-side filter script for brutalist filter buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('[data-category]');
+    const toolCards = document.querySelectorAll('#tools-grid a');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach((b) => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        const category = btn.dataset.category;
+
+        toolCards.forEach((card) => {
+          const cardCategory = card.dataset.category;
+          if (category === 'todos' || cardCategory === category) {
+            card.classList.remove('hidden');
+            card.style.display = 'block';
+          } else {
+            card.classList.add('hidden');
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
