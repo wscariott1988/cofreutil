@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "CofreUtil | 23 Ferramentas Web Locais e Seguras (Zero Nuvem)";
+const title = "CofreUtil | Ferramentas Web Locais e Seguras (Zero Nuvem)";
 const description = "Utilitários de alta performance que rodam 100% no seu navegador. Comprima PDFs, converta arquivos, gere dados e analise textos sem enviar nada para servidores. Privacidade absoluta.";
 
 // Mapa de ícones em SVG inline puros (100% livre de CDNs ou dependências para COOP/COEP)
@@ -13,6 +13,7 @@ const iconMap = {
   idcard: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15A2.25 2.25 0 0 0 2.25 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25zm3-10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM3.75 18v-.075c0-1.116.764-2.07 1.85-2.205a5.161 5.161 0 0 1 3.75 0c1.086.135 1.85 1.089 1.85 2.205V18" /></svg>`,
   image: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375 0 1 1-.75 0 .375.375 0 0 1 .75 0z" /></svg>`,
   audio: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3z" /></svg>`,
+  video: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5 19.5 7.5v9l-3.75-3M4.5 6.75A2.25 2.25 0 0 1 6.75 4.5h7.5a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 14.25 19.5h-7.5A2.25 2.25 0 0 1 4.5 17.25V6.75Z" /></svg>`,
   pix: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5zM20.25 14.625v.008H20.26v-.008h-.008zm0 2.25v.008H20.26V16.87h-.008zm-2.25-2.25v.008h.008v-.008h-.008zm0 2.25v.008h.008V16.87h-.008zm-2.25-2.25v.008h.008v-.008h-.008zm0 2.25v.008h.008V16.87h-.008zm-2.25-2.25v.008h.008v-.008h-.008zm0 2.25v.008h.008V16.87h-.008zm4.5 4.5v.008h.008V21.37h-.008zm-2.25 0v.008h.008V21.37h-.008zm-2.25 0v.008h.008V21.37h-.008zm-2.25 0v.008h.008V21.37h-.008z" /></svg>`,
   key: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 1 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25z" /></svg>`,
   shield: `<svg class="w-6 h-6 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12z" /></svg>`,
@@ -22,13 +23,48 @@ const iconMap = {
 };
 
 const tools = [
-  // --- SEÇÃO MÍDIA, DOCUMENTOS & OCR (10 ferramentas) ---
+  // --- SEÇÃO MÍDIA, DOCUMENTOS & OCR (12 ferramentas) ---
+  {
+    title: "Conversor de Imagens",
+    description: "Converta JPG, PNG, WEBP, GIF e BMP em lote para PNG, JPG ou WEBP via Canvas API local, sem upload.",
+    href: "/ferramentas/conversor-de-imagem",
+    category: "midia",
+    iconKey: "image"
+  },
+  {
+    title: "Extrator de Texto de Imagem (OCR)",
+    description: "Extraia textos editáveis de fotos e prints em Português ou Inglês com OCR offline via Tesseract WASM.",
+    href: "/ferramentas/extrair-texto-imagem",
+    category: "midia",
+    iconKey: "ocr"
+  },
+  {
+    title: "Leitor e Scanner de QR Code",
+    description: "Escaneie QR Codes pela câmera ou leia de imagens PNG, JPG e WEBP localmente, com aviso de link seguro.",
+    href: "/ferramentas/leitor-qr-code",
+    category: "midia",
+    iconKey: "pix"
+  },
+  {
+    title: "Leitor de MRZ / Passaportes",
+    description: "Leia a zona MRZ (TD1, TD2 e TD3) de passaportes e identidades por foto ou câmera, com validação de dígitos.",
+    href: "/ferramentas/leitor-mrz-passaporte",
+    category: "midia",
+    iconKey: "idcard"
+  },
   {
     title: "Juntar PDF",
     description: "Junte contratos e documentos sensíveis diretamente na memória do seu navegador sem upload.",
     href: "/ferramentas/juntar-pdf",
     category: "midia",
     iconKey: "pdf"
+  },
+  {
+    title: "Dividir PDF",
+    description: "Extraia páginas específicas ou divida cada página como PDF individual, de forma instantânea e local.",
+    href: "/ferramentas/dividir-pdf",
+    category: "midia",
+    iconKey: "split"
   },
   {
     title: "Comprimir PDF",
@@ -38,70 +74,56 @@ const tools = [
     iconKey: "compress"
   },
   {
-    title: "Dividir PDF",
-    description: "Separe páginas específicas ou divida documentos longos de forma instantânea e 100% local.",
-    href: "/ferramentas/dividir-pdf",
+    title: "Imagem para PDF",
+    description: "Converta fotos, escaneamentos e prints (JPG, PNG, WEBP) em um único arquivo PDF estruturado.",
+    href: "/ferramentas/imagem-para-pdf",
     category: "midia",
-    iconKey: "split"
+    iconKey: "image"
   },
   {
-    title: "Mesclar Documentos PDF",
-    description: "Unifique múltiplos relatórios, PDFs e folhas avulsas em uma única sequência organizada.",
-    href: "/ferramentas/pdf-merge",
+    title: "PDF para Imagem",
+    description: "Converta páginas de PDF em PNG, JPEG ou WEBP 100% no navegador via PDF.js, sem enviar arquivos.",
+    href: "/ferramentas/pdf-para-imagem",
     category: "midia",
     iconKey: "pdf"
   },
   {
-    title: "Sanitizar PDF",
-    description: "Remova scripts, metadados ocilantes, anexos e elementos de rastreamento de arquivos PDF.",
-    href: "/ferramentas/pdf-sanitizer",
+    title: "Conversor de Áudio",
+    description: "Converta arquivos de som (WAV, MP3, OGG) e corte trechos diretamente pelo navegador usando FFmpeg WASM.",
+    href: "/ferramentas/conversor-de-audio",
     category: "midia",
+    iconKey: "audio"
+  },
+  {
+    title: "Removedor de Silêncio",
+    description: "Corte automaticamente pausas e trechos silenciosos de áudios e vídeos, com detecção por silencedetect local.",
+    href: "/ferramentas/remover-silencio",
+    category: "midia",
+    iconKey: "audio"
+  },
+  {
+    title: "Compactador de Vídeo",
+    description: "Reduza o tamanho de vídeos MP4 e WEBM em 3 níveis H.264 e resolva 720p/480p localmente.",
+    href: "/ferramentas/compactador-de-video",
+    category: "midia",
+    iconKey: "video"
+  },
+
+  // --- SEÇÃO SEGURANÇA & PRIVACIDADE (5 ferramentas) ---
+  {
+    title: "Limpador de Metadados de Fotos (EXIF)",
+    description: "Remova coordenadas GPS, modelo de câmera e dados pessoais de fotos antes de compartilhar.",
+    href: "/ferramentas/limpador-de-metadados-exif",
+    category: "seguranca",
     iconKey: "shield"
   },
   {
-    title: "Imagem para PDF",
-    description: "Converta fotos, escaneamentos e prints (JPG, PNG, WEBP) em um arquivo PDF estruturado.",
-    href: "/ferramentas/image-to-pdf",
-    category: "midia",
-    iconKey: "image"
+    title: "Sanitizador de Metadados de PDF",
+    description: "Remova autor, software, datas ocultas e anexos de PDFs antes de publicar, com reescrita local do arquivo.",
+    href: "/ferramentas/sanitizador-pdf",
+    category: "seguranca",
+    iconKey: "shield"
   },
-  {
-    title: "Imagem para Texto (OCR)",
-    description: "Extraia textos editáveis de fotos e prints usando IA local (Tesseract WASM no processador).",
-    href: "/ferramentas/imagem-para-texto",
-    category: "midia",
-    iconKey: "ocr"
-  },
-  {
-    title: "Conversor de Imagem",
-    description: "Altere o formato de suas imagens para WEBP, PNG ou JPG via Canvas API local.",
-    href: "/ferramentas/converter-imagem",
-    category: "midia",
-    iconKey: "image"
-  },
-  {
-    title: "Conversor de Áudio",
-    description: "Converta arquivos de som (WAV, MP3, OGG) diretamente pelo navegador usando FFmpeg WASM.",
-    href: "/ferramentas/converter-audio",
-    category: "midia",
-    iconKey: "audio"
-  },
-  {
-    title: "Removedor de Silêncio em Áudio",
-    description: "Corte automaticamente pausas e trechos silenciosos de gravações e podcasts.",
-    href: "/ferramentas/silence-remover",
-    category: "midia",
-    iconKey: "audio"
-  },
-  {
-    title: "Leitor de Passaporte (MRZ)",
-    description: "Extraia e decodifique dados da Zona Legível por Máquina (MRZ) de passaportes e RGs.",
-    href: "/ferramentas/mrz-reader",
-    category: "midia",
-    iconKey: "idcard"
-  },
-
-  // --- SEÇÃO SEGURANÇA & PRIVACIDADE (4 ferramentas) ---
   {
     title: "Gerador de Senhas Fortes",
     description: "Gere senhas criptográficas ultra-seguras usando a Web Crypto API nativa do seu navegador.",
@@ -110,85 +132,76 @@ const tools = [
     iconKey: "key"
   },
   {
-    title: "Limpador de Metadados EXIF",
-    description: "Remova coordenadas GPS, modelo de câmera e dados pessoais de fotos antes de compartilhar.",
-    href: "/ferramentas/limpar-metadados-exif",
-    category: "seguranca",
-    iconKey: "shield"
-  },
-  {
-    title: "Calculadora de Hash",
-    description: "Calcule hashes SHA-256, SHA-1 e MD5 de arquivos localmente para checagem de integridade.",
+    title: "Calculadora de Hash de Arquivos",
+    description: "Calcule MD5, SHA-1, SHA-256 e SHA-512 de qualquer arquivo localmente para checagem de integridade.",
     href: "/ferramentas/calculadora-hash",
     category: "seguranca",
     iconKey: "hash"
   },
-
-  // --- SEÇÃO DEV, PIX & UTILIDADES (9 ferramentas) ---
   {
-    title: "Gerador de CPF / Validador de CNPJ",
-    description: "Gere e valide CPFs e CNPJs válidos matematicamente para testes de desenvolvimento e QA.",
+    title: "Gerador de CPF / CNPJ",
+    description: "Gere e valide CPFs e CNPJs matematicamente corretos para testes de desenvolvimento e QA, sem API externa.",
     href: "/ferramentas/gerador-de-cpf",
-    category: "utilitarios",
+    category: "seguranca",
     iconKey: "idcard"
   },
+
+  // --- SEÇÃO DEV, DADOS & UTILIDADES (6 ferramentas) ---
   {
-    title: "Validador de CNPJ",
-    description: "Confira a estrutura matemática e os dígitos verificadores de CNPJs de forma rápida e offline.",
-    href: "/ferramentas/validador-cnpj",
+    title: "Formatador e Validador JSON",
+    description: "Formate, minifique e valide payloads JSON com relatório de erros linha a coluna, sem trafegar dados em APIs.",
+    href: "/ferramentas/formatador-json",
     category: "utilitarios",
-    iconKey: "idcard"
+    iconKey: "code"
   },
   {
-    title: "Gerador de QR Code Pix",
-    description: "Crie códigos BR Code estáticos e dinâmicos do Banco Central para cobranças sem intermediação.",
-    href: "/ferramentas/gerador-qr-code-pix",
+    title: "Conversor CSV para JSON",
+    description: "Converta CSV em JSON e JSON em CSV com vírgula, ponto e vírgula ou tab, tratando o padrão RFC 4180.",
+    href: "/ferramentas/conversor-csv-json",
     category: "utilitarios",
-    iconKey: "pix"
+    iconKey: "code"
   },
   {
-    title: "Gerador de Link WhatsApp",
+    title: "Comparar Textos (Diff)",
+    description: "Compare dois blocos de código, contratos ou textos e veja as diferenças destacadas linha a linha.",
+    href: "/ferramentas/comparar-textos",
+    category: "utilitarios",
+    iconKey: "code"
+  },
+  {
+    title: "Contador de Caracteres e Palavras",
+    description: "Analise métricas de texto, total de palavras, caracteres, linhas e estimativa de leitura.",
+    href: "/ferramentas/contador-caracteres",
+    category: "utilitarios",
+    iconKey: "hash"
+  },
+  {
+    title: "Gerador de Link para WhatsApp",
     description: "Crie links diretos para iniciar conversas no WhatsApp com mensagens personalizadas.",
     href: "/ferramentas/gerador-link-whatsapp",
     category: "utilitarios",
     iconKey: "chat"
   },
   {
-    title: "Formatador e Validador JSON",
-    description: "Formate, idente e valide payloads JSON localmente sem trafegar dados sensíveis em APIs.",
-    href: "/ferramentas/formatador-json",
-    category: "utilitarios",
-    iconKey: "code"
-  },
-  {
-    title: "Comparador de Textos (Diff Checker)",
-    description: "Compare dois blocos de código ou texto e veja as diferenças destacadas linha a linha.",
-    href: "/ferramentas/diff-checker",
-    category: "utilitarios",
-    iconKey: "code"
-  },
-  {
-    title: "Contador de Caracteres & Palavras",
-    description: "Analise métricas de texto, total de palavras, caracteres, linhas e estimativa de leitura.",
-    href: "/ferramentas/char-counter",
-    category: "utilitarios",
-    iconKey: "hash"
-  },
-  {
-    title: "Gerador Pix Cópiar e Cola",
-    description: "Gere chaves e payloads Pix prontos para cópia rápida em transações do dia a dia.",
-    href: "/ferramentas/pix-qr-code-generator",
+    title: "Gerador de QR Code Pix",
+    description: "Crie códigos BR Code do Banco Central sem enviar sua chave Pix a nenhum servidor.",
+    href: "/ferramentas/gerador-qr-code-pix",
     category: "utilitarios",
     iconKey: "pix"
-  },
-  {
-    title: "Formatador de Código",
-    description: "Embeleze e organize trechos de código em múltiplos formatos com foco em produtividade.",
-    href: "/ferramentas/formatador-codigo",
-    category: "utilitarios",
-    iconKey: "code"
   }
 ];
+
+// Contagens derivadas do próprio array para nunca divergirem do catálogo real
+const categoryFilters = [
+  { id: "todos", label: "Todos" },
+  { id: "midia", label: "Mídia & OCR" },
+  { id: "seguranca", label: "Segurança & Privacidade" },
+  { id: "utilitarios", label: "Dev & Utilidades" }
+];
+
+const toolCount = tools.length;
+const countForCategory = (id: string) =>
+  id === "todos" ? toolCount : tools.filter((tool) => tool.category === id).length;
 ---
 
 <Layout title={title} description={description}>
@@ -205,13 +218,13 @@ const tools = [
         </h1>
         
         <p class="max-w-2xl text-base leading-relaxed text-[#A1A1AA] md:text-lg">
-          O CofreUtil é seu diretório de 23 utilitários <em class="text-white not-italic font-mono">Zero-Server</em>. Seus documentos, fotos, áudios e dados rodam 100% no seu navegador via WebAssembly e APIs locais. Zero uploads, velocidade máxima e conformidade nativa com a LGPD.
+          O CofreUtil é seu diretório de {toolCount} utilitários <em class="text-white not-italic font-mono">Zero-Server</em>. Seus documentos, fotos, áudios e dados rodam 100% no seu navegador via WebAssembly e APIs locais. Zero uploads, velocidade máxima e conformidade nativa com a LGPD.
         </p>
       </div>
 
       <div class="mt-4 flex items-center gap-4">
         <a href="#ferramentas" class="border border-[#27272A] bg-[#09090B] px-5 py-2.5 text-sm text-white font-mono hover:border-[#3F3F46] hover:bg-[#18181B] hover:text-white transition-colors">
-          Explorar 23 ferramentas &rarr;
+          Explorar {toolCount} ferramentas &rarr;
         </a>
         <a href="#como-funciona" class="text-sm text-[#A1A1AA] font-mono hover:text-white transition-colors">
           Como funciona
@@ -220,33 +233,32 @@ const tools = [
     </div>
   </section>
 
-  <!-- Catálogo Completo de 23 Ferramentas -->
+  <!-- Catálogo Completo de Ferramentas -->
   <section id="ferramentas" class="bg-black py-16 md:py-24 border-b border-[#27272A] scroll-mt-14">
     <div class="mx-auto max-w-6xl px-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <h2 class="font-mono text-sm text-[#A1A1AA] mb-2">// CATÁLOGO COMPLETO (23 FERRAMENTAS)</h2>
+          <h2 class="font-mono text-sm text-[#A1A1AA] mb-2">// CATÁLOGO COMPLETO ({toolCount} FERRAMENTAS)</h2>
           <h3 class="font-mono text-2xl font-bold text-white">Nossos Utilitários</h3>
         </div>
 
         <!-- Filtros brutalistas por Categoria -->
         <div class="flex flex-wrap gap-2" role="tablist" id="filter-buttons">
-          <button data-category="todos" class="filter-btn bg-white text-black border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors uppercase">
-            Todos (23)
-          </button>
-          <button data-category="midia" class="filter-btn bg-transparent text-[#A1A1AA] border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors hover:text-white hover:border-[#3F3F46] uppercase">
-            Mídia & OCR (11)
-          </button>
-          <button data-category="seguranca" class="filter-btn bg-transparent text-[#A1A1AA] border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors hover:text-white hover:border-[#3F3F46] uppercase">
-            Segurança & Privacidade (3)
-          </button>
-          <button data-category="utilitarios" class="filter-btn bg-transparent text-[#A1A1AA] border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors hover:text-white hover:border-[#3F3F46] uppercase">
-            Dev & Utilidades (9)
-          </button>
+          {categoryFilters.map((filter, index) => (
+            <button
+              data-category={filter.id}
+              class:list={[
+                "filter-btn border border-[#27272A] rounded-none px-4 py-1.5 text-xs font-mono transition-colors uppercase",
+                index === 0 ? "bg-white text-black" : "bg-transparent text-[#A1A1AA] hover:text-white hover:border-[#3F3F46]"
+              ]}
+            >
+              {filter.label} ({countForCategory(filter.id)})
+            </button>
+          ))}
         </div>
       </div>
 
-      <!-- Grid de 23 Cartões Brutalistas -->
+      <!-- Grid de Cartões Brutalistas -->
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="tools-grid">
         {tools.map((tool) => (
           <a href={tool.href} class="tool-card group flex flex-col gap-3 border border-[#27272A] bg-[#09090B] p-6 transition-all duration-150 hover:border-[#3F3F46] hover:bg-[#111113]" data-category={tool.category}>
@@ -286,7 +298,7 @@ const tools = [
           <h4 class="font-mono text-xs text-white uppercase tracking-wider">// Garantias de Segurança</h4>
           <ul class="font-mono text-xs text-[#A1A1AA] flex flex-col gap-4">
             <li class="flex items-start gap-2">
-              <span class="text-white">[✓]</span> 23 Ferramentas 100% Client-Side (Zero upload)
+              <span class="text-white">[✓]</span> {toolCount} Ferramentas 100% Client-Side (Zero upload)
             </li>
             <li class="flex items-start gap-2">
               <span class="text-white">[✓]</span> Sem Cookies invasivos ou rastreadores terceiros

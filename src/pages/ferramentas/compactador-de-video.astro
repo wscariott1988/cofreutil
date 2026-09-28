@@ -1,0 +1,273 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import VideoCompressorTool from '../../components/tools/VideoCompressorTool';
+import ShareButton from '../../components/ShareButton';
+import TechnicalReferences from '../../components/TechnicalReferences.astro';
+import { toolPageGraph, SITE_URL } from '../../lib/site';
+
+const toolUrl = `${SITE_URL}/ferramentas/compactador-de-video`;
+
+const jsonLd = toolPageGraph({
+  type: 'WebApplication',
+  name: 'Compactador de Vídeo Online 100% Local (MP4, WEBM) | CofreUtil',
+  url: toolUrl,
+  applicationCategory: 'MultimediaApplication',
+  browserRequirements: 'Requires JavaScript',
+  featureList: [
+    'Reduzir tamanho de vídeo MP4 e WEBM sem enviar para servidor',
+    'Três níveis de compressão H.264 (Rápida, Equilibrada e Máxima) via CRF',
+    'Redimensionamento opcional para 720p (HD) e 480p (SD) sem ampliar a imagem',
+    'Estimativa de tamanho final calculada antes do processamento',
+    'Barra de progresso em porcentagem durante a re-codificação',
+    'Compatível com MP4, WEBM, MOV, AVI, M4V e MKV',
+  ],
+  description:
+    'Comprimir vídeo MP4, WEBM ou MOV no navegador via FFmpeg WebAssembly local. Reduza o tamanho do arquivo em 3 níveis e opcionalmente para 720p/480p. Zero upload, zero servidor, conformidade com a LGPD.',
+  breadcrumb: [
+    { name: 'Home', url: SITE_URL },
+    { name: 'Ferramentas', url: `${SITE_URL}/ferramentas` },
+    {
+      name: 'Compactador de Vídeo Online 100% Local (MP4, WEBM)',
+      url: toolUrl,
+    },
+  ],
+  faq: [
+    {
+      name: 'Como diminuir tamanho de vídeo sem enviar para servidor?',
+      text: 'Arraste o arquivo para a área da ferramenta, escolha o nível de compressão (Rápida, Equilibrada ou Máxima) e a resolução desejada (Original, 720p ou 480p) e clique em [Comprimir Vídeo]. O motor FFmpeg compilado para WebAssembly lê e re-codifica o arquivo inteiramente na memória do seu navegador. Nenhum byte é transmitido pela rede.',
+    },
+    {
+      name: 'Qual a diferença entre comprimir e reduzir a resolução?',
+      text: 'A compressão ajusta a taxa de bits (CRF do codec H.264) e re-codifica mantendo as dimensões originais. A redução de resolução reescala a imagem para 720p ou 480p, o que costuma gerar reduções de tamanho muito maiores. As duas opções podem ser combinadas: reduzir a resolução e ainda aplicar um CRF mais agressivo.',
+    },
+    {
+      name: 'O que significa CRF e qual nível devo escolher?',
+      text: 'CRF (Constant Rate Factor) é a métrica de qualidade do x264: valores menores preservam mais detalhe e geram arquivos maiores; valores maiores comprimem mais e introduzem artefatos visíveis. A opção Rápida usa CRF 26, Equilibrada usa CRF 29 e Máxima usa CRF 33. Para a maioria dos casos, Equilibrada em 720p é o melhor equilíbrio.',
+    },
+    {
+      name: 'Por que compactar vídeo localmente em vez de usar um site comum?',
+      text: 'Um site de compressão tradicional recebe o seu vídeo em um servidor, processa em uma fila e devolve o resultado — o arquivo fica exposto a terceiros, o que é uma violação de privacidade sob a LGPD e cria risco para gravações de reuniões, depoimentos, aulas e material confidencial. Aqui o processamento é 100% client-side, sem cadastro, sem fila e sem armazenamento remoto.',
+    },
+    {
+      name: 'Quais formatos de vídeo são aceitos e qual o limite de tamanho?',
+      text: 'São aceitos MP4, WEBM, MOV, AVI, M4V e MKV com limite de 200MB por arquivo. A saída é sempre em MP4 (H.264 + AAC), o formato com maior compatibilidade com WhatsApp, Instagram, TikTok, e-mail e players nativos. Arquivos acima de 100MB podem levar vários minutos, pois a re-codificação roda em WebAssembly de thread única.',
+    },
+  ],
+});
+---
+
+<Layout
+  title="Compactador de Vídeo Online 100% Local (MP4, WEBM) | CofreUtil"
+  description="Comprimir vídeo MP4, WEBM e MOV grátis no navegador via FFmpeg local. 3 níveis de compressão H.264 e resize para 720p/480p. Zero upload, zero servidor, LGPD."
+  keywords="compactador de video, comprimir video online, reduzir tamanho de video mp4, compressor de video local, diminuir video sem perder qualidade, comprimir video no navegador, ffmpeg wasm video, compressao de video 720p, video compressor lgpd"
+  jsonLd={jsonLd}
+>
+  <section class="mx-auto max-w-6xl px-6 pb-24 pt-28 md:pt-36">
+    <div class="mb-10 flex flex-col gap-6">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [Zero-Server]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [FFmpeg Local]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [H.264 / CRF]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [MP4 / WEBM]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [720p / 480p]
+        </span>
+        <span class="border border-[#27272A] bg-[#09090B] px-2 py-1 font-mono text-xs text-[#A1A1AA]">
+          [LGPD]
+        </span>
+      </div>
+
+      <h1 class="font-mono text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        Compactador de Vídeo Online 100% Local (MP4, WEBM)
+      </h1>
+
+      <h2 class="max-w-2xl text-lg leading-relaxed text-[#A1A1AA]">
+        Diminua o tamanho do seu vídeo sem perder o essencial — direto no navegador, sem
+        enviar nada para servidor.
+      </h2>
+
+      <p class="max-w-2xl text-sm leading-relaxed text-[#A1A1AA]">
+        Arraste seu MP4, WEBM, MOV ou AVI, escolha o nível de compressão e a resolução
+        desejada, e o motor FFmpeg compilado para WebAssembly re-codifica o arquivo na
+        memória da sua máquina. A barra de progresso mostra o avanço em porcentagem e a
+        estatística exibe o tamanho original lado a lado com o tamanho final. Nenhum byte
+        sai do seu dispositivo, não há cadastro, fila ou limite de banda.
+      </p>
+    </div>
+
+    <VideoCompressorTool client:only="react" />
+
+    <div class="mt-8 flex justify-end">
+      <ShareButton client:only="react" />
+    </div>
+
+    <!-- CONTEÚDO PERSUASIVO & H2 DE CAUDA LONGA -->
+    <div class="mt-16 flex flex-col gap-10">
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Como diminuir tamanho de vídeo sem enviar para servidor
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          A maior parte dos compactadores online funciona assim: você faz upload, o arquivo
+          viaja para um servidor de terceiros, entra em uma fila de processamento e depois
+          volta para download. No caminho, o vídeo passa por discos, logs e backups que você
+          não controla. Aqui o fluxo é o oposto: o arquivo é lido com a File API, gravado no
+          sistema de arquivos virtual do FFmpeg, re-codificado e devolvido como Blob — tudo
+          dentro do mesmo processo do navegador. Não existe endpoint de upload porque não há
+          backend para recebê-lo.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Por que compactar vídeo localmente é mais seguro (LGPD)
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Vídeos de trabalho — gravações de reuniões, treinamentos, depoimentos de clientes,
+          entrevistas, aulas — carregam dados pessoais, segredos comerciais e conteúdo
+          confidencial. Enviá-los a um serviço de terceiros cria uma base de tratamento de
+          dados fora do seu controle e pode configurar descumprimento da LGPD (artigos 6º e
+          46). O processamento local elimina o fluxo de dados por completo: a LGPD se torna
+          irrelevante porque não há transferência a fiscalizar. É privacidade de cofre
+          aplicada ao processamento de mídia.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Reduzir o tamanho do vídeo em 3 níveis de compressão H.264
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          A ferramenta usa o codec H.264 (libx264) com controle por CRF, o método que preserva
+          a melhor qualidade por byte em vez de fixar um bitrate. <strong class="text-white"
+            >Rápida</strong
+          > (CRF 26) é para quando o tempo importa; <strong class="text-white">Equilibrada</strong
+          > (CRF 29) entrega o melhor custo-benefício para a maioria dos casos; e
+          <strong class="text-white">Máxima</strong> (CRF 33) corta o arquivo drasticamente para
+          envio por WhatsApp, e-mail ou upload em plataformas com limite de tamanho. O áudio
+          também é normalizado para AAC, em 128k, 96k ou 64k conforme o nível escolhido.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Redimensionar para 720p ou 480p: a maior economia de tamanho
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          A maior economia vem sempre da redução de pixels. Um vídeo 4K tem quatro vezes
+          mais dados que um 1080p. Selecione 720p (HD) ou 480p (SD) e o filtro
+          <code class="text-white">scale</code> redimensiona dentro de uma caixa máxima
+          (1280x720 ou 854x480) preservando a proporção original — o vídeo nunca é
+          distorcido nem ampliado. Combinando 480p com compressão Máxima, é comum obter
+          arquivos 10 a 20 vezes menores do que o original.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h2 class="font-mono text-xl font-bold text-white">
+          Você vê o tamanho final antes de gastar tempo
+        </h2>
+        <p class="max-w-3xl text-sm leading-relaxed text-[#A1A1AA]">
+          Assim que o arquivo é selecionado, a ferramenta lê as dimensões reais do vídeo e
+          exibe um painel com o tamanho original, a estimativa de tamanho final e a
+          economia prevista em porcentagem. Ajuste o CRF ou a resolução e o número se
+          recalcula na hora. Depois do processamento, o mesmo painel passa a exibir o
+          tamanho real do arquivo gerado, com a economia efetiva e o tempo total de
+          processamento.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-16">
+      <h2 class="mb-6 font-mono text-xl font-bold text-white">
+        Perguntas Frequentes sobre o Compactador de Vídeo
+      </h2>
+      <div class="flex flex-col border border-[#27272A] bg-[#09090B]">
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Como diminuir o tamanho de um vídeo sem perder qualidade?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Use a opção Equilibrada em 720p. O CRF 29 mantém boa nitidez em movimento e a
+            redução de 720p é onde está a maior economia. Se o arquivo ainda estiver grande,
+            suba para 480p ou troque para o nível Máxima. Evite sempre compactar um vídeo que
+            já foi compactado várias vezes: a geração anterior já acumulou artefatos que a
+            nova geração amplifica.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Meu vídeo é enviado para algum servidor?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. O arquivo é lido com a File API, processado pelo FFmpeg WebAssembly no seu
+            navegador e baixado como Blob. A única requisição externa possível é o download do
+            núcleo do FFmpeg — e ele vem do próprio domínio do CofreUtil, com CDN pública
+            apenas como contingência se o servidor local falhar. Nenhum byte do seu vídeo sai
+            da máquina em nenhuma hipótese.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Quanto tempo demora para comprimir um vídeo?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Depende do tamanho e da duração. O motor roda em WebAssembly de thread única, sem
+            aceleração por GPU: um clipe de 1 minuto em 1080p costuma levar de 30 segundos a
+            2 minutos, e um arquivo de 200MB pode passar de 5 minutos. A barra de progresso
+            mostra o percentual em tempo real. Manter a resolução original é sempre mais
+            lento que reduzir para 720p ou 480p.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            A saída sai em qual formato? O WhatsApp aceita?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            A saída é sempre MP4 com vídeo H.264 e áudio AAC, e o índice de reprodução é
+            reposicionado para o início (<code class="text-white">-movflags +faststart</code>),
+            o que faz o arquivo tocar direto no navegador em vez de baixar inteiro antes de
+            reproduzir. Esse perfil é aceito por WhatsApp, Instagram, TikTok, Facebook,
+            e-mail e players nativos do Windows, macOS, Android e iOS.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            Posso compactar vídeo com mais de 200MB ou acumular vários arquivos?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            O limite por arquivo é 200MB e o processamento é feito um arquivo por vez, para não
+            exaurir a memória do navegador. Se você precisa enviar um vídeo maior, o caminho
+            é reduzir a resolução para 480p — o consumo de memória cai drasticamente e você
+            consegue processar o arquivo original em vez de ter que cortar antes.
+          </p>
+        </details>
+        <details class="border-b border-[#27272A] last:border-b-0">
+          <summary class="cursor-pointer px-5 py-4 font-mono text-sm text-white">
+            O vídeo compactado continua sendo enviado para o CofreUtil em algum momento?
+          </summary>
+          <p class="px-5 pb-4 text-sm leading-relaxed text-[#A1A1AA]">
+            Não. O download acontece via <code class="text-white">Blob</code> e
+            <code class="text-white">URL.createObjectURL</code> dentro do seu navegador, e a
+            URL temporária é revogada assim que o download termina, liberando a memória
+            alocada. Não há telemetria de arquivo, nem analytics de mídia, nem rastreamento de
+            conteúdo.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <TechnicalReferences slug="compactador-de-video" />
+  </section>
+</Layout>

@@ -310,4 +310,30 @@ export const referencesBySlug: Record<string, TechnicalReference[]> = {
       note: 'Port oficial do FFmpeg para WebAssembly usado para executar a detecção e a remoção no navegador.',
     },
   ],
+  'compactador-de-video': [
+    {
+      institution: 'FFmpeg',
+      title: 'FFmpeg — Documentação oficial',
+      url: 'https://ffmpeg.org/documentation.html',
+      note: 'Documentação das opções de codificação H.264, CRF e bitrate de áudio usadas na compressão.',
+    },
+    {
+      institution: 'FFmpeg',
+      title: 'FFmpeg Filters — filtro scale',
+      url: 'https://ffmpeg.org/ffmpeg-filters.html',
+      note: 'Parâmetros force_original_aspect_ratio e force_divisible_by do filtro scale usados no redimensionamento sem distorção e sem ampliar.',
+    },
+    {
+      institution: 'ffmpeg.wasm (mantenedor)',
+      title: 'ffmpeg.wasm — documentação técnica oficial',
+      url: 'https://ffmpegwasm.netlify.app/docs/overview',
+      note: 'Port oficial do FFmpeg para WebAssembly que executa a re-codificação do vídeo dentro do navegador.',
+    },
+    {
+      institution: 'MPEG / ISO',
+      title: 'ISO/IEC 14496-10 (H.264 / AVC) — Overview',
+      url: 'https://www.iso.org/standard/83504.html',
+      note: 'Norma do codec de vídeo H.264 adotado na saída para garantir compatibilidade com players e redes sociais.',
+    },
+  ],
 };
